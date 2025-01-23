@@ -19,10 +19,10 @@ public class PlayerController : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        Debug.Log(_movementInput.x + " - " + _movementInput.y);
         //Vector3 move = new Vector3(this._movementInput.x, 0, this._movementInput.y);
         //_ballRigidbody.MovePosition(_ballRigidbody.position + move * _playerSpeed * Time.fixedDeltaTime);
         //_ballRigidbody.AddTorque(move * _playerSpeed * Time.fixedDeltaTime);
         _ballRigidbody.AddTorque(new Vector3(this._movementInput.y, 0, -this._movementInput.x) * _playerSpeed, ForceMode.Force);
+
     }
 }
