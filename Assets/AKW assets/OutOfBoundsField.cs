@@ -7,5 +7,6 @@ public class OutOfBoundsField : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         other.transform.position = spawnPoint.position;
+        other.GetComponent<Rigidbody>().Sleep();
     }
 }
