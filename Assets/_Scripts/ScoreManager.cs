@@ -24,7 +24,7 @@ public class ScoreManager : MonoBehaviour
         hiScore = PlayerPrefs.GetInt("HighScore");
         hiScoreText.text = "High Score: " + hiScore;
     }
-    public void Update()
+    public void FixedUpdate()
     {
         scoreText.text = score + " points!";
         PlayerPrefs.SetInt("Score", score);

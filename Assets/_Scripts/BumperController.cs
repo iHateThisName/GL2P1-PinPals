@@ -27,7 +27,7 @@ public class BumperController : MonoBehaviour
             otherRB.AddExplosionForce(bounceForce, collision.contacts[0].point, 5);
             bumperAudioSource.Play();
 
-            scoreManager.GetComponent<ScoreManager>().score++;
+            scoreManager.GetComponent<ScoreManager>().score+=100;
         }
     }
 }

@@ -23,7 +23,7 @@ public class TimeManager : MonoBehaviour
 
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
         if (stopWatchActive == true)
         {
