@@ -240,6 +240,54 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 4053685851871766715}
+    - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_ActionId
+      value: 9ea774c8-30d6-44be-aded-9027ab54a8e8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_ActionId
+      value: 0ef1c082-7d01-4058-8581-a5d235d9f314
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_ActionName
+      value: 'Player/FlipperLeft[/Keyboard/a]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_ActionName
+      value: 'Player/FlipperRight[/Keyboard/d]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2809866603624602651}
+    - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2809866603624602651}
+    - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnMove
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5462125624381623547, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -296,6 +344,17 @@ PrefabInstance:
       addedObject: {fileID: 5947122031867381807}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+--- !u!114 &2809866603624602651 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3282255589976523815, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+  m_PrefabInstance: {fileID: 824806173463042108}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99f95def777077f49a27985e599dcacc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4665468116820759751 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5462125624381623547, guid: 2235eda53ed1846459cdf2880e817167, type: 3}

@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class FlipperController : MonoBehaviour
-{
+public class FlipperController : MonoBehaviour {
     public KeyCode activationKey; // Key to activate the flipper
     public float restPosition = 0f; // Default angle
     public float activePosition = 45f; // Angle when activated
@@ -9,8 +8,9 @@ public class FlipperController : MonoBehaviour
 
     private HingeJoint hinge;
 
-    void Start()
-    {
+    public bool IsFlipping = false;
+
+    void Start() {
         hinge = GetComponent<HingeJoint>();
         JointSpring spring = hinge.spring;
         spring.spring = 10000f; // Strength of the flipper
@@ -18,15 +18,11 @@ public class FlipperController : MonoBehaviour
         hinge.useSpring = true;
     }
 
-    void Update()
-    {
+    private void FixedUpdate() {
         JointSpring spring = hinge.spring;
-        if (Input.GetKey(activationKey))
-        {
+        if (Input.GetKey(activationKey) || IsFlipping) {
             spring.targetPosition = activePosition;
-        }
-        else
-        {
+        } else {
             spring.targetPosition = restPosition;
         }
         hinge.spring = spring;
