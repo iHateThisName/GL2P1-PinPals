@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class OnOffThingieScript : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class OnOffThingieScript : MonoBehaviour
     private Renderer ThingRender;
     private bool IsActive = true;
     private Collider Collideble;
+
+    public GameObject scoreManager;
+    [SerializeField] private ThreeTargetsScore _targetScore;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,6 +27,8 @@ public class OnOffThingieScript : MonoBehaviour
         if (IsActive)
         {
             ThingRender.material = OffTexture;
+            scoreManager.GetComponent<ScoreManager>().score += 50;
+            _targetScore.OnScore();
         }
         else
         {

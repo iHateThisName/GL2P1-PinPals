@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class OutOfBoundsField : MonoBehaviour
 {
-    public Vector3 teleportLocation;
+    [SerializeField] private Transform spawnPoint;
 
     private void OnTriggerEnter(Collider other)
     {
-        other.transform.position = teleportLocation;
+        other.transform.position = spawnPoint.position;
     }
 }
