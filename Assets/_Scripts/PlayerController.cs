@@ -23,6 +23,12 @@ public class PlayerController : MonoBehaviour {
         //_ballRigidbody.MovePosition(_ballRigidbody.position + move * _playerSpeed * Time.fixedDeltaTime);
         //_ballRigidbody.AddTorque(move * _playerSpeed * Time.fixedDeltaTime);
         _ballRigidbody.AddTorque(new Vector3(this._movementInput.y, 0, -this._movementInput.x) * _playerSpeed, ForceMode.Force);
+    }
 
+    public void DisableGravity() {
+        _ballRigidbody.isKinematic = true;
+    }
+    public void EnableGravity() {
+        _ballRigidbody.isKinematic = false;
     }
 }
