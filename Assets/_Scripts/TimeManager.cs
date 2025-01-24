@@ -18,7 +18,7 @@ public class TimeManager : MonoBehaviour
 
         stopWatchActive = true;
 
-
+        currentTime = counter;
 
 
     }
@@ -27,8 +27,14 @@ public class TimeManager : MonoBehaviour
     {
         if (stopWatchActive == true)
         {
-            currentTime = currentTime + Time.deltaTime;
-
+            if (currentTime > 0) 
+            {
+                currentTime -= Time.deltaTime;
+            }
+            else
+            {
+                stopWatchActive = false;
+            }
         }
 
         TimeSpan time = TimeSpan.FromSeconds(currentTime);

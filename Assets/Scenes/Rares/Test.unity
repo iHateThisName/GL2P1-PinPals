@@ -276,6 +276,7 @@ MonoBehaviour:
   restPosition: 0
   activePosition: 45
   flipSpeed: 10
+  IsFlipping: 0
 --- !u!59 &231043773
 HingeJoint:
   m_ObjectHideFlags: 0
@@ -363,6 +364,67 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.036698606, y: 0.13942671, z: 0.02}
   m_Center: {x: 0, y: -0.001872126, z: 0}
+--- !u!1001 &233530267
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2595813690432753131, guid: f7c100d2377743541be62deecc04b672, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -30.540937
+      objectReference: {fileID: 0}
+    - target: {fileID: 2595813690432753131, guid: f7c100d2377743541be62deecc04b672, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.115738
+      objectReference: {fileID: 0}
+    - target: {fileID: 2595813690432753131, guid: f7c100d2377743541be62deecc04b672, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.428109
+      objectReference: {fileID: 0}
+    - target: {fileID: 2595813690432753131, guid: f7c100d2377743541be62deecc04b672, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2595813690432753131, guid: f7c100d2377743541be62deecc04b672, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2595813690432753131, guid: f7c100d2377743541be62deecc04b672, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2595813690432753131, guid: f7c100d2377743541be62deecc04b672, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2595813690432753131, guid: f7c100d2377743541be62deecc04b672, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2595813690432753131, guid: f7c100d2377743541be62deecc04b672, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2595813690432753131, guid: f7c100d2377743541be62deecc04b672, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408660184546367313, guid: f7c100d2377743541be62deecc04b672, type: 3}
+      propertyPath: m_Name
+      value: Prefab
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2834364803903190398, guid: f7c100d2377743541be62deecc04b672, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3408660184546367313, guid: f7c100d2377743541be62deecc04b672, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1654426721}
+  m_SourcePrefab: {fileID: 100100000, guid: f7c100d2377743541be62deecc04b672, type: 3}
 --- !u!1 &392643280
 GameObject:
   m_ObjectHideFlags: 0
@@ -579,6 +641,7 @@ MonoBehaviour:
   restPosition: 0
   activePosition: 45
   flipSpeed: 10
+  IsFlipping: 0
 --- !u!1 &738282132
 GameObject:
   m_ObjectHideFlags: 0
@@ -1526,6 +1589,26 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 547727707}
   m_SourcePrefab: {fileID: 100100000, guid: 5b4857a6f5bca064a952d296cbda137e, type: 3}
+--- !u!1 &1654426715 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3408660184546367313, guid: f7c100d2377743541be62deecc04b672, type: 3}
+  m_PrefabInstance: {fileID: 233530267}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1654426721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654426715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f666e2a08dd504688c4234493c126e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minHeight: 50
+  maxHeight: 100
+  springSpeed: 500
 --- !u!1 &1683775489
 GameObject:
   m_ObjectHideFlags: 0
@@ -2185,3 +2268,4 @@ SceneRoots:
   - {fileID: 204333313}
   - {fileID: 904964549}
   - {fileID: 1799435619}
+  - {fileID: 233530267}
