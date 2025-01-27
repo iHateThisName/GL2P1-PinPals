@@ -31,6 +31,10 @@ public class PlayerManager : MonoBehaviour {
 
         // Enable gravity after 1 second
         ReEnableGravity(playerController, 1);
+
+        // The player should not be destroyed when a new scene is loaded
+        DontDestroyOnLoad(playerInput.gameObject.transform.parent.gameObject);
+        playerInput.gameObject.transform.parent.gameObject.name = playerTag.ToString();
     }
 
     public void OnPlayerLeaves(PlayerInput playerInput) {
