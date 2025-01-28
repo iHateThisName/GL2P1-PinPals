@@ -3,41 +3,41 @@ using UnityEngine;
 
 public class LayerManager : MonoBehaviour
 {
-    public GameObject objectToSpawn; // Reference to the prefab you want to spawn
-    public int numberOfObjects = 4; // The number of objects to spawn
-    public int startingLayer = 6; // The starting layer index
-    public List<Color> colors; // List of colors to assign
+    public GameObject spawnPinball;
+    public int numberOfObjects = 4;
+    public int startingLayer = 6; // Starting layer
+    public List<Color> colors;
     public Camera cameraPrefab;
 
     [SerializeField] private Transform spawnPoint;
 
     public void Start()
     {
-        SpawnObjects();
+        SpawnPinball();
     }
-    void SpawnObjects()
+    void SpawnPinball()
     {
         for (int i = 0; i < numberOfObjects; i++)
         {
-            // Instantiate the GameObject at the specified position and rotation
-            GameObject spawnedObject = Instantiate(objectToSpawn, spawnPoint.position, Quaternion.identity);
+         
+            GameObject spawnedObject = Instantiate(spawnPinball, spawnPoint.position, Quaternion.identity);
 
-            // Assign the layer to the spawned object, incrementing the layer index
-            int currentLayer = startingLayer + i; // Increment the layer index
+            // Assigning the layer +1
+            int currentLayer = startingLayer + i;
             spawnedObject.layer = currentLayer;
 
-            // Assign the color from the list to the spawned object's material
+            // Color
             Renderer objectRenderer = spawnedObject.GetComponent<Renderer>();
             if (objectRenderer != null)
             {
-                objectRenderer.material.color = colors[i]; // Assign color from the list based on index
+                objectRenderer.material.color = colors[i]; // Assigning from the list
             }
             else
             {
                 Debug.LogError("No Renderer found on the spawned object!");
             }
-            // Spawn and configure a camera for each object
-            SpawnCameraForObject(spawnedObject, i);
+            // Spawns a camera for each object
+            SpawnCameraForPinball(spawnedObject, i);
         }
         if (colors.Count < numberOfObjects)
         {
@@ -45,7 +45,7 @@ public class LayerManager : MonoBehaviour
             return;
         }
     }
-    void SpawnCameraForObject(GameObject targetObject, int index)
+    void SpawnCameraForPinball(GameObject targetObject, int index)
     {
         // Instantiate the camera for the current object
         Camera newCamera = Instantiate(cameraPrefab, new Vector3(targetObject.transform.position.x, 5, targetObject.transform.position.z - 20), Quaternion.Euler(30, 0, 0));
@@ -53,14 +53,14 @@ public class LayerManager : MonoBehaviour
         // Get the default culling mask of the camera
         int defaultCullingMask = newCamera.cullingMask;
 
-        // Combine the default culling mask with the current layer
+        // Combine the default culling mask with the current layer + 4(Number of max players) to get to the flipper layers
         int currentLayer = startingLayer + index;
-        newCamera.cullingMask = defaultCullingMask | 1 << currentLayer + 4;  // Preserve default mask and add the specific layer
+        newCamera.cullingMask = defaultCullingMask | 1 << currentLayer + 4;  // Defaultmasks + flippers
 
-        // Make the camera focus on the target object
+        // Camera settings
         newCamera.transform.LookAt(targetObject.transform);
 
-        // Optionally set other camera properties like field of view
+        
         newCamera.fieldOfView = 60;
         newCamera.clearFlags = CameraClearFlags.Skybox;
     }
