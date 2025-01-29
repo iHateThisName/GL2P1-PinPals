@@ -29,10 +29,13 @@ public class PlayerManager : MonoBehaviour {
         playerInput.tag = playerTag.ToString();
         Debug.Log(playerTag.ToString() + " joined the game");
 
+        // Layer the player to the correct player layer
+        playerInput.gameObject.layer = LayerMask.NameToLayer("Player" + (int)playerTag);
+
         // Enable gravity after 1 second
         ReEnableGravity(playerController, 1);
 
-        // The player should not be destroyed when a new scene is loaded
+        // The player should not be destroyed when a new scene is loaded, to keep the player controller scheme
         DontDestroyOnLoad(playerInput.gameObject.transform.parent.gameObject);
         playerInput.gameObject.transform.parent.gameObject.name = playerTag.ToString();
     }
