@@ -15,6 +15,7 @@ public class CameraTargetController : MonoBehaviour {
 
     private void SetUp() {
         this._ground = GameObject.FindGameObjectWithTag("Ground").transform;
+        if (_ground == null) Debug.LogError("Ground not found in the scene. Please add a GameObject with the tag 'Ground'");
     }
 
     private void PositionCamera() {
