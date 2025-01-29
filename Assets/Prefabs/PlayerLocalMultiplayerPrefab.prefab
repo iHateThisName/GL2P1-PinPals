@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74671bd3d91cb9d4b91391bde8a112ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _camera: {fileID: 4053685851871766715}
+  _distanceFromGround: 20
+  _playerPinBall: {fileID: 1976326164064474452}
 --- !u!1 &6194510971637608970
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,6 +511,11 @@ PrefabInstance:
       addedObject: {fileID: 5947122031867381807}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+--- !u!4 &1976326164064474452 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1161681264765291880, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+  m_PrefabInstance: {fileID: 824806173463042108}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2809866603624602651 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3282255589976523815, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
