@@ -23,4 +23,25 @@ public class MenuStartish : MonoBehaviour
         Debug.Log("You can't quit, u got work to do");
         Application.Quit();
     }
+
+    public void menuOne()
+    {
+        SceneManager.LoadScene("Menu1");
+    }
+
+    public void toBeMade()
+    {
+        SceneManager.LoadScene("TBM");
+    }
+
+    public void onOffline()
+    {
+        SceneManager.LoadScene("OnOffline");
+    }
+
+    public void levelSelect()
+    {
+        SceneManager.LoadScene("LevelSelect");
+    }
+
 }
