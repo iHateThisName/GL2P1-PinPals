@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour {
 
         string playerLayerString = LayerMask.LayerToName(this.gameObject.layer);
         string playerSuffix = playerLayerString.Substring(playerLayerString.Length - 2);
+
         foreach (GameObject flipper in leftFlippers) {
             string flipperLayerString = LayerMask.LayerToName(flipper.layer);
             string flipperSuffix = LayerMask.LayerToName(flipper.layer).Substring(flipperLayerString.Length - 2);
@@ -68,9 +69,6 @@ public class PlayerController : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        //Vector3 move = new Vector3(this._movementInput.x, 0, this._movementInput.y);
-        //_ballRigidbody.MovePosition(_ballRigidbody.position + move * _playerSpeed * Time.fixedDeltaTime);
-        //_ballRigidbody.AddTorque(move * _playerSpeed * Time.fixedDeltaTime);
         _ballRigidbody.AddTorque(new Vector3(this._movementInput.y, 0, -this._movementInput.x) * _playerSpeed, ForceMode.Force);
     }
 

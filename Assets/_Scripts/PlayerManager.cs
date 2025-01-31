@@ -32,6 +32,9 @@ public class PlayerManager : MonoBehaviour {
 
         // Layer the player to the correct player layer
         playerInput.gameObject.layer = LayerMask.NameToLayer("Player" + (int)playerTag);
+        foreach (Transform child in playerInput.gameObject.transform) {
+            child.gameObject.layer = LayerMask.NameToLayer("Player" + (int)playerTag);
+        }
 
         // Enable gravity after 1 second
         ReEnableGravity(playerController, 1);
