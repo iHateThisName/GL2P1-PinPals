@@ -16,11 +16,23 @@ public class PlayerController : MonoBehaviour {
 
         GameObject[] leftFlippers = GameObject.FindGameObjectsWithTag(tag: "LeftFlipper");
         GameObject[] rightFlippers = GameObject.FindGameObjectsWithTag(tag: "RightFlipper");
+
+        string playerLayerString = LayerMask.LayerToName(this.gameObject.layer);
+        string playerSuffix = playerLayerString.Substring(playerLayerString.Length - 2);
         foreach (GameObject flipper in leftFlippers) {
-            _leftFlipperController.Add(flipper.GetComponent<FlipperController>());
+            string flipperLayerString = LayerMask.LayerToName(flipper.layer);
+            string flipperSuffix = LayerMask.LayerToName(flipper.layer).Substring(flipperLayerString.Length - 2);
+
+            if (flipperSuffix == playerSuffix) {
+                _leftFlipperController.Add(flipper.GetComponent<FlipperController>());
+            }
         }
         foreach (GameObject flipper in rightFlippers) {
-            _rightFlipperController.Add(flipper.GetComponent<FlipperController>());
+            string flipperLayerString = LayerMask.LayerToName(flipper.layer);
+            string flipperSuffix = LayerMask.LayerToName(flipper.layer).Substring(flipperLayerString.Length - 2);
+            if (flipperSuffix == playerSuffix) {
+                _rightFlipperController.Add(flipper.GetComponent<FlipperController>());
+            }
         }
 
         if (leftFlippers.Length == 0 || rightFlippers.Length == 0) Debug.LogError("No flippers found! Please add flippers to the scene and tag them");
