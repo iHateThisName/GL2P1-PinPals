@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 4494423727732936323}
   - component: {fileID: 5351860028741454525}
   - component: {fileID: 8759932652200508978}
+  - component: {fileID: 1849464067992525093}
   m_Layer: 0
   m_Name: Bumper
   m_TagString: Untagged
@@ -138,7 +139,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -156,9 +157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be739fa812561de4c9639d3c2bd03401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTag: Player
-  bounceForce: 100
-  scoreManager: {fileID: 0}
+  bounceForce: 15
+  points: 100
 --- !u!82 &8759932652200508978
 AudioSource:
   m_ObjectHideFlags: 0
@@ -256,3 +256,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!64 &1849464067992525093
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5658072526995480731}
+  m_Material: {fileID: 13400000, guid: 92a3675d7a728a44ebf2760bf5e84fee, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}

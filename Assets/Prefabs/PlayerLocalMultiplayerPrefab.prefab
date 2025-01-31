@@ -329,7 +329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 638bcbc343bb42749a079331823f396b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animationSpeed: 2
+  _animationSpeed: 5
   player: {fileID: 7362145305593869698}
   _scoreText: {fileID: 8353107579606462070}
 --- !u!1 &6194510971637608970
@@ -804,7 +804,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9004906448235439140, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
       propertyPath: m_Mass
-      value: 0.1
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 9004906448235439140, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
       propertyPath: m_CollisionDetection
