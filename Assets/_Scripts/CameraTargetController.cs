@@ -26,10 +26,11 @@ public class CameraTargetController : MonoBehaviour {
 
         if (this._camera == null) return;
         // Calculate the camera position
-        Vector3 cameraFollowPosition = _ground.position;
-        cameraFollowPosition.y = this.gameObject.transform.position.y; // Follow player's height, this will make the camera feel like its zooming out when the player is moving up
+       // Vector3 cameraFollowPosition = _ground.position;
+        Vector3 cameraFollowPosition = this.gameObject.transform.position;
+        //cameraFollowPosition.z = this.gameObject.transform.position.z; // Follow player's height, this will make the camera feel like its zooming out when the player is moving up
 
-        Vector3 cameraOffset = -_ground.forward * _distanceFromGround;
+        Vector3 cameraOffset = _ground.up * _distanceFromGround + -_ground.forward * _distanceFromGround;
         _camera.transform.position = cameraFollowPosition + cameraOffset;
     }
 

@@ -106,6 +106,7 @@ MonoBehaviour:
   restPosition: 0
   activePosition: -45
   flipSpeed: 5
+  IsFlipping: 0
 --- !u!54 &4322963329272952359
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -132,7 +133,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 3
 --- !u!59 &2098235590512259847
 HingeJoint:
   m_ObjectHideFlags: 0

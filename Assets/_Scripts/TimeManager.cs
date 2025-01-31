@@ -10,6 +10,7 @@ public class TimeManager : MonoBehaviour
 
     public int counter;
     public TMP_Text currentTimeText;
+    public GameObject restartMenu;
 
     // Start is called before the first frame update
     public void Start()
@@ -30,10 +31,13 @@ public class TimeManager : MonoBehaviour
             if (currentTime > 0) 
             {
                 currentTime -= Time.deltaTime;
+
             }
             else
             {
                 stopWatchActive = false;
+                restartMenu.SetActive(true);
+                Time.timeScale = 0;
             }
         }
 
@@ -44,6 +48,7 @@ public class TimeManager : MonoBehaviour
     public void StartStopWatch()
     {
         stopWatchActive = true;
+
     }
 
     public void StopStopWatch()
