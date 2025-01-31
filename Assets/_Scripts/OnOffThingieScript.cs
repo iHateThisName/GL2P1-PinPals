@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class OnOffThingieScript : MonoBehaviour
-{
+public class OnOffThingieScript : MonoBehaviour {
     public Material OnTexture;
     public Material OffTexture;
 
@@ -14,31 +13,25 @@ public class OnOffThingieScript : MonoBehaviour
     [SerializeField] private ThreeTargetsScore _targetScore;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
+    void Start() {
         ThingRender = GetComponent<Renderer>();
         ThingRender.material = OnTexture;
         Collideble = GetComponent<Collider>();
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
+    private void OnCollisionEnter(Collision collision) {
         Collideble.enabled = false;
-        if (IsActive)
-        {
+        if (IsActive) {
             ThingRender.material = OffTexture;
             scoreManager.GetComponent<ScoreManager>().score += 50;
             _targetScore.OnScore();
-        }
-        else
-        {
+        } else {
             ThingRender.material = OnTexture;
         }
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
+    void Update() {
+
     }
 }
