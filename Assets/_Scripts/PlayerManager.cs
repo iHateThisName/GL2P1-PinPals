@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -38,6 +39,15 @@ public class PlayerManager : MonoBehaviour {
         // The player should not be destroyed when a new scene is loaded, to keep the player controller scheme
         DontDestroyOnLoad(playerInput.gameObject.transform.parent.gameObject);
         playerInput.gameObject.transform.parent.gameObject.name = playerTag.ToString();
+
+        Camera playerCamera = playerInput.camera;
+
+        // Get the default culling mask of the camera
+        int defaultCullingMask = playerCamera.cullingMask;
+
+        // Combine the default culling mask with the current layer + 4(Number of max players) to get to the flipper layers
+        int currentLayer = 5 + (int)playerTag;
+        playerCamera.cullingMask = defaultCullingMask | 1 << currentLayer + 4;  // Defaultmasks + flippers
     }
 
     public void OnPlayerLeaves(PlayerInput playerInput) {
