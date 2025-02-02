@@ -73,22 +73,28 @@ public class PlayerPowerController : MonoBehaviour
     {
         this.playerTransform.localScale = new Vector3(4f, 4f, 4f);
         await Task.Delay(1000);
+        this.playerTransform.localScale = defaultScale;
+        this.currentPower = EnumPowerUp.None;
     }
     public void BombPlayers()
     {
+        Debug.Log("Work In Progress");
         Debug.Log("Bomberman");
     }
     public void SlowTime()
     {
+        Debug.Log("Work In Progress");
         Debug.Log("Slow Down Shlawg");
     }
     public void GravityControl()
     {
+        Debug.Log("Work In Progress");
         Debug.Log("Gravity Flip");
     }
     public async void FreezePlayers()
     {
         this.GetComponentInParent<Rigidbody>().isKinematic = true;
         await Task.Delay(1000);
+        this.currentPower = EnumPowerUp.None;
     }
 }
