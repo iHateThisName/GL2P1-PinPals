@@ -44,4 +44,9 @@ public class MenuStartish : MonoBehaviour
         SceneManager.LoadScene("LevelSelect");
     }
 
+    //Einar
+    public void Prototype()
+    {
+        SceneManager.LoadScene("Prototype");
+    }
 }
