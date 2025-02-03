@@ -51,7 +51,8 @@ MonoBehaviour:
   _zPosOffsetFalling: -50
   _cameraBoundingXOffset: 43.5
   _cameraBoundingZMinOffset: 15.5
-  _xLerpSpeed: 2
+  _xLerpSpeed: 1
+  _zLerpSpeed: 2
 --- !u!1 &911007134803074187
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,7 +819,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9004906448235439140, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
       propertyPath: m_Interpolate
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9004906448235439140, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
       propertyPath: m_CollisionDetection

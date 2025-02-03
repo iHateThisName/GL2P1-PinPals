@@ -858,7 +858,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 947284067}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &947284069
 Camera:
   m_ObjectHideFlags: 0
@@ -1601,6 +1601,7 @@ MonoBehaviour:
   _cameraBoundingXOffset: 43.5
   _cameraBoundingZMinOffset: 15.5
   _xLerpSpeed: 1
+  _zLerpSpeed: 2
 --- !u!4 &1786452217
 Transform:
   m_ObjectHideFlags: 0
