@@ -37,7 +37,8 @@ public class PlayerManager : MonoBehaviour {
         }
 
         // Enable gravity after 1 second
-        ReEnableGravity(playerController, 1);
+        //ReEnableGravity(playerController, 1);
+        StartCoroutine(ReEnableGravityCoroutine(playerController, 0.5f));
 
         // The player should not be destroyed when a new scene is loaded, to keep the player controller scheme
         DontDestroyOnLoad(playerInput.gameObject.transform.parent.gameObject);
@@ -61,6 +62,11 @@ public class PlayerManager : MonoBehaviour {
 
     private async void ReEnableGravity(PlayerController playerController, int delayInSeconds) {
         await Task.Delay(delayInSeconds * 1000);
+        playerController.EnableGravity();
+    }
+
+    private IEnumerator ReEnableGravityCoroutine(PlayerController playerController, float delayInSeconds) {
+        yield return new WaitForSeconds(delayInSeconds);
         playerController.EnableGravity();
     }
 
