@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ThreeTargetsScore : MonoBehaviour
+public class TargetBankScore : MonoBehaviour
 {
     private int _maxHits = 0;
     private int _currentHits = 0;

@@ -10,7 +10,7 @@ public class OnOffThingieScript : MonoBehaviour {
     private Collider Collideble;
 
     public GameObject scoreManager;
-    [SerializeField] private ThreeTargetsScore _targetScore;
+    [SerializeField] private TargetBankScore _targetScore;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
