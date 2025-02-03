@@ -2,41 +2,62 @@ using UnityEngine;
 
 // Ivar
 public class CameraTargetController : MonoBehaviour {
+    [SerializeField] private Transform _playerPinBall;
+
+    [Header("Camera Configuration")]
     [SerializeField] private Camera _camera;
     [SerializeField] private float _distanceFromGround = 30f;
+    [SerializeField] private float _zPosOffset = 10f;
+    [SerializeField] private float _zPosOffsetFalling = -10f;
+    [SerializeField] private float _cameraBoundingXOffset = 43.5f;
+    [SerializeField] private float _cameraBoundingZMinOffset = 15.5f;
+    [SerializeField] private float _xLerpSpeed = 5f;
+    [SerializeField] private float _zLerpSpeed = 3f;
 
-    [SerializeField] private Transform _playerPinBall;
     private Transform _ground;
+    private Vector3 _groundMin; // Bootom left
+    private Vector3 _groundMax; // Top right
 
     private void Start() {
         SetUp();
+        CalculateGroundBounds();
         PositionCamera();
     }
 
     private void SetUp() {
-        this._ground = GameObject.FindGameObjectWithTag("Ground").transform;
+        this._ground = GameObject.FindGameObjectWithTag("Ground")?.transform;
         if (_ground == null) Debug.LogError("Ground not found in the scene. Please add a GameObject with the tag 'Ground'");
     }
 
-    private void PositionCamera() {
-        //// Move the camera back along the ground's forward vector
-        //_camera.transform.position = _ground.position - _ground.forward * _distanceFromGround;
-        //// Ensure the camera looks at the ground
-        //_camera.transform.LookAt(_ground.position);
-
-        if (this._camera == null) return;
-        // Calculate the camera position
-       // Vector3 cameraFollowPosition = _ground.position;
-        Vector3 cameraFollowPosition = this.gameObject.transform.position;
-        //cameraFollowPosition.z = this.gameObject.transform.position.z; // Follow player's height, this will make the camera feel like its zooming out when the player is moving up
-
-        Vector3 cameraOffset = _ground.up * _distanceFromGround + -_ground.forward * _distanceFromGround;
-        _camera.transform.position = cameraFollowPosition + cameraOffset;
+    private void CalculateGroundBounds() {
+        if (_ground == null) return;
+        Renderer groundRenderer = _ground.GetComponent<Renderer>();
+        if (groundRenderer != null) {
+            _groundMin = groundRenderer.bounds.min;
+            _groundMax = groundRenderer.bounds.max;
+        }
     }
 
-    private void LateUpdate() {
+    private void PositionCamera() {
+        if (this._camera == null) return;
+
+
+        Vector3 rawDistance = new Vector3(this.gameObject.transform.position.x, _distanceFromGround, this.gameObject.transform.position.z + this._zPosOffset);
+
+        // use clamp to ensure the camera is within the ground area
+        _camera.transform.position = new Vector3(
+            Mathf.Clamp(rawDistance.x, _groundMin.x + _cameraBoundingXOffset, _groundMax.x - _cameraBoundingXOffset),
+            rawDistance.y,
+            Mathf.Clamp(rawDistance.z, _groundMin.z + _cameraBoundingZMinOffset, _groundMax.z - _cameraBoundingXOffset)
+        );
+
+    }
+
+    private void FixedUpdate() {
         if (this._playerPinBall == null) return;
-        this.transform.position = this._playerPinBall.position + this.gameObject.transform.parent.position; // Copy the position
+
+        //this.transform.position = this._playerPinBall.position + this.gameObject.transform.parent.position;
+        this.transform.position = this._playerPinBall.position;
         this.transform.rotation = Quaternion.identity; // Dont rotate
 
         PositionCamera();

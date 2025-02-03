@@ -25,12 +25,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 54093458641906382}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4665468116820759751}
+  m_Father: {fileID: 1552546545278071964}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1186393043549364597
 MonoBehaviour:
@@ -44,9 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74671bd3d91cb9d4b91391bde8a112ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 4053685851871766715}
-  _distanceFromGround: 100
   _playerPinBall: {fileID: 1976326164064474452}
+  _camera: {fileID: 4053685851871766715}
+  _distanceFromGround: 50
+  _zPosOffset: -10
+  _zPosOffsetFalling: -50
+  _cameraBoundingXOffset: 43.5
+  _cameraBoundingZMinOffset: 15.5
+  _xLerpSpeed: 2
 --- !u!1 &911007134803074187
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,11 +126,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -362,8 +367,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4665468116820759751}
-  - {fileID: 2390963858250754276}
+  - {fileID: 5947122031867381807}
   - {fileID: 4487489101462616894}
+  - {fileID: 2390963858250754276}
   - {fileID: 10661754248524035}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -811,15 +817,16 @@ PrefabInstance:
       value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 9004906448235439140, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004906448235439140, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
       propertyPath: m_CollisionDetection
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 5462125624381623547, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5947122031867381807}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
 --- !u!4 &1976326164064474452 stripped
