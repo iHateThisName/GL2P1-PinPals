@@ -5,6 +5,13 @@ public class GameManager : Singleton<GameManager> {
 
     public bool IsPaused { get; private set; }
 
+
+    private void Awake() {
+        base.Awake();
+        IsPaused = false;
+        QualitySettings.vSyncCount = 1;
+        Application.targetFrameRate = 60;
+    }
     public void PauseGame() {
         IsPaused = true;
         Time.timeScale = 0;
@@ -19,23 +26,8 @@ public class GameManager : Singleton<GameManager> {
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
     //Einar
-    public void EndOfGameScore()
-    {
+    public void EndOfGameScore() {
         SceneManager.LoadScene("EndOfGameScore");
 
     }
-    #region Testing
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.KeypadEnter)) {
-            LoadScene();
-        }
-    }
-    public void LoadScene() {
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "LocalMultiWithCinemachine") {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("LocalMulti");
-        } else {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("LocalMultiWithCinemachine");
-        }
-    }
-    #endregion
 }
