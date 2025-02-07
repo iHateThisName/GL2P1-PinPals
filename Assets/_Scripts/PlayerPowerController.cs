@@ -1,12 +1,14 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Threading.Tasks;
+using System.Collections;
 
 public class PlayerPowerController : MonoBehaviour
 {
     private EnumPowerUp currentPower = EnumPowerUp.None;
     [SerializeField] private Transform playerTransform;
     private Vector3 defaultScale;
+    private float _powerUpCooldown = 5f;
 
     public void Start()
     {
@@ -36,11 +38,11 @@ public class PlayerPowerController : MonoBehaviour
                 break;
 
             case EnumPowerUp.Shrink:
-                ShrinkPlayer();
+                StartCoroutine(ShrinkPlayerCoroutine());
                 break;
 
             case EnumPowerUp.Grow:
-                GrowPlayer(); 
+                StartCoroutine(GrowPlayerCoroutine());
                 break;
 
             case EnumPowerUp.Bomb:
@@ -69,10 +71,25 @@ public class PlayerPowerController : MonoBehaviour
         this.playerTransform.localScale = defaultScale;
         this.currentPower = EnumPowerUp.None;
     }
+
+    public IEnumerator ShrinkPlayerCoroutine()
+    {
+        this.playerTransform.localScale = new Vector3(2f, 2f, 2f);
+        yield return new WaitForSeconds(_powerUpCooldown);
+        this.playerTransform.localScale = defaultScale;
+        this.currentPower = EnumPowerUp.None;
+    }
     public async void GrowPlayer()
     {
         this.playerTransform.localScale = new Vector3(10f, 10f, 10f);
         await Task.Delay(3000);
+        this.playerTransform.localScale = defaultScale;
+        this.currentPower = EnumPowerUp.None;
+    }
+    public IEnumerator GrowPlayerCoroutine()
+    {
+        this.playerTransform.localScale = new Vector3(10f, 10f, 10f);
+        yield return new WaitForSeconds(_powerUpCooldown);
         this.playerTransform.localScale = defaultScale;
         this.currentPower = EnumPowerUp.None;
     }
