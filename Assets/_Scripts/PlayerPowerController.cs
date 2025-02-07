@@ -64,15 +64,15 @@ public class PlayerPowerController : MonoBehaviour
 
     public async void ShrinkPlayer()
     {
-        this.playerTransform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        this.playerTransform.localScale = new Vector3(2f, 2f, 2f);
         await Task.Delay(3000);
         this.playerTransform.localScale = defaultScale;
         this.currentPower = EnumPowerUp.None;
     }
     public async void GrowPlayer()
     {
-        this.playerTransform.localScale = new Vector3(4f, 4f, 4f);
-        await Task.Delay(1000);
+        this.playerTransform.localScale = new Vector3(10f, 10f, 10f);
+        await Task.Delay(3000);
         this.playerTransform.localScale = defaultScale;
         this.currentPower = EnumPowerUp.None;
     }

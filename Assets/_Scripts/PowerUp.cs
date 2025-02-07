@@ -4,14 +4,15 @@ public class PowerUp : MonoBehaviour
 {
     private EnumPowerUp power = EnumPowerUp.Shrink;
 
-    /*void Start()
+    void Start()
     {
-        power = (EnumPowerUp)Random.Range(1, 6);
-    }*/
+        // power = (EnumPowerUp)Random.Range(1, 6);
+    }
 
     public void OnTriggerEnter(Collider player)
     {
-        player.gameObject.GetComponentInParent<PlayerPowerController>().GivePlayerPower(power);
+        PlayerPowerController playerPowerController = player.gameObject.GetComponent<ModelController>().PlayerPowerController;
+        playerPowerController.GivePlayerPower(power);
         Debug.Log(player.gameObject.name);
     }
 }
