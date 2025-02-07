@@ -9,7 +9,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: PlayAnimation
+    m_ConditionEvent: PlayAnimationPlayer1
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5499176365310250122}
@@ -61,7 +61,7 @@ AnimatorController:
   m_Name: Launcher1
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: PlayAnimation
+  - m_Name: PlayAnimationPlayer1
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -91,10 +91,10 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 5499176365310250122}
-    m_Position: {x: 290, y: 120, z: 0}
+    m_Position: {x: 320, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3101455155895761983}
-    m_Position: {x: 50, y: 200, z: 0}
+    m_Position: {x: 60, y: 220, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -112,7 +112,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MyAnimation
+  m_Name: Player1
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
