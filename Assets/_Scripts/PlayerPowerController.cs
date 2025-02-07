@@ -117,6 +117,12 @@ public class PlayerPowerController : MonoBehaviour
         await Task.Delay(1000);
         this.currentPower = EnumPowerUp.None;
     }
+    public IEnumerator FreezePlayersCoroutine()
+    {
+        this.GetComponentInParent<Rigidbody>().isKinematic = true;
+        yield return new WaitForSeconds(_powerUpCooldown);
+        this.currentPower = EnumPowerUp.None;
+    }
     public void MultiBall()
     {
         CreateDuplicate(playerTransform.gameObject);
