@@ -11,24 +11,31 @@ public class TAnimationController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A)) // Change the condition
+        if (Input.GetKeyDown(KeyCode.A))
         {
             animator.SetTrigger("PlayAnimationPlayer1");
         }
 
-        if (Input.GetKeyDown(KeyCode.S)) // Change the condition
+        if (Input.GetKeyDown(KeyCode.S))
         {
             animator.SetTrigger("PlayAnimationPlayer2");
         }
 
-        if (Input.GetKeyDown(KeyCode.D)) // Change the condition
+        if (Input.GetKeyDown(KeyCode.D))
         {
             animator.SetTrigger("PlayAnimationPlayer3");
         }
 
-        if (Input.GetKeyDown(KeyCode.F)) // Change the condition
+        if (Input.GetKeyDown(KeyCode.F))
         {
             animator.SetTrigger("PlayAnimationPlayer4");
+        }
+
+        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            animator.SetFloat("YPosition", transform.position.y);
+            animator.SetTrigger("ResetToZeroTrigger");
         }
     }
 }
