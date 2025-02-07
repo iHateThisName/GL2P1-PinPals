@@ -29,7 +29,7 @@
                     "id": "852140f2-7766-474d-8707-702459ba45f3",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Hold",
+                    "interactions": "",
                     "initialStateCheck": false
                 },
                 {
@@ -274,6 +274,17 @@
                 },
                 {
                     "name": "",
+                    "id": "cf430436-7ff3-4743-b5b9-8d7cccdb7415",
+                    "path": "<HID:: THEC64 Joystick     THEC64 Joystick   >/button4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Joystick",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "c24130b8-0006-4329-bcb8-366fa3526f47",
                     "path": "<Keyboard>/a",
                     "interactions": "",
@@ -307,6 +318,17 @@
                 },
                 {
                     "name": "",
+                    "id": "f168a2d3-284b-449f-9c35-28d91d275b15",
+                    "path": "<HID:: THEC64 Joystick     THEC64 Joystick   >/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Joystick",
+                    "action": "FlipperLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "8d657997-3c19-4913-a25a-911da98179b0",
                     "path": "<Keyboard>/d",
                     "interactions": "",
@@ -334,6 +356,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
+                    "action": "FlipperRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5a3653de-9733-44bf-88b1-5149932b2385",
+                    "path": "<HID:: THEC64 Joystick     THEC64 Joystick   >/button2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Joystick",
                     "action": "FlipperRight",
                     "isComposite": false,
                     "isPartOfComposite": false
