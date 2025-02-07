@@ -6,7 +6,7 @@ public class GameManager : Singleton<GameManager> {
     public bool IsPaused { get; private set; }
 
 
-    private void Awake() {
+    protected override void Awake() {
         base.Awake();
         IsPaused = false;
         QualitySettings.vSyncCount = 1;
