@@ -7,19 +7,23 @@ public class PowerUp : MonoBehaviour
 
     void Start()
     {
-        power = (EnumPowerUp)Random.Range(1, 3);
+        power = (EnumPowerUp)Random.Range(1, 4);
     }
 
     public IEnumerator OnTriggerEnter(Collider player)
     {
         PlayerPowerController playerPowerController = player.gameObject.GetComponent<ModelController>().PlayerPowerController;
+        MeshRenderer meshRenderer = gameObject.GetComponent<MeshRenderer>();
+        BoxCollider boxCollider = gameObject.GetComponent<BoxCollider>();
+
         playerPowerController.GivePlayerPower(power);
-        Debug.Log(player.gameObject.name);
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
-        gameObject.GetComponent<BoxCollider>().enabled = false;
-        power = (EnumPowerUp)Random.Range(1, 3);
+        meshRenderer.enabled = false;
+        boxCollider.enabled = false;
         yield return new WaitForSeconds(5f);
-        gameObject.GetComponent<MeshRenderer>().enabled = true;
-        gameObject.GetComponent<BoxCollider>().enabled = true;
+        power = (EnumPowerUp)Random.Range(1, 4);
+        meshRenderer.enabled = true;
+        boxCollider.enabled = true;
+
     }
+
 }

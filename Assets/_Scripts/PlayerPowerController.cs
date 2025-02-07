@@ -1,7 +1,6 @@
-using UnityEngine;
-using UnityEngine.InputSystem;
-using System.Threading.Tasks;
 using System.Collections;
+using System.Threading.Tasks;
+using UnityEngine;
 
 public class PlayerPowerController : MonoBehaviour
 {
@@ -49,7 +48,7 @@ public class PlayerPowerController : MonoBehaviour
                 BombPlayers();
                 break;
 
-            case EnumPowerUp.SlowTime: 
+            case EnumPowerUp.SlowTime:
                 SlowTime();
                 break;
 
@@ -59,7 +58,11 @@ public class PlayerPowerController : MonoBehaviour
 
             case EnumPowerUp.Freeze:
                 FreezePlayers();
-            break;
+                break;
+
+            case EnumPowerUp.MultiBall:
+                MultiBall();
+                break;
 
         }
     }
@@ -113,5 +116,31 @@ public class PlayerPowerController : MonoBehaviour
         this.GetComponentInParent<Rigidbody>().isKinematic = true;
         await Task.Delay(1000);
         this.currentPower = EnumPowerUp.None;
+    }
+    public void MultiBall()
+    {
+        CreateDuplicate(playerTransform.gameObject);
+        CreateDuplicate(playerTransform.gameObject);
+        this.currentPower = EnumPowerUp.None;
+    }
+
+    private void CreateDuplicate(GameObject playerModel)
+    {
+        // Duplicate the object by instantiating it
+        GameObject duplicate = Instantiate(playerModel.gameObject, playerTransform.position, Quaternion.identity);
+
+        //duplicate.transform.position = playerTransform.position;  // Change position to (2, 0, 0)
+        //duplicate.transform.rotation = Quaternion.identity;    // Reset rotation to default
+        StartCoroutine(DestroyAfterDelay(duplicate));
+
+    }
+
+    IEnumerator DestroyAfterDelay(GameObject dub)
+    {
+        // Wait for the specified amount of time
+        yield return new WaitForSeconds(_powerUpCooldown);
+        // Destroy the GameObject
+        Destroy(dub);
+        Debug.Log("Destroying duplicate:" + dub.name);
     }
 }

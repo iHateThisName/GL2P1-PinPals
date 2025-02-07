@@ -8,14 +8,14 @@ public class TimeManager : MonoBehaviour
     bool stopWatchActive = false;
     float currentTime;
 
-    public int counter;
+    [SerializeField] public int counter = 120;
     public TMP_Text currentTimeText;
     public GameObject restartMenu;
 
     // Start is called before the first frame update
     public void Start()
     {
-        counter = 60;
+     
 
         stopWatchActive = true;
 

@@ -32,7 +32,7 @@ public class TargetBankScore : MonoBehaviour
 
         if (_currentHits == _maxHits)
         {
-            modelController.AddPlayerPoints(points);
+            modelController._playerScoreTracker.AddPoints(points);
         }
     }
 }

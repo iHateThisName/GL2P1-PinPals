@@ -10,8 +10,9 @@ public enum EnumPowerUp
     None = 0,
     Shrink = 1,
     Grow = 2,
-    Bomb = 3,
-    SlowTime = 4,
-    GravityControl = 5,
-    Freeze = 6,
+    MultiBall = 3,
+    Bomb,
+    SlowTime,
+    GravityControl,
+    Freeze,
 }
