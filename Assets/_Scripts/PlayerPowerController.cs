@@ -8,9 +8,15 @@ public class PlayerPowerController : MonoBehaviour {
     [SerializeField] private Transform playerTransform;
     private Vector3 defaultScale;
     private float _powerUpCooldown = 5f;
+    private float originalMass = 0.02f;
+    [SerializeField] private float shrinkMass = 0.01f;
+    [SerializeField] private float growMass = 0.05f;
+    [SerializeField] private float shrinkScale = 2f;
+    [SerializeField] private float growScale = 10f;
 
     public void Start() {
         defaultScale = playerTransform.localScale;
+        originalMass = playerTransform.GetComponent<Rigidbody>().mass;
     }
 
     public void GivePlayerPower(EnumPowerUp power) {
@@ -58,28 +64,38 @@ public class PlayerPowerController : MonoBehaviour {
         }
     }
 
-    public async void ShrinkPlayer() {
-        this.playerTransform.localScale = new Vector3(2f, 2f, 2f);
+    public async void ShrinkPlayer()
+    {
+        this.playerTransform.localScale = new Vector3(shrinkScale, shrinkScale, shrinkScale);
         await Task.Delay(3000);
         this.playerTransform.localScale = defaultScale;
         this.currentPower = EnumPowerUp.None;
     }
 
-    public IEnumerator ShrinkPlayerCoroutine() {
-        this.playerTransform.localScale = new Vector3(2f, 2f, 2f);
+    public IEnumerator ShrinkPlayerCoroutine()
+    { // Use Fixed Update to slowly shrink the ball, use Lerp.
+        this.playerTransform.GetComponent<Rigidbody>().mass = shrinkMass;
+        this.playerTransform.localScale = new Vector3(shrinkScale, shrinkScale, shrinkScale);
         yield return new WaitForSeconds(_powerUpCooldown);
+        this.playerTransform.GetComponent<Rigidbody>().mass = originalMass;
         this.playerTransform.localScale = defaultScale;
         this.currentPower = EnumPowerUp.None;
     }
-    public async void GrowPlayer() {
-        this.playerTransform.localScale = new Vector3(10f, 10f, 10f);
+    public async void GrowPlayer()
+    {
+        this.playerTransform.GetComponent<Rigidbody>().mass = growMass;
+        this.playerTransform.localScale = new Vector3(growScale, growScale, growScale);
         await Task.Delay(3000);
+        this.playerTransform.GetComponent<Rigidbody>().mass = originalMass;
         this.playerTransform.localScale = defaultScale;
         this.currentPower = EnumPowerUp.None;
     }
-    public IEnumerator GrowPlayerCoroutine() {
-        this.playerTransform.localScale = new Vector3(10f, 10f, 10f);
+    public IEnumerator GrowPlayerCoroutine()
+    {
+        this.playerTransform.GetComponent<Rigidbody>().mass = growMass;
+        this.playerTransform.localScale = new Vector3(growScale, growScale, growScale);
         yield return new WaitForSeconds(_powerUpCooldown);
+        this.playerTransform.GetComponent<Rigidbody>().mass = originalMass;
         this.playerTransform.localScale = defaultScale;
         this.currentPower = EnumPowerUp.None;
     }
