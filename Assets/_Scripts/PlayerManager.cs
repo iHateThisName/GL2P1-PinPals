@@ -27,7 +27,7 @@ public class PlayerManager : MonoBehaviour {
         }
 
         // Tag the player with the player tag
-        playerInput.tag = playerTag.ToString();
+        playerInput.gameObject.transform.GetChild(0).tag = playerTag.ToString();
         Debug.Log(playerTag.ToString() + " joined the game");
 
         // Layer the player to the correct player layer

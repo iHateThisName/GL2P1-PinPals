@@ -18,7 +18,8 @@ public class BumperController : MonoBehaviour {
 
         //scoreManager.GetComponent<ScoreManager>().score+=100;
 
-        GameObject parent = collision.gameObject.transform.parent.gameObject.transform.parent.gameObject;
-        parent.GetComponentInChildren<PlayerScoreTracker>().AddPoints(points);
+        //GameObject parent = collision.gameObject.transform.parent.gameObject.transform.parent.gameObject;
+        //parent.GetComponentInChildren<PlayerScoreTracker>().AddPoints(points);
+        collision.gameObject.GetComponent<ModelController>().AddPlayerPoints(points);
     }
 }

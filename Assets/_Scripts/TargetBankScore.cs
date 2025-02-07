@@ -7,7 +7,6 @@ public class TargetBankScore : MonoBehaviour
 {
     private int _maxHits = 0;
     private int _currentHits = 0;
-    [SerializeField] private PlayerScoreTracker tracker;
     [SerializeField] int points = 500;
 
     //[SerializeField] private ScoreManager scoreManager;
@@ -24,6 +23,16 @@ public class TargetBankScore : MonoBehaviour
         if (_currentHits == _maxHits)
         {
             playerTracker.AddPoints(points);
+        }
+    }
+
+    public void OnScore(ModelController modelController)
+    {
+        _currentHits++;
+
+        if (_currentHits == _maxHits)
+        {
+            modelController.AddPlayerPoints(points);
         }
     }
 }

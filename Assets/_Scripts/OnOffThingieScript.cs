@@ -28,12 +28,9 @@ public class OnOffThingieScript : MonoBehaviour
         if (IsActive)
         {
             ThingRender.material = OffTexture;
-            //scoreManager.GetComponent<ScoreManager>().score += 50;
-            GameObject parent = collision.gameObject.transform.parent.gameObject.transform.parent.gameObject;
-            PlayerScoreTracker playerTracker = parent.GetComponentInChildren<PlayerScoreTracker>();
-            playerTracker.AddPoints(points);
-            _targetScore.OnScore(playerTracker);
-            //New scoring tracker
+            ModelController modelController = collision.gameObject.GetComponent<ModelController>();
+            modelController.AddPlayerPoints(points);
+            _targetScore.OnScore(modelController);
         }
         else
         {
