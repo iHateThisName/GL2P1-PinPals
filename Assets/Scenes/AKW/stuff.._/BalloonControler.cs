@@ -2,20 +2,15 @@ using UnityEngine;
 
 public class BalloonControler : MonoBehaviour
 {
-    public float floatStrenght = 1f;
-    public float maxHight = 100f;
-    private Rigidbody rb;
+    public Transform target;
+    public float speed = 5f;
 
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
-
+    
     void Update()
     {
-        if (transform.position.y < maxHight)
+        if (target != null)
         {
-            rb.AddForce(Vector3.up * floatStrenght);
+            transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }
         
     }
@@ -23,5 +18,6 @@ public class BalloonControler : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Destroy(gameObject);
+        Debug.Log("Pop!");
     }
 }
