@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using UnityEngine.Splines;
 // Ivar
 public class PlayerManager : MonoBehaviour {
 
@@ -41,8 +43,8 @@ public class PlayerManager : MonoBehaviour {
         StartCoroutine(ReEnableGravityCoroutine(playerController, 0.5f));
 
         // The player should not be destroyed when a new scene is loaded, to keep the player controller scheme
-        DontDestroyOnLoad(playerInput.gameObject.transform.parent.gameObject);
-        playerInput.gameObject.transform.parent.gameObject.name = playerTag.ToString();
+        //DontDestroyOnLoad(playerInput.gameObject.transform.parent.gameObject);
+        //playerInput.gameObject.transform.parent.gameObject.name = playerTag.ToString();
 
         Camera playerCamera = playerInput.camera;
 
@@ -95,4 +97,10 @@ public class PlayerManager : MonoBehaviour {
         Debug.LogError("More that 16 players joined the game. This is not supported.");
         return EnumPlayerTag.Player16;
     }
+    //Einar
+    //void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    //{
+    //    // Change the position of this object after the scene reloads
+    //    transform.position = _spawnPosition.position;
+    //}
 }
