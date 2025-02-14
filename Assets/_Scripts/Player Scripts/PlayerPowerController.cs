@@ -8,17 +8,18 @@ public class PlayerPowerController : MonoBehaviour {
     [SerializeField] private Transform playerTransform;
     private Vector3 defaultScale;
     private float _powerUpCooldown = 5f;
-    private float originalMass = 0.02f;
+    private float _originalMass = 0.02f;
     [SerializeField] private float shrinkMass = 0.01f;
     [SerializeField] private float growMass = 0.05f;
     [SerializeField] private float shrinkScale = 2f;
     [SerializeField] private float growScale = 10f;
     [SerializeField] private GameObject explosionEffect;
     [SerializeField] private GameObject balloonPrefab;
+    [SerializeField] public bool _isPlayerDead;
 
     public void Start() {
         defaultScale = playerTransform.localScale;
-        originalMass = playerTransform.GetComponent<Rigidbody>().mass;
+        _originalMass = playerTransform.GetComponent<Rigidbody>().mass;
     }
 
     public void GivePlayerPower(EnumPowerUp power) {
@@ -43,7 +44,11 @@ public class PlayerPowerController : MonoBehaviour {
                     break;
 
                 case EnumPowerUp.Bomb:
-                    BombPlayers();
+                    StartCoroutine(BombPlayersCoroutine());
+                    break;
+
+                case EnumPowerUp.Balloon:
+                    StartCoroutine(BalloonCoroutine());
                     break;
 
                 case EnumPowerUp.SlowTime:
@@ -61,7 +66,6 @@ public class PlayerPowerController : MonoBehaviour {
                 case EnumPowerUp.MultiBall:
                     MultiBall();
                     break;
-
             }
         }
     }
@@ -77,7 +81,7 @@ public class PlayerPowerController : MonoBehaviour {
         this.playerTransform.GetComponent<Rigidbody>().mass = shrinkMass;
         this.playerTransform.localScale = new Vector3(shrinkScale, shrinkScale, shrinkScale);
         yield return new WaitForSeconds(_powerUpCooldown);
-        this.playerTransform.GetComponent<Rigidbody>().mass = originalMass;
+        this.playerTransform.GetComponent<Rigidbody>().mass = _originalMass;
         this.playerTransform.localScale = defaultScale;
         this.currentPower = EnumPowerUp.None;
     }
@@ -85,7 +89,7 @@ public class PlayerPowerController : MonoBehaviour {
         this.playerTransform.GetComponent<Rigidbody>().mass = growMass;
         this.playerTransform.localScale = new Vector3(growScale, growScale, growScale);
         await Task.Delay(3000);
-        this.playerTransform.GetComponent<Rigidbody>().mass = originalMass;
+        this.playerTransform.GetComponent<Rigidbody>().mass = _originalMass;
         this.playerTransform.localScale = defaultScale;
         this.currentPower = EnumPowerUp.None;
     }
@@ -93,14 +97,21 @@ public class PlayerPowerController : MonoBehaviour {
         this.playerTransform.GetComponent<Rigidbody>().mass = growMass;
         this.playerTransform.localScale = new Vector3(growScale, growScale, growScale);
         yield return new WaitForSeconds(_powerUpCooldown);
-        this.playerTransform.GetComponent<Rigidbody>().mass = originalMass;
+        this.playerTransform.GetComponent<Rigidbody>().mass = _originalMass;
         this.playerTransform.localScale = defaultScale;
         this.currentPower = EnumPowerUp.None;
     }
-    public void BombPlayers()
+    public async void BombPlayers()
     {
-        Debug.Log("Work In Progress");
-        Debug.Log("Bomberman");
+        await Task.Delay(3000);
+        Instantiate(this.explosionEffect);
+        await Task.Delay(2000);
+    }
+    public IEnumerator BombPlayersCoroutine()
+    {
+        yield return new WaitForSeconds(3f);
+        Instantiate(this.explosionEffect);
+        yield return new WaitForSeconds(2f);
     }
     public void SlowTime()
     {
@@ -148,5 +159,13 @@ public class PlayerPowerController : MonoBehaviour {
         // Destroy the GameObject
         Destroy(dub);
         Debug.Log("Destroying duplicate:" + dub.name);
+    }
+
+    private IEnumerator BalloonCoroutine()
+    {
+        Instantiate(balloonPrefab);
+        yield return new WaitForSecondsRealtime(_powerUpCooldown);
+        balloonPrefab.SetActive(false);
+        this.currentPower = EnumPowerUp.None;
     }
 }

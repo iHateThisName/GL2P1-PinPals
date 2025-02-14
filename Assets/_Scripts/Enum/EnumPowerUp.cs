@@ -11,8 +11,9 @@ public enum EnumPowerUp
     Shrink = 1,
     Grow = 2,
     MultiBall = 3,
-    Bomb,
+    Bomb = 4,
+    Freeze = 5,
+    Balloon = 6,
     SlowTime,
     GravityControl,
-    Freeze,
 }

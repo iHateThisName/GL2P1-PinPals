@@ -3,11 +3,11 @@ using System.Collections;
 
 public class PowerUp : MonoBehaviour
 {
-    private EnumPowerUp power = EnumPowerUp.None;
+    private EnumPowerUp power = EnumPowerUp.Balloon;
 
     void Start()
     {
-        power = (EnumPowerUp)Random.Range(1, 4);
+        //power = (EnumPowerUp)Random.Range(1, 4);
     }
 
     public IEnumerator OnTriggerEnter(Collider player)
