@@ -1,7 +1,8 @@
-using System.Threading.Tasks;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
+// Ivar
 public class PlayerScoreTracker : MonoBehaviour {
     public int currentScore { get; private set; } = 0;
     private int _animatedScore = 0;
@@ -23,19 +24,17 @@ public class PlayerScoreTracker : MonoBehaviour {
     public void AddPoints(int points) {
         currentScore += points;
         if (!_isScoreAnimating) {
-            AnimateScore();
+            StartCoroutine(AnimateScore());
         }
     }
 
-    private async void AnimateScore() {
+    private IEnumerator AnimateScore() {
         _isScoreAnimating = true;
-
         while (_animatedScore < currentScore) {
             _animatedScore = (int)Mathf.MoveTowards(_animatedScore, currentScore, _animationSpeed * Time.deltaTime * 100);
             _scoreText.text = $"{_animatedScore}";
-            await Task.Yield();
+            yield return null;
         }
-
         _isScoreAnimating = false;
     }
 }

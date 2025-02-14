@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+// Ivar
 public class PlayerController : MonoBehaviour {
     [SerializeField] private float _playerSpeed = 2.0f;
     [SerializeField] private Rigidbody _ballRigidbody;

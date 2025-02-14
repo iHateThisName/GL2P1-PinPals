@@ -64,16 +64,14 @@ public class PlayerPowerController : MonoBehaviour {
         }
     }
 
-    public async void ShrinkPlayer()
-    {
+    public async void ShrinkPlayer() {
         this.playerTransform.localScale = new Vector3(shrinkScale, shrinkScale, shrinkScale);
         await Task.Delay(3000);
         this.playerTransform.localScale = defaultScale;
         this.currentPower = EnumPowerUp.None;
     }
 
-    public IEnumerator ShrinkPlayerCoroutine()
-    { // Use Fixed Update to slowly shrink the ball, use Lerp.
+    public IEnumerator ShrinkPlayerCoroutine() { // Use Fixed Update to slowly shrink the ball, use Lerp.
         this.playerTransform.GetComponent<Rigidbody>().mass = shrinkMass;
         this.playerTransform.localScale = new Vector3(shrinkScale, shrinkScale, shrinkScale);
         yield return new WaitForSeconds(_powerUpCooldown);
@@ -81,8 +79,7 @@ public class PlayerPowerController : MonoBehaviour {
         this.playerTransform.localScale = defaultScale;
         this.currentPower = EnumPowerUp.None;
     }
-    public async void GrowPlayer()
-    {
+    public async void GrowPlayer() {
         this.playerTransform.GetComponent<Rigidbody>().mass = growMass;
         this.playerTransform.localScale = new Vector3(growScale, growScale, growScale);
         await Task.Delay(3000);
@@ -90,8 +87,7 @@ public class PlayerPowerController : MonoBehaviour {
         this.playerTransform.localScale = defaultScale;
         this.currentPower = EnumPowerUp.None;
     }
-    public IEnumerator GrowPlayerCoroutine()
-    {
+    public IEnumerator GrowPlayerCoroutine() {
         this.playerTransform.GetComponent<Rigidbody>().mass = growMass;
         this.playerTransform.localScale = new Vector3(growScale, growScale, growScale);
         yield return new WaitForSeconds(_powerUpCooldown);
