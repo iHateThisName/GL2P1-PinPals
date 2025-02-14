@@ -13,6 +13,8 @@ public class PlayerPowerController : MonoBehaviour {
     [SerializeField] private float growMass = 0.05f;
     [SerializeField] private float shrinkScale = 2f;
     [SerializeField] private float growScale = 10f;
+    [SerializeField] private GameObject explosionEffect;
+    [SerializeField] private GameObject balloonPrefab;
 
     public void Start() {
         defaultScale = playerTransform.localScale;
@@ -95,45 +97,52 @@ public class PlayerPowerController : MonoBehaviour {
         this.playerTransform.localScale = defaultScale;
         this.currentPower = EnumPowerUp.None;
     }
-    public void BombPlayers() {
+    public void BombPlayers()
+    {
         Debug.Log("Work In Progress");
         Debug.Log("Bomberman");
     }
-    public void SlowTime() {
+    public void SlowTime()
+    {
         Debug.Log("Work In Progress");
         Debug.Log("Slow Down Shlawg");
     }
-    public void GravityControl() {
+    public async void GravityControl()
+    {
         Debug.Log("Work In Progress");
         Debug.Log("Gravity Flip");
     }
-    public async void FreezePlayers() {
+    private async void FreezePlayers()
+    {
         this.GetComponentInParent<Rigidbody>().isKinematic = true;
         await Task.Delay(1000);
         this.currentPower = EnumPowerUp.None;
     }
-    public IEnumerator FreezePlayersCoroutine() {
+    private IEnumerator FreezePlayersCoroutine()
+    {
         this.GetComponentInParent<Rigidbody>().isKinematic = true;
         yield return new WaitForSeconds(_powerUpCooldown);
         this.currentPower = EnumPowerUp.None;
     }
-    public void MultiBall() {
+    private void MultiBall()
+    {
         CreateDuplicate(playerTransform.gameObject);
         CreateDuplicate(playerTransform.gameObject);
         this.currentPower = EnumPowerUp.None;
     }
 
-    private void CreateDuplicate(GameObject playerModel) {
+    private void CreateDuplicate(GameObject playerModel)
+    {
         // Duplicate the object by instantiating it
         GameObject duplicate = Instantiate(playerModel.gameObject, playerTransform.position, Quaternion.identity);
 
         //duplicate.transform.position = playerTransform.position;  // Change position to (2, 0, 0)
         //duplicate.transform.rotation = Quaternion.identity;    // Reset rotation to default
         StartCoroutine(DestroyAfterDelay(duplicate));
-
     }
 
-    IEnumerator DestroyAfterDelay(GameObject dub) {
+    private IEnumerator DestroyAfterDelay(GameObject dub)
+    {
         // Wait for the specified amount of time
         yield return new WaitForSeconds(_powerUpCooldown);
         // Destroy the GameObject
