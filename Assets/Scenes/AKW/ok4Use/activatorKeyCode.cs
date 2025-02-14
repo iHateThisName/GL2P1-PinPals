@@ -7,7 +7,7 @@ public class activatorKeyCode : MonoBehaviour
 
     private Renderer AKRender;
     private Collider Collideble;
-    private bool IsIdle = true;
+    public bool IsIdle = true;
 
     [SerializeField] private TargetBankScore _targetScore;
     [SerializeField] int points = 100;
