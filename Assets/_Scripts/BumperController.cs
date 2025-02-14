@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 
 public class BumperController : MonoBehaviour {
@@ -10,6 +9,8 @@ public class BumperController : MonoBehaviour {
 
     void Start() {
         bumperAudioSource = GetComponent<AudioSource>();
+        if (bumperAnimationController == null) Debug.LogWarning("Bumper Animation Controller is not set! for " + gameObject.name);
+        if (bumperAudioSource == null) Debug.LogWarning("Bumper Audio Source is not set! for " + gameObject.name);
     }
     private void OnCollisionEnter(Collision collision) {
         Rigidbody otherRB = collision.rigidbody;
@@ -19,8 +20,8 @@ public class BumperController : MonoBehaviour {
 
         // Add points to the player
         collision.gameObject.GetComponent<ModelController>()._playerScoreTracker.AddPoints(points);
-        
+
         // Play the animation
-        bumperAnimationController.PlayAnimation(collision);
+        if (bumperAnimationController != null) bumperAnimationController.PlayAnimation(collision);
     }
 }
