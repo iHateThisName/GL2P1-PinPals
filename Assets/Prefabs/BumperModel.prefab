@@ -55,16 +55,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 2422742866600438887}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 33a2942ddc3d6eb408020b8834f57df2, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 33a2942ddc3d6eb408020b8834f57df2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -3.9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 33a2942ddc3d6eb408020b8834f57df2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 33a2942ddc3d6eb408020b8834f57df2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 72.3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 33a2942ddc3d6eb408020b8834f57df2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -136,7 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bounceForce: 15
   points: 100
-  bumperAnimationController: {fileID: 0}
+  bumperAnimationController: {fileID: 3213370162192231066}
 --- !u!64 &1852601805072631033
 MeshCollider:
   m_ObjectHideFlags: 0
