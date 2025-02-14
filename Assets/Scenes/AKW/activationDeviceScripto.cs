@@ -23,13 +23,13 @@ public class activationDeviceScripto : MonoBehaviour
         transform.position = _downPosition;
     }
 
-    private void Update()
+    /*private void Update()
     {
-        if (activationKey1.IsIdle = false)
+        if (activationKey1.IsIdle = false & activationKey2.IsIdle = false & activationKey3.IsIdle = false)
         {
             isActivated = true;
         }
-    }
+    }*/
 
     // Update is called once per frame
     void FixedUpdate()
