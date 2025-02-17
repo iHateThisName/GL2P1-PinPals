@@ -15,7 +15,7 @@ public class MotorScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag.StartsWith("Player") && _isSpinning == false)
+        if (other.tag.StartsWith("Player") && !_isSpinning)
         {
             JointMotor motor = hinge.motor;
             motor.targetVelocity = 200;
@@ -32,6 +32,9 @@ public class MotorScript : MonoBehaviour
     private IEnumerator AllowSpin()
     {
         yield return new WaitForSecondsRealtime(1);
+
+        hinge.useMotor = false;
+
         _isSpinning = false;
     }
 }
