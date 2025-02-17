@@ -14,38 +14,47 @@ public class activationDeviceScripto : MonoBehaviour
     public GameObject activationKey2;
     public GameObject activationKey3;
 
+    private activatorKeyCode key1;
+    private activatorKeyCode key2;
+    private activatorKeyCode key3;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _UpPosition = transform.position;
         _downPosition = new Vector3(transform.position.x, transform.position.y - movmentDistance, transform.position.z);
         transform.position = _downPosition;
+
+        //references to key objects
+        key1 = activationKey1.GetComponent<activatorKeyCode>();
+        key2 = activationKey2.GetComponent<activatorKeyCode>();
+        key3 = activationKey3.GetComponent<activatorKeyCode>();
     }
 
-    /*private void Update()
+    void Update()
     {
-        if (activationKey1.IsIdle = false & activationKey2.IsIdle = false & activationKey3.IsIdle = false)
+        // Check if keys are not idle
+        if (!key1.IsIdle && !key2.IsIdle && !key3.IsIdle)
         {
             isActivated = true;
         }
-    }*/
+        else
+        {
+            isActivated = false;
+        }
+    }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (transform.position != _downPosition || transform.position != _UpPosition)
         {
             if (isActivated == true)
             {
-                //transform.position = _UpPosition;
                 transform.position = Vector3.MoveTowards(transform.position, _UpPosition, Time.fixedDeltaTime * movmentSpeed);
                 Debug.Log("suprise!");
             }
 
             if (isActivated == false)
             {
-                //transform.position = _downPosition;
                 transform.position = Vector3.MoveTowards(transform.position, _downPosition, Time.fixedDeltaTime * movmentSpeed);
                 Debug.Log("hiding");
             }
