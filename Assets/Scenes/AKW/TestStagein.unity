@@ -2664,9 +2664,11 @@ MonoBehaviour:
   isActivated: 0
   movmentDistance: 10
   movmentSpeed: 5
-  activationKey1: {fileID: 116598039}
-  activationKey2: {fileID: 238168255}
-  activationKey3: {fileID: 1057769948}
+  activationKeys:
+  - {fileID: 116598039}
+  - {fileID: 238168255}
+  - {fileID: 1057769948}
+  activationTime: 5
 --- !u!136 &1121863634
 CapsuleCollider:
   m_ObjectHideFlags: 0

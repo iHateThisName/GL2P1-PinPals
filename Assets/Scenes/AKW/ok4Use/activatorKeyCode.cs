@@ -29,11 +29,10 @@ public class activatorKeyCode : MonoBehaviour
             ModelController modelController = other.gameObject.GetComponent<ModelController>();
 
             IsIdle = false;
-            Collideble.isTrigger = false;
-            //need to destroy collider
+            Collideble.isTrigger = false;            
             Destroy(GetComponent<BoxCollider>());
 
-            Debug.Log("Oh!");
+            Debug.Log("Oh Hoy!");
             if (modelController != null)
             {
                 modelController._playerScoreTracker.AddPoints(points);

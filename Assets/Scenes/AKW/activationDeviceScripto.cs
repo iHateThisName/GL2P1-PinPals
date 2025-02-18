@@ -10,13 +10,12 @@ public class activationDeviceScripto : MonoBehaviour
     public float movmentDistance = 5f;
     public float movmentSpeed = 5f;
 
-    public GameObject activationKey1;
-    public GameObject activationKey2;
-    public GameObject activationKey3;
+    public GameObject[] activationKeys;
 
-    private activatorKeyCode key1;
-    private activatorKeyCode key2;
-    private activatorKeyCode key3;
+    private activatorKeyCode[] keyScripts;
+
+    private float activationTimer = 0f;
+    public float activationTime = 5f; 
 
     void Start()
     {
@@ -24,22 +23,40 @@ public class activationDeviceScripto : MonoBehaviour
         _downPosition = new Vector3(transform.position.x, transform.position.y - movmentDistance, transform.position.z);
         transform.position = _downPosition;
 
-        //references to key objects
-        key1 = activationKey1.GetComponent<activatorKeyCode>();
-        key2 = activationKey2.GetComponent<activatorKeyCode>();
-        key3 = activationKey3.GetComponent<activatorKeyCode>();
+        keyScripts = new activatorKeyCode[activationKeys.Length];
+
+        for (int i = 0; i < activationKeys.Length; i++)
+        {
+            keyScripts[i] = activationKeys[i].GetComponent<activatorKeyCode>();
+        }
     }
 
     void Update()
     {
-        // Check if keys are not idle
-        if (!key1.IsIdle && !key2.IsIdle && !key3.IsIdle)
+        isActivated = true;
+        foreach (var key in keyScripts)
         {
-            isActivated = true;
+            if (key.IsIdle)
+            {
+                isActivated = false;
+                break; 
+            }
         }
-        else
+
+        if (isActivated)
+        {
+            activationTimer += Time.deltaTime;
+        }
+
+        if (activationTimer >= activationTime)
         {
             isActivated = false;
+            activationTimer = 0f;
+
+            foreach (var key in keyScripts)
+            {
+                key.IsIdle = true;
+            }
         }
     }
 
@@ -47,17 +64,18 @@ public class activationDeviceScripto : MonoBehaviour
     {
         if (transform.position != _downPosition || transform.position != _UpPosition)
         {
-            if (isActivated == true)
+            if (isActivated)
             {
                 transform.position = Vector3.MoveTowards(transform.position, _UpPosition, Time.fixedDeltaTime * movmentSpeed);
                 Debug.Log("suprise!");
             }
 
-            if (isActivated == false)
+            if (!isActivated)
             {
                 transform.position = Vector3.MoveTowards(transform.position, _downPosition, Time.fixedDeltaTime * movmentSpeed);
-                Debug.Log("hiding");
+                //Debug.Log("hiding");
             }
         }
     }
 }
+
