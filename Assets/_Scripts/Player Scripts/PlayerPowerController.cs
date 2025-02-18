@@ -135,7 +135,7 @@ public class PlayerPowerController : MonoBehaviour {
         yield return new WaitForSeconds(_powerUpCooldown);
         this.currentPower = EnumPowerUp.None;
     }
-    private void MultiBall()
+    public void MultiBall()
     {
         CreateDuplicate(playerTransform.gameObject);
         CreateDuplicate(playerTransform.gameObject);

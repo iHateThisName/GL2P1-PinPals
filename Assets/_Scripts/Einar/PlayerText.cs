@@ -6,6 +6,8 @@ public class PlayerText : MonoBehaviour
     [SerializeField] TMP_Text playerText;
     [SerializeField] Transform playerTransform;
     [SerializeField] Vector3 textOffset = new Vector3 (0, 0, 3);
+    [SerializeField] public GameObject multiBallUI;
+    private EnumPowerUp powerUps;
     //public EnumPlayerTag playerTag { get; private set; }
     private void Start()
     {
@@ -26,6 +28,15 @@ public class PlayerText : MonoBehaviour
         if (playerTransform != null)
         {
             transform.position = playerTransform.position + textOffset;
+        }
+        if (powerUps == EnumPowerUp.MultiBall)
+        {
+            multiBallUI.SetActive(true);
+        }
+        if (powerUps == EnumPowerUp.None)
+        {
+            multiBallUI.gameObject.SetActive(false);
+
         }
     }
 }
