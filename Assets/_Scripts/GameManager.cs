@@ -54,4 +54,17 @@ public class GameManager : Singleton<GameManager> {
         SceneManager.LoadScene("EndOfGameScore");
 
     }
+
+    public void SplitScreen()
+    {
+        SceneManager.LoadScene("Prototype");
+
+    }
+
+    public void SingleScreen()
+    {
+        IsLandScape = true;
+        SceneManager.LoadScene("Prototype");
+
+    }
 }

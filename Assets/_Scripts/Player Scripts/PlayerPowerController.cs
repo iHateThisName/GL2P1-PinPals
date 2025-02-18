@@ -47,9 +47,9 @@ public class PlayerPowerController : MonoBehaviour {
                     StartCoroutine(BombPlayersCoroutine());
                     break;
 
-                case EnumPowerUp.Balloon:
-                    StartCoroutine(BalloonCoroutine());
-                    break;
+                //case EnumPowerUp.Balloon:
+                //    StartCoroutine(BalloonCoroutine());
+                //    break;
 
                 case EnumPowerUp.SlowTime:
                     SlowTime();
