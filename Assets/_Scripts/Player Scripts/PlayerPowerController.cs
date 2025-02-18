@@ -15,9 +15,11 @@ public class PlayerPowerController : MonoBehaviour {
     [SerializeField] private float growScale = 10f;
     [SerializeField] private GameObject explosionEffect;
     [SerializeField] private GameObject balloonPrefab;
+    [SerializeField] private AudioSource bombTickAudioSource;
     [SerializeField] public bool _isPlayerDead;
 
     public void Start() {
+        bombTickAudioSource.Stop();
         defaultScale = playerTransform.localScale;
         _originalMass = playerTransform.GetComponent<Rigidbody>().mass;
     }
@@ -96,20 +98,24 @@ public class PlayerPowerController : MonoBehaviour {
     public IEnumerator GrowPlayerCoroutine() {
         this.playerTransform.GetComponent<Rigidbody>().mass = growMass;
         this.playerTransform.localScale = new Vector3(growScale, growScale, growScale);
-        yield return new WaitForSeconds(_powerUpCooldown);
+        yield return new WaitForSeconds(_powerUpCooldown); // This will last for 3 seconds until you return back to normal
         this.playerTransform.GetComponent<Rigidbody>().mass = _originalMass;
         this.playerTransform.localScale = defaultScale;
         this.currentPower = EnumPowerUp.None;
     }
     public async void BombPlayers()
     {
+        bombTickAudioSource.Play();
         await Task.Delay(3000);
+        bombTickAudioSource.Stop();
         Instantiate(this.explosionEffect);
         await Task.Delay(2000);
     }
     public IEnumerator BombPlayersCoroutine()
     {
+        bombTickAudioSource.Play();
         yield return new WaitForSeconds(3f);
+        bombTickAudioSource.Stop();
         Instantiate(this.explosionEffect);
         yield return new WaitForSeconds(2f);
     }
@@ -121,6 +127,14 @@ public class PlayerPowerController : MonoBehaviour {
     public async void GravityControl()
     {
         Debug.Log("Work In Progress");
+        await Task.Delay(3000);
+        Debug.Log("Gravity Flip");
+    }
+
+    public IEnumerator GravityControlCoroutine()
+    {
+        Debug.Log("Work In Progress");
+        yield return new WaitForSeconds(_powerUpCooldown);
         Debug.Log("Gravity Flip");
     }
     private async void FreezePlayers()
