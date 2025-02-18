@@ -3,82 +3,128 @@ using UnityEngine;
 
 public class PlungerController : MonoBehaviour
 {
-    public Vector3 retractPosition = new Vector3(0, 0, -2f); // The position to which the launchpad will retract (along -Z axis)
+    public Vector3 retractPosition = new Vector3(0, 0, -2f); // Position where the launchpad will retract
     public Vector3 originalPosition = new Vector3(0, 0, 0); // The original position of the launchpad
-    public float retractSpeed = 2f;  // Speed at which the launchpad retracts
-    public float returnSpeed = 10f;  // Speed at which the launchpad returns to the original position
-    public float springConstant = 10f; // Spring constant (how stiff the spring is)
+    public float springConstant = 500f; // Spring constant to give enough force for launching (adjust as needed)
+    public float dampingCoefficient = 10f; // Damping coefficient to control oscillations
     public KeyCode retractButton = KeyCode.Space; // Button to retract the launchpad
-    private bool isRetracted = false; // To check if the launchpad is retracted
+
+    private Vector3 velocity = Vector3.zero;  // Initial velocity for the damping system
+    private bool isRetracted = false; // To track if the plunger has fully retracted
     private bool isButtonPressed = false; // To track if the retract button is held down
+    private bool isReturning = false; // Flag to check if the plunger is returning to the original position
+    private Collider plungerCollider; // The collider attached to the plunger to detect nearby objects
+
+    private void Start()
+    {
+        // Get the collider of the plunger
+        plungerCollider = GetComponent<Collider>();
+        if (plungerCollider == null)
+        {
+            Debug.LogWarning("Plunger does not have a collider. Please attach a collider to it.");
+        }
+    }
 
     private void Update()
     {
         // Retract the launchpad when the retractButton is pressed
-        if (Input.GetKey(retractButton) && !isButtonPressed)
+        if (Input.GetKey(retractButton) && !isButtonPressed && !isReturning)
         {
-            // Start retracting the launchpad smoothly
-            StartCoroutine(MoveLaunchpad(retractPosition, retractSpeed));
-            isButtonPressed = true; // Mark that the button has been pressed
+            StartCoroutine(MoveLaunchpad(retractPosition, springConstant));
+            isButtonPressed = true;
         }
 
-        // When the launchpad has fully retracted, allow it to return when the button is released
-        if (transform.position == retractPosition)
+        // After reaching the retracted position, launch the object(s)
+        if (isRetracted && !Input.GetKey(retractButton) && isButtonPressed && !isReturning)
         {
-            isRetracted = true;
+            LaunchObjectsInRange();
+            isButtonPressed = false;
+            StartCoroutine(MoveLaunchpad(originalPosition, springConstant)); // Start moving back to the original position
+            isReturning = true; // Mark that the plunger is returning
         }
 
-        // Move the launchpad back to its original position when the retractButton is released
-        if (isRetracted && !Input.GetKey(retractButton) && isButtonPressed)
+        // Apply spring force and damping force
+        if (Vector3.Distance(transform.position, retractPosition) > 0.1f && Vector3.Distance(transform.position, originalPosition) > 0.1f)
         {
-            StartCoroutine(MoveLaunchpad(originalPosition, returnSpeed)); // Move back quickly
-            isButtonPressed = false; // Reset the button pressed state
-        }
-
-        // Apply spring force only if the launchpad is not at the retract position
-        if (transform.position != retractPosition && transform.position != originalPosition)
-        {
-            ApplySpringForce();
+            ApplySpringDamperForce();
         }
     }
 
-    // Coroutine to move the launchpad smoothly between two positions
-    private IEnumerator MoveLaunchpad(Vector3 targetPosition, float speed)
+    // Coroutine to move the launchpad smoothly between two positions (spring-based)
+    private IEnumerator MoveLaunchpad(Vector3 targetPosition, float springStrength)
     {
-        // Move smoothly towards the target position until it is reached
+        // Move smoothly towards the target position
         while (Vector3.Distance(transform.position, targetPosition) > 0.01f)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-            yield return null; // Wait for the next frame
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, springStrength * Time.deltaTime);
+            yield return null;
         }
 
-        // Ensure the position is exactly the target when done (this ensures we stop at the target)
         transform.position = targetPosition;
+        if (targetPosition == retractPosition)
+        {
+            isRetracted = true; // Mark the plunger as fully retracted
+        }
+        else
+        {
+            isRetracted = false;
+            isReturning = false; // Plunger has returned to the original position
+        }
     }
 
-    // Apply the spring force to the launchpad
-    private void ApplySpringForce()
+    // Apply spring force and damping force to the plunger
+    private void ApplySpringDamperForce()
     {
-        // Calculate the compression (how far from the original position the launchpad is)
-        float compression = Vector3.Distance(transform.position, originalPosition);
+        Vector3 displacement = transform.position - originalPosition;
+        Vector3 springForce = -springConstant * displacement;
+        Vector3 dampingForce = -dampingCoefficient * velocity;
 
-        // Apply spring force only if the launchpad is not at the retracted position
-        if (transform.position != retractPosition)
-        {
-            // Calculate the spring force using Hooke's law (F = -k * x)
-            float springForce = -springConstant * compression;
+        Vector3 totalForce = springForce + dampingForce;
 
-            // Apply the spring force to move the launchpad back towards the original position
-            if (transform.position != originalPosition)
-            {
-                transform.position += (originalPosition - transform.position).normalized * springForce * Time.deltaTime;
-            }
-        }
+        velocity += totalForce * Time.deltaTime;
+        transform.position += velocity * Time.deltaTime;
 
-        // Forcefully clamp the position to the retract position if it's within a small threshold
+        // Stop the plunger if it reaches the original or retract position
         if (Vector3.Distance(transform.position, retractPosition) < 0.1f)
         {
             transform.position = retractPosition;
+            velocity = Vector3.zero;
+        }
+        if (Vector3.Distance(transform.position, originalPosition) < 0.1f)
+        {
+            transform.position = originalPosition;
+            velocity = Vector3.zero;
+        }
+    }
+
+    // Launch all objects within the plunger's trigger area
+    private void LaunchObjectsInRange()
+    {
+        // Find all colliders within the trigger area
+        Collider[] colliders = Physics.OverlapBox(plungerCollider.bounds.center, plungerCollider.bounds.extents);
+
+        foreach (var collider in colliders)
+        {
+            // Check if the collider has a Rigidbody attached and is within the trigger
+            if (collider.CompareTag("Player01") && collider.GetComponent<Rigidbody>() != null)
+            {
+                Rigidbody rb = collider.GetComponent<Rigidbody>();
+
+                // Apply force to the object to launch it in the direction of the Z-axis
+                rb.AddForce(transform.forward * springConstant * 0.1f, ForceMode.Impulse);
+            }
+        }
+    }
+
+    // This method is called when something enters the trigger collider
+    private void OnTriggerEnter(Collider other)
+    {
+        // Check if the object has a Rigidbody and is tagged as Launchable
+        if (other.CompareTag("Player01") && other.GetComponent<Rigidbody>() != null)
+        {
+            // Apply force to the object when it enters the trigger area
+            Rigidbody rb = other.GetComponent<Rigidbody>();
+            rb.AddForce(transform.up * springConstant * 0.1f, ForceMode.Impulse);
         }
     }
 }
