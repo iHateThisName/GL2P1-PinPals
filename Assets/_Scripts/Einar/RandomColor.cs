@@ -3,17 +3,27 @@ using UnityEngine;
 
 public class RandomColor : MonoBehaviour
 {
+    [SerializeField] private GameObject player;
     [SerializeField] private Renderer _renderer;
-    public List<Color> colors;
+    public List<Color> colors = new List<Color>
+    {
+        Color.red,
+        Color.green,
+        Color.blue,
+        Color.yellow
+    };
 
+    private int currentColorIndex = 0; 
+    
     public void Start()
     {
-        int randomInt = Random.Range(-1, colors.Count);
+        string playerTag = player.tag;
+        Debug.Log(playerTag);
+        int playerNumber = int.Parse(playerTag.Substring(playerTag.Length - 1));
+
         if (_renderer != null)
         {
-            //_renderer.material.color = colors[randomInt]; // Assigning from the list
-            _renderer.material.color = new Color(Random.Range(0.5f, 1.0f), Random.Range(0.5f, 1.0f), Random.Range(0.5f, 1.0f)); // Assigning from the list
-
+            _renderer.material.color = colors[playerNumber-1];
         }
         else
         {
@@ -21,4 +31,3 @@ public class RandomColor : MonoBehaviour
         }
     }
 }
-

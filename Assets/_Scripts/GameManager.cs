@@ -55,6 +55,16 @@ public class GameManager : Singleton<GameManager> {
     }
 
     //Einar
+
+    public void GameModeSelect()
+    {
+        SceneManager.LoadScene("GameModeSelect");
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("StartScreen");
+    }
     public void EndOfGameScore() {
         SceneManager.LoadScene("EndOfGameScore");
 
