@@ -47,9 +47,9 @@ public class PlayerPowerController : MonoBehaviour {
                     StartCoroutine(BombPlayersCoroutine());
                     break;
 
-                case EnumPowerUp.Balloon:
-                    StartCoroutine(BalloonCoroutine());
-                    break;
+                //case EnumPowerUp.Balloon:
+                //    StartCoroutine(BalloonCoroutine());
+                //    break;
 
                 case EnumPowerUp.SlowTime:
                     SlowTime();
@@ -135,7 +135,7 @@ public class PlayerPowerController : MonoBehaviour {
         yield return new WaitForSeconds(_powerUpCooldown);
         this.currentPower = EnumPowerUp.None;
     }
-    private void MultiBall()
+    public void MultiBall()
     {
         CreateDuplicate(playerTransform.gameObject);
         CreateDuplicate(playerTransform.gameObject);

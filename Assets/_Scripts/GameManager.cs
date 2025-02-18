@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager> {
 
     public bool IsPaused { get; private set; }
-    public bool IsLandScape { get; private set; }
 
     public Dictionary<EnumPlayerTag, GameObject> Players { get; private set; } = new Dictionary<EnumPlayerTag, GameObject>();
 
@@ -14,7 +13,6 @@ public class GameManager : Singleton<GameManager> {
     protected override void Awake() {
         base.Awake();
         IsPaused = false;
-        IsLandScape = false;
         QualitySettings.vSyncCount = 1;
         Application.targetFrameRate = 60;
     }
@@ -43,15 +41,43 @@ public class GameManager : Singleton<GameManager> {
             playerTag = Helper.GetUnusedPlayerTag(Players, (int)playerTag);
             Players[playerTag] = playerInput.gameObject;
         }
+
+        if (!PlayerSettings.IsLandscape) {
+            //playerInput.gameObject.GetComponentInChildren<Camera>().rect = new Rect(0, 0, 1, 1);
+            Camera playerCamera = playerInput.gameObject.GetComponentInChildren<ModelController>().PinballCamera;
+            playerCamera.gameObject.SetActive(false);
+        }
     }
 
     public void OnPlayerLeaves(PlayerInput playerInput) {
         EnumPlayerTag enumPlayerTag = Helper.GetPlayerTagKey(this.Players, playerInput.gameObject);
         Players.Remove(enumPlayerTag);
     }
+
     //Einar
+
+    public void GameModeSelect()
+    {
+        SceneManager.LoadScene("GameModeSelect");
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("StartScreen");
+    }
     public void EndOfGameScore() {
         SceneManager.LoadScene("EndOfGameScore");
+
+    }
+
+    public void SplitScreen() {
+        SceneManager.LoadScene("Prototype");
+
+    }
+
+    public void SingleScreen() {
+        PlayerSettings.IsLandscape = false;
+        SceneManager.LoadScene("Prototype");
 
     }
 }
