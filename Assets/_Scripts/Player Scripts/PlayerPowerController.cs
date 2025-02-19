@@ -18,8 +18,10 @@ public class PlayerPowerController : MonoBehaviour {
     [SerializeField] private AudioSource bombTickAudioSource;
     [SerializeField] public bool _isPlayerDead;
 
+    [SerializeField] private PlayerText playerText;
+
     public void Start() {
-        bombTickAudioSource.Stop();
+        //bombTickAudioSource.Stop();
         defaultScale = playerTransform.localScale;
         _originalMass = playerTransform.GetComponent<Rigidbody>().mass;
     }
@@ -27,12 +29,14 @@ public class PlayerPowerController : MonoBehaviour {
     public void GivePlayerPower(EnumPowerUp power) {
         if (currentPower == EnumPowerUp.None) {
             currentPower = power;
+            playerText.DisplayPower(currentPower);
         }
 
     }
 
     public void OnUsePower(InputAction.CallbackContext context) {
         if (context.phase == InputActionPhase.Performed) {
+            playerText.DisableSprite();
             switch (currentPower) {
                 case EnumPowerUp.None:
                     break;
