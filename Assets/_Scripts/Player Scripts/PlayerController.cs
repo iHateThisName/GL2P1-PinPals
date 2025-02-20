@@ -1,43 +1,59 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 // Ivar
 public class PlayerController : MonoBehaviour {
     [SerializeField] private float _playerSpeed = 2.0f;
     [SerializeField] private Rigidbody _ballRigidbody;
-    private List<FlipperController> _leftFlipperController = new List<FlipperController>();
-    private List<FlipperController> _rightFlipperController = new List<FlipperController>();
+    private List<FlipperController> _leftFlipperController;
+    private List<FlipperController> _rightFlipperController;
 
     // Input Actions Varibals
     private Vector2 _movementInput = Vector2.zero;
 
-    private void Start() {
-        if (_ballRigidbody == null) Debug.LogError("Ball Rigidbody is not assigned! Please assign it in the inspector.");
+    private void Awake() {
+        SceneManager.sceneLoaded -= OnSceneLoaded; // to prevent duplicate subscriptions when Awake() is called multiple times.
+        SceneManager.sceneLoaded += OnSceneLoaded; // gets called every time a scene is loaded
+    }
 
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+        AssignFlippers();
+    }
+
+    private void OnEnable() {
+        if (_ballRigidbody == null) Debug.LogWarning("Ball Rigidbody is not assigned! Please assign it in the inspector.");
+        AssignFlippers();
+    }
+
+    private void AssignFlippers() {
         GameObject[] leftFlippers = GameObject.FindGameObjectsWithTag(tag: "LeftFlipper");
         GameObject[] rightFlippers = GameObject.FindGameObjectsWithTag(tag: "RightFlipper");
+        _leftFlipperController = new List<FlipperController>();
+        _rightFlipperController = new List<FlipperController>();
 
         string playerLayerString = LayerMask.LayerToName(this.gameObject.layer);
         string playerSuffix = playerLayerString.Substring(playerLayerString.Length - 2);
 
-        foreach (GameObject flipper in leftFlippers) {
+        if (leftFlippers.Length == 0 || rightFlippers.Length == 0) {
+            Debug.LogWarning("No flippers found! Please add flippers to the scene and tag them");
+            return;
+        }
+
+        ProcessFlippers(leftFlippers, playerSuffix);
+        ProcessFlippers(rightFlippers, playerSuffix);
+    }
+
+    public void ProcessFlippers(GameObject[] flippers, string playerSuffix) {
+        foreach (GameObject flipper in flippers) {
             string flipperLayerString = LayerMask.LayerToName(flipper.layer);
-            string flipperSuffix = LayerMask.LayerToName(flipper.layer).Substring(flipperLayerString.Length - 2);
+            string flipperSuffix = flipperLayerString.Substring(flipperLayerString.Length - 2);
 
             if (flipperSuffix == playerSuffix) {
                 _leftFlipperController.Add(flipper.GetComponent<FlipperController>());
             }
         }
-        foreach (GameObject flipper in rightFlippers) {
-            string flipperLayerString = LayerMask.LayerToName(flipper.layer);
-            string flipperSuffix = LayerMask.LayerToName(flipper.layer).Substring(flipperLayerString.Length - 2);
-            if (flipperSuffix == playerSuffix) {
-                _rightFlipperController.Add(flipper.GetComponent<FlipperController>());
-            }
-        }
-
-        if (leftFlippers.Length == 0 || rightFlippers.Length == 0) Debug.LogError("No flippers found! Please add flippers to the scene and tag them");
     }
 
     // Input Actions Methods
