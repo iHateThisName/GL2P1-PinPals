@@ -3,6 +3,8 @@ using System.Linq;
 using UnityEngine;
 
 public static class Helper {
+
+    public static List<Material> UsedPinballMaterials = new List<Material>();
     /// <summary>
     /// Finds an unused player tag starting from a given index.
     /// </summary>

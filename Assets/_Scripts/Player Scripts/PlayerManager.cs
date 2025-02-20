@@ -39,8 +39,8 @@ public class PlayerManager : MonoBehaviour {
         StartCoroutine(ReEnableGravityCoroutine(playerController, 0.5f));
 
         // The player should not be destroyed when a new scene is loaded, to keep the player controller scheme
-        //DontDestroyOnLoad(playerInput.gameObject.transform.parent.gameObject);
-        //playerInput.gameObject.transform.parent.gameObject.name = playerTag.ToString();
+        DontDestroyOnLoad(playerInput.gameObject.transform.parent.gameObject);
+        playerInput.gameObject.transform.parent.gameObject.name = playerTag.ToString();
 
         Camera playerCamera = playerInput.camera;
 
