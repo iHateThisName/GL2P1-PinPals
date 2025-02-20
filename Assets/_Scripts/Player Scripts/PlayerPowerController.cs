@@ -114,18 +114,31 @@ public class PlayerPowerController : MonoBehaviour {
         this.currentPower = EnumPowerUp.None;
     }
     public async void BombPlayers() {
-        bombTickAudioSource.Play();
-        await Task.Delay(3000);
-        bombTickAudioSource.Stop();
-        Instantiate(this.explosionEffect);
-        await Task.Delay(2000);
+        foreach (var player in GameManager.Instance.Players)
+        {
+            bombTickAudioSource.Play();
+            await Task.Delay(3000);
+            bombTickAudioSource.Stop();
+            if (player.Key != _assignedPlayerTag)
+            {
+                Instantiate(this.explosionEffect);
+                await Task.Delay(2000);
+            }
+        }
     }
     public IEnumerator BombPlayersCoroutine() {
-        bombTickAudioSource.Play();
-        yield return new WaitForSeconds(3f);
-        bombTickAudioSource.Stop();
-        Instantiate(this.explosionEffect);
-        yield return new WaitForSeconds(2f);
+        foreach (var player in GameManager.Instance.Players)
+        {
+            bombTickAudioSource.Play();
+            yield return new WaitForSeconds(3f);
+            bombTickAudioSource.Stop();
+            // Check if the player is not Player01
+            if (player.Key != _assignedPlayerTag)
+            {
+                Instantiate(this.explosionEffect);
+                yield return new WaitForSeconds(2f);
+            }
+        }
     }
     public void SlowTime() {
         Debug.Log("Work In Progress");
