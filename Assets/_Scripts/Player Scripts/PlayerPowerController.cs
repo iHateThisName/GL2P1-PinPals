@@ -19,11 +19,17 @@ public class PlayerPowerController : MonoBehaviour {
     [SerializeField] public bool _isPlayerDead;
 
     [SerializeField] private PlayerText playerText;
+    // The tag assigned to the player, used to identify the player in the game.
+    private EnumPlayerTag _assignedPlayerTag;
 
     public void Start() {
         //bombTickAudioSource.Stop();
         defaultScale = playerTransform.localScale;
         _originalMass = playerTransform.GetComponent<Rigidbody>().mass;
+
+        string playerNumberString = playerTransform.gameObject.tag.Substring(gameObject.tag.Length - 1);
+        int playerNumber = int.Parse(playerNumberString);
+        _assignedPlayerTag = (EnumPlayerTag)playerNumber;
     }
 
     public void GivePlayerPower(EnumPowerUp power) {
@@ -107,61 +113,67 @@ public class PlayerPowerController : MonoBehaviour {
         this.playerTransform.localScale = defaultScale;
         this.currentPower = EnumPowerUp.None;
     }
-    public async void BombPlayers()
-    {
+    public async void BombPlayers() {
         bombTickAudioSource.Play();
         await Task.Delay(3000);
         bombTickAudioSource.Stop();
         Instantiate(this.explosionEffect);
         await Task.Delay(2000);
     }
-    public IEnumerator BombPlayersCoroutine()
-    {
+    public IEnumerator BombPlayersCoroutine() {
         bombTickAudioSource.Play();
         yield return new WaitForSeconds(3f);
         bombTickAudioSource.Stop();
         Instantiate(this.explosionEffect);
         yield return new WaitForSeconds(2f);
     }
-    public void SlowTime()
-    {
+    public void SlowTime() {
         Debug.Log("Work In Progress");
         Debug.Log("Slow Down Shlawg");
     }
-    public async void GravityControl()
-    {
+    public async void GravityControl() {
         Debug.Log("Work In Progress");
         await Task.Delay(3000);
         Debug.Log("Gravity Flip");
     }
 
-    public IEnumerator GravityControlCoroutine()
-    {
+    public IEnumerator GravityControlCoroutine() {
         Debug.Log("Work In Progress");
         yield return new WaitForSeconds(_powerUpCooldown);
         Debug.Log("Gravity Flip");
     }
-    private async void FreezePlayers()
-    {
-        this.GetComponentInParent<Rigidbody>().isKinematic = true;
-        await Task.Delay(1000);
+    private void FreezePlayers() {
+        // Loop through all players in the GameManager
+        foreach (var player in GameManager.Instance.Players) {
+            // Check if the player is not Player01
+            if (player.Key != _assignedPlayerTag) {
+                // Set the player's rigidbody to kinematic to freeze them
+                player.Value.GetComponent<ModelController>().rb.isKinematic = true;
+                // Start a coroutine to unfreeze the player after 5 seconds
+                StartCoroutine(Unfreeze(player.Value));
+            }
+        }
         this.currentPower = EnumPowerUp.None;
     }
-    private IEnumerator FreezePlayersCoroutine()
-    {
+
+    // Coroutine to unfreeze the player after 5 seconds
+    public IEnumerator Unfreeze(GameObject player) {
+        yield return new WaitForSeconds(5f);
+        // Set the player's rigidbody to non-kinematic to unfreeze them
+        player.GetComponent<ModelController>().rb.isKinematic = false;
+    }
+    private IEnumerator FreezePlayersCoroutine() {
         this.GetComponentInParent<Rigidbody>().isKinematic = true;
         yield return new WaitForSeconds(_powerUpCooldown);
         this.currentPower = EnumPowerUp.None;
     }
-    public void MultiBall()
-    {
+    public void MultiBall() {
         CreateDuplicate(playerTransform.gameObject);
         CreateDuplicate(playerTransform.gameObject);
         this.currentPower = EnumPowerUp.None;
     }
 
-    private void CreateDuplicate(GameObject playerModel)
-    {
+    private void CreateDuplicate(GameObject playerModel) {
         // Duplicate the object by instantiating it
         GameObject duplicate = Instantiate(playerModel.gameObject, playerTransform.position, Quaternion.identity);
 
@@ -170,8 +182,7 @@ public class PlayerPowerController : MonoBehaviour {
         StartCoroutine(DestroyAfterDelay(duplicate));
     }
 
-    private IEnumerator DestroyAfterDelay(GameObject dub)
-    {
+    private IEnumerator DestroyAfterDelay(GameObject dub) {
         // Wait for the specified amount of time
         yield return new WaitForSeconds(_powerUpCooldown);
         // Destroy the GameObject
@@ -179,8 +190,7 @@ public class PlayerPowerController : MonoBehaviour {
         Debug.Log("Destroying duplicate:" + dub.name);
     }
 
-    private IEnumerator BalloonCoroutine()
-    {
+    private IEnumerator BalloonCoroutine() {
         Instantiate(balloonPrefab);
         yield return new WaitForSecondsRealtime(_powerUpCooldown);
         balloonPrefab.SetActive(false);
