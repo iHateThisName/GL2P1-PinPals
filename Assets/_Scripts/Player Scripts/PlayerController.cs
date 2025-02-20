@@ -41,19 +41,21 @@ public class PlayerController : MonoBehaviour {
             return;
         }
 
-        ProcessFlippers(leftFlippers, playerSuffix);
-        ProcessFlippers(rightFlippers, playerSuffix);
+        this._leftFlipperController = ProcessFlippers(leftFlippers, playerSuffix);
+        this._rightFlipperController = ProcessFlippers(rightFlippers, playerSuffix);
     }
 
-    public void ProcessFlippers(GameObject[] flippers, string playerSuffix) {
+    public List<FlipperController> ProcessFlippers(GameObject[] flippers, string playerSuffix) {
+        List<FlipperController> processedFlippers = new List<FlipperController>();
         foreach (GameObject flipper in flippers) {
             string flipperLayerString = LayerMask.LayerToName(flipper.layer);
             string flipperSuffix = flipperLayerString.Substring(flipperLayerString.Length - 2);
 
             if (flipperSuffix == playerSuffix) {
-                _leftFlipperController.Add(flipper.GetComponent<FlipperController>());
+                processedFlippers.Add(flipper.GetComponent<FlipperController>());
             }
         }
+        return processedFlippers;
     }
 
     // Input Actions Methods
