@@ -97,13 +97,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66b9edd12a2a1104fad11ea99db4d798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 4961145634058551747}
+  _player: {fileID: 0}
   _renderer: {fileID: 5054593778753860329}
-  colors:
-  - {r: 0.5924529, g: 0, b: 0, a: 0}
-  - {r: 0, g: 0.1262746, b: 0.6075471, a: 0}
-  - {r: 0.6377357, g: 0.6327339, b: 0, a: 0}
-  - {r: 0.2999416, g: 0, b: 0.5471698, a: 0}
+  _materials:
+  - {fileID: 2100000, guid: f4cad542a51de7e40b970d089ba4837f, type: 2}
+  - {fileID: 2100000, guid: c82b95b7c5474ef41b439485da8d1610, type: 2}
+  - {fileID: 2100000, guid: 3e77ad391b838ce469b308de6e485883, type: 2}
+  - {fileID: 2100000, guid: 186b245bdf1659e4b8e194ad4d2ac6d2, type: 2}
+  - {fileID: 2100000, guid: 654bd8b3f239d9348a677ca7ad3b4cb2, type: 2}
 --- !u!1 &911007134803074187
 GameObject:
   m_ObjectHideFlags: 0
@@ -1430,6 +1431,7 @@ MonoBehaviour:
   _playerScoreTracker: {fileID: 3611589562616123959}
   PlayerPowerController: {fileID: 7959744348756883238}
   PinballCamera: {fileID: 4053685851871766715}
+  rb: {fileID: 0}
 --- !u!23 &5054593778753860329 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5573145829542570709, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
