@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour {
     [SerializeField] private float _playerSpeed = 2.0f;
     [SerializeField] private Rigidbody _ballRigidbody;
+    [SerializeField] private RandomMaterial randomMaterial;
     private List<FlipperController> _leftFlipperController;
     private List<FlipperController> _rightFlipperController;
 
@@ -22,7 +23,7 @@ public class PlayerController : MonoBehaviour {
         AssignFlippers();
     }
 
-    private void OnEnable() {
+    private void Start() {
         if (_ballRigidbody == null) Debug.LogWarning("Ball Rigidbody is not assigned! Please assign it in the inspector.");
         AssignFlippers();
     }
@@ -52,7 +53,9 @@ public class PlayerController : MonoBehaviour {
             string flipperSuffix = flipperLayerString.Substring(flipperLayerString.Length - 2);
 
             if (flipperSuffix == playerSuffix) {
-                processedFlippers.Add(flipper.GetComponent<FlipperController>());
+                FlipperController flipperController = flipper.GetComponent<FlipperController>();
+                flipperController.SetFlipperColor(randomMaterial.AssignedMaterialColor);
+                processedFlippers.Add(flipperController);
             }
         }
         return processedFlippers;
