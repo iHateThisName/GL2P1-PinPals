@@ -9,7 +9,7 @@ public class PlayerFollowCanvasManager : MonoBehaviour
     //[SerializeField] Vector3 textOffset = new Vector3 (0, 0, 3);
     [SerializeField] public GameObject powerUpDisplayer;
     //[SerializeField] private EnumPowerUp powerUps;
-    [SerializeField] private Sprite _multi, _shrink, _grow;
+    [SerializeField] private Sprite _multi, _shrink, _grow, _freeze;
     //public EnumPlayerTag playerTag { get; private set; }
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private RandomMaterial randomMaterial;
@@ -64,6 +64,12 @@ public class PlayerFollowCanvasManager : MonoBehaviour
                 spriteRenderer.sprite = _multi;
                 powerUpDisplayer.SetActive(true);
                 break;
+
+            case EnumPowerUp.Freeze:
+                spriteRenderer.sprite = _freeze;
+                powerUpDisplayer.SetActive(true);
+                break;
+
             default:
                 DisableSprite();
                 break;

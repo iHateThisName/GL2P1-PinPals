@@ -161,7 +161,7 @@ public class PlayerPowerController : MonoBehaviour {
             // Check if the player is not Player01
             if (player.Key != _assignedPlayerTag) {
                 // Set the player's rigidbody to kinematic to freeze them
-                player.Value.GetComponent<ModelController>().rb.isKinematic = true;
+                player.Value.GetComponentInChildren<ModelController>().rb.isKinematic = true;
                 // Start a coroutine to unfreeze the player after 5 seconds
                 StartCoroutine(Unfreeze(player.Value));
             }
@@ -173,13 +173,13 @@ public class PlayerPowerController : MonoBehaviour {
     public IEnumerator Unfreeze(GameObject player) {
         yield return new WaitForSeconds(5f);
         // Set the player's rigidbody to non-kinematic to unfreeze them
-        player.GetComponent<ModelController>().rb.isKinematic = false;
+        player.GetComponentInChildren<ModelController>().rb.isKinematic = false;
     }
-    private IEnumerator FreezePlayersCoroutine() {
-        this.GetComponentInParent<Rigidbody>().isKinematic = true;
-        yield return new WaitForSeconds(_powerUpCooldown);
-        this.currentPower = EnumPowerUp.None;
-    }
+    //private IEnumerator FreezePlayersCoroutine() {
+    //    this.GetComponentInParent<Rigidbody>().isKinematic = true;
+    //    yield return new WaitForSeconds(_powerUpCooldown);
+    //    this.currentPower = EnumPowerUp.None;
+    //}
     public void MultiBall() {
         CreateDuplicate(playerTransform.gameObject);
         CreateDuplicate(playerTransform.gameObject);

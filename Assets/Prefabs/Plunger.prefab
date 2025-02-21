@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 5088045667481134561}
   - component: {fileID: 1175644546952433315}
   - component: {fileID: 4032184643643611939}
-  - component: {fileID: 8952979175869549202}
   - component: {fileID: 4454998860192166342}
+  - component: {fileID: 463725603707211533}
   m_Layer: 10
   m_Name: Plunger
   m_TagString: Untagged
@@ -140,21 +140,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 3
---- !u!114 &8952979175869549202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1694367675385871486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57cf23f2f44c967429359f4dd4849c4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxPull: 10
-  launchForce: 5
-  _triggerZone: {fileID: 4454998860192166342}
 --- !u!65 &4454998860192166342
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -176,3 +161,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0000002, y: 3.7604804, z: 1.0000002}
   m_Center: {x: 0.00000007947286, y: 0.8802347, z: -0.0000000792887}
+--- !u!114 &463725603707211533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694367675385871486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4553f2a8c2de9d74ab69a047ab42cec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxPull: 10
+  launchForce: 5
+  _triggerZone: {fileID: 4454998860192166342}

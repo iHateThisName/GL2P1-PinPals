@@ -7,7 +7,7 @@ public class PowerUp : MonoBehaviour
 
     void Start()
     {
-        power = (EnumPowerUp)Random.Range(1, 4);
+        power = (EnumPowerUp)Random.Range(1, 5);
     }
 
     public IEnumerator OnTriggerEnter(Collider player)
@@ -20,7 +20,7 @@ public class PowerUp : MonoBehaviour
         meshRenderer.enabled = false;
         boxCollider.enabled = false;
         yield return new WaitForSeconds(5f);
-        power = (EnumPowerUp)Random.Range(1, 4);
+        power = (EnumPowerUp)Random.Range(1, 5);
         meshRenderer.enabled = true;
         boxCollider.enabled = true;
 

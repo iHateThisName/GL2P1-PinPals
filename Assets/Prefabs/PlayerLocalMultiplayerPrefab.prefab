@@ -331,6 +331,7 @@ MonoBehaviour:
   _multi: {fileID: 21300000, guid: a0d3c98e13b19134e8eb1742e08b5255, type: 3}
   _shrink: {fileID: 21300000, guid: 41b4d56902b3d0248859c8f80df758eb, type: 3}
   _grow: {fileID: 21300000, guid: fce883b0dd527824d8dd735a760d0299, type: 3}
+  _freeze: {fileID: 21300000, guid: 343d0589f2e1fef4194eb732d4beb95a, type: 3}
   spriteRenderer: {fileID: 2303503390070258498}
   randomMaterial: {fileID: 9181202385213379463}
 --- !u!1 &2102059866506977198
@@ -1465,9 +1466,14 @@ MonoBehaviour:
   _playerScoreTracker: {fileID: 3611589562616123959}
   PlayerPowerController: {fileID: 7959744348756883238}
   PinballCamera: {fileID: 4053685851871766715}
-  rb: {fileID: 0}
+  rb: {fileID: 8612455253610265624}
 --- !u!23 &5054593778753860329 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5573145829542570709, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+  m_PrefabInstance: {fileID: 824806173463042108}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &8612455253610265624 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 9004906448235439140, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
   m_PrefabInstance: {fileID: 824806173463042108}
   m_PrefabAsset: {fileID: 0}
