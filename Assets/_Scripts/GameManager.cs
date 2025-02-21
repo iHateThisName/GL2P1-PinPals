@@ -50,7 +50,7 @@ public class GameManager : Singleton<GameManager> {
             Camera playerCamera = player.Value.GetComponentInChildren<ModelController>().PinballCamera;
             if (PlayerSettings.IsLandscape) {
                 playerCamera.gameObject.SetActive(true);
-                playerCamera.rect = new Rect((int)player.Key / Players.Count, 0, 1 / Players.Count, 1); // Not Tested
+                //playerCamera.rect = new Rect((int)player.Key / Players.Count, 0, 1 / Players.Count, 1); // Not Tested
             } else {
                 playerCamera.gameObject.SetActive(false);
             }
@@ -88,13 +88,14 @@ public class GameManager : Singleton<GameManager> {
     }
 
     public void SplitScreen() {
-        SceneManager.LoadScene("Prototype");
+        PlayerSettings.IsLandscape = true;
+        SceneManager.LoadScene("Level 01, vegasTP");
 
     }
 
     public void SingleScreen() {
         PlayerSettings.IsLandscape = false;
-        SceneManager.LoadScene("Prototype");
+        SceneManager.LoadScene("Level 01, vegasTP");
 
     }
 }
