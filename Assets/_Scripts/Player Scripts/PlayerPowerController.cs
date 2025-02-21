@@ -18,7 +18,7 @@ public class PlayerPowerController : MonoBehaviour {
     [SerializeField] private AudioSource bombTickAudioSource;
     [SerializeField] public bool _isPlayerDead;
 
-    [SerializeField] private PlayerText playerText;
+    [SerializeField] private PlayerFollowCanvasManager playerText;
     // The tag assigned to the player, used to identify the player in the game.
     private EnumPlayerTag _assignedPlayerTag;
 
