@@ -6,8 +6,9 @@ public class RandomMaterial : MonoBehaviour {
     [SerializeField] private GameObject _player;
     [SerializeField] private Renderer _renderer;
     [SerializeField] private List<Material> _materials = new List<Material>();
+    [field: SerializeField] public Color AssignedMaterialColor { get; private set; } = Color.white;
 
-    public void Start() {
+    public void Awake() {
         string playerTag = _player.tag;
         int playerNumber = int.Parse(playerTag.Substring(playerTag.Length - 1));
         Material selectedMaterial = EnsureUniqueMaterial(_materials[playerNumber - 1]);
@@ -21,6 +22,8 @@ public class RandomMaterial : MonoBehaviour {
             _renderer.material = selectedMaterial;
             // Add the new material to the used materials list
             Helper.UsedPinballMaterials.Add(selectedMaterial);
+            // Update the current color varibale
+            AssignedMaterialColor = selectedMaterial.color;
         } else {
             Debug.LogError("No Renderer found on the spawned object! Or missing material");
         }
