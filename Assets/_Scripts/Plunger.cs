@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlungerController2 : MonoBehaviour
+public class Plunger : MonoBehaviour
 {
     private Rigidbody targetBall;
     public float maxPull = 10f; // How far it can move backward
