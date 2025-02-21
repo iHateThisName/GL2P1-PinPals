@@ -1111,7 +1111,7 @@ PrefabInstance:
       objectReference: {fileID: 4053685851871766715}
     - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_ActionId
@@ -1168,6 +1168,10 @@ PrefabInstance:
     - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
       propertyPath: m_ActionEvents.Array.data[14].m_ActionId
       value: 0ef1c082-7d01-4058-8581-a5d235d9f314
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_ActionId
+      value: b217ddc9-77e1-4a8c-a558-4940675035b3
       objectReference: {fileID: 0}
     - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
       propertyPath: m_ActionEvents.Array.data[19].m_ActionId
@@ -1234,6 +1238,10 @@ PrefabInstance:
       value: 'Player/FlipperRight[/Keyboard/d]'
       objectReference: {fileID: 0}
     - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_ActionName
+      value: 'Player/Pause[/Keyboard/escape]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
       propertyPath: m_ActionEvents.Array.data[19].m_ActionName
       value: 'Player/FlipperLeft[/Keyboard/a]'
       objectReference: {fileID: 0}
@@ -1254,6 +1262,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
       propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1263,6 +1275,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
@@ -1279,6 +1295,10 @@ PrefabInstance:
       objectReference: {fileID: 2809866603624602651}
     - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
       propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2809866603624602651}
+    - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2809866603624602651}
     - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
@@ -1302,6 +1322,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
       propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -1322,6 +1346,10 @@ PrefabInstance:
       value: OnFlipperRight
       objectReference: {fileID: 0}
     - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPauseAction
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: PlayerPowerController, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -1334,6 +1362,10 @@ PrefabInstance:
       value: PlayerController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
@@ -1343,6 +1375,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
       propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5462125624381623547, guid: 2235eda53ed1846459cdf2880e817167, type: 3}

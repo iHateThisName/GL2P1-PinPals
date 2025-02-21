@@ -200,7 +200,6 @@ public class PlayerPowerController : MonoBehaviour {
         yield return new WaitForSeconds(_powerUpCooldown);
         // Destroy the GameObject
         Destroy(dub);
-        Debug.Log("Destroying duplicate:" + dub.name);
     }
 
     private IEnumerator BalloonCoroutine() {

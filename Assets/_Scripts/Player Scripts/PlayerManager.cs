@@ -6,7 +6,10 @@ using UnityEngine.InputSystem;
 public class PlayerManager : MonoBehaviour {
 
     [SerializeField] private Transform _spawnPosition;
-    public Dictionary<EnumPlayerTag, GameObject> Players { get; private set; } = new Dictionary<EnumPlayerTag, GameObject>();
+    public Dictionary<EnumPlayerTag, GameObject> Players {
+        get { return Helper.Players; }
+        private set { Helper.Players = value; }
+    }
 
     public void OnPlayerJoined(PlayerInput playerInput) {
         PlayerController playerController = playerInput.gameObject.GetComponent<PlayerController>();
@@ -50,11 +53,14 @@ public class PlayerManager : MonoBehaviour {
         // Combine the default culling mask with the current layer + 4(Number of max players) to get to the flipper layers
         int currentLayer = 5 + (int)playerTag;
         playerCamera.cullingMask = defaultCullingMask | 1 << currentLayer + 4;  // Defaultmasks + flippers
+
+        GameManager.Instance.CheckCamera();
     }
 
     public void OnPlayerLeaves(PlayerInput playerInput) {
         EnumPlayerTag playerTag = (EnumPlayerTag)playerInput.playerIndex + 1; // PlayerIndex starts at 0
         Players.Remove(playerTag);
+        Helper.Players.Remove(playerTag);
         Debug.Log(playerTag.ToString() + " left the game");
     }
 

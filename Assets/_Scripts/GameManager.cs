@@ -1,13 +1,18 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 // Ivar
 public class GameManager : Singleton<GameManager> {
 
     public bool IsPaused { get; private set; }
-
-    public Dictionary<EnumPlayerTag, GameObject> Players { get; private set; } = new Dictionary<EnumPlayerTag, GameObject>();
+    // Prefabs
+    [SerializeField] private GameObject PauseMenuPrefab;
+    private GameObject _currentPauseMenu;
+    public Dictionary<EnumPlayerTag, GameObject> Players {
+        get { return Helper.Players; }
+        private set { Helper.Players = value; }
+    }
 
 
     protected override void Awake() {
@@ -16,53 +21,65 @@ public class GameManager : Singleton<GameManager> {
         QualitySettings.vSyncCount = 1;
         Application.targetFrameRate = 60;
     }
-    public void PauseGame() {
-        IsPaused = true;
+    private void PauseGame() {
+        this.IsPaused = true;
         Time.timeScale = 0;
     }
-    public void ResumeGame() {
+    private void ResumeGame() {
         IsPaused = false;
         Time.timeScale = 1;
     }
 
     public void ReloadGame() {
-        Time.timeScale = 1;
+        ResumeGame();
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 
-    public void OnPlayerJoined(PlayerInput playerInput) {
-        // Create a enum that represent the player tag
-        EnumPlayerTag playerTag = (EnumPlayerTag)playerInput.playerIndex + 1;
-
-        // Adds the player to the dictonary also checks if player already exists in the dictionary.
-        if (!Players.ContainsKey(playerTag)) {
-            Players.Add(playerTag, playerInput.gameObject);
-        } else if (Players.ContainsKey(playerTag) && Players[playerTag].gameObject != playerInput.gameObject) {
-            playerTag = Helper.GetUnusedPlayerTag(Players, (int)playerTag);
-            Players[playerTag] = playerInput.gameObject;
-        }
-
-        if (!PlayerSettings.IsLandscape) {
-            //playerInput.gameObject.GetComponentInChildren<Camera>().rect = new Rect(0, 0, 1, 1);
-            Camera playerCamera = playerInput.gameObject.GetComponentInChildren<ModelController>().PinballCamera;
-            playerCamera.gameObject.SetActive(false);
+    public void OnPauseAction() {
+        if (this.IsPaused) {
+            ResumeGame();
+            Destroy(_currentPauseMenu);
+        } else {
+            PauseGame();
+            _currentPauseMenu = Instantiate(PauseMenuPrefab);
         }
     }
 
-    public void OnPlayerLeaves(PlayerInput playerInput) {
-        EnumPlayerTag enumPlayerTag = Helper.GetPlayerTagKey(this.Players, playerInput.gameObject);
-        Players.Remove(enumPlayerTag);
+    public void CheckCamera() {
+        foreach (var player in Players) {
+            Camera playerCamera = player.Value.GetComponentInChildren<ModelController>().PinballCamera;
+            if (PlayerSettings.IsLandscape) {
+                playerCamera.gameObject.SetActive(true);
+                playerCamera.rect = new Rect((int)player.Key / Players.Count, 0, 1 / Players.Count, 1); // Not Tested
+            } else {
+                playerCamera.gameObject.SetActive(false);
+            }
+        }
     }
 
     //Einar
 
-    public void GameModeSelect()
-    {
+    public void GameModeSelect() {
         SceneManager.LoadScene("GameModeSelect");
     }
 
-    public void MainMenu()
-    {
+    public void MainMenu() {
+        //GameObject[] players = Players.Values.ToArray();
+        //// loop through the array and destroy all the gameobjects
+        //foreach (GameObject player in players) {
+        //    Debug.Log(player.transform.parent.gameObject.name);
+        //    Destroy(player.transform.parent.gameObject);
+        //}
+        //Players.Clear();
+
+        GameObject[] players = Helper.Players.Values.ToArray();
+        // loop through the array and destroy all the gameobjects
+        foreach (GameObject player in players) {
+            Destroy(player.transform.parent.gameObject);
+        }
+
+        Helper.GameReset();
+        ResumeGame();
         SceneManager.LoadScene("StartScreen");
     }
     public void EndOfGameScore() {

@@ -5,6 +5,12 @@ using UnityEngine;
 public static class Helper {
 
     public static List<Material> UsedPinballMaterials = new List<Material>();
+    public static Dictionary<EnumPlayerTag, GameObject> Players = new Dictionary<EnumPlayerTag, GameObject>();
+
+    public static void GameReset() {
+        UsedPinballMaterials.Clear();
+        Players.Clear();
+    }
     /// <summary>
     /// Finds an unused player tag starting from a given index.
     /// </summary>

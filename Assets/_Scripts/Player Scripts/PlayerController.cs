@@ -20,7 +20,11 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-        AssignFlippers();
+        if (scene.name.StartsWith("Pro") || scene.name.StartsWith("Level")) {
+            AssignFlippers();
+        } else {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
     }
 
     private void Start() {
@@ -63,6 +67,11 @@ public class PlayerController : MonoBehaviour {
 
     // Input Actions Methods
     public void OnMove(InputAction.CallbackContext context) => this._movementInput = context.ReadValue<Vector2>();
+    public void OnPauseAction(InputAction.CallbackContext context) {
+        if (context.performed) {
+            GameManager.Instance.OnPauseAction();
+        }
+    }
     public void OnFlipperLeft(InputAction.CallbackContext context) {
         if (context.phase == InputActionPhase.Performed) {
             AllFlipLeft(true);
