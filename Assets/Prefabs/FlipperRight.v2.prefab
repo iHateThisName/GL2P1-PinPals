@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6478536213147159724, guid: f1aa54d4058fdb44d8833302382cc5ce, type: 3}
+  - {fileID: 2100000, guid: 34fa5b1c69af0ef4f879748f2bc0f4f3, type: 2}
   - {fileID: -4018286686147086024, guid: f1aa54d4058fdb44d8833302382cc5ce, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -103,10 +103,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85f170a47068555499cfa1dbc277ee05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activationKey: 0
   restPosition: 0
   activePosition: -60
   flipSpeed: 10
+  _renderQueue: 4
   IsFlipping: 0
 --- !u!54 &8997568836439521184
 Rigidbody:
@@ -133,7 +133,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 6
   m_CollisionDetection: 3
 --- !u!59 &7273218516988686545
 HingeJoint:
@@ -264,7 +264,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6478536213147159724, guid: f1aa54d4058fdb44d8833302382cc5ce, type: 3}
+  - {fileID: 2100000, guid: 34fa5b1c69af0ef4f879748f2bc0f4f3, type: 2}
   - {fileID: -4018286686147086024, guid: f1aa54d4058fdb44d8833302382cc5ce, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -299,10 +299,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85f170a47068555499cfa1dbc277ee05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activationKey: 0
   restPosition: 0
   activePosition: -60
   flipSpeed: 10
+  _renderQueue: 3
   IsFlipping: 0
 --- !u!54 &2102116983116547864
 Rigidbody:
@@ -329,7 +329,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 6
   m_CollisionDetection: 3
 --- !u!59 &7316491224681317527
 HingeJoint:
@@ -495,7 +495,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6478536213147159724, guid: f1aa54d4058fdb44d8833302382cc5ce, type: 3}
+  - {fileID: 2100000, guid: 34fa5b1c69af0ef4f879748f2bc0f4f3, type: 2}
   - {fileID: -4018286686147086024, guid: f1aa54d4058fdb44d8833302382cc5ce, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -530,10 +530,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85f170a47068555499cfa1dbc277ee05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activationKey: 0
   restPosition: 0
   activePosition: -60
   flipSpeed: 10
+  _renderQueue: 1
   IsFlipping: 0
 --- !u!54 &5184849824395371165
 Rigidbody:
@@ -560,7 +560,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 6
   m_CollisionDetection: 3
 --- !u!59 &2431986773359930123
 HingeJoint:
@@ -691,7 +691,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6478536213147159724, guid: f1aa54d4058fdb44d8833302382cc5ce, type: 3}
+  - {fileID: 2100000, guid: 34fa5b1c69af0ef4f879748f2bc0f4f3, type: 2}
   - {fileID: -4018286686147086024, guid: f1aa54d4058fdb44d8833302382cc5ce, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -726,10 +726,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85f170a47068555499cfa1dbc277ee05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activationKey: 0
   restPosition: 0
   activePosition: -60
   flipSpeed: 10
+  _renderQueue: 2
   IsFlipping: 0
 --- !u!54 &7892164198767379965
 Rigidbody:
@@ -756,7 +756,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 6
   m_CollisionDetection: 3
 --- !u!59 &5774339264853272619
 HingeJoint:
