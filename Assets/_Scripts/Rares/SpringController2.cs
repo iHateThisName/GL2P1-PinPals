@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class Plunger : MonoBehaviour
 {
-    public Rigidbody ball;
+    private Rigidbody targetBall;
     public float maxPull = 10f; // How far it can move backward
     public float launchForce = 500f; // Force applied to ball
     private Vector3 startPos;
     private float pullAmount = 0f;
     private bool isPulling = false;
+    [SerializeField] private Collider _triggerZone;
 
     void Start()
     {
@@ -16,14 +17,14 @@ public class Plunger : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.X))
+        if (Input.GetKey(KeyCode.S))
         {
             isPulling = true;
             pullAmount = Mathf.Min(pullAmount + Time.deltaTime * 3, maxPull);
             transform.position = Vector3.Lerp(startPos, startPos + new Vector3(0, 0, -maxPull), pullAmount / maxPull);
         }
 
-        if (Input.GetKeyUp(KeyCode.X))
+        if (Input.GetKeyUp(KeyCode.S))
         {
             LaunchBall();
             isPulling = false;
@@ -34,9 +35,26 @@ public class Plunger : MonoBehaviour
 
     void LaunchBall()
     {
-        if (ball != null)
+        if (targetBall != null)
         {
-            ball.AddForce(Vector3.forward * launchForce * (pullAmount / maxPull), ForceMode.Impulse);
+            targetBall.AddForce(Vector3.forward * launchForce * (pullAmount / maxPull), ForceMode.Impulse);
+        }
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        // Check if the object we collided with has a Rigidbody and set it as the target
+        if (other.attachedRigidbody != null)
+        {
+            targetBall = other.attachedRigidbody;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        // Reset the target when the object exits the trigger
+        if (other.attachedRigidbody == targetBall)
+        {
+            targetBall = null;
         }
     }
 }
