@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+
 // Ivar
 public class RandomMaterial : MonoBehaviour {
     [SerializeField] private GameObject _player;
