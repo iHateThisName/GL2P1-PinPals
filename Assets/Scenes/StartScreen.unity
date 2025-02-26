@@ -709,7 +709,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23786046428f0934a827531c5675e638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstSelectedButton: {fileID: 2134839124}
 --- !u!4 &1881603343
 Transform:
   m_ObjectHideFlags: 0
@@ -975,7 +974,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2069015836}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: GameModeSelect
+        m_MethodName: LevelSelector
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

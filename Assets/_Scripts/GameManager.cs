@@ -57,6 +57,10 @@ public class GameManager : Singleton<GameManager> {
         }
     }
 
+    public void LevelSelector() {
+        SceneManager.LoadScene("LevelSelector");
+    }
+
     //Einar
 
     public void GameModeSelect() {
