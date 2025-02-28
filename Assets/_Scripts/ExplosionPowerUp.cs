@@ -13,7 +13,7 @@ public class ExplosionPowerUp : MonoBehaviour
     public void Start()
     {
         //PlayerPowerController bombSFX = GetComponent<PlayerPowerController>().bombSFX();
-        SoundEffectManager.instance.PlaySoundFXClip(this._bombTickSFX, this.gameObject.transform, 1f);
+        SoundEffectManager.Instance.PlaySoundFXClip(this._bombTickSFX, this.gameObject.transform, 1f);
         StartCoroutine(DestroyExplosion());
     }
 
@@ -48,7 +48,7 @@ public class ExplosionPowerUp : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         this.bombModel.SetActive(false);
         Debug.Log("All Players except you are dead");
-        SoundEffectManager.instance.PlaySoundFXClip(this._bombExplodeSFX, this.gameObject.transform, 1f);
+        SoundEffectManager.Instance.PlaySoundFXClip(this._bombExplodeSFX, this.gameObject.transform, 1f);
         yield return new WaitForSeconds(2f); // Bomb animation
         Destroy(gameObject);
     }

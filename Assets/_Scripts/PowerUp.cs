@@ -4,7 +4,7 @@ using UnityEngine.Audio;
 
 public class PowerUp : MonoBehaviour
 {
-    private EnumPowerUp power = EnumPowerUp.Bomb;
+    private EnumPowerUp power; // = EnumPowerUp.Balloon;
     [SerializeField] private AudioClip powerUpPickUp;
 
     void Start()
