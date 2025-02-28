@@ -4,12 +4,13 @@ using UnityEngine.Audio;
 
 public class PowerUp : MonoBehaviour
 {
-    private EnumPowerUp power; //= EnumPowerUp.Balloon;
+    private EnumPowerUp power = EnumPowerUp.Bomb;
     [SerializeField] private AudioClip powerUpPickUp;
 
     void Start()
     {
-        power = (EnumPowerUp)Random.Range(1, 5);
+        // power = (EnumPowerUp)Random.Range(1, 5);
+        power = (EnumPowerUp)Random.Range(5, 6);
     }
 
     public IEnumerator OnTriggerEnter(Collider player)
@@ -23,7 +24,8 @@ public class PowerUp : MonoBehaviour
         meshRenderer.enabled = false;
         boxCollider.enabled = false;
         yield return new WaitForSeconds(5f);
-        power = (EnumPowerUp)Random.Range(1, 5);
+        // power = (EnumPowerUp)Random.Range(1, 5);
+        power = (EnumPowerUp)Random.Range(5, 6);
         meshRenderer.enabled = true;
         boxCollider.enabled = true;
 

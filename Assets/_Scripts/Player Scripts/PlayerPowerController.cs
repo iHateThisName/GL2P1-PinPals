@@ -2,10 +2,11 @@ using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+// Hilmir and Ivar
 public class PlayerPowerController : MonoBehaviour {
     private EnumPowerUp currentPower = EnumPowerUp.None;
     [SerializeField] private Transform playerTransform;
+    [SerializeField] private Transform _cameraTarget;
     private Vector3 defaultScale;
     private float _powerUpCooldown = 5f;
     private float _originalMass = 0.02f;
@@ -15,12 +16,14 @@ public class PlayerPowerController : MonoBehaviour {
     [SerializeField] private float growScale = 10f;
     [SerializeField] private GameObject explosionEffect;
     [SerializeField] private GameObject balloonPrefab;
-    [SerializeField] private AudioSource bombTickAudioSource;
     [SerializeField] public bool _isPlayerDead;
+
+    [Header("Power up SFX")]
     [SerializeField] private AudioClip multiBallSFX;
     [SerializeField] private AudioClip freezeSFX;
     [SerializeField] private AudioClip growSFX;
     [SerializeField] private AudioClip shrinkSFX;
+    [SerializeField] private AudioClip bombTickSFX;
 
     [SerializeField] private PlayerFollowCanvasManager playerText;
     // The tag assigned to the player, used to identify the player in the game.
@@ -121,32 +124,14 @@ public class PlayerPowerController : MonoBehaviour {
         this.playerTransform.GetComponent<Rigidbody>().mass = _originalMass;
         this.playerTransform.localScale = defaultScale;
     }
-    public async void BombPlayers() {
-        foreach (var player in GameManager.Instance.Players)
-        {
-            bombTickAudioSource.Play();
-            await Task.Delay(3000);
-            bombTickAudioSource.Stop();
-            if (player.Key != _assignedPlayerTag)
-            {
-                Instantiate(this.explosionEffect);
-                await Task.Delay(2000);
-            }
-        }
-    }
+
     public IEnumerator BombPlayersCoroutine() {
-        foreach (var player in GameManager.Instance.Players)
-        {
-            bombTickAudioSource.Play();
-            yield return new WaitForSeconds(3f);
-            bombTickAudioSource.Stop();
-            // Check if the player is not Player01
-            if (player.Key != _assignedPlayerTag)
-            {
-                Instantiate(this.explosionEffect);
-                yield return new WaitForSeconds(2f);
-            }
-        }
+        
+        //yield return new WaitForSeconds(3f);
+        GameObject explosionGameObject = Instantiate(this.explosionEffect, _cameraTarget.transform.position, Quaternion.identity);
+        explosionGameObject.GetComponent<ExplosionPowerUp>().AssignBombOwner(playerTransform.gameObject);
+        this.currentPower = EnumPowerUp.None;
+        yield return new WaitForSeconds(_powerUpCooldown);
     }
     public void SlowTime() {
         Debug.Log("Work In Progress");

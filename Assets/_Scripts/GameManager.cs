@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 // Ivar
 public class GameManager : Singleton<GameManager> {
 
+    public Transform SpawnPoint;
     public bool IsPaused { get; private set; }
     // Prefabs
     [SerializeField] private GameObject PauseMenuPrefab;
@@ -110,4 +111,5 @@ public class GameManager : Singleton<GameManager> {
         //SceneManager.LoadScene("Level 01, vegasTP");
 
     }
+    
 }

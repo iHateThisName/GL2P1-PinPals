@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,12 +12,16 @@ public class PlayerController : MonoBehaviour {
     private List<FlipperController> _leftFlipperController;
     private List<FlipperController> _rightFlipperController;
 
+    private Vector3 _respawnPosition;
+
     // Input Actions Varibals
     private Vector2 _movementInput = Vector2.zero;
 
     private void Awake() {
         SceneManager.sceneLoaded -= OnSceneLoaded; // to prevent duplicate subscriptions when Awake() is called multiple times.
         SceneManager.sceneLoaded += OnSceneLoaded; // gets called every time a scene is loaded
+
+        this._respawnPosition = GameObject.FindGameObjectWithTag("SpawnPoint").transform.position;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
@@ -65,6 +70,14 @@ public class PlayerController : MonoBehaviour {
         return processedFlippers;
     }
 
+    public void Respawn()
+    {
+        DisableGravity();
+        _ballRigidbody.gameObject.transform.position = this._respawnPosition;
+        StartCoroutine(ReEnableGravityCoroutine(0.5f));
+
+    }
+
     // Input Actions Methods
     public void OnMove(InputAction.CallbackContext context) => this._movementInput = context.ReadValue<Vector2>();
     public void OnPauseAction(InputAction.CallbackContext context) {
@@ -108,5 +121,11 @@ public class PlayerController : MonoBehaviour {
     }
     public void EnableGravity() {
         _ballRigidbody.isKinematic = false;
+    }
+
+    private IEnumerator ReEnableGravityCoroutine(float delayInSeconds)
+    {
+        yield return new WaitForSeconds(delayInSeconds);
+        EnableGravity();
     }
 }

@@ -11,6 +11,10 @@ public class PlayerManager : MonoBehaviour {
         private set { Helper.Players = value; }
     }
 
+    private void Start()
+    {
+        GameManager.Instance.SpawnPoint = _spawnPosition;
+    }
     public void OnPlayerJoined(PlayerInput playerInput) {
         PlayerController playerController = playerInput.gameObject.GetComponent<PlayerController>();
         playerController.DisableGravity();
@@ -68,5 +72,4 @@ public class PlayerManager : MonoBehaviour {
         yield return new WaitForSeconds(delayInSeconds);
         playerController.EnableGravity();
     }
-
 }
