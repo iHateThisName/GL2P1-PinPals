@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2422742866600438887}
-  - component: {fileID: 3213370162192231066}
   m_Layer: 0
   m_Name: BumperModel
   m_TagString: Untagged
@@ -33,19 +32,6 @@ Transform:
   - {fileID: 5066816379240269118}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3213370162192231066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3166526511755594729}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a01dc6f64d47cf4a86cf9f839b459e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animationRipplePrefab: {fileID: 6094001894214437719, guid: 3a5a04ad044604f40b39c62783af51c5, type: 3}
 --- !u!1001 &4745188564109763285
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -111,6 +97,9 @@ PrefabInstance:
       addedObject: {fileID: 1761201097798385437}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 33a2942ddc3d6eb408020b8834f57df2, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1903750441526758851}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 33a2942ddc3d6eb408020b8834f57df2, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1852601805072631033}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 33a2942ddc3d6eb408020b8834f57df2, type: 3}
       insertIndex: -1
@@ -140,7 +129,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bounceForce: 15
   points: 100
-  bumperAnimationController: {fileID: 3213370162192231066}
+  bumperAnimationController: {fileID: 1903750441526758851}
+--- !u!114 &1903750441526758851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5556071992711389060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a01dc6f64d47cf4a86cf9f839b459e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animationRipplePrefab: {fileID: 6094001894214437719, guid: 3a5a04ad044604f40b39c62783af51c5, type: 3}
+  _animationScorePrefab: {fileID: 3054173174162612129, guid: 5ea0ec42b0951164bbc7935d51c3221d, type: 3}
+  ScoreText: +100
 --- !u!64 &1852601805072631033
 MeshCollider:
   m_ObjectHideFlags: 0
