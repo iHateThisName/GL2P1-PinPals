@@ -13,6 +13,7 @@ public class OnOffThingieScript : MonoBehaviour
     //public GameObject scoreManager; // Old scoring system
     [SerializeField] private TargetBankScore _targetScore;
     [SerializeField] int points = 100;
+    [SerializeField] private AudioClip hitTargetSFX;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,6 +28,7 @@ public class OnOffThingieScript : MonoBehaviour
         Collideble.enabled = false;
         if (IsActive)
         {
+            SoundEffectManager.Instance.PlaySoundFXClip(hitTargetSFX, transform, 1f);
             ThingRender.material = OffTexture;
             ModelController modelController = collision.gameObject.GetComponent<ModelController>();
             //modelController.AddPlayerPoints(points);

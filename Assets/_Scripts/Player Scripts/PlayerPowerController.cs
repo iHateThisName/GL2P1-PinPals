@@ -52,12 +52,12 @@ public class PlayerPowerController : MonoBehaviour {
                     break;
 
                 case EnumPowerUp.Shrink:
-                    SoundEffectManager.instance.PlaySoundFXClip(shrinkSFX, transform, 1f);
+                    SoundEffectManager.Instance.PlaySoundFXClip(shrinkSFX, transform, 1f);
                     StartCoroutine(ShrinkPlayerCoroutine());
                     break;
 
                 case EnumPowerUp.Grow:
-                    SoundEffectManager.instance.PlaySoundFXClip(growSFX, transform, 1f);
+                    SoundEffectManager.Instance.PlaySoundFXClip(growSFX, transform, 1f);
                     StartCoroutine(GrowPlayerCoroutine());
                     break;
 
@@ -78,12 +78,12 @@ public class PlayerPowerController : MonoBehaviour {
                     break;
 
                 case EnumPowerUp.Freeze:
-                    SoundEffectManager.instance.PlaySoundFXClip(freezeSFX, transform, 1f);
+                    SoundEffectManager.Instance.PlaySoundFXClip(freezeSFX, transform, 1f);
                     FreezePlayers();
                     break;
 
                 case EnumPowerUp.MultiBall:
-                    SoundEffectManager.instance.PlaySoundFXClip(multiBallSFX, transform, 1f);
+                    SoundEffectManager.Instance.PlaySoundFXClip(multiBallSFX, transform, 1f);
                     MultiBall();
                     break;
             }
@@ -98,12 +98,12 @@ public class PlayerPowerController : MonoBehaviour {
     }
 
     public IEnumerator ShrinkPlayerCoroutine() { // Use Fixed Update to slowly shrink the ball, use Lerp.
+        this.currentPower = EnumPowerUp.None;
         this.playerTransform.GetComponent<Rigidbody>().mass = shrinkMass;
         this.playerTransform.localScale = new Vector3(shrinkScale, shrinkScale, shrinkScale);
         yield return new WaitForSeconds(_powerUpCooldown);
         this.playerTransform.GetComponent<Rigidbody>().mass = _originalMass;
         this.playerTransform.localScale = defaultScale;
-        this.currentPower = EnumPowerUp.None;
     }
     public async void GrowPlayer() {
         this.playerTransform.GetComponent<Rigidbody>().mass = growMass;
@@ -114,12 +114,12 @@ public class PlayerPowerController : MonoBehaviour {
         this.currentPower = EnumPowerUp.None;
     }
     public IEnumerator GrowPlayerCoroutine() {
+        this.currentPower = EnumPowerUp.None;
         this.playerTransform.GetComponent<Rigidbody>().mass = growMass;
         this.playerTransform.localScale = new Vector3(growScale, growScale, growScale);
         yield return new WaitForSeconds(_powerUpCooldown); // This will last for 3 seconds until you return back to normal
         this.playerTransform.GetComponent<Rigidbody>().mass = _originalMass;
         this.playerTransform.localScale = defaultScale;
-        this.currentPower = EnumPowerUp.None;
     }
     public async void BombPlayers() {
         foreach (var player in GameManager.Instance.Players)

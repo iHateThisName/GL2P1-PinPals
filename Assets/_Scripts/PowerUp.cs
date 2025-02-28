@@ -17,7 +17,7 @@ public class PowerUp : MonoBehaviour
         PlayerPowerController playerPowerController = player.gameObject.GetComponent<ModelController>().PlayerPowerController;
         MeshRenderer meshRenderer = gameObject.GetComponent<MeshRenderer>();
         BoxCollider boxCollider = gameObject.GetComponent<BoxCollider>();
-        SoundEffectManager.instance.PlaySoundFXClip(powerUpPickUp, transform, 1f);
+        SoundEffectManager.Instance.PlaySoundFXClip(powerUpPickUp, transform, 1f);
 
         playerPowerController.GivePlayerPower(power);
         meshRenderer.enabled = false;

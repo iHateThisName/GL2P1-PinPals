@@ -1,20 +1,12 @@
+using System.Collections;
 using UnityEngine;
 
-public class SoundEffectManager : MonoBehaviour
+public class SoundEffectManager : Singleton<SoundEffectManager>
 {
-   public static SoundEffectManager instance;
 
     [SerializeField] private AudioSource soundFXObject;
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-    }
-
-    public void PlaySoundFXClip(AudioClip audioClip, Transform spawmTransform, float volume)
+    public void PlaySoundFXClip(AudioClip audioClip, Transform spawmTransform, float volume, float duration = 0.0f)
     {
         //spawn in GameObject
         AudioSource audioSource = Instantiate(soundFXObject, spawmTransform.position, Quaternion.identity);
@@ -26,7 +18,15 @@ public class SoundEffectManager : MonoBehaviour
         audioSource.Play();
         //get length of clip
         float clipLength = audioSource.clip.length;
+
         //destroy the clip after playing
-        Destroy(audioSource.gameObject, clipLength);
+        if (duration > 0.0f)
+        {
+            Destroy(audioSource.gameObject, duration);
+        }
+        else
+        {
+            Destroy(audioSource.gameObject, clipLength);
+        }
     }
 }
