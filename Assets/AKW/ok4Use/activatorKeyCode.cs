@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class activatorKeyCode : MonoBehaviour
-{
+public class activatorKeyCode : MonoBehaviour {
     public Material idleTexture;
     public Material activeTexture;
 
@@ -12,8 +11,7 @@ public class activatorKeyCode : MonoBehaviour
     [SerializeField] private TargetBankScore _targetScore;
     [SerializeField] int points = 100;
 
-    void Start()
-    {
+    void Start() {
         AKRender = GetComponent<Renderer>();
         AKRender.material = idleTexture;
         Collideble = GetComponent<Collider>();
@@ -21,27 +19,22 @@ public class activatorKeyCode : MonoBehaviour
         Collideble.isTrigger = true;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (IsIdle)
-        {
+    private void OnTriggerEnter(Collider other) {
+        if (IsIdle) {
             AKRender.material = activeTexture;
             ModelController modelController = other.gameObject.GetComponent<ModelController>();
 
             IsIdle = false;
-            Collideble.isTrigger = false;            
+            Collideble.isTrigger = false;
             Destroy(GetComponent<BoxCollider>());
 
             Debug.Log("Oh Hoy!");
-            if (modelController != null)
-            {
+            if (modelController != null) {
                 modelController._playerScoreTracker.AddPoints(points);
-                _targetScore.OnScore(modelController);
+                if (_targetScore != null) _targetScore.OnScore(modelController);
             }
-            
-        }
-        else
-        {
+
+        } else {
             AKRender.material = idleTexture;
             Debug.Log("Hee, hee, hee");
         }
