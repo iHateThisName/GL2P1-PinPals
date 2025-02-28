@@ -33,7 +33,11 @@ public class OnOffThingieScript : MonoBehaviour
             ModelController modelController = collision.gameObject.GetComponent<ModelController>();
             //modelController.AddPlayerPoints(points);
             modelController._playerScoreTracker.AddPoints(points);
-            _targetScore.OnScore(modelController);
+
+            if (_targetScore != null)
+            {
+                _targetScore.OnScore(modelController);
+            }
         }
         else
         {
