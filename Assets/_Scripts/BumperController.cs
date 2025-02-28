@@ -16,7 +16,7 @@ public class BumperController : MonoBehaviour {
         Rigidbody otherRB = collision.rigidbody;
         otherRB.AddExplosionForce(bounceForce, collision.contacts[0].point, 5);
         // Play the bumper sound
-        bumperAudioSource.Play();
+        if (bumperAudioSource != null) bumperAudioSource.Play();
 
         // Add points to the player
         collision.gameObject.GetComponent<ModelController>()._playerScoreTracker.AddPoints(points);

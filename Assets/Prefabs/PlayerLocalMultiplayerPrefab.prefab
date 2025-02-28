@@ -52,7 +52,7 @@ MonoBehaviour:
   _zPosOffsetFalling: -30
   _cameraBoundingXOffset: 43.5
   _cameraBoundingZMinOffset: 15.5
-  _xLerpSpeed: 1
+  _xLerpSpeed: 3
   _zLerpSpeed: 6
 --- !u!1 &54135105115536068
 GameObject:
@@ -1018,7 +1018,7 @@ PrefabInstance:
       objectReference: {fileID: 4053685851871766715}
     - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_ActionId
@@ -1079,6 +1079,10 @@ PrefabInstance:
     - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
       propertyPath: m_ActionEvents.Array.data[15].m_ActionId
       value: b217ddc9-77e1-4a8c-a558-4940675035b3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_ActionId
+      value: 6a9f9e4d-ec7f-43fc-a28a-a42467ddb71b
       objectReference: {fileID: 0}
     - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
       propertyPath: m_ActionEvents.Array.data[19].m_ActionId
@@ -1147,6 +1151,10 @@ PrefabInstance:
     - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
       propertyPath: m_ActionEvents.Array.data[15].m_ActionName
       value: 'Player/Pause[/Keyboard/escape]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_ActionName
+      value: 'Player/Cancel[/Keyboard/escape]'
       objectReference: {fileID: 0}
     - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
       propertyPath: m_ActionEvents.Array.data[19].m_ActionName
