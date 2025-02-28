@@ -214,6 +214,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1504035399}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LoadeSelectedScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &36023122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1058,15 +1070,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4249509488488023017, guid: ff0b9da8dd0a6b34391f630209d4b890, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 396.472
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4249509488488023017, guid: ff0b9da8dd0a6b34391f630209d4b890, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 169.96008
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4249509488488023017, guid: ff0b9da8dd0a6b34391f630209d4b890, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -34.168934
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4249509488488023017, guid: ff0b9da8dd0a6b34391f630209d4b890, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1202,6 +1214,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1504035399}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: SingleScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1504035399}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LoadeSelectedScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

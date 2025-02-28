@@ -10,6 +10,7 @@ public class ArcadeMachineController : MonoBehaviour {
     [SerializeField] private UnityEvent OnHoverExit;
     [SerializeField] private UnityEvent OnSelect;
     [SerializeField] private UnityEvent OnDeselect;
+    [SerializeField] private UnityEvent OnAnimationDone;
 
     [SerializeField] private GameObject _spotLight;
     [SerializeField] private GameObject _canvas;
@@ -80,6 +81,11 @@ public class ArcadeMachineController : MonoBehaviour {
         while (_cinemachineBrain.IsBlending) {
             yield return null; // Wait until the next frame
         }
-        GameManager.Instance.GameModeSelect();
+        InvokeAnimationDone();
+        //GameManager.Instance.GameModeSelect();
+    }
+
+    private void InvokeAnimationDone() {
+        OnAnimationDone?.Invoke();
     }
 }

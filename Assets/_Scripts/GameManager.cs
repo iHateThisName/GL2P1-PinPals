@@ -61,6 +61,14 @@ public class GameManager : Singleton<GameManager> {
         SceneManager.LoadScene("LevelSelector");
     }
 
+    public void SelectScene(string SceneName) {
+        PlayerSettings.SelectedLevel = SceneName;
+    }
+
+    public void LoadeSelectedScene() {
+        SceneManager.LoadScene(PlayerSettings.SelectedLevel);
+    }
+
     //Einar
 
     public void GameModeSelect() {
@@ -93,13 +101,13 @@ public class GameManager : Singleton<GameManager> {
 
     public void SplitScreen() {
         PlayerSettings.IsLandscape = true;
-        SceneManager.LoadScene("Level 01, vegasTP");
+        //SceneManager.LoadScene("Level 01, vegasTP");
 
     }
 
     public void SingleScreen() {
         PlayerSettings.IsLandscape = false;
-        SceneManager.LoadScene("Level 01, vegasTP");
+        //SceneManager.LoadScene("Level 01, vegasTP");
 
     }
 }
