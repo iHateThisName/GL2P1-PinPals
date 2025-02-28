@@ -8,6 +8,7 @@ public class TargetBankScore : MonoBehaviour
     private int _maxHits = 0;
     private int _currentHits = 0;
     [SerializeField] int points = 500;
+    [SerializeField] private AudioClip targetComboSFX;
 
     //[SerializeField] private ScoreManager scoreManager;
 
@@ -33,6 +34,7 @@ public class TargetBankScore : MonoBehaviour
         if (_currentHits == _maxHits)
         {
             modelController._playerScoreTracker.AddPoints(points);
+            SoundEffectManager.Instance.PlaySoundFXClip(targetComboSFX, transform, 1f);
         }
     }
 }
