@@ -17,6 +17,10 @@ public class PlayerPowerController : MonoBehaviour {
     [SerializeField] private GameObject balloonPrefab;
     [SerializeField] private AudioSource bombTickAudioSource;
     [SerializeField] public bool _isPlayerDead;
+    [SerializeField] private AudioClip multiBallSFX;
+    [SerializeField] private AudioClip freezeSFX;
+    [SerializeField] private AudioClip growSFX;
+    [SerializeField] private AudioClip shrinkSFX;
 
     [SerializeField] private PlayerFollowCanvasManager playerText;
     // The tag assigned to the player, used to identify the player in the game.
@@ -48,10 +52,12 @@ public class PlayerPowerController : MonoBehaviour {
                     break;
 
                 case EnumPowerUp.Shrink:
+                    SoundEffectManager.instance.PlaySoundFXClip(shrinkSFX, transform, 1f);
                     StartCoroutine(ShrinkPlayerCoroutine());
                     break;
 
                 case EnumPowerUp.Grow:
+                    SoundEffectManager.instance.PlaySoundFXClip(growSFX, transform, 1f);
                     StartCoroutine(GrowPlayerCoroutine());
                     break;
 
@@ -72,10 +78,12 @@ public class PlayerPowerController : MonoBehaviour {
                     break;
 
                 case EnumPowerUp.Freeze:
+                    SoundEffectManager.instance.PlaySoundFXClip(freezeSFX, transform, 1f);
                     FreezePlayers();
                     break;
 
                 case EnumPowerUp.MultiBall:
+                    SoundEffectManager.instance.PlaySoundFXClip(multiBallSFX, transform, 1f);
                     MultiBall();
                     break;
             }
