@@ -12,6 +12,8 @@ public class TimeManager : MonoBehaviour
     public TMP_Text currentTimeText;
     public GameObject restartMenu;
 
+    [SerializeField] private AudioClip gameOverSFX;
+
     // Start is called before the first frame update
     public void Start()
     {
@@ -35,6 +37,7 @@ public class TimeManager : MonoBehaviour
             }
             else
             {
+                SoundEffectManager.Instance.PlaySoundFXClip(gameOverSFX, transform, 1f);
                 stopWatchActive = false;
                 restartMenu.SetActive(true);
                 Time.timeScale = 0;
