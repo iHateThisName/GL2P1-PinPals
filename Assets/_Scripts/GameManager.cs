@@ -98,6 +98,7 @@ public class GameManager : Singleton<GameManager> {
     }
 
     public void MovePlayer(EnumPlayerTag tag, Vector3 newPosition) {
+        if (!Players.ContainsKey(tag)) return;
         GameObject player = Players[tag];
         player.GetComponent<PlayerController>().MovePlayer(newPosition);
     }

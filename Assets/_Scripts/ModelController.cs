@@ -5,4 +5,5 @@ public class ModelController : MonoBehaviour {
     public PlayerPowerController PlayerPowerController;
     public Camera PinballCamera;
     public Rigidbody rb;
+    public SkinManager SkinManager;
 }
