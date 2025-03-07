@@ -19,7 +19,7 @@ public class BumperController : MonoBehaviour {
         if (bumperAudioSource != null) bumperAudioSource.Play();
 
         // Add points to the player
-        collision.gameObject.GetComponent<ModelController>()._playerScoreTracker.AddPoints(points);
+        collision.gameObject.GetComponent<ModelController>().PlayerScoreTracker.AddPoints(points);
 
         // Play the animation
         if (bumperAnimationController != null) bumperAnimationController.PlayAnimation(collision);

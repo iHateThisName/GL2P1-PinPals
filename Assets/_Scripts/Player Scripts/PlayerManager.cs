@@ -11,8 +11,7 @@ public class PlayerManager : MonoBehaviour {
         private set { Helper.Players = value; }
     }
 
-    private void Start()
-    {
+    private void Start() {
         GameManager.Instance.SpawnPoint = _spawnPosition;
     }
     public void OnPlayerJoined(PlayerInput playerInput) {

@@ -1018,6 +1018,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4053685851871766715}
     - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+      propertyPath: m_Actions
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371540450504208298, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
       propertyPath: m_ActionEvents.Array.size
       value: 17
       objectReference: {fileID: 0}
@@ -1415,7 +1419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71a192ba5f46d6439efb392d631e228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerScoreTracker: {fileID: 3611589562616123959}
+  PlayerScoreTracker: {fileID: 3611589562616123959}
   PlayerPowerController: {fileID: 7959744348756883238}
   PinballCamera: {fileID: 4053685851871766715}
   rb: {fileID: 8612455253610265624}

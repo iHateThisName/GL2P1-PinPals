@@ -70,8 +70,7 @@ public class PlayerController : MonoBehaviour {
         return processedFlippers;
     }
 
-    public void Respawn()
-    {
+    public void Respawn() {
         DisableGravity();
         _ballRigidbody.gameObject.transform.position = this._respawnPosition;
         StartCoroutine(ReEnableGravityCoroutine(0.5f));
@@ -123,9 +122,14 @@ public class PlayerController : MonoBehaviour {
         _ballRigidbody.isKinematic = false;
     }
 
-    private IEnumerator ReEnableGravityCoroutine(float delayInSeconds)
-    {
+    private IEnumerator ReEnableGravityCoroutine(float delayInSeconds) {
         yield return new WaitForSeconds(delayInSeconds);
         EnableGravity();
+    }
+
+    public void MovePlayer(Vector3 newPosition) {
+        DisableGravity();
+        this.gameObject.transform.parent.transform.position = newPosition;
+        StartCoroutine(ReEnableGravityCoroutine(0.1f));
     }
 }

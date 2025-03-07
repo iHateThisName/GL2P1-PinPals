@@ -69,32 +69,60 @@ public class GameManager : Singleton<GameManager> {
     public void LoadeSelectedScene() {
         SceneManager.LoadScene(PlayerSettings.SelectedLevel);
     }
-
-    //Einar
-
-    public void GameModeSelect() {
-        SceneManager.LoadScene("GameModeSelect");
+    public void MainMenu() {
+        DeleteAllPlayers();
+        Helper.GameReset();
+        ResumeGame();
+        SceneManager.LoadScene("StartScreen");
     }
 
-    public void MainMenu() {
-        //GameObject[] players = Players.Values.ToArray();
-        //// loop through the array and destroy all the gameobjects
-        //foreach (GameObject player in players) {
-        //    Debug.Log(player.transform.parent.gameObject.name);
-        //    Destroy(player.transform.parent.gameObject);
-        //}
-        //Players.Clear();
-
+    public void DeleteAllPlayers() {
         GameObject[] players = Helper.Players.Values.ToArray();
         // loop through the array and destroy all the gameobjects
         foreach (GameObject player in players) {
             Destroy(player.transform.parent.gameObject);
         }
-
-        Helper.GameReset();
-        ResumeGame();
-        SceneManager.LoadScene("StartScreen");
     }
+    public void DeletePlayer(EnumPlayerTag tag) {
+        GameObject player = Players[tag];
+        Destroy(player.transform.parent.gameObject);
+        Players.Remove(tag);
+    }
+
+    public PlayerController GetPlayerController(EnumPlayerTag tag) {
+        return Players[tag].GetComponent<PlayerController>();
+    }
+
+    public ModelController GetModelController(EnumPlayerTag tag) {
+        return Players[tag].transform.GetChild(0).GetComponent<ModelController>();
+    }
+
+    public void MovePlayer(EnumPlayerTag tag, Vector3 newPosition) {
+        GameObject player = Players[tag];
+        player.GetComponent<PlayerController>().MovePlayer(newPosition);
+    }
+
+    public List<EnumPlayerTag> GetPlayersOrderByScore() => GetPlayersOrderByScoreWithScore().Select(x => x.tag).ToList();
+    public List<(EnumPlayerTag tag, int score)> GetPlayersOrderByScoreWithScore() {
+        List<(EnumPlayerTag tag, int score)> playersOrderByScore = new List<(EnumPlayerTag tag, int score)>();
+
+        foreach (GameObject player in Players.Values) {
+            // Gets the player score
+            int playerScore = player.transform.GetChild(0).GetComponent<ModelController>().PlayerScoreTracker.currentScore;
+            // Gets the player tag that is assaigned to the player gameobject
+            EnumPlayerTag playerTag = Helper.GetPlayerTagKey(Players, player);
+            // Adds the player tag and score to the list
+            playersOrderByScore.Add((tag: playerTag, score: playerScore));
+        }
+        // Orders the list by score
+        return playersOrderByScore.OrderByDescending(x => x.score).ToList();
+    }
+
+    //Einar
+    public void GameModeSelect() {
+        SceneManager.LoadScene("GameModeSelect");
+    }
+
     public void EndOfGameScore() {
         SceneManager.LoadScene("EndOfGameScore");
 
@@ -111,5 +139,5 @@ public class GameManager : Singleton<GameManager> {
         //SceneManager.LoadScene("Level 01, vegasTP");
 
     }
-    
+
 }

@@ -32,7 +32,7 @@ public class OnOffThingieScript : MonoBehaviour
             ThingRender.material = OffTexture;
             ModelController modelController = collision.gameObject.GetComponent<ModelController>();
             //modelController.AddPlayerPoints(points);
-            modelController._playerScoreTracker.AddPoints(points);
+            modelController.PlayerScoreTracker.AddPoints(points);
 
             if (_targetScore != null)
             {

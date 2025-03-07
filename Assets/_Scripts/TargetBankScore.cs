@@ -33,7 +33,7 @@ public class TargetBankScore : MonoBehaviour
 
         if (_currentHits == _maxHits)
         {
-            modelController._playerScoreTracker.AddPoints(points);
+            modelController.PlayerScoreTracker.AddPoints(points);
             SoundEffectManager.Instance.PlaySoundFXClip(targetComboSFX, transform, 1f);
         }
     }

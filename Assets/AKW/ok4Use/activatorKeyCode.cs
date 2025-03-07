@@ -30,7 +30,7 @@ public class activatorKeyCode : MonoBehaviour {
 
             Debug.Log("Oh Hoy!");
             if (modelController != null) {
-                modelController._playerScoreTracker.AddPoints(points);
+                modelController.PlayerScoreTracker.AddPoints(points);
                 if (_targetScore != null) _targetScore.OnScore(modelController);
             }
 
