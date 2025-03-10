@@ -129,13 +129,14 @@ public class PlayerController : MonoBehaviour {
 
     public void MovePlayer(Vector3 newPosition, bool reEnableGravity = true) {
         DisableGravity();
-        this.gameObject.transform.parent.transform.position = newPosition;
+        //this.gameObject.transform.parent.transform.position = newPosition;
         //this.transform.GetChild(0).transform.position = this.transform.GetChild(0).transform.InverseTransformPoint(newPosition);
+        //this.transform.GetChild(0).transform.position = this.transform.GetChild(0).transform.position;
 
-        //Transform child = this.transform.GetChild(0);
-        //child.SetParent(null); // Detach from parent
-        //child.position = newPosition; // Move freely
-        //child.SetParent(this.transform); // Reattach
+        Transform child = this.transform.GetChild(0);
+        child.SetParent(null); // Detach from parent
+        child.position = newPosition; // Move freely
+        child.SetParent(this.transform); // Reattach
         if (reEnableGravity) StartCoroutine(ReEnableGravityCoroutine(0.1f));
     }
 }
