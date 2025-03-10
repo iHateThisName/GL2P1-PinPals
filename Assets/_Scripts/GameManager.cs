@@ -97,10 +97,10 @@ public class GameManager : Singleton<GameManager> {
         return Players[tag].transform.GetChild(0).GetComponent<ModelController>();
     }
 
-    public void MovePlayer(EnumPlayerTag tag, Vector3 newPosition) {
+    public void MovePlayer(EnumPlayerTag tag, Vector3 newPosition, bool reEnableGravity = true) {
         if (!Players.ContainsKey(tag)) return;
         GameObject player = Players[tag];
-        player.GetComponent<PlayerController>().MovePlayer(newPosition);
+        player.GetComponent<PlayerController>().MovePlayer(newPosition, reEnableGravity);
     }
 
     public List<EnumPlayerTag> GetPlayersOrderByScore() => GetPlayersOrderByScoreWithScore().Select(x => x.tag).ToList();
@@ -118,6 +118,8 @@ public class GameManager : Singleton<GameManager> {
         // Orders the list by score
         return playersOrderByScore.OrderByDescending(x => x.score).ToList();
     }
+
+    public void ScoreScene() => SceneManager.LoadScene("EndGame");
 
     //Einar
     public void GameModeSelect() {

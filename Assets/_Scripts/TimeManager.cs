@@ -1,9 +1,9 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class TimeManager : MonoBehaviour
-{
+public class TimeManager : MonoBehaviour {
     //A bunch of other variables
     bool stopWatchActive = false;
     float currentTime;
@@ -15,9 +15,8 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private AudioClip gameOverSFX;
 
     // Start is called before the first frame update
-    public void Start()
-    {
-     
+    public void Start() {
+
 
         stopWatchActive = true;
 
@@ -26,21 +25,18 @@ public class TimeManager : MonoBehaviour
 
     }
 
-    public void FixedUpdate()
-    {
-        if (stopWatchActive == true)
-        {
-            if (currentTime > 0) 
-            {
+    public void FixedUpdate() {
+        if (stopWatchActive == true) {
+            if (currentTime > 0) {
                 currentTime -= Time.deltaTime;
 
-            }
-            else
-            {
+            } else {
                 SoundEffectManager.Instance.PlaySoundFXClip(gameOverSFX, transform, 1f);
                 stopWatchActive = false;
                 restartMenu.SetActive(true);
                 Time.timeScale = 0;
+
+                StartCoroutine(DelayLoade());
             }
         }
 
@@ -48,14 +44,17 @@ public class TimeManager : MonoBehaviour
         currentTimeText.text = "Time left: " + time.ToString(@"mm\:ss\.ff");
     }
 
-    public void StartStopWatch()
-    {
+    private IEnumerator DelayLoade() {
+        yield return new WaitForSecondsRealtime(1);
+        GameManager.Instance.ScoreScene();
+    }
+
+    public void StartStopWatch() {
         stopWatchActive = true;
 
     }
 
-    public void StopStopWatch()
-    {
+    public void StopStopWatch() {
         stopWatchActive = false;
     }
 }

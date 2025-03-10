@@ -15,6 +15,7 @@ public class PlayerManager : MonoBehaviour {
         GameManager.Instance.SpawnPoint = _spawnPosition;
     }
     public void OnPlayerJoined(PlayerInput playerInput) {
+        if (GameManager.Instance.Players.ContainsValue(playerInput.gameObject)) return;
         PlayerController playerController = playerInput.gameObject.GetComponent<PlayerController>();
         playerController.DisableGravity();
         playerInput.gameObject.transform.parent.transform.position = _spawnPosition.position;
