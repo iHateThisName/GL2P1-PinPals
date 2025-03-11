@@ -26,7 +26,7 @@ public class GameManager : Singleton<GameManager> {
         this.IsPaused = true;
         Time.timeScale = 0;
     }
-    private void ResumeGame() {
+    public void ResumeGame() {
         IsPaused = false;
         Time.timeScale = 1;
     }
@@ -73,6 +73,7 @@ public class GameManager : Singleton<GameManager> {
         DeleteAllPlayers();
         Helper.GameReset();
         ResumeGame();
+        PlayerSettings.IsLandscape = true;
         SceneManager.LoadScene("StartScreen");
     }
 
@@ -126,9 +127,19 @@ public class GameManager : Singleton<GameManager> {
         SceneManager.LoadScene("GameModeSelect");
     }
 
+    public void ProtoTypeLVL()
+    {
+        SceneManager.LoadScene("Level 01, LasVegas");
+    }
+
     public void EndOfGameScore() {
         SceneManager.LoadScene("EndOfGameScore");
 
+    }
+
+    public void LoadeLobbyScene()
+    {
+        SceneManager.LoadScene("Lobby");
     }
 
     public void SplitScreen() {

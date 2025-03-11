@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour {
         SceneManager.sceneLoaded -= OnSceneLoaded; // to prevent duplicate subscriptions when Awake() is called multiple times.
         SceneManager.sceneLoaded += OnSceneLoaded; // gets called every time a scene is loaded
 
-        this._respawnPosition = GameObject.FindGameObjectWithTag("SpawnPoint").transform.position;
+        //this._respawnPosition = GameObject.FindGameObjectWithTag("SpawnPoint").transform.position;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {

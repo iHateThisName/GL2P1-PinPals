@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerManager : MonoBehaviour {
 
     [SerializeField] private Transform _spawnPosition;
+    [SerializeField] private PlayerJoinManager joinManager;
     public Dictionary<EnumPlayerTag, GameObject> Players {
         get { return Helper.Players; }
         private set { Helper.Players = value; }
@@ -18,7 +19,7 @@ public class PlayerManager : MonoBehaviour {
         if (GameManager.Instance.Players.ContainsValue(playerInput.gameObject)) return;
         PlayerController playerController = playerInput.gameObject.GetComponent<PlayerController>();
         playerController.DisableGravity();
-        playerInput.gameObject.transform.parent.transform.position = _spawnPosition.position;
+        //playerInput.gameObject.transform.GetChild(0).transform.position = _spawnPosition.position;
 
         // Create a enum that represent the player tag
         EnumPlayerTag playerTag = (EnumPlayerTag)playerInput.playerIndex + 1; // PlayerIndex starts at 0
@@ -59,6 +60,8 @@ public class PlayerManager : MonoBehaviour {
         playerCamera.cullingMask = defaultCullingMask | 1 << currentLayer + 4;  // Defaultmasks + flippers
 
         GameManager.Instance.CheckCamera();
+
+        if (this.joinManager != null) joinManager.OnPlayerJoin();
     }
 
     public void OnPlayerLeaves(PlayerInput playerInput) {

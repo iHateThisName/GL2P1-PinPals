@@ -69,7 +69,8 @@ private void CheckPlayerReady()
         if (playersReady == GameManager.Instance.Players.Count)
         {
             //All players ready
-            SceneManager.LoadScene("Prototype");
+            SceneManager.LoadScene(PlayerSettings.SelectedLevel);
+            //GameManager.Instance.GameModeSelect();
         }
     }
 
