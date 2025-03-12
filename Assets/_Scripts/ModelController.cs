@@ -6,6 +6,7 @@ public class ModelController : MonoBehaviour {
     public Camera PinballCamera;
     public Rigidbody rb;
     public SkinController SkinManager;
+    public PlayerFollowCanvasManager PlayerFollowCanvasManager;
 
     public EnumPlayerTag GetPlayerTag() {
         if (System.Enum.TryParse(this.gameObject.tag, out EnumPlayerTag parsedTag)) {

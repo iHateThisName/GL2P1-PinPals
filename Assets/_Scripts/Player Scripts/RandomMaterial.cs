@@ -7,45 +7,40 @@ public class RandomMaterial : MonoBehaviour {
     [SerializeField] private Renderer _renderer;
     [SerializeField] private List<Material> _materials = new List<Material>();
     [field: SerializeField] public Color AssignedMaterialColor { get; private set; } = Color.white;
-    private int _currentMaterialIndex;
+    private int _currentMaterialIndex = 0;
     private int? _oldMaterialIndex = null;
 
     private void Start() {
         EnumPlayerTag tag = _modelController.GetPlayerTag();
-        int playerNumber = (int)tag;
-        Material selectedMaterial = EnsureUniqueMaterial(_materials[playerNumber - 1]);
+        this._currentMaterialIndex = (int)tag - 1;
+        EnsureUniqueMaterial();
 
-        AssaigneMaterial(selectedMaterial);
+        AssaigneMaterial();
     }
 
     /// <summary>
     /// Assaigne the selected material to the renderer and make the old material avaiable in the material pool.
     /// </summary>
-    private void AssaigneMaterial(Material selectedMaterial) {
-        if (_renderer != null && selectedMaterial != null) {
-            // Remove the old material from the used _materials list
-            //Material oldMaterial = _renderer.material;
-            if (this._oldMaterialIndex != null) {
-                Helper.UsedPinballMaterials.Remove(_materials[_oldMaterialIndex.Value]);
-            }
-
-            // Assign the new material to the renderer
-            //_renderer.material = selectedMaterial;
-            _renderer.material = _materials[this._currentMaterialIndex];
-            // Add the new material to the used materials list
-            Helper.UsedPinballMaterials.Add(_materials[this._currentMaterialIndex]);
-            // Update the current color varibale
-            AssignedMaterialColor = selectedMaterial.color;
-        } else {
-            Debug.LogError("No Renderer found on the spawned object! Or missing material");
+    private void AssaigneMaterial() {
+        // Remove the old material from the used _materials list
+        if (this._oldMaterialIndex != null) {
+            Helper.UsedPinballMaterials.Remove(_materials[_oldMaterialIndex.Value]);
         }
+        _renderer.material = _materials[this._currentMaterialIndex];
+        // Add the new material to the used materials list
+        Helper.UsedPinballMaterials.Add(_materials[this._currentMaterialIndex]);
+        // Update the current color varibale
+        this.AssignedMaterialColor = _materials[this._currentMaterialIndex].color;
+        this._modelController.PlayerFollowCanvasManager.UpdateTextColor();
+
     }
 
     /// <summary>
     /// Ensures the selected material is unique by checking against the used materials list.
     /// If the selected material is already used, it finds the first available material that is not used.
     /// </summary>
-    private Material EnsureUniqueMaterial(Material selectedMaterial, bool isForward = true) {
+    private void EnsureUniqueMaterial(bool isForward = true) {
+        Material selectedMaterial = _materials[this._currentMaterialIndex];
         int startIndex = this._currentMaterialIndex;
         while (true) {
 
@@ -67,19 +62,18 @@ public class RandomMaterial : MonoBehaviour {
                 break;
             }
         }
-        return selectedMaterial;
     }
 
     /// <summary>
     /// Changes the material to the material that is next in the material pool.
     /// </summary>
     public void SelectNext() {
-        Material newMaterial = EnsureUniqueMaterial(this._materials[this._currentMaterialIndex]);
-        AssaigneMaterial(newMaterial);
+        EnsureUniqueMaterial();
+        AssaigneMaterial();
     }
 
     public void SelectPrevious() {
-        Material newMaterial = EnsureUniqueMaterial(this._materials[this._currentMaterialIndex], false);
-        AssaigneMaterial(newMaterial);
+        EnsureUniqueMaterial(false);
+        AssaigneMaterial();
     }
 }

@@ -341,7 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78e7328fc3834be4fa39d0c3cff58973, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 4961145634058551747}
+  _modelController: {fileID: 892508445826378785}
   playerText: {fileID: 6035488474796225482}
   powerUpDisplayer: {fileID: 8053113178898787215}
   _multi: {fileID: 21300000, guid: a0d3c98e13b19134e8eb1742e08b5255, type: 3}
@@ -2351,7 +2351,8 @@ MonoBehaviour:
   PlayerPowerController: {fileID: 7959744348756883238}
   PinballCamera: {fileID: 4053685851871766715}
   rb: {fileID: 8612455253610265624}
-  SkinManager: {fileID: 0}
+  SkinManager: {fileID: 406204430842103593}
+  PlayerFollowCanvasManager: {fileID: 3793734590544800575}
 --- !u!23 &5054593778753860329 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5573145829542570709, guid: 2235eda53ed1846459cdf2880e817167, type: 3}

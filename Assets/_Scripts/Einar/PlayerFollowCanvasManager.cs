@@ -1,51 +1,26 @@
-using UnityEngine;
 using TMPro;
-using NUnit.Framework;
-using System.Collections.Generic;
-public class PlayerFollowCanvasManager : MonoBehaviour
-{
-    [SerializeField] GameObject player;
+using UnityEngine;
+public class PlayerFollowCanvasManager : MonoBehaviour {
+    [SerializeField] private ModelController _modelController;
     [SerializeField] TMP_Text playerText;
-    //[SerializeField] Vector3 textOffset = new Vector3 (0, 0, 3);
     [SerializeField] public GameObject powerUpDisplayer;
-    //[SerializeField] private EnumPowerUp powerUps;
     [SerializeField] private Sprite _multi, _shrink, _grow, _freeze, _bomb;
-    //public EnumPlayerTag playerTag { get; private set; }
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private RandomMaterial randomMaterial;
-    private void Start()
-    {
+    private void Start() {
+        EnumPlayerTag tag = _modelController.GetPlayerTag();
+        playerText.text = "P" + (int)tag;
         playerText.color = randomMaterial.AssignedMaterialColor;
-        //playerText.text = $"{player.tag}";
-        string firstChar = player.tag.Substring(0, 1);
-        string lastChar = player.tag.Substring(player.tag.Length - 1);
-        //int lastInt = int.Parse(lastChar);
-
-        //playerText.text = $"{firstChar}{lastChar}";
-        playerText.text = firstChar + lastChar;
-        //if (System.Enum.TryParse(player.tag, out EnumPlayerTag parsedTag))
-        //{
-        //    playerTag = parsedTag;
-        //    playerText.text = $"{player.tag}";
-        //}
-        //else
-        //{
-        //    //Debug.LogError($"Invalid player tag: {player.tag}");
-        //}
     }
 
-    //void FixedUpdate()
-    //{
-    //    if (playerTransform != null)
-    //    {
-    //        transform.position = playerTransform.position + textOffset;
-    //    }
-    //}
+    public void UpdateTextColor() {
+        EnumPlayerTag tag = _modelController.GetPlayerTag();
+        playerText.text = "P" + (int)tag;
+        playerText.color = randomMaterial.AssignedMaterialColor;
+    }
 
-    public void DisplayPower(EnumPowerUp powerUp)
-    {
-        switch (powerUp)
-        {
+    public void DisplayPower(EnumPowerUp powerUp) {
+        switch (powerUp) {
             case EnumPowerUp.None:
                 DisableSprite();
                 break;
@@ -81,14 +56,12 @@ public class PlayerFollowCanvasManager : MonoBehaviour
         }
     }
 
-    public void MultiBallSprite()
-    {
+    public void MultiBallSprite() {
         spriteRenderer.sprite = _multi;
         powerUpDisplayer.SetActive(true);
     }
 
-    public void DisableSprite()
-    {
+    public void DisableSprite() {
         spriteRenderer.sprite = null;
         powerUpDisplayer.SetActive(false);
     }
