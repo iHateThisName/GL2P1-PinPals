@@ -1975,14 +1975,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6282f05cbd3ef4c4d975077048de50a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skins:
-  - {fileID: 2100000, guid: 3e77ad391b838ce469b308de6e485883, type: 2}
-  - {fileID: 2100000, guid: c82b95b7c5474ef41b439485da8d1610, type: 2}
-  - {fileID: 2100000, guid: 186b245bdf1659e4b8e194ad4d2ac6d2, type: 2}
-  - {fileID: 2100000, guid: f4cad542a51de7e40b970d089ba4837f, type: 2}
-  playerSkin: {fileID: 915640268}
-  _renderer: {fileID: 0}
   skinSelectCanvas: {fileID: 0}
+  _randomMaterial: {fileID: 0}
   _ready: 0
 --- !u!4 &915640270
 Transform:
@@ -2584,10 +2578,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1280, y: 720}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3

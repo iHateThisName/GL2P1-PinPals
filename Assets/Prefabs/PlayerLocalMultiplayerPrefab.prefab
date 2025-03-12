@@ -64,6 +64,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6546953913428681944}
   - component: {fileID: 9181202385213379463}
+  - component: {fileID: 406204430842103593}
   m_Layer: 0
   m_Name: ColorManager
   m_TagString: Untagged
@@ -98,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66b9edd12a2a1104fad11ea99db4d798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 4961145634058551747}
+  _modelController: {fileID: 892508445826378785}
   _renderer: {fileID: 5054593778753860329}
   _materials:
   - {fileID: 2100000, guid: f4cad542a51de7e40b970d089ba4837f, type: 2}
@@ -107,6 +108,21 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 186b245bdf1659e4b8e194ad4d2ac6d2, type: 2}
   - {fileID: 2100000, guid: 654bd8b3f239d9348a677ca7ad3b4cb2, type: 2}
   <AssignedMaterialColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &406204430842103593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54135105115536068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6282f05cbd3ef4c4d975077048de50a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinSelectCanvas: {fileID: 3923069096953147311}
+  _randomMaterial: {fileID: 9181202385213379463}
+  _ready: 0
 --- !u!1 &911007134803074187
 GameObject:
   m_ObjectHideFlags: 0
@@ -728,8 +744,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5679655579077390767}
-        m_TargetAssemblyTypeName: SkinManager, Assembly-CSharp
+      - m_Target: {fileID: 406204430842103593}
+        m_TargetAssemblyTypeName: SkinController, Assembly-CSharp
         m_MethodName: NextOption
         m_Mode: 1
         m_Arguments:
@@ -997,8 +1013,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5679655579077390767}
-        m_TargetAssemblyTypeName: SkinManager, Assembly-CSharp
+      - m_Target: {fileID: 406204430842103593}
+        m_TargetAssemblyTypeName: SkinController, Assembly-CSharp
         m_MethodName: StartButton
         m_Mode: 1
         m_Arguments:
@@ -1160,59 +1176,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!1 &4058970057182605317
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7381161082842442681}
-  - component: {fileID: 5679655579077390767}
-  m_Layer: 0
-  m_Name: SkinManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7381161082842442681
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4058970057182605317}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 847.02234, y: 560.82465, z: 5.2794895}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1552546545278071964}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5679655579077390767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4058970057182605317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6282f05cbd3ef4c4d975077048de50a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skins:
-  - {fileID: 2100000, guid: 3e77ad391b838ce469b308de6e485883, type: 2}
-  - {fileID: 2100000, guid: c82b95b7c5474ef41b439485da8d1610, type: 2}
-  - {fileID: 2100000, guid: 186b245bdf1659e4b8e194ad4d2ac6d2, type: 2}
-  - {fileID: 2100000, guid: f4cad542a51de7e40b970d089ba4837f, type: 2}
-  playerSkin: {fileID: 4961145634058551747}
-  _renderer: {fileID: 5054593778753860329}
-  skinSelectCanvas: {fileID: 3923069096953147311}
-  _ready: 0
 --- !u!1 &5817070407590177593
 GameObject:
   m_ObjectHideFlags: 0
@@ -1334,8 +1297,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5679655579077390767}
-        m_TargetAssemblyTypeName: SkinManager, Assembly-CSharp
+      - m_Target: {fileID: 406204430842103593}
+        m_TargetAssemblyTypeName: SkinController, Assembly-CSharp
         m_MethodName: PreviosOption
         m_Mode: 1
         m_Arguments:
@@ -1382,7 +1345,6 @@ Transform:
   - {fileID: 10661754248524035}
   - {fileID: 6546953913428681944}
   - {fileID: 9073190334930463718}
-  - {fileID: 7381161082842442681}
   - {fileID: 5476985577591745857}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2389,7 +2351,7 @@ MonoBehaviour:
   PlayerPowerController: {fileID: 7959744348756883238}
   PinballCamera: {fileID: 4053685851871766715}
   rb: {fileID: 8612455253610265624}
-  SkinManager: {fileID: 5679655579077390767}
+  SkinManager: {fileID: 0}
 --- !u!23 &5054593778753860329 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5573145829542570709, guid: 2235eda53ed1846459cdf2880e817167, type: 3}

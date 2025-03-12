@@ -5,6 +5,7 @@
 /// To get the tag as string use Enum.GetName(typeof(EnumPlayerTag), EnumPlayerTag.Player01) or EnumPlayerTag.Player01.ToString()
 /// </summary>
 public enum EnumPlayerTag {
+    None = 0,
     Player01 = 1,
     Player02 = 2,
     Player03 = 3,
