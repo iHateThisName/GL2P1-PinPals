@@ -9,6 +9,11 @@ public class PowerUp : MonoBehaviour {
         power = (EnumPowerUp)Random.Range(1, 6);
     }
 
+    void Update()
+    {
+        transform.localRotation = Quaternion.Euler(45f, Time.time * 100f, 45f);
+    }
+
     public IEnumerator OnTriggerEnter(Collider player) {
         PlayerPowerController playerPowerController = player.gameObject.GetComponent<ModelController>().PlayerPowerController;
         MeshRenderer meshRenderer = gameObject.GetComponent<MeshRenderer>();
