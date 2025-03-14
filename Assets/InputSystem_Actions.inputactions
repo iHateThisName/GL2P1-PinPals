@@ -33,6 +33,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "InteractHold",
+                    "type": "Button",
+                    "id": "c477aa83-15e6-451b-b815-4d74593b4d08",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "FlipperLeft",
                     "type": "Button",
                     "id": "9ea774c8-30d6-44be-aded-9027ab54a8e8",
@@ -309,6 +318,39 @@
                     "processors": "",
                     "groups": ";Joystick",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fca2251c-ad5a-4c13-b1c9-dcfbb7e174c1",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "InteractHold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dca0db86-e463-4d37-a6a8-9b57f833264a",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "InteractHold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f170bf3c-ecee-4128-85ad-97cd54137e3b",
+                    "path": "<HID:: THEC64 Joystick     THEC64 Joystick   >/button4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Joystick",
+                    "action": "InteractHold",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

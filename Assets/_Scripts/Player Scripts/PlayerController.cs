@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -9,10 +10,13 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float _playerSpeed = 2.0f;
     [SerializeField] private Rigidbody _ballRigidbody;
     [SerializeField] private RandomMaterial randomMaterial;
+    [SerializeField] private ModelController _modelController;
     private List<FlipperController> _leftFlipperController;
     private List<FlipperController> _rightFlipperController;
 
     private Vector3 _respawnPosition;
+
+    public bool IsHoldingInteraction = false;
 
     // Input Actions Varibals
     private Vector2 _movementInput = Vector2.zero;
@@ -23,6 +27,14 @@ public class PlayerController : MonoBehaviour {
 
         //this._respawnPosition = GameObject.FindGameObjectWithTag("SpawnPoint").transform.position;
     }
+    private void Start() {
+        if (_ballRigidbody == null) Debug.LogWarning("Ball Rigidbody is not assigned! Please assign it in the inspector.");
+        AssignFlippers();
+    }
+
+    void FixedUpdate() {
+        _ballRigidbody.AddTorque(new Vector3(this._movementInput.y, 0, -this._movementInput.x) * _playerSpeed, ForceMode.Force);
+    }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
         if (scene.name.StartsWith("Pro") || scene.name.StartsWith("Level")) {
@@ -32,10 +44,6 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    private void Start() {
-        if (_ballRigidbody == null) Debug.LogWarning("Ball Rigidbody is not assigned! Please assign it in the inspector.");
-        AssignFlippers();
-    }
 
     private void AssignFlippers() {
         GameObject[] leftFlippers = GameObject.FindGameObjectsWithTag(tag: "LeftFlipper");
@@ -98,6 +106,13 @@ public class PlayerController : MonoBehaviour {
             AllFlipRight(false);
         }
     }
+    public void OnHoldInteraction(InputAction.CallbackContext context) {
+        if (context.phase == InputActionPhase.Performed) {
+            this.IsHoldingInteraction = true;
+        } else if (context.phase == InputActionPhase.Canceled) {
+            this.IsHoldingInteraction = false;
+        }
+    }
 
     private void AllFlipLeft(bool isFlipping) {
         foreach (FlipperController flipper in _leftFlipperController) {
@@ -109,10 +124,6 @@ public class PlayerController : MonoBehaviour {
         foreach (FlipperController flipper in _rightFlipperController) {
             flipper.IsFlipping = isFlipping;
         }
-    }
-
-    void FixedUpdate() {
-        _ballRigidbody.AddTorque(new Vector3(this._movementInput.y, 0, -this._movementInput.x) * _playerSpeed, ForceMode.Force);
     }
 
     public void DisableGravity() {

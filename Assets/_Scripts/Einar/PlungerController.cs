@@ -15,6 +15,7 @@ public class PlungerController : MonoBehaviour
     private bool isReturning = false; // Flag to check if the plunger is returning to the original position
     private Collider plungerCollider; // The collider attached to the plunger to detect nearby objects
 
+    [SerializeField] private EnumPlayerTag AssignedPlayer; // The player assigned to this plunger
     private void Start()
     {
         // Get the collider of the plunger
@@ -47,6 +48,12 @@ public class PlungerController : MonoBehaviour
         if (Vector3.Distance(transform.position, retractPosition) > 0.1f && Vector3.Distance(transform.position, originalPosition) > 0.1f)
         {
             ApplySpringDamperForce();
+        }
+
+        if (GameManager.Instance.IsPlayerHoldingInteraction(this.AssignedPlayer)) {
+            // The player is holding the interaction button
+        } else {
+            // The player stopped holding the interaction button
         }
     }
 

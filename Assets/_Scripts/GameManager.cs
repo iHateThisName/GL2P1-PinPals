@@ -121,6 +121,7 @@ public class GameManager : Singleton<GameManager> {
     }
 
     public void ScoreScene() => SceneManager.LoadScene("EndGame");
+    public bool IsPlayerHoldingInteraction(EnumPlayerTag tag) => this.Players[tag].GetComponent<PlayerController>().IsHoldingInteraction;
 
     //Einar
     public void GameModeSelect() {
