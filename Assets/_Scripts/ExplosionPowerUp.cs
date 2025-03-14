@@ -32,10 +32,18 @@ public class ExplosionPowerUp : MonoBehaviour
         if (!this._isDangerous) return;
 
         // Detect every player in the collider then respawn them
-        if (other.gameObject != _bombOwner && other.gameObject.tag.StartsWith("Player"))
+        if (other.gameObject != _bombOwner)
         {
-            other.gameObject.transform.parent.gameObject.GetComponent<PlayerController>().Respawn();
-            //Destroy(other.gameObject);
+
+            if (other.gameObject.tag.StartsWith("Player"))
+            {
+                other.gameObject.transform.parent.gameObject.GetComponent<PlayerController>().Respawn();
+                //Destroy(other.gameObject);
+            }
+            if (other.gameObject.tag == ("Bumper"))
+            {
+                Destroy(other.gameObject);
+            }
         }
 
     }

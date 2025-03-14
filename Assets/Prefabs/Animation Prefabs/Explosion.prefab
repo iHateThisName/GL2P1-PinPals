@@ -4902,6 +4902,7 @@ GameObject:
   - component: {fileID: 3986653184329975516}
   - component: {fileID: 4573481244689478336}
   - component: {fileID: 7014195955268076313}
+  - component: {fileID: 7257299812147351816}
   m_Layer: 0
   m_Name: Explosion
   m_TagString: Untagged
@@ -4963,6 +4964,33 @@ MonoBehaviour:
   explosionEffect: {fileID: 688909044655700521}
   _bombTickSFX: {fileID: 8300000, guid: 21540b065ccc70540b41fae02e00f850, type: 3}
   _bombExplodeSFX: {fileID: 8300000, guid: 95c06a7de6f16b146bdf94bfb9e9bb17, type: 3}
+--- !u!54 &7257299812147351816
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837424180801165938}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5283846844331733737
 GameObject:
   m_ObjectHideFlags: 0
