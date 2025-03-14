@@ -76,4 +76,6 @@ public class RandomMaterial : MonoBehaviour {
         EnsureUniqueMaterial(false);
         AssaigneMaterial();
     }
+
+    public Material CurrentMaterial() => this._materials[this._currentMaterialIndex];
 }

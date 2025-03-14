@@ -5,7 +5,7 @@ public class ModelController : MonoBehaviour {
     public PlayerPowerController PlayerPowerController;
     public Camera PinballCamera;
     public Rigidbody rb;
-    public SkinController SkinManager;
+    public SkinController SkinController;
     public PlayerFollowCanvasManager PlayerFollowCanvasManager;
 
     public EnumPlayerTag GetPlayerTag() {

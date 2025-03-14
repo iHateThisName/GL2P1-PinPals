@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SkinController : MonoBehaviour {
@@ -26,7 +27,7 @@ public class SkinController : MonoBehaviour {
         //GameManager.Instance.Players.Keys = List of EnumPlayerTag
         foreach (EnumPlayerTag tag in GameManager.Instance.Players.Keys) {
             ModelController modelController = GameManager.Instance.GetModelController(tag);
-            if (modelController.SkinManager._ready) {
+            if (modelController.SkinController._ready) {
                 playersReady++;
             } else {
                 return;
@@ -39,4 +40,7 @@ public class SkinController : MonoBehaviour {
             //GameManager.Instance.GameModeSelect();
         }
     }
+
+    public Material GetMaterial() => _randomMaterial.CurrentMaterial();
+    public Color GetColor() => _randomMaterial.AssignedMaterialColor;
 }

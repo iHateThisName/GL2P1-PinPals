@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class EndGameController : MonoBehaviour {
 
+    [Header("Pillers")]
+    [SerializeField] private GameObject simpleBall;
     [SerializeField] private Transform FirstPlacePiller, SecondPlacePiller, ThirdPlacePiller;
     [SerializeField] private TMP_Text FirstPlaceScore, SecondPlaceScore, ThirdPlaceScore;
 
-    [SerializeField] private GameObject simpleBall;
+    [Header("ScoreBoard")]
+    [SerializeField] private GameObject _scoreUIPrefab, _scoreBoard;
+
 
     private List<(EnumPlayerTag tag, int score)> playerScores;
+    private List<(EnumPlayerTag tag, Color color)> playerColors = new List<(EnumPlayerTag tag, Color color)>();
 
     private void Awake() {
         PlayerSettings.IsLandscape = false;
@@ -30,31 +35,25 @@ public class EndGameController : MonoBehaviour {
 
         // Remove all players except the top 3
         for (int i = 0; i < this.playerScores.Count; i++) {
-            //GameManager.Instance.GetPlayerController(this.playerScores[i].tag).DisableGravity();
+            EnumPlayerTag tag = this.playerScores[i].tag;
+            ModelController modelController = GameManager.Instance.GetModelController(tag);
+            Color color = modelController.SkinController.GetColor();
+            this.playerColors.Add((tag: tag, color: color));
             if (i < 3) {
-                //GameManager.Instance.GetPlayerController(this.playerScores[i].tag).DisableGravity();
-                //GameManager.Instance.GetModelController(this.playerScores[i].tag).rb.MovePosition(Vector3.zero);
-                //GameManager.Instance.GetModelController(this.playerScores[i].tag).rb.Move(FirstPlacePiller.position, Quaternion.identity);
-
-
-                //if (i == 0) GameManager.Instance.MovePlayer(this.playerScores[i].tag, newPosition: FirstPlacePiller.position, false);
-                //if (i == 1) GameManager.Instance.MovePlayer(this.playerScores[i].tag, SecondPlacePiller.position, false);
-                //if (i == 2) GameManager.Instance.MovePlayer(this.playerScores[i].tag, ThirdPlacePiller.position, false);
                 if (i == 0) {
                     GameObject simplePlayer = Instantiate(simpleBall, FirstPlacePiller.position, Quaternion.identity);
-                    simplePlayer.GetComponent<Renderer>().material = GameManager.Instance.GetModelController(this.playerScores[i].tag).gameObject.GetComponent<Renderer>().material;
+                    simplePlayer.GetComponent<Renderer>().material = modelController.SkinController.GetMaterial();
                 } else if (i == 1) {
                     GameObject simplePlayer = Instantiate(simpleBall, SecondPlacePiller.position, Quaternion.identity);
-                    simplePlayer.GetComponent<Renderer>().material = GameManager.Instance.GetModelController(this.playerScores[i].tag).gameObject.GetComponent<Renderer>().material;
+                    simplePlayer.GetComponent<Renderer>().material = modelController.SkinController.GetMaterial();
                 } else if (i == 2) {
                     GameObject simplePlayer = Instantiate(simpleBall, ThirdPlacePiller.position, Quaternion.identity);
-                    simplePlayer.GetComponent<Renderer>().material = GameManager.Instance.GetModelController(this.playerScores[i].tag).gameObject.GetComponent<Renderer>().material;
+                    simplePlayer.GetComponent<Renderer>().material = modelController.SkinController.GetMaterial();
                 }
-
-
             } else {
-                GameManager.Instance.DeletePlayer(this.playerScores[i].tag);
+                GameManager.Instance.DeletePlayer(tag);
             }
+            CreateScoreboardElement(i);
         }
         GameManager.Instance.DeleteAllPlayers();
 
@@ -62,34 +61,19 @@ public class EndGameController : MonoBehaviour {
         this.FirstPlaceScore.text = this.playerScores[0].score.ToString();
         if (this.playerScores.Count > 1) this.SecondPlaceScore.text = this.playerScores[1].score.ToString();
         if (this.playerScores.Count > 2) this.ThirdPlaceScore.text = this.playerScores[2].score.ToString();
-
-        //GameManager.Instance.CheckCamera();
     }
 
-    //private void FixedUpdate() {
-    //    this.playerScores = GameManager.Instance.GetPlayersOrderByScoreWithScore();
+    private void CreateScoreboardElement(int index) {
+        // Create the scoreboard element
+        GameObject playerScoreBoard = Instantiate(_scoreUIPrefab, Vector3.zero, Quaternion.identity);
+        playerScoreBoard.transform.SetParent(this._scoreBoard.transform, false);
 
-    //    // Remove all players except the top 3
-    //    for (int i = 0; i < this.playerScores.Count; i++) {
+        // This create a string like P01, P02, P03
+        string playerString = "Player " + playerScores[index].tag.ToString().Substring(playerScores[index].tag.ToString().Length - 2);
 
-    //        if (i < 3) {
-    //            if (i == 0) GameManager.Instance.MovePlayer(this.playerScores[i].tag, newPosition: FirstPlacePiller.position, false);
-    //            if (i == 1) GameManager.Instance.MovePlayer(this.playerScores[i].tag, SecondPlacePiller.position, false);
-    //            if (i == 2) GameManager.Instance.MovePlayer(this.playerScores[i].tag, ThirdPlacePiller.position, false);
-    //            Debug.Log("World Position: " + FirstPlacePiller.position);
-    //            GameManager.Instance.GetPlayerController(this.playerScores[i].tag).DisableGravity();
-
-    //        } else {
-    //            GameManager.Instance.DeletePlayer(this.playerScores[i].tag);
-    //        }
-    //    }
-
-    //    if (this.playerScores.Count == 0) return;
-    //    this.FirstPlaceScore.text = this.playerScores[0].score.ToString();
-    //    if (this.playerScores.Count > 1) this.SecondPlaceScore.text = this.playerScores[1].score.ToString();
-    //    if (this.playerScores.Count > 2) this.ThirdPlaceScore.text = this.playerScores[2].score.ToString();
-
-    //    GameManager.Instance.CheckCamera();
-    //}
-
+        // Stats gets added to the ui
+        ScoreUIController scoreUIController = playerScoreBoard.GetComponent<ScoreUIController>();
+        scoreUIController.SetUIText(playerString + " - " + playerScores[index].score.ToString());
+        scoreUIController.SetColor(this.playerColors[index].color);
+    }
 }
