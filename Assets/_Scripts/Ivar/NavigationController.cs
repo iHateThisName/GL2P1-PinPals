@@ -14,6 +14,7 @@ public class NavigationController : MonoBehaviour {
     public UnityEvent DeselectedEvent;
 
     [Header("Outline Settings")]
+    [SerializeField] private bool _UseOutline = true;
     [SerializeField] private GameObject _modelOutline;
     private GameObject _outlineGameObject;
     private Color _outlineColor = Color.black;
@@ -32,8 +33,10 @@ public class NavigationController : MonoBehaviour {
         }
 
         // Outline Listeners
-        this.NavigatedEvent.AddListener(() => EnableOutline());
-        this.DeselectedEvent.AddListener(() => DisableOutline());
+        if (this._UseOutline) {
+            this.NavigatedEvent.AddListener(() => EnableOutline());
+            this.DeselectedEvent.AddListener(() => DisableOutline());
+        }
     }
 
     private void SetUp() {

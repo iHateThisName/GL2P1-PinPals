@@ -14,6 +14,7 @@ public class NavigationManager : Singleton<NavigationManager> {
     private Vector2Int _currentPosition;
 
     private Dictionary<Vector2Int, NavigationController> navigationGrid = new Dictionary<Vector2Int, NavigationController>();
+    public bool LockedNavigation = false;
 
     private void Start() {
 
@@ -56,6 +57,7 @@ public class NavigationManager : Singleton<NavigationManager> {
         _selectInput.Disable();
     }
     private void OnMovePerformed(InputAction.CallbackContext context) {
+        if (this.LockedNavigation) return; // Not allowed to move
         Vector2 move = context.ReadValue<Vector2>();
         Vector2Int direction = Vector2Int.zero;
 
@@ -77,6 +79,8 @@ public class NavigationManager : Singleton<NavigationManager> {
         }
     }
     private void OnSelectPerformed(InputAction.CallbackContext context) {
+        if (this.LockedNavigation) return; // Not allowed to select
+
         if (navigationGrid.ContainsKey(this._currentPosition)) {
             navigationGrid[this._currentPosition].SelectedEvent.Invoke();
         }

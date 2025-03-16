@@ -22,6 +22,8 @@ public class ArcadeMachineController : MonoBehaviour {
     private InputAction _cancel;
     private CinemachineBrain _cinemachineBrain;
 
+    [SerializeField] private bool _isLogEnabled = false;
+
     private void Start() {
         this._cancel = InputSystem.actions.FindAction("Cancel");
         this._cancel.performed += ctx => OnCancel();
@@ -33,8 +35,21 @@ public class ArcadeMachineController : MonoBehaviour {
             OnMouseDown();
         }
     }
-    private void OnMouseEnter() {
-        Debug.Log("OnMouseEnter, Hovered over: " + gameObject.name);
+
+    public void NavigationEvent() {
+        OnMouseEnter();
+    }
+
+    public void SelectedEvent() {
+        OnMouseDown();
+        NavigationManager.Instance.LockedNavigation = true; // Lock Navigation
+    }
+    public void DeselectedEvent() {
+        OnMouseExit();
+    }
+
+    public void OnMouseEnter() {
+        if (this._isLogEnabled) Debug.Log("OnMouseEnter, Hovered over: " + gameObject.name);
         if (_isSelected) return;
 
         OnHover?.Invoke();
@@ -43,8 +58,8 @@ public class ArcadeMachineController : MonoBehaviour {
         _canvas.SetActive(true);
     }
 
-    private void OnMouseExit() {
-        Debug.Log("OnMouseExit, No longer hovering over: " + gameObject.name);
+    public void OnMouseExit() {
+        if (this._isLogEnabled) Debug.Log("OnMouseExit, No longer hovering over: " + gameObject.name);
         if (_isSelected) return;
 
         OnHoverExit?.Invoke();
@@ -53,7 +68,7 @@ public class ArcadeMachineController : MonoBehaviour {
         _canvas.SetActive(false);
     }
     private void OnMouseDown() {
-        Debug.Log("OnMouseDown, Selected: " + gameObject.name);
+        if (this._isLogEnabled) Debug.Log("OnMouseDown, Selected: " + gameObject.name);
         if (_isSelected) return;
 
         OnSelect?.Invoke();
@@ -66,7 +81,7 @@ public class ArcadeMachineController : MonoBehaviour {
     }
 
     private void OnCancel() {
-        Debug.Log("OnCancel, Deselected: " + gameObject.name);
+        if (this._isLogEnabled) Debug.Log("OnCancel, Deselected: " + gameObject.name);
         if (!_isSelected) return;
         OnDeselect?.Invoke();
         _isSelected = false;
@@ -74,6 +89,8 @@ public class ArcadeMachineController : MonoBehaviour {
         _spotLight.SetActive(false);
         _cinemachineCamera.SetActive(false);
         _screenMeshRenderer.material = _screenOffMaterial;
+
+        NavigationManager.Instance.LockedNavigation = false; // Unlock Navigation
     }
 
     private IEnumerator WaitForBlendToFinish() {
