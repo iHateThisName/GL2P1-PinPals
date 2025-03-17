@@ -57,8 +57,8 @@ public class LauncerThingieScript : MonoBehaviour
             // Initialize the projectile's velocity manually by updating its position each frame
             StartCoroutine(MoveProjectile(projectile, fireDirection));
 
-            // Optionally, destroy the projectile after a certain amount of time (to avoid clutter)
-            Destroy(projectile, 5f); // 5 seconds before the projectile is destroyed
+            // Destroy the projectile after 15 seconds (changed from 5 seconds)
+            Destroy(projectile, 15f); // 15 seconds before the projectile is destroyed
 
             // Update the last fire time
             lastFireTime = Time.time;
