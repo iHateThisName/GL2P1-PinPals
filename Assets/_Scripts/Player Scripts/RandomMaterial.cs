@@ -18,6 +18,8 @@ public class RandomMaterial : MonoBehaviour {
         AssaigneMaterial();
     }
 
+    public ModelController GetModelController() => this._modelController;
+
     /// <summary>
     /// Assaigne the selected material to the renderer and make the old material avaiable in the material pool.
     /// </summary>

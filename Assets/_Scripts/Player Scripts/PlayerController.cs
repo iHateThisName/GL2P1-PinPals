@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,11 @@ public class PlayerController : MonoBehaviour {
     // Input Actions Varibals
     private Vector2 _movementInput = Vector2.zero;
 
+    private EnumPlayerTag _tag = EnumPlayerTag.None;
+    private NavigationManager _navigationManager;
+
+
+
     private void Awake() {
         SceneManager.sceneLoaded -= OnSceneLoaded; // to prevent duplicate subscriptions when Awake() is called multiple times.
         SceneManager.sceneLoaded += OnSceneLoaded; // gets called every time a scene is loaded
@@ -29,8 +35,33 @@ public class PlayerController : MonoBehaviour {
     }
     private void Start() {
         if (_ballRigidbody == null) Debug.LogWarning("Ball Rigidbody is not assigned! Please assign it in the inspector.");
-        AssignFlippers();
+        AssigneFlippers();
+        AssigneNavigationManager();
     }
+
+    private void AssigneNavigationManager() {
+        this._tag = _modelController.GetPlayerTag();
+        this._navigationManager = GameManager.Instance.PlayerNavigations[this._tag];
+
+        if (this._navigationManager != null) {
+            this._navigationManager.SetSkinController(_modelController.SkinController);
+
+            PlayerInput playerInput = this.gameObject.GetComponent<PlayerInput>();
+            this._navigationManager.RegisterPlayerInput(playerInput.actions.FindAction("Move"), playerInput.actions.FindAction("Interact"));
+        }
+    }
+
+    //public void NavigationOnMovePerformed(InputAction.CallbackContext context) {
+    //    if (this._navigationManager != null) {
+    //        this._navigationManager.OnMovePerformed(context);
+    //    }
+    //}
+
+    //public void NavigationOnSelectPerformed(InputAction.CallbackContext context) {
+    //    if (this._navigationManager != null) {
+    //        this._navigationManager.OnSelectPerformed(context);
+    //    }
+    //}
 
     void FixedUpdate() {
         _ballRigidbody.AddTorque(new Vector3(this._movementInput.y, 0, -this._movementInput.x) * _playerSpeed, ForceMode.Force);
@@ -38,14 +69,14 @@ public class PlayerController : MonoBehaviour {
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
         if (scene.name.StartsWith("Pro") || scene.name.StartsWith("Level")) {
-            AssignFlippers();
+            AssigneFlippers();
         } else {
             SceneManager.sceneLoaded -= OnSceneLoaded;
         }
     }
 
 
-    private void AssignFlippers() {
+    private void AssigneFlippers() {
         GameObject[] leftFlippers = GameObject.FindGameObjectsWithTag(tag: "LeftFlipper");
         GameObject[] rightFlippers = GameObject.FindGameObjectsWithTag(tag: "RightFlipper");
         _leftFlipperController = new List<FlipperController>();

@@ -1,10 +1,16 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SkinController : MonoBehaviour {
     [SerializeField] private GameObject skinSelectCanvas;
     [SerializeField] private RandomMaterial _randomMaterial;
+    private EnumPlayerTag _playerTag;
+    private NavigationManager _navigationManager;
     public bool _ready;
+
+    private void Start() {
+        this._playerTag = _randomMaterial.GetModelController().GetPlayerTag();
+        this._navigationManager = GameManager.Instance.PlayerNavigations[this._playerTag];
+    }
 
     public void NextOption() {
         _randomMaterial.SelectNext();
@@ -37,7 +43,6 @@ public class SkinController : MonoBehaviour {
         if (playersReady == GameManager.Instance.Players.Count) {
             //All players ready
             SceneManager.LoadScene(PlayerSettings.SelectedLevel);
-            //GameManager.Instance.GameModeSelect();
         }
     }
 

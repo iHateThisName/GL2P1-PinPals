@@ -245,7 +245,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d4ff4d159dbaa04a820fc36f5b4e187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _navigationManager: {fileID: 0}
   gridPosition: {x: 0, y: 0}
+  _isLogEnabled: 0
   NavigatedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -255,6 +257,7 @@ MonoBehaviour:
   DeselectedEvent:
     m_PersistentCalls:
       m_Calls: []
+  _UseOutline: 1
   _modelOutline: {fileID: 0}
   _colorAlpha: 50
   _outlineSize: 0.1
@@ -514,7 +517,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d4ff4d159dbaa04a820fc36f5b4e187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _navigationManager: {fileID: 1161676468}
   gridPosition: {x: -1, y: 0}
+  _isLogEnabled: 0
   NavigatedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -524,6 +529,7 @@ MonoBehaviour:
   DeselectedEvent:
     m_PersistentCalls:
       m_Calls: []
+  _UseOutline: 1
   _modelOutline: {fileID: 748437218}
   _colorAlpha: 0.2
   _outlineSize: 0.1
@@ -557,7 +563,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d4ff4d159dbaa04a820fc36f5b4e187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _navigationManager: {fileID: 0}
   gridPosition: {x: 0, y: 0}
+  _isLogEnabled: 0
   NavigatedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -567,6 +575,7 @@ MonoBehaviour:
   DeselectedEvent:
     m_PersistentCalls:
       m_Calls: []
+  _UseOutline: 1
   _modelOutline: {fileID: 0}
   _colorAlpha: 50
   _outlineSize: 0.1
@@ -616,7 +625,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d4ff4d159dbaa04a820fc36f5b4e187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _navigationManager: {fileID: 0}
   gridPosition: {x: 0, y: 0}
+  _isLogEnabled: 0
   NavigatedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -626,6 +637,7 @@ MonoBehaviour:
   DeselectedEvent:
     m_PersistentCalls:
       m_Calls: []
+  _UseOutline: 1
   _modelOutline: {fileID: 0}
   _colorAlpha: 50
   _outlineSize: 0.1
@@ -783,7 +795,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d4ff4d159dbaa04a820fc36f5b4e187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _navigationManager: {fileID: 0}
   gridPosition: {x: 0, y: 0}
+  _isLogEnabled: 0
   NavigatedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -793,6 +807,7 @@ MonoBehaviour:
   DeselectedEvent:
     m_PersistentCalls:
       m_Calls: []
+  _UseOutline: 1
   _modelOutline: {fileID: 0}
   _colorAlpha: 50
   _outlineSize: 0.1
@@ -999,7 +1014,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d4ff4d159dbaa04a820fc36f5b4e187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _navigationManager: {fileID: 1161676468}
   gridPosition: {x: 1, y: 0}
+  _isLogEnabled: 0
   NavigatedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1009,6 +1026,7 @@ MonoBehaviour:
   DeselectedEvent:
     m_PersistentCalls:
       m_Calls: []
+  _UseOutline: 1
   _modelOutline: {fileID: 935030785}
   _colorAlpha: 0.2
   _outlineSize: 0.1
@@ -1235,6 +1253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startPosition: {x: 0, y: 0}
+  LockedNavigation: 0
 --- !u!1 &1279232231
 GameObject:
   m_ObjectHideFlags: 0
@@ -1280,7 +1299,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d4ff4d159dbaa04a820fc36f5b4e187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _navigationManager: {fileID: 1161676468}
   gridPosition: {x: 0, y: 0}
+  _isLogEnabled: 0
   NavigatedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1290,6 +1311,7 @@ MonoBehaviour:
   DeselectedEvent:
     m_PersistentCalls:
       m_Calls: []
+  _UseOutline: 1
   _modelOutline: {fileID: 1159646902}
   _colorAlpha: 0.2
   _outlineSize: 0.1
@@ -1394,7 +1416,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d4ff4d159dbaa04a820fc36f5b4e187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _navigationManager: {fileID: 1161676468}
   gridPosition: {x: 0, y: 1}
+  _isLogEnabled: 0
   NavigatedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1404,6 +1428,7 @@ MonoBehaviour:
   DeselectedEvent:
     m_PersistentCalls:
       m_Calls: []
+  _UseOutline: 1
   _modelOutline: {fileID: 1953578278}
   _colorAlpha: 0.2
   _outlineSize: 0.1
@@ -1616,7 +1641,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d4ff4d159dbaa04a820fc36f5b4e187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _navigationManager: {fileID: 1161676468}
   gridPosition: {x: 0, y: -1}
+  _isLogEnabled: 0
   NavigatedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1626,6 +1653,7 @@ MonoBehaviour:
   DeselectedEvent:
     m_PersistentCalls:
       m_Calls: []
+  _UseOutline: 1
   _modelOutline: {fileID: 345765102}
   _colorAlpha: 0.2
   _outlineSize: 0.1
@@ -2184,7 +2212,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d4ff4d159dbaa04a820fc36f5b4e187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _navigationManager: {fileID: 0}
   gridPosition: {x: 0, y: 0}
+  _isLogEnabled: 0
   NavigatedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -2194,6 +2224,7 @@ MonoBehaviour:
   DeselectedEvent:
     m_PersistentCalls:
       m_Calls: []
+  _UseOutline: 1
   _modelOutline: {fileID: 0}
   _colorAlpha: 50
   _outlineSize: 0.1

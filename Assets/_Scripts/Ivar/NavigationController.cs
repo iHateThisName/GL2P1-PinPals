@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class NavigationController : MonoBehaviour {
 
     [Header("Grid Position")]
+    [SerializeField] private NavigationManager _navigationManager;
     public Vector2Int gridPosition;
     [SerializeField] private bool _isLogEnabled = false;
 
@@ -17,7 +18,6 @@ public class NavigationController : MonoBehaviour {
     [SerializeField] private bool _UseOutline = true;
     [SerializeField] private GameObject _modelOutline;
     private GameObject _outlineGameObject;
-    private Color _outlineColor = Color.black;
     [SerializeField, Range(0f, 1f)] private float _colorAlpha = 0.2f;
     [SerializeField] private float _outlineSize = 0.1f;
     [SerializeField] private Material _outlineBaseMaterial;
@@ -37,15 +37,19 @@ public class NavigationController : MonoBehaviour {
             this.NavigatedEvent.AddListener(() => EnableOutline());
             this.DeselectedEvent.AddListener(() => DisableOutline());
         }
+
+        UpdateOutlineMaterialColor();
+
     }
 
     private void SetUp() {
-        NavigationManager.Instance.RegisterObject(gridPosition, this); // Register in the NavigationManager
+        _navigationManager.RegisterObject(gridPosition, this); // Register in the NavigationManager
         if (this._modelOutline == null) this._modelOutline = this.gameObject; // If no outline is set, use the object itself
     }
 
     public void EnableOutline() {
         if (this._outlineGameObject == null || !this._outlineGameObject) {
+            if (CheckForOutlineGameobject(true)) return;
             this._outlineGameObject = Instantiate(_modelOutline, transform.position, transform.rotation, transform);
             this._outlineGameObject.name = "Outline" + this._modelOutline.name;
             Vector3 worldScale = _modelOutline.transform.lossyScale * (1 + _outlineSize);
@@ -57,19 +61,42 @@ public class NavigationController : MonoBehaviour {
                 worldScale.z / transform.lossyScale.z
             );
 
-            Renderer outlineRenderer = _outlineGameObject.GetComponent<Renderer>();
-            outlineRenderer.material = new Material(this._outlineBaseMaterial);
-            this._outlineColor.a = this._colorAlpha;
-            outlineRenderer.material.color = _outlineColor;
+            UpdateOutlineMaterialColor();
+            this._outlineGameObject.SetActive(true);
 
         } else {
+            UpdateOutlineMaterialColor();
             this._outlineGameObject.SetActive(true);
         }
+    }
+
+    public void UpdateOutlineMaterialColor() {
+        if (this._outlineGameObject == null) return;
+        Renderer outlineRenderer = this._outlineGameObject.GetComponent<Renderer>();
+        Color color = this._navigationManager.GetPlayerColor();
+        color.a = this._colorAlpha;
+        foreach (var material in outlineRenderer.materials) {
+            var newMaterial = new Material(this._outlineBaseMaterial);
+            newMaterial.color = color;
+            material.CopyPropertiesFromMaterial(newMaterial);
+        }
+    }
+
+    private bool CheckForOutlineGameobject(bool active) {
+        GameObject outlineGameobject = _modelOutline.transform.Find("Outline" + _modelOutline.name)?.gameObject;
+        if (outlineGameobject != null) {
+            this._outlineGameObject = outlineGameobject;
+            this._outlineGameObject.SetActive(active);
+            return true;
+        }
+        return false;
     }
 
     public void DisableOutline() {
         if (this._outlineGameObject != null) {
             this._outlineGameObject.SetActive(false);
+        } else {
+            CheckForOutlineGameobject(false);
         }
     }
 

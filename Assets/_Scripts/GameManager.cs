@@ -15,6 +15,7 @@ public class GameManager : Singleton<GameManager> {
         private set { Helper.Players = value; }
     }
 
+    public Dictionary<EnumPlayerTag, NavigationManager> PlayerNavigations = new Dictionary<EnumPlayerTag, NavigationManager>();
 
     protected override void Awake() {
         base.Awake();

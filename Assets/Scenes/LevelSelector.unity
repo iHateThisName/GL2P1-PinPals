@@ -136,9 +136,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1180253161}
     - target: {fileID: 2087318699023741641, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: _UseOutline
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2087318699023741641, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: gridPosition.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 2087318699023741641, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: _navigationManager
+      value: 
+      objectReference: {fileID: 1037283873}
     - target: {fileID: 3500751579166363810, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1
@@ -3049,7 +3057,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startPosition: {x: 0, y: 0}
+  <_currentPosition>k__BackingField: {x: 0, y: 0}
+  IsLobbyNavigation: 0
   LockedNavigation: 0
+  _AssaigneSpecificPlayer: 0
 --- !u!43 &1045207811
 Mesh:
   m_ObjectHideFlags: 0
@@ -4578,9 +4589,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 814415395}
     - target: {fileID: 2087318699023741641, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: _UseOutline
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2087318699023741641, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: gridPosition.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2087318699023741641, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: _navigationManager
+      value: 
+      objectReference: {fileID: 1037283873}
     - target: {fileID: 3500751579166363810, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1
@@ -7115,9 +7134,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1113920846}
     - target: {fileID: 2087318699023741641, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: _UseOutline
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2087318699023741641, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: gridPosition.x
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2087318699023741641, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: _navigationManager
+      value: 
+      objectReference: {fileID: 1037283873}
     - target: {fileID: 3500751579166363810, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2
@@ -7653,6 +7680,10 @@ PrefabInstance:
       propertyPath: _UseOutline
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2087318699023741641, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: _navigationManager
+      value: 
+      objectReference: {fileID: 1037283873}
     - target: {fileID: 2087318699023741641, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: NavigatedEvent.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -9156,9 +9187,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 315843166}
     - target: {fileID: 2087318699023741641, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: _UseOutline
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2087318699023741641, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: gridPosition.x
       value: -2
       objectReference: {fileID: 0}
+    - target: {fileID: 2087318699023741641, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: _navigationManager
+      value: 
+      objectReference: {fileID: 1037283873}
     - target: {fileID: 3500751579166363810, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2

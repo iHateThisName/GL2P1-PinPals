@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class ArcadeMachineController : MonoBehaviour {
+    [SerializeField] private NavigationManager _navigationManager;
     [SerializeField] private bool IsDefault = false;
     [SerializeField] private UnityEvent OnHover;
     [SerializeField] private UnityEvent OnHoverExit;
@@ -42,7 +43,7 @@ public class ArcadeMachineController : MonoBehaviour {
 
     public void SelectedEvent() {
         OnMouseDown();
-        NavigationManager.Instance.LockedNavigation = true; // Lock Navigation
+        if (this._navigationManager != null) this._navigationManager.LockedNavigation = true; // Lock Navigation
     }
     public void DeselectedEvent() {
         OnMouseExit();
@@ -90,7 +91,7 @@ public class ArcadeMachineController : MonoBehaviour {
         _cinemachineCamera.SetActive(false);
         _screenMeshRenderer.material = _screenOffMaterial;
 
-        NavigationManager.Instance.LockedNavigation = false; // Unlock Navigation
+        if (this._navigationManager != null) this._navigationManager.LockedNavigation = false; // Unlock Navigation
     }
 
     private IEnumerator WaitForBlendToFinish() {
