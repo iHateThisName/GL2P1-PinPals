@@ -37,7 +37,8 @@ public class ExplosionPowerUp : MonoBehaviour
 
             if (other.gameObject.tag.StartsWith("Player"))
             {
-                other.gameObject.transform.parent.gameObject.GetComponent<PlayerController>().Respawn();
+                other.gameObject.transform.parent.gameObject.GetComponent<PlayerJoinManager>().OnPlayerJoin();
+
                 //Destroy(other.gameObject);
             }
             if (other.gameObject.tag == ("Bumper"))
