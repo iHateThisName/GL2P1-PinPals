@@ -1,19 +1,25 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class MovingUpDownie : MonoBehaviour
 {
-    public Transform pointA;
-    public Transform pointB;
+    public List<Transform> points;  // List to hold all the points (A, B, C, D, etc.)
     public float speed = 10f;
     public bool pauseOnPoints = false;  // Checkbox to enable/disable the pause
     public float pauseDuration = 2f;    // Time to pause at each point (in seconds)
 
-    private bool movingToB = true;
+    private int currentPointIndex = 0;  // Index of the current target point
     private bool isPaused = false;
     private float pauseTimer = 0f;
 
     void Update()
     {
+        if (points.Count < 2)  // Ensure there are at least two points
+        {
+            Debug.LogWarning("At least two points are required!");
+            return;
+        }
+
         if (isPaused)
         {
             // Count down the pause timer
@@ -25,32 +31,22 @@ public class MovingUpDownie : MonoBehaviour
             return; // Stop further code execution while paused
         }
 
-        if (movingToB)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, pointB.position, speed * Time.deltaTime);
+        // Move towards the current target point
+        Transform targetPoint = points[currentPointIndex];
+        transform.position = Vector3.MoveTowards(transform.position, targetPoint.position, speed * Time.deltaTime);
 
-            if (transform.position == pointB.position)
+        if (transform.position == targetPoint.position)
+        {
+            // We've reached the current target point
+            if (pauseOnPoints)
             {
-                movingToB = false;
-                if (pauseOnPoints)
-                {
-                    isPaused = true;
-                    pauseTimer = pauseDuration;  // Set the pause timer
-                }
+                isPaused = true;
+                pauseTimer = pauseDuration;  // Set the pause timer
             }
-        }
-        else
-        {
-            transform.position = Vector3.MoveTowards(transform.position, pointA.position, speed * Time.deltaTime);
-
-            if (transform.position == pointA.position)
+            else
             {
-                movingToB = true;
-                if (pauseOnPoints)
-                {
-                    isPaused = true;
-                    pauseTimer = pauseDuration;  // Set the pause timer
-                }
+                // Move to the next point
+                currentPointIndex = (currentPointIndex + 1) % points.Count; // Loop back to the start when we reach the last point
             }
         }
     }

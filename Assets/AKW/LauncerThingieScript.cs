@@ -54,6 +54,9 @@ public class LauncerThingieScript : MonoBehaviour
                 Destroy(projectileRb); // Remove Rigidbody if it exists
             }
 
+            // Rotate the projectile to face the direction it's being fired
+            projectile.transform.rotation = Quaternion.LookRotation(fireDirection);
+
             // Initialize the projectile's velocity manually by updating its position each frame
             StartCoroutine(MoveProjectile(projectile, fireDirection));
 
