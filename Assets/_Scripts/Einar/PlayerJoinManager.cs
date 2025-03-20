@@ -35,6 +35,12 @@ public class PlayerJoinManager : MonoBehaviour
         }
 
     }
+
+    public void Respawn(EnumPlayerTag tag)
+    {
+        int playerNumber = (int)tag;
+        GameManager.Instance.MovePlayer(tag, _spawnPoints[playerNumber - 1].position);
+    }
     public void OnNewLevelLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name.StartsWith("Pro") || scene.name.StartsWith("Level"))
