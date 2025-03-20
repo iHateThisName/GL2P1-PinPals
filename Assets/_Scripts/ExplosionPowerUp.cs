@@ -10,6 +10,9 @@ public class ExplosionPowerUp : MonoBehaviour
     [SerializeField] private AudioClip _bombTickSFX;
     [SerializeField] private AudioClip _bombExplodeSFX;
 
+    [SerializeField]
+    private PlayerJoinManager respawnManager;
+
     public void Start()
     {
         //PlayerPowerController bombSFX = GetComponent<PlayerPowerController>().bombSFX();
@@ -37,9 +40,8 @@ public class ExplosionPowerUp : MonoBehaviour
 
             if (other.gameObject.tag.StartsWith("Player"))
             {
-                other.gameObject.transform.parent.gameObject.GetComponent<PlayerJoinManager>().OnPlayerJoin();
-
-                //Destroy(other.gameObject);
+                EnumPlayerTag tag = other.gameObject.GetComponent<ModelController>().GetPlayerTag();
+                respawnManager.Respawn(tag);
             }
             if (other.gameObject.tag == ("Bumper"))
             {
