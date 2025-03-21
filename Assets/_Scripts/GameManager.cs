@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 // Ivar
@@ -16,12 +18,27 @@ public class GameManager : Singleton<GameManager> {
     }
 
     public Dictionary<EnumPlayerTag, NavigationManager> PlayerNavigations = new Dictionary<EnumPlayerTag, NavigationManager>();
+    [SerializeField] private CinemachineSplineDolly _dollyCart;
 
     protected override void Awake() {
         base.Awake();
         IsPaused = false;
         QualitySettings.vSyncCount = 1;
         Application.targetFrameRate = 60;
+    }
+
+    private IEnumerator Start() {
+        if (this._dollyCart != null) {
+            PlayerSettings.IsLandscape = false;
+            CheckCamera();
+            while (this._dollyCart.CameraPosition < 1f) {
+                yield return new WaitForSeconds(0.1f);
+            }
+            PlayerSettings.IsLandscape = true;
+            CheckCamera();
+            Debug.Log("Dolly cart has reach end");
+        }
+
     }
     private void PauseGame() {
         this.IsPaused = true;
@@ -129,8 +146,7 @@ public class GameManager : Singleton<GameManager> {
         SceneManager.LoadScene("GameModeSelect");
     }
 
-    public void ProtoTypeLVL()
-    {
+    public void ProtoTypeLVL() {
         SceneManager.LoadScene("Level 01, LasVegas");
     }
 
@@ -139,8 +155,7 @@ public class GameManager : Singleton<GameManager> {
 
     }
 
-    public void LoadeLobbyScene()
-    {
+    public void LoadeLobbyScene() {
         SceneManager.LoadScene("Lobby");
     }
 
