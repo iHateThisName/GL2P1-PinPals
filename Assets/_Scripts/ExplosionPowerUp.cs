@@ -29,6 +29,11 @@ public class ExplosionPowerUp : MonoBehaviour
 
     private void OnTriggerStay(Collider player)
     {
+        if (player.gameObject.name.Contains("Clone"))
+        {
+            Destroy(player.gameObject);
+            return;
+        }
         if (!this._isDangerous) return;
 
         // Detect every player in the collider then respawn them
