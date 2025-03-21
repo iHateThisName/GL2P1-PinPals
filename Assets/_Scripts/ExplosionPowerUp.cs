@@ -29,19 +29,19 @@ public class ExplosionPowerUp : MonoBehaviour
 
     private void OnTriggerStay(Collider player)
     {
-        if (player.gameObject.name.Contains("Clone"))
-        {
-            Destroy(player.gameObject);
-            return;
-        }
+
         if (!this._isDangerous) return;
+
 
         // Detect every player in the collider then respawn them
         if (player.gameObject != _bombOwner)
         {
-
-            if (player.gameObject.tag.StartsWith("Player"))
+            if (player.gameObject.name.Contains("Clone"))
             {
+                Destroy(player.gameObject);
+                return;
+            }
+            else if (player.gameObject.tag.StartsWith("Player")) {
                 EnumPlayerTag tag = player.gameObject.GetComponent<ModelController>().GetPlayerTag();
                 GameManager.Instance.GetPlayerController(tag).Respawn();
             }
