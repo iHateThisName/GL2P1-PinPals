@@ -15,6 +15,7 @@ public enum EnumPowerUp
     Bomb = 5,
     Balloon = 6,
     Mine = 7,
+    Honey = 8,
     SlowTime,
     GravityControl,
 }

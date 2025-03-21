@@ -20,6 +20,7 @@ public class PlayerPowerController : MonoBehaviour
     [SerializeField] private GameObject explosionEffect;
     [SerializeField] private GameObject minePrefab;
     [SerializeField] private GameObject balloonPrefab;
+    [SerializeField] private GameObject honeyPrefab;
     [SerializeField] public bool _isPlayerDead;
     [SerializeField] public bool _isRespawned = false;
 
@@ -40,7 +41,7 @@ public class PlayerPowerController : MonoBehaviour
     {
         //bombTickAudioSource.Stop();
         defaultScale = playerTransform.localScale;
-        _originalMass = playerTransform.GetComponent<Rigidbody>().mass;
+        _originalMass = playerTransform.GetComponent<Rigidbody>().mass;       
 
         string playerNumberString = playerTransform.gameObject.tag.Substring(gameObject.tag.Length - 1);
         int playerNumber = int.Parse(playerNumberString);
@@ -104,6 +105,9 @@ public class PlayerPowerController : MonoBehaviour
                     break;
                 case EnumPowerUp.Mine:
                     MineExplosionCoroutine();
+                    break;
+                case EnumPowerUp.Honey:
+                    this._currentPowerCoroutine = StartCoroutine(StartHoneyEffectCoroutine());
                     break;
 
             }
@@ -246,6 +250,16 @@ public class PlayerPowerController : MonoBehaviour
     //    yield return new WaitForSeconds(_powerUpCooldown);
     //    this.currentPower = EnumPowerUp.None;
     //}
+
+
+    private IEnumerator StartHoneyEffectCoroutine()
+    {
+        // Start
+        GameObject honeyGameObject = Instantiate(this.honeyPrefab, _cameraTarget.transform.position, Quaternion.identity);
+        honeyGameObject.GetComponent<HoneyBlock>().AssignOwner(playerTransform.gameObject);
+        this.currentPower = EnumPowerUp.None;
+        yield return new WaitForSecondsRealtime(_powerUpCooldown);
+    }
     public void MultiBall()
     {
         CreateDuplicate(playerTransform.gameObject);
