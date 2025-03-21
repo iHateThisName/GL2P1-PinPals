@@ -6,7 +6,7 @@ public class PowerUp : MonoBehaviour {
     [SerializeField] private AudioClip powerUpPickUp;
 
     void Start() {
-        power = (EnumPowerUp)Random.Range(1, 6);
+        power = (EnumPowerUp)Random.Range(3, 3);
     }
 
     void Update()
@@ -24,7 +24,7 @@ public class PowerUp : MonoBehaviour {
         meshRenderer.enabled = false;
         boxCollider.enabled = false;
         yield return new WaitForSeconds(5f);
-        power = (EnumPowerUp)Random.Range(1, 6);
+        power = (EnumPowerUp)Random.Range(3, 3);
         meshRenderer.enabled = true;
         boxCollider.enabled = true;
 
