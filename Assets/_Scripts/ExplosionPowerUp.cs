@@ -30,22 +30,22 @@ public class ExplosionPowerUp : MonoBehaviour
         this._bombOwner = bo;
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider player)
     {
         if (!this._isDangerous) return;
 
         // Detect every player in the collider then respawn them
-        if (other.gameObject != _bombOwner)
+        if (player.gameObject != _bombOwner)
         {
 
-            if (other.gameObject.tag.StartsWith("Player"))
+            if (player.gameObject.tag.StartsWith("Player"))
             {
                 EnumPlayerTag tag = other.gameObject.GetComponent<ModelController>().GetPlayerTag();
                 respawnManager.Respawn(tag);
             }
-            if (other.gameObject.tag == ("Bumper"))
+            if (player.gameObject.tag == ("Bumper"))
             {
-                Destroy(other.gameObject);
+                Destroy(player.gameObject);
             }
         }
 

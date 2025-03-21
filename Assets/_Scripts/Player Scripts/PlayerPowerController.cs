@@ -17,6 +17,7 @@ public class PlayerPowerController : MonoBehaviour {
     [SerializeField] private GameObject explosionEffect;
     [SerializeField] private GameObject balloonPrefab;
     [SerializeField] public bool _isPlayerDead;
+    [SerializeField] public bool _isRespawned = false;
 
     [Header("Power up SFX")]
     [SerializeField] private AudioClip multiBallSFX;
@@ -104,9 +105,18 @@ public class PlayerPowerController : MonoBehaviour {
         this.currentPower = EnumPowerUp.None;
         this.playerTransform.GetComponent<Rigidbody>().mass = shrinkMass;
         this.playerTransform.localScale = new Vector3(shrinkScale, shrinkScale, shrinkScale);
-        yield return new WaitForSeconds(_powerUpCooldown);
-        this.playerTransform.GetComponent<Rigidbody>().mass = _originalMass;
-        this.playerTransform.localScale = defaultScale;
+        if (_isRespawned == true)
+        {
+            this.playerTransform.GetComponent<Rigidbody>().mass = _originalMass;
+            this.playerTransform.localScale = defaultScale;
+            yield break;
+        }
+        else
+        {
+            yield return new WaitForSeconds(_powerUpCooldown);
+            this.playerTransform.GetComponent<Rigidbody>().mass = _originalMass;
+            this.playerTransform.localScale = defaultScale;
+        }
     }
     public async void GrowPlayer() {
         this.playerTransform.GetComponent<Rigidbody>().mass = growMass;
@@ -120,9 +130,18 @@ public class PlayerPowerController : MonoBehaviour {
         this.currentPower = EnumPowerUp.None;
         this.playerTransform.GetComponent<Rigidbody>().mass = growMass;
         this.playerTransform.localScale = new Vector3(growScale, growScale, growScale);
-        yield return new WaitForSeconds(_powerUpCooldown); // This will last for 3 seconds until you return back to normal
-        this.playerTransform.GetComponent<Rigidbody>().mass = _originalMass;
-        this.playerTransform.localScale = defaultScale;
+        if (_isRespawned == true)
+        {
+            this.playerTransform.GetComponent<Rigidbody>().mass = _originalMass;
+            this.playerTransform.localScale = defaultScale;
+            yield break;
+        }
+        else
+        {
+            yield return new WaitForSeconds(_powerUpCooldown); // This will last for 3 seconds until you return back to normal
+            this.playerTransform.GetComponent<Rigidbody>().mass = _originalMass;
+            this.playerTransform.localScale = defaultScale;
+        }
     }
 
     public IEnumerator BombPlayersCoroutine() {
@@ -164,6 +183,10 @@ public class PlayerPowerController : MonoBehaviour {
 
     // Coroutine to unfreeze the player after 5 seconds
     public IEnumerator Unfreeze(GameObject player) {
+        if (_isRespawned == true)
+        {
+            player.GetComponentInChildren<ModelController>().rb.isKinematic = false;
+        } else
         yield return new WaitForSeconds(5f);
         // Set the player's rigidbody to non-kinematic to unfreeze them
         player.GetComponentInChildren<ModelController>().rb.isKinematic = false;
@@ -190,9 +213,17 @@ public class PlayerPowerController : MonoBehaviour {
 
     private IEnumerator DestroyAfterDelay(GameObject dub) {
         // Wait for the specified amount of time
-        yield return new WaitForSeconds(_powerUpCooldown);
-        // Destroy the GameObject
-        Destroy(dub);
+        if (_isRespawned == true)
+        {
+            Destroy(dub);
+            yield break;
+        }
+        else
+        {
+            yield return new WaitForSecondsRealtime(_powerUpCooldown);
+            // Destroy the GameObject
+            Destroy(dub);
+        }
     }
 
     private IEnumerator BalloonCoroutine() {
@@ -200,5 +231,12 @@ public class PlayerPowerController : MonoBehaviour {
         yield return new WaitForSecondsRealtime(_powerUpCooldown);
         balloonPrefab.SetActive(false);
         this.currentPower = EnumPowerUp.None;
+    }
+
+    public void RemoveCurrentPower()
+    {
+        _isRespawned = true;
+        this.currentPower = EnumPowerUp.None; // Remove Holding Power Up
+        _isRespawned = false;
     }
 }

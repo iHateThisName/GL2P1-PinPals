@@ -7,7 +7,13 @@ public class OutOfBoundsField : MonoBehaviour {
     //public List<Transform> _spawnPoints;
     [SerializeField] private PlayerJoinManager joinManager;
     private void OnTriggerEnter(Collider player) {
-    joinManager.OnPlayerJoin();
+        ModelController controller = player.gameObject.GetComponent<ModelController>();
+        EnumPlayerTag tag = controller.GetPlayerTag();
+        PlayerPowerController power = controller.PlayerPowerController;
+
+        power.RemoveCurrentPower();
+
+        joinManager.Respawn(tag);
         //other.transform.position = spawnPoint.position;
         //other.GetComponent<Rigidbody>().Sleep();
         //switch (GameManager.Instance.Players.Count)

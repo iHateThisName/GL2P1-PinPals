@@ -8,7 +8,9 @@ public class Plunger : MonoBehaviour
     private Vector3 startPos;
     private float pullAmount = 0f;
     private bool isPulling = false;
-    [SerializeField] private Collider _triggerZone;
+    //[SerializeField] private Collider _triggerZone;
+    [SerializeField] private EnumPlayerTag AssignedPlayer; // The player assigned to this plunger
+    private bool allowUsePlunger = false;
 
     void Start()
     {
@@ -17,15 +19,32 @@ public class Plunger : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.S))
+        if (!allowUsePlunger) return;
+        //if (Input.GetKey(KeyCode.S))
+        //{
+        //    isPulling = true;
+        //    pullAmount = Mathf.Min(pullAmount + Time.deltaTime * 3, maxPull);
+        //    transform.position = Vector3.Lerp(startPos, startPos + new Vector3(0, 0, -maxPull), pullAmount / maxPull);
+        //}
+
+        //if (Input.GetKeyUp(KeyCode.S))
+        //{
+        //    LaunchBall();
+        //    isPulling = false;
+        //    transform.position = startPos;
+        //    pullAmount = 0;
+        //}
+
+        if (GameManager.Instance.IsPlayerHoldingInteraction(this.AssignedPlayer))
         {
+            // The player is holding the interaction button
             isPulling = true;
             pullAmount = Mathf.Min(pullAmount + Time.deltaTime * 3, maxPull);
             transform.position = Vector3.Lerp(startPos, startPos + new Vector3(0, 0, -maxPull), pullAmount / maxPull);
         }
-
-        if (Input.GetKeyUp(KeyCode.S))
+        else
         {
+            // The player stopped holding the interaction button
             LaunchBall();
             isPulling = false;
             transform.position = startPos;
@@ -45,6 +64,7 @@ public class Plunger : MonoBehaviour
         // Check if the object we collided with has a Rigidbody and set it as the target
         if (other.attachedRigidbody != null)
         {
+            allowUsePlunger = true;
             targetBall = other.attachedRigidbody;
         }
     }
@@ -54,6 +74,7 @@ public class Plunger : MonoBehaviour
         // Reset the target when the object exits the trigger
         if (other.attachedRigidbody == targetBall)
         {
+            allowUsePlunger = false;
             targetBall = null;
         }
     }

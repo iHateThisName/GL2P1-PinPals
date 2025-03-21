@@ -16,4 +16,9 @@ public class ModelController : MonoBehaviour {
             return EnumPlayerTag.None;
         }
     }
+
+    public Collider GetPlayerCollider()
+    {
+        return this.gameObject.GetComponent<Collider>();
+    }
 }
