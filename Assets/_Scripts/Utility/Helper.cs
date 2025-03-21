@@ -6,7 +6,6 @@ public static class Helper {
 
     public static List<Material> UsedPinballMaterials = new List<Material>();
     public static Dictionary<EnumPlayerTag, GameObject> Players = new Dictionary<EnumPlayerTag, GameObject>();
-    //public static readonly Vector2Int Previous = new Vector2Int(0, 0), Next = new Vector2Int(1, 0), Start = new Vector2Int(0, -1), Exit = new Vector2Int(1, -1);
 
     public static class LobbyButtonCoords {
         public static readonly Vector2Int Previous = new(0, 0);

@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 // Ivar 
+[DefaultExecutionOrder(-1)] // Runs before scripts with default execution order (0)
 public class NavigationManager : MonoBehaviour {
 
     // Input Actions
@@ -144,7 +145,7 @@ public class NavigationManager : MonoBehaviour {
     private void OnSelectPerformed(InputAction.CallbackContext context) {
         if (context.phase == InputActionPhase.Canceled) return; // Ignore up key
         if (this.LockedNavigation) return; // Not allowed to select
-        if(Time.time - _lastSelectTime < _selectCooldown) return; // Cooldown check
+        if (Time.time - _lastSelectTime < _selectCooldown) return; // Cooldown check
 
         if (this.navigationGrid.ContainsKey(this._currentPosition)) {
             NavigationController navigationController = this.navigationGrid[this._currentPosition];

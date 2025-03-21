@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -41,27 +39,17 @@ public class PlayerController : MonoBehaviour {
 
     private void AssigneNavigationManager() {
         this._tag = _modelController.GetPlayerTag();
-        this._navigationManager = GameManager.Instance.PlayerNavigations[this._tag];
+        if (GameManager.Instance.PlayerNavigations.ContainsKey(this._tag)) {
+            this._navigationManager = GameManager.Instance.PlayerNavigations[this._tag];
 
-        if (this._navigationManager != null) {
-            this._navigationManager.SetSkinController(_modelController.SkinController);
+            if (this._navigationManager != null) {
+                this._navigationManager.SetSkinController(_modelController.SkinController);
 
-            PlayerInput playerInput = this.gameObject.GetComponent<PlayerInput>();
-            this._navigationManager.RegisterPlayerInput(playerInput.actions.FindAction("Move"), playerInput.actions.FindAction("Interact"));
+                PlayerInput playerInput = this.gameObject.GetComponent<PlayerInput>();
+                this._navigationManager.RegisterPlayerInput(playerInput.actions.FindAction("Move"), playerInput.actions.FindAction("Interact"));
+            }
         }
     }
-
-    //public void NavigationOnMovePerformed(InputAction.CallbackContext context) {
-    //    if (this._navigationManager != null) {
-    //        this._navigationManager.OnMovePerformed(context);
-    //    }
-    //}
-
-    //public void NavigationOnSelectPerformed(InputAction.CallbackContext context) {
-    //    if (this._navigationManager != null) {
-    //        this._navigationManager.OnSelectPerformed(context);
-    //    }
-    //}
 
     void FixedUpdate() {
         _ballRigidbody.AddTorque(new Vector3(this._movementInput.y, 0, -this._movementInput.x) * _playerSpeed, ForceMode.Force);

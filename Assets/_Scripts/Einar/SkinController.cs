@@ -3,14 +3,7 @@ using UnityEngine.SceneManagement;
 public class SkinController : MonoBehaviour {
     [SerializeField] private GameObject skinSelectCanvas;
     [SerializeField] private RandomMaterial _randomMaterial;
-    private EnumPlayerTag _playerTag;
-    private NavigationManager _navigationManager;
-    public bool _ready;
-
-    private void Start() {
-        this._playerTag = _randomMaterial.GetModelController().GetPlayerTag();
-        this._navigationManager = GameManager.Instance.PlayerNavigations[this._playerTag];
-    }
+    public bool Ready;
 
     public void NextOption() {
         _randomMaterial.SelectNext();
@@ -21,7 +14,7 @@ public class SkinController : MonoBehaviour {
     }
 
     public void StartButton() {
-        _ready = true;
+        Ready = true;
         skinSelectCanvas.SetActive(false);
         //SceneManager.LoadScene("Prototype");
         CheckPlayerReady();
@@ -33,7 +26,7 @@ public class SkinController : MonoBehaviour {
         //GameManager.Instance.Players.Keys = List of EnumPlayerTag
         foreach (EnumPlayerTag tag in GameManager.Instance.Players.Keys) {
             ModelController modelController = GameManager.Instance.GetModelController(tag);
-            if (modelController.SkinController._ready) {
+            if (modelController.SkinController.Ready) {
                 playersReady++;
             } else {
                 return;
