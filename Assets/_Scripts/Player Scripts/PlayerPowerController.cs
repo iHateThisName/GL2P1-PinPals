@@ -191,6 +191,14 @@ public class PlayerPowerController : MonoBehaviour
         this.currentPower = EnumPowerUp.None;
         yield return new WaitForSeconds(_powerUpCooldown);
     }
+
+    public IEnumerator MineExplosionCoroutine()
+    {
+        GameObject landMineGameObject = Instantiate(this.minePrefab, _cameraTarget.transform.position, Quaternion.identity);
+        this.currentPower = EnumPowerUp.None;
+        yield return new WaitForSeconds(_powerUpCooldown);
+    }
+
     public void SlowTime()
     {
         Debug.Log("Work In Progress");
