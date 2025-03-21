@@ -4,6 +4,7 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour {
     private EnumPowerUp power;
     [SerializeField] private AudioClip powerUpPickUp;
+    [SerializeField] private bool isSpinie = true;
 
     void Start() {
         power = (EnumPowerUp)Random.Range(8, 8);
@@ -11,7 +12,10 @@ public class PowerUp : MonoBehaviour {
 
     void Update()
     {
-        transform.localRotation = Quaternion.Euler(45f, Time.time * 100f, 45f);
+        if (isSpinie)
+        {
+            transform.localRotation = Quaternion.Euler(45f, Time.time * 100f, 45f);
+        }
     }
 
     public IEnumerator OnTriggerEnter(Collider player) {
