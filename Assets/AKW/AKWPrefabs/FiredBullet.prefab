@@ -117,6 +117,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5406087257765703586}
+  - component: {fileID: 4580713135321438229}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -141,6 +142,21 @@ Transform:
   - {fileID: 2473772582579703350}
   m_Father: {fileID: 579406883285792020}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &4580713135321438229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167539753101591285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be739fa812561de4c9639d3c2bd03401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceForce: 30
+  points: -10
+  bumperAnimationController: {fileID: 0}
 --- !u!1 &5321235609262706026
 GameObject:
   m_ObjectHideFlags: 0
