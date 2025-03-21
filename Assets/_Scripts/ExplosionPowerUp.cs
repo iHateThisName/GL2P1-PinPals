@@ -3,15 +3,12 @@ using UnityEngine;
 
 public class ExplosionPowerUp : MonoBehaviour
 {
-    [SerializeField] private GameObject bombModel;
-    [SerializeField] private GameObject explosionEffect;
+    [SerializeField] private GameObject _bombModel;
+    [SerializeField] private GameObject _explosionEffect;
     private GameObject _bombOwner;
     private bool _isDangerous = false;
     [SerializeField] private AudioClip _bombTickSFX;
     [SerializeField] private AudioClip _bombExplodeSFX;
-
-    [SerializeField]
-    private PlayerJoinManager respawnManager;
 
     public void Start()
     {
@@ -40,8 +37,8 @@ public class ExplosionPowerUp : MonoBehaviour
 
             if (player.gameObject.tag.StartsWith("Player"))
             {
-                EnumPlayerTag tag = player.gameObject.GetComponent<ModelController>().GetPlayerTag();
-                respawnManager.Respawn(tag);
+                EnumPlayerTag tag = other.gameObject.GetComponent<ModelController>().GetPlayerTag();
+                GameManager.Instance.GetPlayerController(tag).Respawn();
             }
             if (player.gameObject.tag == ("Bumper"))
             {
@@ -55,9 +52,9 @@ public class ExplosionPowerUp : MonoBehaviour
     {
         yield return new WaitForSeconds(3f); // Audio cue
         this._isDangerous = true;
-        this.explosionEffect.SetActive(true);
+        this._explosionEffect.SetActive(true);
         yield return new WaitForSeconds(0.2f);
-        this.bombModel.SetActive(false);
+        this._bombModel.SetActive(false);
         Debug.Log("All Players except you are dead");
         SoundEffectManager.Instance.PlaySoundFXClip(this._bombExplodeSFX, this.gameObject.transform, 1f);
         yield return new WaitForSeconds(2f); // Bomb animation

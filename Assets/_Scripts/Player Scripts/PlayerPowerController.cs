@@ -15,6 +15,7 @@ public class PlayerPowerController : MonoBehaviour {
     [SerializeField] private float shrinkScale = 2f;
     [SerializeField] private float growScale = 10f;
     [SerializeField] private GameObject explosionEffect;
+    [SerializeField] private GameObject minePrefab;
     [SerializeField] private GameObject balloonPrefab;
     [SerializeField] public bool _isPlayerDead;
     [SerializeField] public bool _isRespawned = false;
@@ -90,6 +91,10 @@ public class PlayerPowerController : MonoBehaviour {
                     SoundEffectManager.Instance.PlaySoundFXClip(multiBallSFX, transform, 1f);
                     MultiBall();
                     break;
+                case EnumPowerUp.Mine:
+                    MineExplosionCoroutine();
+                    break;
+
             }
         }
     }
@@ -149,6 +154,12 @@ public class PlayerPowerController : MonoBehaviour {
         //yield return new WaitForSeconds(3f);
         GameObject explosionGameObject = Instantiate(this.explosionEffect, _cameraTarget.transform.position, Quaternion.identity);
         explosionGameObject.GetComponent<ExplosionPowerUp>().AssignBombOwner(playerTransform.gameObject);
+        this.currentPower = EnumPowerUp.None;
+        yield return new WaitForSeconds(_powerUpCooldown);
+    }
+    public IEnumerator MineExplosionCoroutine()
+    {
+        GameObject landMineGameObject = Instantiate(this.minePrefab, _cameraTarget.transform.position, Quaternion.identity);
         this.currentPower = EnumPowerUp.None;
         yield return new WaitForSeconds(_powerUpCooldown);
     }
