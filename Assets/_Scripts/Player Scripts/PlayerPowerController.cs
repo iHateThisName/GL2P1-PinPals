@@ -171,19 +171,19 @@ public class PlayerPowerController : MonoBehaviour
         this.currentPower = EnumPowerUp.None;
         this.playerTransform.GetComponent<Rigidbody>().mass = growMass;
         this.playerTransform.localScale = new Vector3(growScale, growScale, growScale);
-        if (_isRespawned == true)
-        {
-            this.playerTransform.GetComponent<Rigidbody>().mass = _originalMass;
-            this.playerTransform.localScale = defaultScale;
-            _isRespawned = false;
-            yield break;
-        }
-        else
-        {
+        //if (_isRespawned == true)
+        //{
+        //    this.playerTransform.GetComponent<Rigidbody>().mass = _originalMass;
+        //    this.playerTransform.localScale = defaultScale;
+        //    _isRespawned = false;
+        //    yield break;
+        //}
+        //else
+        //{
             yield return new WaitForSeconds(_powerUpCooldown); // This will last for 3 seconds until you return back to normal
             this.playerTransform.GetComponent<Rigidbody>().mass = _originalMass;
             this.playerTransform.localScale = defaultScale;
-        }
+        //}
     }
 
     public IEnumerator BombPlayersCoroutine()
@@ -307,27 +307,12 @@ public class PlayerPowerController : MonoBehaviour
 
     public void RemoveCurrentPower()
     {
-        //_isRespawned = true;
-        //if (this.gameObject.name.Contains("Clone"))
-        //{
-        //    Destroy(gameObject);
-        //}
+
             _powerUpCooldown = 0f;
         playerText.DisableSprite();
         this.currentPower = EnumPowerUp.None; // Remove Holding Power Up
-        //if (this._currentPowerCoroutine != null)
-        //{
-        //    StopCoroutine(this._currentPowerCoroutine);
-        //    ResetPlayerState();
-        //}
-        //this._currentPowerCoroutine = null;
+
         _powerUpCooldown = 5f;
 
     }
-
-    //private IEnumerator EnablePowerUps()
-    //{
-    //    yield return new WaitForSecondsRealtime(1f);
-    //    _isRespawned = false;
-    //}
 }

@@ -10,32 +10,16 @@ public class OutOfBoundsField : MonoBehaviour {
         if (player.gameObject.name.Contains("Clone"))
         {
             Destroy(player.gameObject);
-            return;
         }
-        ModelController controller = player.gameObject.GetComponent<ModelController>();
-        EnumPlayerTag tag = controller.GetPlayerTag();
-        PlayerPowerController power = controller.PlayerPowerController;
-        //Remove powerups before respawning
-        power.RemoveCurrentPower();
+        else
+        {
+            ModelController controller = player.gameObject.GetComponent<ModelController>();
+            EnumPlayerTag tag = controller.GetPlayerTag();
+            PlayerPowerController power = controller.PlayerPowerController;
+            //Remove powerups before respawning
+            power.RemoveCurrentPower();
 
-        joinManager.Respawn(tag);
-        //other.transform.position = spawnPoint.position;
-        //other.GetComponent<Rigidbody>().Sleep();
-        //switch (GameManager.Instance.Players.Count)
-        //{
-        //    case 1:
-        //        GameManager.Instance.MovePlayer(EnumPlayerTag.Player01, _spawnPoints[0].position);
-        //        break;
-        //    case 2:
-        //        GameManager.Instance.MovePlayer(EnumPlayerTag.Player02, _spawnPoints[1].position);
-        //        break;
-        //    case 3:
-        //        GameManager.Instance.MovePlayer(EnumPlayerTag.Player03, _spawnPoints[2].position);
-        //        break;
-        //    case 4:
-        //        GameManager.Instance.MovePlayer(EnumPlayerTag.Player04, _spawnPoints[3].position);
-        //        break;
-        //}
-
+            joinManager.Respawn(tag);
+        }
     }
 }
