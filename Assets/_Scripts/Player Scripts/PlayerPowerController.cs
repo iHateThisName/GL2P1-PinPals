@@ -21,8 +21,8 @@ public class PlayerPowerController : MonoBehaviour
     [SerializeField] private GameObject minePrefab;
     [SerializeField] private GameObject balloonPrefab;
     [SerializeField] private GameObject honeyPrefab;
-    [SerializeField] public bool _isPlayerDead;
-    [SerializeField] public bool _isRespawned = false;
+    //[SerializeField] public bool _isPlayerDead;
+    //[SerializeField] public bool _isRespawned = false;
 
     [Header("Power up SFX")]
     [SerializeField] private AudioClip multiBallSFX;
@@ -34,8 +34,8 @@ public class PlayerPowerController : MonoBehaviour
     [SerializeField] private PlayerFollowCanvasManager playerText;
     // The tag assigned to the player, used to identify the player in the game.
     private EnumPlayerTag _assignedPlayerTag;
-    private Coroutine _currentPowerCoroutine = null;
-    private List<GameObject> _currentPowerUpCreation = new List<GameObject>();
+    //private Coroutine _currentPowerCoroutine = null;
+    //private List<GameObject> _currentPowerUpCreation = new List<GameObject>();
 
     public void Start()
     {
@@ -70,16 +70,16 @@ public class PlayerPowerController : MonoBehaviour
 
                 case EnumPowerUp.Shrink:
                     SoundEffectManager.Instance.PlaySoundFXClip(shrinkSFX, transform, 1f);
-                    this._currentPowerCoroutine = StartCoroutine(ShrinkPlayerCoroutine());
+/*                    this._currentPowerCoroutine = */StartCoroutine(ShrinkPlayerCoroutine());
                     break;
 
                 case EnumPowerUp.Grow:
                     SoundEffectManager.Instance.PlaySoundFXClip(growSFX, transform, 1f);
-                    this._currentPowerCoroutine = StartCoroutine(GrowPlayerCoroutine());
+/*                    this._currentPowerCoroutine = */StartCoroutine(GrowPlayerCoroutine());
                     break;
 
                 case EnumPowerUp.Bomb:
-                    this._currentPowerCoroutine = StartCoroutine(BombPlayersCoroutine());
+/*                    this._currentPowerCoroutine =*/ StartCoroutine(BombPlayersCoroutine());
                     break;
 
                 //case EnumPowerUp.Balloon:
@@ -107,7 +107,7 @@ public class PlayerPowerController : MonoBehaviour
                     MineExplosionCoroutine();
                     break;
                 case EnumPowerUp.Honey:
-                    this._currentPowerCoroutine = StartCoroutine(StartHoneyEffectCoroutine());
+/*                    this._currentPowerCoroutine =*/ StartCoroutine(StartHoneyEffectCoroutine());
                     break;
 
             }
@@ -308,11 +308,42 @@ public class PlayerPowerController : MonoBehaviour
     public void RemoveCurrentPower()
     {
 
-            _powerUpCooldown = 0f;
+        _powerUpCooldown = 0f;
+        _powerUpCooldown = 5f;
         playerText.DisableSprite();
+
+
         this.currentPower = EnumPowerUp.None; // Remove Holding Power Up
 
-        _powerUpCooldown = 5f;
+        //if (this._currentPowerCoroutine != null)
+        //{
+        //    StopCoroutine(this._currentPowerCoroutine);
+        //}
 
+        //switch (this.currentPower)
+        //{
+        //    case EnumPowerUp.None:
+        //        break;
+        //    case EnumPowerUp.Grow:
+        //        this.playerTransform.GetComponent<Rigidbody>().mass = _originalMass;
+        //        this.playerTransform.localScale = defaultScale;
+        //        break;
+        //    case EnumPowerUp.Shrink:
+        //        this.playerTransform.GetComponent<Rigidbody>().mass = _originalMass;
+        //        this.playerTransform.localScale = defaultScale;
+        //        break;
+        //}
+
+        //StartCoroutine(ResetCooldownAfterRespawn());
+    }
+
+    private IEnumerator ResetCooldownAfterRespawn()
+    {
+        // Wait for 5 seconds before setting cooldown to 5f
+        yield return new WaitForSeconds(1f);
+
+        // Reset the cooldown to 5 seconds
+        _powerUpCooldown = 5f;
+        Debug.Log("Power-up cooldown reset to: " + _powerUpCooldown);
     }
 }
