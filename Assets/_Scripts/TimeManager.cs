@@ -3,7 +3,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class TimeManager : MonoBehaviour {
+public class TimeManager : Singleton<TimeManager> {
     //A bunch of other variables
     bool stopWatchActive = false;
     float currentTime;

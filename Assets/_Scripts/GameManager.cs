@@ -19,26 +19,64 @@ public class GameManager : Singleton<GameManager> {
 
     public Dictionary<EnumPlayerTag, NavigationManager> PlayerNavigations = new Dictionary<EnumPlayerTag, NavigationManager>();
     [SerializeField] private CinemachineSplineDolly _dollyCart;
+    private bool _isPlayersHidden = false;
 
     protected override void Awake() {
         base.Awake();
         IsPaused = false;
         QualitySettings.vSyncCount = 1;
         Application.targetFrameRate = 60;
+
+        // Hiding the players when the game starts
+        if (this._dollyCart != null) {
+            HidePlayers();
+        }
     }
 
     private IEnumerator Start() {
         if (this._dollyCart != null) {
-            PlayerSettings.IsLandscape = false;
-            CheckCamera();
-            while (this._dollyCart.CameraPosition < 1f) {
+            TimeManager.instance.StopStopWatch(); // Stops the timer
+            PlayerSettings.IsLandscape = false; // Set the camera to use a single camera
+            CheckCamera(); // Updates the camera settings
+
+            while (this._dollyCart.CameraPosition < 1f) { // Checks if the dolly cart has reached the end
                 yield return new WaitForSeconds(0.1f);
             }
+
+            // When the dolly cart has reached the end
             PlayerSettings.IsLandscape = true;
             CheckCamera();
+            StartGame();
             Debug.Log("Dolly cart has reach end");
         }
 
+    }
+
+    private void HidePlayers() {
+        foreach (var player in Players) {
+            ModelController modelController = GetModelController(player.Key);
+            modelController.GetPlayerMeshRenderer().enabled = false;
+            modelController.PlayerFollowCanvasManager.gameObject.SetActive(false);
+        }
+        this._isPlayersHidden = true;
+    }
+
+    private void ShowPlayers() {
+        foreach (var player in Players) {
+            ModelController modelController = GetModelController(player.Key);
+            modelController.GetPlayerMeshRenderer().enabled = true;
+            modelController.PlayerFollowCanvasManager.gameObject.SetActive(true);
+        }
+        this._isPlayersHidden = false;
+    }
+
+    public void StartGame() {
+        // Show the players
+        if (this._isPlayersHidden)
+            ShowPlayers();
+
+        // Start the timer
+        TimeManager.instance.StartStopWatch();
     }
     private void PauseGame() {
         this.IsPaused = true;
@@ -139,7 +177,10 @@ public class GameManager : Singleton<GameManager> {
     }
 
     public void ScoreScene() => SceneManager.LoadScene("EndGame");
-    public bool IsPlayerHoldingInteraction(EnumPlayerTag tag) => this.Players[tag].GetComponent<PlayerController>().IsHoldingInteraction;
+    public bool IsPlayerHoldingInteraction(EnumPlayerTag tag) {
+        if (this._isPlayersHidden) return false;
+        return this.Players[tag].GetComponent<PlayerController>().IsHoldingInteraction;
+    }
 
     //Einar
     public void GameModeSelect() {

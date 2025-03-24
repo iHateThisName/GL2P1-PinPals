@@ -17,8 +17,11 @@ public class ModelController : MonoBehaviour {
         }
     }
 
-    public Collider GetPlayerCollider()
-    {
+    public Collider GetPlayerCollider() {
         return this.gameObject.GetComponent<Collider>();
+    }
+
+    public MeshRenderer GetPlayerMeshRenderer() {
+        return this.gameObject.GetComponent<MeshRenderer>();
     }
 }
