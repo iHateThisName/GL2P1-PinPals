@@ -12,6 +12,8 @@ public class Plunger : MonoBehaviour
     [SerializeField] private EnumPlayerTag AssignedPlayer; // The player assigned to this plunger
     private bool allowUsePlunger = false;
 
+    [SerializeField] private AudioClip plungerSFX;
+
     void Start()
     {
         startPos = transform.position - new Vector3(0, 0, 0); // Keeping this for flexibility
@@ -76,6 +78,7 @@ public class Plunger : MonoBehaviour
         {
             allowUsePlunger = false;
             targetBall = null;
+            SoundEffectManager.Instance.PlaySoundFXClip(plungerSFX, transform, 1f);
         }
     }
 }

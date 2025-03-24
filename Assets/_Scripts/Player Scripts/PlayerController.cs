@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour {
     private EnumPlayerTag _tag = EnumPlayerTag.None;
     private NavigationManager _navigationManager;
 
+    [SerializeField] private AudioClip flipperSFX;
 
 
     private void Awake() {
@@ -114,6 +115,7 @@ public class PlayerController : MonoBehaviour {
     public void OnFlipperLeft(InputAction.CallbackContext context) {
         if (context.phase == InputActionPhase.Performed) {
             AllFlipLeft(true);
+            SoundEffectManager.Instance.PlaySoundFXClip(flipperSFX, transform, 1f);
         } else if (context.phase == InputActionPhase.Canceled) {
             AllFlipLeft(false);
         }
@@ -121,6 +123,7 @@ public class PlayerController : MonoBehaviour {
     public void OnFlipperRight(InputAction.CallbackContext context) {
         if (context.phase == InputActionPhase.Performed) {
             AllFlipRight(true);
+            SoundEffectManager.Instance.PlaySoundFXClip(flipperSFX, transform, 1f);
         } else if (context.phase == InputActionPhase.Canceled) {
             AllFlipRight(false);
         }

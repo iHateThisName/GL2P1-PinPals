@@ -1408,8 +1408,6 @@ MonoBehaviour:
   minePrefab: {fileID: 6810660068805902935, guid: ea8f64ea151f95e4db610e546a47a362, type: 3}
   balloonPrefab: {fileID: 1824592807268942956, guid: 0d969a1e81402d548887c39221197f80, type: 3}
   honeyPrefab: {fileID: 7834207178159523518, guid: f48f6909b6d2bb44bbf73ebc0f5ad735, type: 3}
-  _isPlayerDead: 0
-  _isRespawned: 0
   multiBallSFX: {fileID: 8300000, guid: 1ed6a316dcf9f00409c53ce295a85993, type: 3}
   freezeSFX: {fileID: 8300000, guid: 6a304632de84db243b0d5fff01e08dad, type: 3}
   growSFX: {fileID: 8300000, guid: f0a14c2f9e7a36340a024356a046ba7d, type: 3}
@@ -1946,6 +1944,10 @@ PrefabInstance:
       propertyPath: m_VersionIndex
       value: 35
       objectReference: {fileID: 0}
+    - target: {fileID: 3282255589976523815, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+      propertyPath: flipperSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: a0e3ddf012c0d844eb6740fa7e4a7eef, type: 3}
     - target: {fileID: 3282255589976523815, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
       propertyPath: move.m_Name
       value: Move
