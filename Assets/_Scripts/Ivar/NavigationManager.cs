@@ -105,11 +105,11 @@ public class NavigationManager : MonoBehaviour {
 
 
     public void StopListening() {
-        //_moveInput.performed -= OnMovePerformed;
+        _moveInput.performed -= OnMovePerformed;
         ////_moveInput.canceled -= OnMovePerformed;
         //_moveInput.Disable();
 
-        //_selectInput.performed -= OnSelectPerformed;
+        _selectInput.performed -= OnSelectPerformed;
         ////_selectInput.canceled -= OnSelectPerformed;
         //_selectInput.Disable();
         this.LockedNavigation = true;
