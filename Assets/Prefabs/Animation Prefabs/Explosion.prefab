@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7332247274399598478
 Transform:
   m_ObjectHideFlags: 0
@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 5, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3986653184329975516}
@@ -4964,7 +4964,6 @@ MonoBehaviour:
   _explosionEffect: {fileID: 688909044655700521}
   _bombTickSFX: {fileID: 8300000, guid: 21540b065ccc70540b41fae02e00f850, type: 3}
   _bombExplodeSFX: {fileID: 8300000, guid: 95c06a7de6f16b146bdf94bfb9e9bb17, type: 3}
-  _respawnManager: {fileID: 0}
 --- !u!54 &7257299812147351816
 Rigidbody:
   m_ObjectHideFlags: 0

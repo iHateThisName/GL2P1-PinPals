@@ -1398,7 +1398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ccaddf0d99fb6647999c7ad102f61fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 1976326164064474452}
+  powerupPlayerTransform: {fileID: 1976326164064474452}
   _cameraTarget: {fileID: 5947122031867381807}
   shrinkMass: 0.01
   growMass: 0.05
@@ -2434,6 +2434,9 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5740905846890174975, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 7672450764163889557}
+    - targetCorrespondingSourceObject: {fileID: 5740905846890174975, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 892508445826378785}
   m_SourcePrefab: {fileID: 100100000, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
 --- !u!4 &1976326164064474452 stripped
@@ -2462,6 +2465,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5740905846890174975, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
   m_PrefabInstance: {fileID: 824806173463042108}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7672450764163889557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4961145634058551747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88aad55c7127e5f4186ec5443757041e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerController: {fileID: 7959744348756883238}
+  ModelController: {fileID: 892508445826378785}
 --- !u!114 &892508445826378785
 MonoBehaviour:
   m_ObjectHideFlags: 0
