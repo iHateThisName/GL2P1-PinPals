@@ -18,7 +18,7 @@ public class PlayerManager : MonoBehaviour {
     public void OnPlayerJoined(PlayerInput playerInput) {
         if (GameManager.Instance.Players.ContainsValue(playerInput.gameObject)) return;
         PlayerController playerController = playerInput.gameObject.GetComponent<PlayerController>();
-        playerController.DisableGravity();
+        //playerController.DisableGravity();
         //playerInput.gameObject.transform.GetChild(0).transform.position = _spawnPosition.position;
 
         // Create a enum that represent the player tag
@@ -44,7 +44,7 @@ public class PlayerManager : MonoBehaviour {
 
         // Enable gravity after 1 second
         //ReEnableGravity(playerController, 1);
-        StartCoroutine(ReEnableGravityCoroutine(playerController, 0.5f));
+        //StartCoroutine(ReEnableGravityCoroutine(playerController, 0.5f));
 
         // The player should not be destroyed when a new scene is loaded, to keep the player controller scheme
         DontDestroyOnLoad(playerInput.gameObject.transform.parent.gameObject);

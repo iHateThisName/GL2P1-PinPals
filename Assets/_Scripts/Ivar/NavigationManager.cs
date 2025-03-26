@@ -105,6 +105,7 @@ public class NavigationManager : MonoBehaviour {
 
 
     public void StopListening() {
+        if (_moveInput == null || _selectInput == null) return;
         _moveInput.performed -= OnMovePerformed;
         ////_moveInput.canceled -= OnMovePerformed;
         //_moveInput.Disable();
