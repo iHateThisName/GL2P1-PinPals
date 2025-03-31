@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class MinefieldPowerUp : MonoBehaviour
 {
-
     [SerializeField] private GameObject _mineModel;
     [SerializeField] private GameObject _mineAddon;
     [SerializeField] private GameObject _mineDetector;
@@ -26,7 +25,7 @@ public class MinefieldPowerUp : MonoBehaviour
 
             StartCoroutine(MineExplosion());
             EnumPlayerTag tag = other.gameObject.GetComponent<ModelController>().GetPlayerTag();
-            GameManager.Instance.GetPlayerController(tag).Respawn();
+            PlayerJoinManager.Instance.Respawn(tag);
             Debug.Log("player has respawned");
         }
         else if (other.gameObject.tag.StartsWith("Ground"))

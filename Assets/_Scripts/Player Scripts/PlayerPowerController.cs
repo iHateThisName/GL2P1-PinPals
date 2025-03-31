@@ -30,10 +30,12 @@ public class PlayerPowerController : MonoBehaviour
     [SerializeField] private AudioClip bombTickSFX;
 
     [SerializeField] private PlayerFollowCanvasManager playerText;
+
     // The tag assigned to the player, used to identify the player in the game.
     private EnumPlayerTag _assignedPlayerTag;
     //private Coroutine _currentPowerCoroutine = null;
     //private List<GameObject> _currentPowerUpCreation = new List<GameObject>();
+
 
     public void Start() {
         //bombTickAudioSource.Stop();
@@ -102,7 +104,7 @@ public class PlayerPowerController : MonoBehaviour
                     MultiBall();
                     break;
                 case EnumPowerUp.Mine:
-                    MineExplosionCoroutine();
+                    StartCoroutine(MineExplosionCoroutine());
                     break;
                 case EnumPowerUp.Honey:
                     /*                    this._currentPowerCoroutine =*/
@@ -184,9 +186,9 @@ public class PlayerPowerController : MonoBehaviour
     }
 
     public IEnumerator MineExplosionCoroutine() {
+        this.currentPower = EnumPowerUp.None;
         GameObject landMineGameObject = Instantiate(this.minePrefab, _cameraTarget.transform.position, Quaternion.identity);
         yield return new WaitForSeconds(_powerUpCooldown);
-        this.currentPower = EnumPowerUp.None;
     }
 
     public void SlowTime() {
@@ -325,7 +327,7 @@ public class PlayerPowerController : MonoBehaviour
 
         if (this.currentPower == EnumPowerUp.Grow)
         {
-            if (player.gameObject.name.Contains("Clone"))
+            if (player.gameObject.name.Contains("Clone")) 
             {
                 Destroy(player.gameObject);
                 return;
@@ -337,7 +339,7 @@ public class PlayerPowerController : MonoBehaviour
                 if (this.powerupPlayerTransform.localScale.x > player.gameObject.transform.localScale.x)
                 {            
                     EnumPlayerTag tag = player.gameObject.GetComponent<ModelController>().GetPlayerTag();
-                    GameManager.Instance.GetPlayerController(tag).Respawn();
+                    PlayerJoinManager.Instance.Respawn(tag);
                 }
 
                 /*else if (this.playerTransform.localScale.x < player.gameObject.transform.localScale.x)

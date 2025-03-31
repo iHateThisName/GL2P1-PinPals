@@ -43,7 +43,7 @@ public class ExplosionPowerUp : MonoBehaviour
             }
             else if (player.gameObject.tag.StartsWith("Player")) {
                 EnumPlayerTag tag = player.gameObject.GetComponent<ModelController>().GetPlayerTag();
-                GameManager.Instance.GetPlayerController(tag).Respawn();
+                PlayerJoinManager.Instance.Respawn(tag);
             }
             if (player.gameObject.tag == ("Bumper"))
             {
