@@ -4,7 +4,7 @@ public class PlayerFollowCanvasManager : MonoBehaviour {
     [SerializeField] private ModelController _modelController;
     [SerializeField] TMP_Text playerText;
     [SerializeField] public GameObject powerUpDisplayer;
-    [SerializeField] private Sprite _multi, _shrink, _grow, _freeze, _bomb;
+    [SerializeField] private Sprite _multi, _shrink, _grow, _freeze, _bomb, _mine, _glue;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private RandomMaterial randomMaterial;
     private void Start() {
@@ -47,6 +47,16 @@ public class PlayerFollowCanvasManager : MonoBehaviour {
 
             case EnumPowerUp.Bomb:
                 spriteRenderer.sprite = _bomb;
+                powerUpDisplayer.SetActive(true);
+                break;
+
+            case EnumPowerUp.Mine:
+                spriteRenderer.sprite = _mine;
+                powerUpDisplayer.SetActive(true);
+                break;
+
+            case EnumPowerUp.Honey:
+                spriteRenderer.sprite = _glue;
                 powerUpDisplayer.SetActive(true);
                 break;
 
