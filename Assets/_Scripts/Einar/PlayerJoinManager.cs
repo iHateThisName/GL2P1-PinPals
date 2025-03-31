@@ -1,10 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class PlayerJoinManager : MonoBehaviour
-{
+public class PlayerJoinManager : Singleton<PlayerJoinManager> {
     [SerializeField] private List<Transform> _spawnPoints = new List<Transform>();
     [SerializeField] private List<Transform> _levelSpawnPoints = new List<Transform>();
 
