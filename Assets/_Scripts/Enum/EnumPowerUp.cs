@@ -13,9 +13,9 @@ public enum EnumPowerUp
     MultiBall = 3,
     Freeze = 4,
     Bomb = 5,
-    Balloon = 6,
-    Mine = 7,
-    Honey = 8,
+    Mine = 6,
+    Honey = 7,
+    Balloon,
     SlowTime,
     GravityControl,
 }

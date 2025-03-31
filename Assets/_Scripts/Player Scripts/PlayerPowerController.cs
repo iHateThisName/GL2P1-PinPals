@@ -116,13 +116,14 @@ public class PlayerPowerController : MonoBehaviour
     }
 
     public async void ShrinkPlayer() {
+        this.currentPower = EnumPowerUp.None;
         this.powerupPlayerTransform.localScale = new Vector3(shrinkScale, shrinkScale, shrinkScale);
         await Task.Delay(3000);
         this.powerupPlayerTransform.localScale = defaultScale;
-        this.currentPower = EnumPowerUp.None;
     }
 
     public IEnumerator ShrinkPlayerCoroutine() { // Use Fixed Update to slowly shrink the ball, use Lerp.
+        this.currentPower = EnumPowerUp.None;
         this.powerupPlayerTransform.GetComponent<Rigidbody>().mass = shrinkMass;
         this.powerupPlayerTransform.localScale = new Vector3(shrinkScale, shrinkScale, shrinkScale);
         //if (_isRespawned == true)
@@ -137,7 +138,6 @@ public class PlayerPowerController : MonoBehaviour
         yield return new WaitForSeconds(_powerUpCooldown);
         this.powerupPlayerTransform.GetComponent<Rigidbody>().mass = _originalMass;
         this.powerupPlayerTransform.localScale = defaultScale;
-        this.currentPower = EnumPowerUp.None;
 
     }
 
@@ -157,6 +157,7 @@ public class PlayerPowerController : MonoBehaviour
     }
 
     public IEnumerator GrowPlayerCoroutine() {
+        this.currentPower = EnumPowerUp.None;
         this.powerupPlayerTransform.GetComponent<Rigidbody>().mass = growMass;
         this.powerupPlayerTransform.localScale = new Vector3(growScale, growScale, growScale);
 
@@ -172,17 +173,16 @@ public class PlayerPowerController : MonoBehaviour
         yield return new WaitForSeconds(_powerUpCooldown); // This will last for 3 seconds until you return back to normal
         this.powerupPlayerTransform.GetComponent<Rigidbody>().mass = _originalMass;
         this.powerupPlayerTransform.localScale = defaultScale;
-        this.currentPower = EnumPowerUp.None;
         //}
     }
 
     public IEnumerator BombPlayersCoroutine() {
+        this.currentPower = EnumPowerUp.None;
 
         //yield return new WaitForSeconds(3f);
         GameObject explosionGameObject = Instantiate(this.explosionEffect, _cameraTarget.transform.position, Quaternion.identity);
         explosionGameObject.GetComponent<ExplosionPowerUp>().AssignBombOwner(powerupPlayerTransform.gameObject);
         yield return new WaitForSeconds(_powerUpCooldown);
-        this.currentPower = EnumPowerUp.None;
     }
 
     public IEnumerator MineExplosionCoroutine() {
@@ -207,6 +207,7 @@ public class PlayerPowerController : MonoBehaviour
         Debug.Log("Gravity Flip");
     }
     private void FreezePlayers() {
+        this.currentPower = EnumPowerUp.None;
         // Loop through all players in the GameManager
         foreach (var player in GameManager.Instance.Players)
         {
@@ -219,7 +220,6 @@ public class PlayerPowerController : MonoBehaviour
                 StartCoroutine(Unfreeze(player.Value));
             }
         }
-        this.currentPower = EnumPowerUp.None;
     }
 
     // Coroutine to unfreeze the player after 5 seconds
@@ -236,16 +236,16 @@ public class PlayerPowerController : MonoBehaviour
 
 
     private IEnumerator StartHoneyEffectCoroutine() {
+        this.currentPower = EnumPowerUp.None;
         // Start
         GameObject honeyGameObject = Instantiate(this.honeyPrefab, _cameraTarget.transform.position, Quaternion.identity);
         honeyGameObject.GetComponent<HoneyBlock>().AssignOwner(powerupPlayerTransform.gameObject);
-        this.currentPower = EnumPowerUp.None;
         yield return new WaitForSecondsRealtime(_powerUpCooldown);
     }
     public void MultiBall() {
-        CreateDuplicate(powerupPlayerTransform.gameObject);
-        CreateDuplicate(powerupPlayerTransform.gameObject);
         this.currentPower = EnumPowerUp.None;
+        CreateDuplicate(powerupPlayerTransform.gameObject);
+        CreateDuplicate(powerupPlayerTransform.gameObject);
     }
 
     private void CreateDuplicate(GameObject playerModel) {
@@ -285,13 +285,15 @@ public class PlayerPowerController : MonoBehaviour
 
     public void RemoveCurrentPower() {
 
-        _powerUpCooldown = 0f;
-        _powerUpCooldown = 5f;
+        //defaultScale = playerTransform.localScale;
+        //_originalMass = playerTransform.GetComponent<Rigidbody>().mass;
+
         playerText.DisableSprite();
 
-
+        
         this.currentPower = EnumPowerUp.None; // Remove Holding Power Up
-
+        _powerUpCooldown = 0f;
+        _powerUpCooldown = 5f;
         //if (this._currentPowerCoroutine != null)
         //{
         //    StopCoroutine(this._currentPowerCoroutine);

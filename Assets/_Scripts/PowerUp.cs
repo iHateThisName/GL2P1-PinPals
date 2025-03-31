@@ -7,7 +7,7 @@ public class PowerUp : MonoBehaviour {
     [SerializeField] private bool isSpinie = true;
 
     void Start() {
-        power = (EnumPowerUp)Random.Range(7, 7);
+        power = (EnumPowerUp)Random.Range(1, 8);
     }
 
     void Update()
@@ -19,7 +19,11 @@ public class PowerUp : MonoBehaviour {
     }
 
     public IEnumerator OnTriggerEnter(Collider player) {
-        PlayerPowerController playerPowerController = player.gameObject.GetComponent<ModelController>().PlayerPowerController;
+        if (player.gameObject.name.Contains("Clone"))
+        {
+            power = (EnumPowerUp)(Random.Range(0, 0));
+        }
+            PlayerPowerController playerPowerController = player.gameObject.GetComponent<ModelController>().PlayerPowerController;
         MeshRenderer meshRenderer = transform.GetChild(0).GetComponent<MeshRenderer>();
         BoxCollider boxCollider = gameObject.GetComponent<BoxCollider>();
         SoundEffectManager.Instance.PlaySoundFXClip(powerUpPickUp, transform, 1f);
@@ -28,7 +32,7 @@ public class PowerUp : MonoBehaviour {
         meshRenderer.enabled = false;
         boxCollider.enabled = false;
         yield return new WaitForSeconds(5f);
-        power = (EnumPowerUp)Random.Range(7, 7);
+        power = (EnumPowerUp)Random.Range(1, 8);
         meshRenderer.enabled = true;
         boxCollider.enabled = true;
 
