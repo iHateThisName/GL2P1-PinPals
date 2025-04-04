@@ -24,6 +24,7 @@ public class ArcadeMachineController : MonoBehaviour {
     private CinemachineBrain _cinemachineBrain;
 
     [SerializeField] private bool _isLogEnabled = false;
+    [SerializeField] private bool _isMouseHoverEnabled = false;
 
     private void Start() {
         this._cancel = InputSystem.actions.FindAction("Cancel");
@@ -32,25 +33,30 @@ public class ArcadeMachineController : MonoBehaviour {
         _cinemachineBrain = Camera.main.GetComponent<CinemachineBrain>();
 
         if (IsDefault) {
-            OnMouseEnter();
-            OnMouseDown();
+            HoveringArcadeMachine();
+            SelectingArcadeMachine();
         }
     }
 
     public void NavigationEvent() {
-        OnMouseEnter();
+        HoveringArcadeMachine();
     }
 
     public void SelectedEvent() {
-        OnMouseDown();
+        SelectingArcadeMachine();
         if (this._navigationManager != null) this._navigationManager.LockedNavigation = true; // Lock Navigation
     }
     public void DeselectedEvent() {
-        OnMouseExit();
+        UnHoveringArcadeMachine();
     }
 
     public void OnMouseEnter() {
+        if (!this._isMouseHoverEnabled) return;
         if (this._isLogEnabled) Debug.Log("OnMouseEnter, Hovered over: " + gameObject.name);
+        HoveringArcadeMachine();
+    }
+
+    private void HoveringArcadeMachine() {
         if (_isSelected) return;
 
         OnHover?.Invoke();
@@ -60,7 +66,12 @@ public class ArcadeMachineController : MonoBehaviour {
     }
 
     public void OnMouseExit() {
+        if (!this._isMouseHoverEnabled) return;
         if (this._isLogEnabled) Debug.Log("OnMouseExit, No longer hovering over: " + gameObject.name);
+        UnHoveringArcadeMachine();
+    }
+
+    private void UnHoveringArcadeMachine() {
         if (_isSelected) return;
 
         OnHoverExit?.Invoke();
@@ -68,8 +79,14 @@ public class ArcadeMachineController : MonoBehaviour {
         _spotLight.SetActive(false);
         _canvas.SetActive(false);
     }
+
     private void OnMouseDown() {
+        if (!this._isMouseHoverEnabled) return;
         if (this._isLogEnabled) Debug.Log("OnMouseDown, Selected: " + gameObject.name);
+        SelectingArcadeMachine();
+    }
+
+    private void SelectingArcadeMachine() {
         if (_isSelected) return;
 
         OnSelect?.Invoke();
@@ -83,7 +100,13 @@ public class ArcadeMachineController : MonoBehaviour {
 
     private void OnCancel() {
         if (this._isLogEnabled) Debug.Log("OnCancel, Deselected: " + gameObject.name);
-        if (!_isSelected) return;
+        if (!_isSelected) {
+            if (this._navigationManager != null) {
+                this._navigationManager.LockedNavigation = false; // Unlock Navigation
+                this._navigationManager.TriggerNavigationEvent();
+            }
+            return;
+        }
         OnDeselect?.Invoke();
         _isSelected = false;
 
@@ -91,7 +114,7 @@ public class ArcadeMachineController : MonoBehaviour {
         _cinemachineCamera.SetActive(false);
         _screenMeshRenderer.material = _screenOffMaterial;
 
-        if (this._navigationManager != null) this._navigationManager.LockedNavigation = false; // Unlock Navigation
+
     }
 
     private IEnumerator WaitForBlendToFinish() {

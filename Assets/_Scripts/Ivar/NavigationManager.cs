@@ -44,9 +44,6 @@ public class NavigationManager : MonoBehaviour {
 
         // Grid Setup
         this._currentPosition = this._startPosition;
-        if (navigationGrid.ContainsKey(this._currentPosition)) {
-            this.navigationGrid[this._currentPosition].NavigatedEvent.Invoke();
-        }
     }
 
     public Color GetPlayerColor() {
@@ -55,9 +52,12 @@ public class NavigationManager : MonoBehaviour {
         }
         return Color.black;
     }
-
+    public void TriggerNavigationEvent() => this.navigationGrid[this._currentPosition].NavigatedEvent.Invoke();
     public void RegisterObject(Vector2Int gridPosition, NavigationController controller) {
         this.navigationGrid[gridPosition] = controller;
+        if (gridPosition == this._currentPosition) {
+            this.navigationGrid[this._currentPosition].NavigatedEvent.Invoke();
+        }
     }
 
     public void RegisterPlayerInput(InputAction moveAction, InputAction selectAction) {
@@ -75,17 +75,6 @@ public class NavigationManager : MonoBehaviour {
 
     public void SetSkinController(SkinController skinController) {
         this._skinController = skinController;
-
-        //this.navigationGrid[Helper.LobbyButtonCoords.Next].SelectedEvent.AddListener(() => this._skinController.NextOption());
-        //this.navigationGrid[Helper.LobbyButtonCoords.Previous].SelectedEvent.AddListener(() => this._skinController.PreviosOption());
-        //this.navigationGrid[Helper.LobbyButtonCoords.Start].SelectedEvent.AddListener(() => this._skinController.StartButton());
-        //this.navigationGrid[Helper.LobbyButtonCoords.Exit].SelectedEvent.AddListener(() => {
-        //    if (GameManager.Instance.Players.Count > 1) {
-        //        GameManager.Instance.DeletePlayer(this._AssaigneSpecificPlayer);
-        //    } else {
-        //        GameManager.Instance.MainMenu();
-        //    }
-        //});
     }
 
     #region "Input Actions"
