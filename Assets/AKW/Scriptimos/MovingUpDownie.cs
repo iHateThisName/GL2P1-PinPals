@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using NUnit.Framework.Constraints;
 
 public class MovingUpDownie : MonoBehaviour
 {
@@ -11,8 +12,12 @@ public class MovingUpDownie : MonoBehaviour
 
     private int currentPointIndex = 0;  
     private bool isPaused = false;
-    private float pauseTimer = 0f;
+    private float pauseTimer = 15f;
 
+    private void Start()
+    {
+        points[0].position = transform.position;
+    }
     void Update()
     {
         if (points.Count < 2)  
@@ -34,7 +39,7 @@ public class MovingUpDownie : MonoBehaviour
         Transform targetPoint = points[currentPointIndex];
         transform.position = Vector3.MoveTowards(transform.position, targetPoint.position, speed * Time.deltaTime);
 
-        if (transform.position == targetPoint.position)
+        if (Vector3.Distance(transform.position, targetPoint.position) < 0.1f)
         {
             if (pauseOnPoints)
             {
