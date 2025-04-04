@@ -6,7 +6,7 @@ public class MovingUpDownie : MonoBehaviour
     public List<Transform> points;  
     public float speed = 10f;
     public bool pauseOnPoints = false;  
-    public float pauseDuration = 2f;    
+    public float pauseDuration = 1f;    
     public bool randomizeTarget = false; 
 
     private int currentPointIndex = 0;  
@@ -17,7 +17,7 @@ public class MovingUpDownie : MonoBehaviour
     {
         if (points.Count < 2)  
         {
-            Debug.LogWarning("At least two points are required!");
+            Debug.LogWarning("Two points are required! for smooving");
             return;
         }
 
