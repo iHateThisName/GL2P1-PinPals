@@ -3,8 +3,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 // Hilmir and Ivar
-public class PlayerPowerController : MonoBehaviour
-{
+public class PlayerPowerController : MonoBehaviour {
     private EnumPowerUp currentPower = EnumPowerUp.None;
     [SerializeField] private Transform powerupPlayerTransform;
     [SerializeField] private Transform _cameraTarget;
@@ -36,6 +35,8 @@ public class PlayerPowerController : MonoBehaviour
     //private Coroutine _currentPowerCoroutine = null;
     //private List<GameObject> _currentPowerUpCreation = new List<GameObject>();
 
+    private bool _isPowerActivated = false;
+
 
     public void Start() {
         //bombTickAudioSource.Stop();
@@ -48,8 +49,7 @@ public class PlayerPowerController : MonoBehaviour
     }
 
     public void GivePlayerPower(EnumPowerUp power) {
-        if (currentPower == EnumPowerUp.None)
-        {
+        if (currentPower == EnumPowerUp.None) {
             currentPower = power;
             playerText.DisplayPower(currentPower);
         }
@@ -57,11 +57,10 @@ public class PlayerPowerController : MonoBehaviour
     }
 
     public void OnUsePower(InputAction.CallbackContext context) {
-        if (context.phase == InputActionPhase.Performed)
-        {
+        if (this._isPowerActivated) return; // Power is active
+        if (context.phase == InputActionPhase.Performed) {
             playerText.DisableSprite();
-            switch (currentPower)
-            {
+            switch (currentPower) {
                 case EnumPowerUp.None:
                     break;
 
@@ -123,7 +122,7 @@ public class PlayerPowerController : MonoBehaviour
     }
 
     public IEnumerator ShrinkPlayerCoroutine() { // Use Fixed Update to slowly shrink the ball, use Lerp.
-        this.currentPower = EnumPowerUp.None;
+        this._isPowerActivated = true;
         this.powerupPlayerTransform.GetComponent<Rigidbody>().mass = shrinkMass;
         this.powerupPlayerTransform.localScale = new Vector3(shrinkScale, shrinkScale, shrinkScale);
         //if (_isRespawned == true)
@@ -138,6 +137,8 @@ public class PlayerPowerController : MonoBehaviour
         yield return new WaitForSeconds(_powerUpCooldown);
         this.powerupPlayerTransform.GetComponent<Rigidbody>().mass = _originalMass;
         this.powerupPlayerTransform.localScale = defaultScale;
+        this._isPowerActivated = false;
+        this.currentPower = EnumPowerUp.None;
 
     }
 
@@ -157,7 +158,7 @@ public class PlayerPowerController : MonoBehaviour
     }
 
     public IEnumerator GrowPlayerCoroutine() {
-        this.currentPower = EnumPowerUp.None;
+        this._isPowerActivated = true;
         this.powerupPlayerTransform.GetComponent<Rigidbody>().mass = growMass;
         this.powerupPlayerTransform.localScale = new Vector3(growScale, growScale, growScale);
 
@@ -173,22 +174,28 @@ public class PlayerPowerController : MonoBehaviour
         yield return new WaitForSeconds(_powerUpCooldown); // This will last for 3 seconds until you return back to normal
         this.powerupPlayerTransform.GetComponent<Rigidbody>().mass = _originalMass;
         this.powerupPlayerTransform.localScale = defaultScale;
+        this._isPowerActivated = false;
+        this.currentPower = EnumPowerUp.None;
         //}
     }
 
     public IEnumerator BombPlayersCoroutine() {
-        this.currentPower = EnumPowerUp.None;
-
+        this._isPowerActivated = true;
         //yield return new WaitForSeconds(3f);
         GameObject explosionGameObject = Instantiate(this.explosionEffect, _cameraTarget.transform.position, Quaternion.identity);
         explosionGameObject.GetComponent<ExplosionPowerUp>().AssignBombOwner(powerupPlayerTransform.gameObject);
         yield return new WaitForSeconds(_powerUpCooldown);
+        this._isPowerActivated = false;
+        this.currentPower = EnumPowerUp.None;
     }
 
     public IEnumerator MineExplosionCoroutine() {
-        this.currentPower = EnumPowerUp.None;
+        this._isPowerActivated = true;
         GameObject landMineGameObject = Instantiate(this.minePrefab, _cameraTarget.transform.position, Quaternion.identity);
         yield return new WaitForSeconds(_powerUpCooldown);
+        this._isPowerActivated = false;
+        this.currentPower = EnumPowerUp.None;
+
     }
 
     public void SlowTime() {
@@ -207,13 +214,11 @@ public class PlayerPowerController : MonoBehaviour
         Debug.Log("Gravity Flip");
     }
     private void FreezePlayers() {
-        this.currentPower = EnumPowerUp.None;
+        this._isPowerActivated = true;
         // Loop through all players in the GameManager
-        foreach (var player in GameManager.Instance.Players)
-        {
+        foreach (var player in GameManager.Instance.Players) {
             // Check if the player is not Player01
-            if (player.Key != _assignedPlayerTag)
-            {
+            if (player.Key != _assignedPlayerTag) {
                 // Set the player's rigidbody to kinematic to freeze them
                 player.Value.GetComponentInChildren<ModelController>().rb.isKinematic = true;
                 // Start a coroutine to unfreeze the player after 5 seconds
@@ -227,6 +232,9 @@ public class PlayerPowerController : MonoBehaviour
         yield return new WaitForSeconds(5f);
         // Set the player's rigidbody to non-kinematic to unfreeze them
         player.GetComponentInChildren<ModelController>().rb.isKinematic = false;
+        this._isPowerActivated = false;
+        this.currentPower = EnumPowerUp.None;
+
     }
     //private IEnumerator FreezePlayersCoroutine() {
     //    this.GetComponentInParent<Rigidbody>().isKinematic = true;
@@ -236,14 +244,17 @@ public class PlayerPowerController : MonoBehaviour
 
 
     private IEnumerator StartHoneyEffectCoroutine() {
-        this.currentPower = EnumPowerUp.None;
         // Start
+        this._isPowerActivated = true;
         GameObject honeyGameObject = Instantiate(this.honeyPrefab, _cameraTarget.transform.position, Quaternion.identity);
         honeyGameObject.GetComponent<HoneyBlock>().AssignOwner(powerupPlayerTransform.gameObject);
         yield return new WaitForSecondsRealtime(_powerUpCooldown);
+        this._isPowerActivated = false;
+        this.currentPower = EnumPowerUp.None;
+
     }
     public void MultiBall() {
-        this.currentPower = EnumPowerUp.None;
+        this._isPowerActivated = true;
         CreateDuplicate(powerupPlayerTransform.gameObject);
         CreateDuplicate(powerupPlayerTransform.gameObject);
     }
@@ -273,6 +284,9 @@ public class PlayerPowerController : MonoBehaviour
         yield return new WaitForSecondsRealtime(_powerUpCooldown);
         // Destroy the GameObject
         Destroy(dub);
+        this._isPowerActivated = false;
+        this.currentPower = EnumPowerUp.None;
+
         //}
     }
 
@@ -290,7 +304,7 @@ public class PlayerPowerController : MonoBehaviour
 
         playerText.DisableSprite();
 
-        
+
         this.currentPower = EnumPowerUp.None; // Remove Holding Power Up
         _powerUpCooldown = 0f;
         _powerUpCooldown = 5f;
@@ -327,19 +341,15 @@ public class PlayerPowerController : MonoBehaviour
 
     public void PlayerCollision(Collision player) {
 
-        if (this.currentPower == EnumPowerUp.Grow)
-        {
-            if (player.gameObject.name.Contains("Clone")) 
-            {
+        if (this.currentPower == EnumPowerUp.Grow) {
+            if (player.gameObject.name.Contains("Clone")) {
                 Destroy(player.gameObject);
                 return;
             }
             //if (player.gameObject != this.gameObject) // They can't be killed, and just holding it kills people, and if both of them have the power up and have it activated, they can't kill each other
             //{
-            if (player.gameObject.tag.StartsWith("Player"))
-            {
-                if (this.powerupPlayerTransform.localScale.x > player.gameObject.transform.localScale.x)
-                {            
+            if (player.gameObject.tag.StartsWith("Player")) {
+                if (this.powerupPlayerTransform.localScale.x > player.gameObject.transform.localScale.x) {
                     EnumPlayerTag tag = player.gameObject.GetComponent<ModelController>().GetPlayerTag();
                     PlayerJoinManager.Instance.Respawn(tag);
                 }
@@ -352,8 +362,7 @@ public class PlayerPowerController : MonoBehaviour
             }
             //}
 
-            if (player.gameObject.tag == ("Bumper"))
-            {
+            if (player.gameObject.tag == ("Bumper")) {
                 Destroy(player.gameObject);
             }
         }
