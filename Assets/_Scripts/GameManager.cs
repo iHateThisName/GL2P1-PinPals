@@ -130,7 +130,7 @@ public class GameManager : Singleton<GameManager> {
         Helper.GameReset();
         ResumeGame();
         PlayerSettings.IsLandscape = true;
-        SceneManager.LoadScene("StartScreen");
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void DeleteAllPlayers() {
@@ -185,6 +185,19 @@ public class GameManager : Singleton<GameManager> {
     //Einar
     public void GameModeSelect() {
         SceneManager.LoadScene("GameModeSelect");
+    }
+
+    public void OnApplicationQuit()
+    {
+        {
+#if UNITY_EDITOR
+            // If you're using the Unity Editor
+            UnityEditor.EditorApplication.isPlaying = false; // Stop play mode in the editor
+#else
+        // If you're running a standalone build of the game
+        Application.Quit();
+#endif
+        }
     }
 
     public void ProtoTypeLVL() {
