@@ -41,7 +41,7 @@ public class Plunger : MonoBehaviour
         {
             // The player is holding the interaction button
             isPulling = true;
-            pullAmount = Mathf.Min(pullAmount + Time.deltaTime * 3, maxPull);
+            pullAmount = Mathf.Min(pullAmount + Time.deltaTime * 12, maxPull);
             transform.position = Vector3.Lerp(startPos, startPos + new Vector3(0, 0, -maxPull), pullAmount / maxPull);
         }
         else
