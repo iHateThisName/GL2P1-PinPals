@@ -139,6 +139,7 @@ public class GameManager : Singleton<GameManager> {
         foreach (GameObject player in players) {
             Destroy(player.transform.parent.gameObject);
         }
+        Helper.Players.Clear();
     }
     public void DeletePlayer(EnumPlayerTag tag) {
         GameObject player = Players[tag];
@@ -187,8 +188,7 @@ public class GameManager : Singleton<GameManager> {
         SceneManager.LoadScene("GameModeSelect");
     }
 
-    public void OnApplicationQuit()
-    {
+    public void OnApplicationQuit() {
         {
 #if UNITY_EDITOR
             // If you're using the Unity Editor
