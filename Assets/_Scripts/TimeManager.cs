@@ -14,7 +14,7 @@ public class TimeManager : Singleton<TimeManager> {
 
     [SerializeField] private AudioClip gameOverSFX;
 
-    public string TimerText;
+    public string TimerText = "00:00";
 
     // Start is called before the first frame update
     public void Start() {
@@ -28,6 +28,7 @@ public class TimeManager : Singleton<TimeManager> {
     }
 
     public void FixedUpdate() {
+        if (currentTimeText == null) return;
         if (stopWatchActive == true) {
             if (currentTime > 0) {
                 currentTime -= Time.deltaTime;
