@@ -14,11 +14,13 @@ public class TimeManager : Singleton<TimeManager> {
 
     [SerializeField] private AudioClip gameOverSFX;
 
+    public string TimerText;
+
     // Start is called before the first frame update
     public void Start() {
 
 
-        stopWatchActive = true;
+        //stopWatchActive = true;
 
         currentTime = counter;
 
@@ -41,7 +43,8 @@ public class TimeManager : Singleton<TimeManager> {
         }
 
         TimeSpan time = TimeSpan.FromSeconds(currentTime);
-        currentTimeText.text = "Time left: " + time.ToString(@"mm\:ss\.ff");
+        this.TimerText = "Time left: " + time.ToString(@"mm\:ss\.ff");
+        currentTimeText.text = TimerText;
     }
 
     private IEnumerator DelayLoade() {
