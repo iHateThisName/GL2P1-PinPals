@@ -32,7 +32,7 @@ public class PlayerScoreTracker : MonoBehaviour {
         _isScoreAnimating = true;
         while (_animatedScore < currentScore) {
             _animatedScore = (int)Mathf.MoveTowards(_animatedScore, currentScore, _animationSpeed * Time.deltaTime * 100);
-            _scoreText.text = $"{_animatedScore}";
+            _scoreText.text = $"Score: {_animatedScore}";
             yield return null;
         }
         _isScoreAnimating = false;
