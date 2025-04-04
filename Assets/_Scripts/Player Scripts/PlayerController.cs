@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private Rigidbody _ballRigidbody;
     [SerializeField] private RandomMaterial randomMaterial;
     [SerializeField] private ModelController _modelController;
+    [SerializeField] private GameObject _playerCanvas;
     private List<FlipperController> _leftFlipperController;
     private List<FlipperController> _rightFlipperController;
 
@@ -56,10 +57,15 @@ public class PlayerController : MonoBehaviour {
         _ballRigidbody.AddTorque(new Vector3(this._movementInput.y, 0, -this._movementInput.x) * _playerSpeed, ForceMode.Force);
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-        if (scene.name.StartsWith("Pro") || scene.name.StartsWith("Level")) {
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name.StartsWith("Pro") || scene.name.StartsWith("Level"))
+        {
             AssigneFlippers();
-        } else {
+            _playerCanvas.SetActive(true);
+        }
+        else
+        {
             SceneManager.sceneLoaded -= OnSceneLoaded;
         }
     }
