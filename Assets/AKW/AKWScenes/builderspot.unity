@@ -129,7 +129,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 167724509608186120, guid: c55dc1c494d46a049868b29d5e79638a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.52
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 167724509608186120, guid: c55dc1c494d46a049868b29d5e79638a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 167724509608186120, guid: c55dc1c494d46a049868b29d5e79638a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 167724509608186120, guid: c55dc1c494d46a049868b29d5e79638a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -171,7 +171,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: ballScaleReference
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5966580827463681842, guid: c55dc1c494d46a049868b29d5e79638a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
