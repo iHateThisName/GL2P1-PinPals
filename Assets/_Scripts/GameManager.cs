@@ -131,6 +131,7 @@ public class GameManager : Singleton<GameManager> {
         ResumeGame();
         PlayerSettings.IsLandscape = true;
         SceneManager.LoadScene("MainMenu");
+
     }
 
     public void DeleteAllPlayers() {
