@@ -11156,7 +11156,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 74821192917050393, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: m_text
-      value: 404 NOT FOUND
+      value: Haunted Pin Machine
       objectReference: {fileID: 0}
     - target: {fileID: 74821192917050393, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -11303,6 +11303,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8833562110668213079, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: OnSelect.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833562110668213079, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: OnDeselect.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -11312,11 +11316,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8833562110668213079, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: OnAnimationDone.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8833562110668213079, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833562110668213079, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8833562110668213079, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -11326,6 +11334,10 @@ PrefabInstance:
       propertyPath: OnDeselect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8833562110668213079, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3213710422770903319, guid: ff0b9da8dd0a6b34391f630209d4b890, type: 3}
     - target: {fileID: 8833562110668213079, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: OnHoverExit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 2
@@ -11347,6 +11359,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2066627428}
     - target: {fileID: 8833562110668213079, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833562110668213079, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833562110668213079, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: OnAnimationDone.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833562110668213079, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: OnDeselect.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -11359,12 +11383,28 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8833562110668213079, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: OnAnimationDone.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3213710422770903319, guid: ff0b9da8dd0a6b34391f630209d4b890, type: 3}
+    - target: {fileID: 8833562110668213079, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: OnHoverExit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: set_LookAt
       objectReference: {fileID: 0}
     - target: {fileID: 8833562110668213079, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: OnAnimationDone.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833562110668213079, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: OnAnimationDone.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadeLobbyScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833562110668213079, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: OnHover.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Unity.Cinemachine.CinemachineCamera, Unity.Cinemachine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833562110668213079, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8833562110668213079, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: OnDeselect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -11379,9 +11419,17 @@ PrefabInstance:
       value: Unity.Cinemachine.CinemachineCamera, Unity.Cinemachine
       objectReference: {fileID: 0}
     - target: {fileID: 8833562110668213079, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Level 05, HauntedPinMachine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833562110668213079, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: OnDeselect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1037283872}
+    - target: {fileID: 8833562110668213079, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: OnAnimationDone.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 8833562110668213079, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: OnHoverExit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
@@ -11391,12 +11439,20 @@ PrefabInstance:
       value: UnityEngine.Transform, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8833562110668213079, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833562110668213079, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: OnDeselect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Transform, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8833562110668213079, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: OnHoverExit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Transform, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833562110668213079, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: OnAnimationDone.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
