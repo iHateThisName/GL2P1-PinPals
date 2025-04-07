@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 // Hilmir and Ivar
 public class PlayerPowerController : MonoBehaviour {
-    private EnumPowerUp currentPower = EnumPowerUp.None;
+    [field: SerializeField] public EnumPowerUp currentPower { get; private set; } = EnumPowerUp.None;
     [SerializeField] private Transform powerupPlayerTransform;
     [SerializeField] private Transform _cameraTarget;
     private Vector3 defaultScale;
@@ -366,6 +366,11 @@ public class PlayerPowerController : MonoBehaviour {
                 Destroy(player.gameObject);
             }
         }
+    }
+
+    public void PlayerRespawns() {
+        this.currentPower = EnumPowerUp.None;
+        this._isPowerActivated = false;
     }
 
     //private IEnumerator EnablePowerUps()

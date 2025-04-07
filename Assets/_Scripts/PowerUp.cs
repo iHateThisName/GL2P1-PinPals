@@ -10,20 +10,17 @@ public class PowerUp : MonoBehaviour {
         power = (EnumPowerUp)Random.Range(1, 8);
     }
 
-    void Update()
-    {
-        if (isSpinie)
-        {
+    void Update() {
+        if (isSpinie) {
             transform.GetChild(0).localRotation = Quaternion.Euler(45f, Time.time * 100f, 45f);
         }
     }
 
     public IEnumerator OnTriggerEnter(Collider player) {
         if (player.gameObject.name.Contains("Clone"))
-        {
-            power = (EnumPowerUp)(Random.Range(0, 0));
-        }
-            PlayerPowerController playerPowerController = player.gameObject.GetComponent<ModelController>().PlayerPowerController;
+            yield break;
+
+        PlayerPowerController playerPowerController = player.gameObject.GetComponent<ModelController>().PlayerPowerController;
         MeshRenderer meshRenderer = transform.GetChild(0).GetComponent<MeshRenderer>();
         BoxCollider boxCollider = gameObject.GetComponent<BoxCollider>();
         SoundEffectManager.Instance.PlaySoundFXClip(powerUpPickUp, transform, 1f);
