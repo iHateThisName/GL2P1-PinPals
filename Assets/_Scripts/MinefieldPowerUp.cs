@@ -8,6 +8,7 @@ public class MinefieldPowerUp : MonoBehaviour
     [SerializeField] private GameObject _mineDetector;
     [SerializeField] private GameObject _mineExplosionEffect;
     private bool _isDangerous = false;
+    private int _point = 1;
     [SerializeField] private AudioClip _mineIdleSFX;
     [SerializeField] private AudioClip _mineExplosionSFX;
     void Start()
@@ -26,6 +27,7 @@ public class MinefieldPowerUp : MonoBehaviour
             StartCoroutine(MineExplosion());
             EnumPlayerTag tag = other.gameObject.GetComponent<ModelController>().GetPlayerTag();
             PlayerJoinManager.Instance.Respawn(tag);
+            other.gameObject.GetComponent<ModelController>().PlayerStats.PlayerKills(_point);
             Debug.Log("player has respawned");
         }
         else if (other.gameObject.tag.StartsWith("Ground"))

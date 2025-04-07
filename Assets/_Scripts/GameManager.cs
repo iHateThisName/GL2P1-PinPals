@@ -52,11 +52,12 @@ public class GameManager : Singleton<GameManager> {
 
     }
 
-    private void HidePlayers() {
+    public void HidePlayers() {
         foreach (var player in Players) {
             ModelController modelController = GetModelController(player.Key);
             modelController.GetPlayerMeshRenderer().enabled = false;
             modelController.PlayerFollowCanvasManager.gameObject.SetActive(false);
+            modelController.PinballCamera.gameObject.SetActive(false);
         }
         this._isPlayersHidden = true;
     }
@@ -66,6 +67,7 @@ public class GameManager : Singleton<GameManager> {
             ModelController modelController = GetModelController(player.Key);
             modelController.GetPlayerMeshRenderer().enabled = true;
             modelController.PlayerFollowCanvasManager.gameObject.SetActive(true);
+            modelController.PinballCamera.gameObject.SetActive(true);
         }
         this._isPlayersHidden = false;
     }

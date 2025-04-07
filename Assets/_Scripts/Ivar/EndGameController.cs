@@ -51,11 +51,12 @@ public class EndGameController : MonoBehaviour {
                     simplePlayer.GetComponent<Renderer>().material = modelController.SkinController.GetMaterial();
                 }
             } else {
-                GameManager.Instance.DeletePlayer(tag);
+                //GameManager.Instance.DeletePlayer(tag);
             }
             CreateScoreboardElement(i);
         }
-        GameManager.Instance.DeleteAllPlayers();
+        //GameManager.Instance.DeleteAllPlayers()/*;*/
+        GameManager.Instance.HidePlayers();
 
         if (this.playerScores.Count == 0) return;
         this.FirstPlaceScore.text = this.playerScores[0].score.ToString();

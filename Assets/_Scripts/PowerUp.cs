@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour {
     private EnumPowerUp power;
+    private int _point = 1;
     [SerializeField] private AudioClip powerUpPickUp;
     [SerializeField] private bool isSpinie = true;
 
@@ -24,7 +25,9 @@ public class PowerUp : MonoBehaviour {
         MeshRenderer meshRenderer = transform.GetChild(0).GetComponent<MeshRenderer>();
         BoxCollider boxCollider = gameObject.GetComponent<BoxCollider>();
         SoundEffectManager.Instance.PlaySoundFXClip(powerUpPickUp, transform, 1f);
+        ModelController modelController = player.gameObject.GetComponent<ModelController>();
 
+        player.gameObject.GetComponent<ModelController>().PlayerStats.PowerUpsCollected(_point);
         playerPowerController.GivePlayerPower(power);
         meshRenderer.enabled = false;
         boxCollider.enabled = false;
@@ -32,7 +35,7 @@ public class PowerUp : MonoBehaviour {
         power = (EnumPowerUp)Random.Range(1, 8);
         meshRenderer.enabled = true;
         boxCollider.enabled = true;
-
+        modelController.PlayerStats.PowerUpsCollected(1);
     }
 
 }

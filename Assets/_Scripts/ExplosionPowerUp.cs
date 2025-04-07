@@ -6,6 +6,7 @@ public class ExplosionPowerUp : MonoBehaviour
     [SerializeField] private GameObject _bombModel;
     [SerializeField] private GameObject _explosionEffect;
     private GameObject _bombOwner;
+    private int _point = 1;
     private bool _isDangerous = false;
     [SerializeField] private AudioClip _bombTickSFX;
     [SerializeField] private AudioClip _bombExplodeSFX;
@@ -44,6 +45,9 @@ public class ExplosionPowerUp : MonoBehaviour
             else if (player.gameObject.tag.StartsWith("Player")) {
                 EnumPlayerTag tag = player.gameObject.GetComponent<ModelController>().GetPlayerTag();
                 PlayerJoinManager.Instance.Respawn(tag);
+                player.gameObject.GetComponent<ModelController>().PlayerStats.PlayerDeaths(_point);
+                _bombOwner.gameObject.GetComponent<ModelController>().PlayerStats.PlayerKills(_point);
+
             }
             if (player.gameObject.tag == ("Bumper"))
             {

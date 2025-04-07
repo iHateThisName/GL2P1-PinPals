@@ -1398,6 +1398,50 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &3734181783632643526
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8397737034339267249}
+  - component: {fileID: 2162729834525336382}
+  m_Layer: 0
+  m_Name: PlayerStats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8397737034339267249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3734181783632643526}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1552546545278071964}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2162729834525336382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3734181783632643526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84200884a71888f4ebe2b9e1bcc4e8c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3882609768943034912
 GameObject:
   m_ObjectHideFlags: 0
@@ -1797,6 +1841,7 @@ Transform:
   - {fileID: 6546953913428681944}
   - {fileID: 9073190334930463718}
   - {fileID: 5476985577591745857}
+  - {fileID: 8397737034339267249}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6315476279226447886
@@ -3066,6 +3111,7 @@ MonoBehaviour:
   rb: {fileID: 8612455253610265624}
   SkinController: {fileID: 406204430842103593}
   PlayerFollowCanvasManager: {fileID: 3793734590544800575}
+  PlayerStats: {fileID: 2162729834525336382}
 --- !u!23 &5054593778753860329 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5573145829542570709, guid: 2235eda53ed1846459cdf2880e817167, type: 3}

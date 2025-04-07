@@ -7,6 +7,7 @@ public class ModelController : MonoBehaviour {
     public Rigidbody rb;
     public SkinController SkinController;
     public PlayerFollowCanvasManager PlayerFollowCanvasManager;
+    public PlayerStats PlayerStats;
 
     public EnumPlayerTag GetPlayerTag() {
         if (System.Enum.TryParse(this.gameObject.tag, out EnumPlayerTag parsedTag)) {

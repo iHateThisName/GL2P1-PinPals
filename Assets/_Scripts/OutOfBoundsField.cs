@@ -1,6 +1,7 @@
 using UnityEngine;
 
 public class OutOfBoundsField : MonoBehaviour {
+    private int _point = 1;
     //[SerializeField] private Transform spawnPoint;
     //[SerializeField] private List<Transform> _spawnPoints = new List<Transform>();
     //public List<Transform> _spawnPoints;
@@ -14,6 +15,7 @@ public class OutOfBoundsField : MonoBehaviour {
         ModelController controller = player.gameObject.GetComponent<ModelController>();
             EnumPlayerTag tag = controller.GetPlayerTag();
             PlayerPowerController power = controller.PlayerPowerController;
+            player.gameObject.GetComponent<ModelController>().PlayerStats.PlayerDeaths(_point);
             //Remove powerups before respawning
             power.RemoveCurrentPower();
 
