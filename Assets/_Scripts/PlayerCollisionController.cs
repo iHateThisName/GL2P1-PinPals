@@ -7,6 +7,7 @@ public class PlayerCollisionController : MonoBehaviour
     private EnumPowerUp enumPowerUp;
     [SerializeField] private ModelController ModelController;
     private EnumPlayerTag _playerTag;
+    private int _point = 1;
 
     private void Start()
     {
@@ -16,6 +17,7 @@ public class PlayerCollisionController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-            powerController.PlayerCollision(collision);
+        powerController.PlayerCollision(collision);
+        collision.gameObject.GetComponent<ModelController>().PlayerStats.PlayerKills(_point);
     }
 }
