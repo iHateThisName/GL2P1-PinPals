@@ -31152,7 +31152,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1224372061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37872,6 +37872,10 @@ PrefabInstance:
     - target: {fileID: 4913135436852004352, guid: c55dc1c494d46a049868b29d5e79638a, type: 3}
       propertyPath: m_Name
       value: ballScaleReference
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913135436852004352, guid: c55dc1c494d46a049868b29d5e79638a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
