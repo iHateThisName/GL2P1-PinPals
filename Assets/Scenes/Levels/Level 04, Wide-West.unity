@@ -1255,6 +1255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bounceForce: 15
   points: 150
+  point: 1
   bumperAnimationController: {fileID: 108087024}
 --- !u!23 &108087026
 MeshRenderer:
@@ -4056,6 +4057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bounceForce: 15
   points: 150
+  point: 1
   bumperAnimationController: {fileID: 385335543}
 --- !u!1 &409270305
 GameObject:
@@ -4242,6 +4244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bounceForce: 15
   points: 200
+  point: 1
   bumperAnimationController: {fileID: 409270309}
 --- !u!23 &409270311
 MeshRenderer:
@@ -4957,6 +4960,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bounceForce: 15
   points: 150
+  point: 1
   bumperAnimationController: {fileID: 461084131}
 --- !u!1001 &484618602
 PrefabInstance:
@@ -8027,6 +8031,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bounceForce: 15
   points: 200
+  point: 1
   bumperAnimationController: {fileID: 708346011}
 --- !u!23 &708346013
 MeshRenderer:
@@ -10684,6 +10689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bounceForce: 15
   points: 150
+  point: 1
   bumperAnimationController: {fileID: 873892228}
 --- !u!23 &873892230
 MeshRenderer:
@@ -10902,6 +10908,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bounceForce: 15
   points: 150
+  point: 1
   bumperAnimationController: {fileID: 881310149}
 --- !u!4 &893721076 stripped
 Transform:
@@ -12216,6 +12223,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ballScaleReference
       objectReference: {fileID: 0}
+    - target: {fileID: 4913135436852004352, guid: c55dc1c494d46a049868b29d5e79638a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13360,7 +13371,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1224372061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21692,6 +21703,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bounceForce: 15
   points: 150
+  point: 1
   bumperAnimationController: {fileID: 1892947202}
 --- !u!23 &1892947204
 MeshRenderer:
@@ -22188,6 +22200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bounceForce: 15
   points: 200
+  point: 1
   bumperAnimationController: {fileID: 1919554240}
 --- !u!23 &1919554242
 MeshRenderer:
@@ -24167,6 +24180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bounceForce: 15
   points: 200
+  point: 1
   bumperAnimationController: {fileID: 9099761863749208369}
 --- !u!114 &211032090568462501
 MonoBehaviour:
@@ -24197,6 +24211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bounceForce: 15
   points: 150
+  point: 1
   bumperAnimationController: {fileID: 8229183625826680207}
 --- !u!1001 &1412697535041074444
 PrefabInstance:
@@ -25043,6 +25058,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bounceForce: 15
   points: 150
+  point: 1
   bumperAnimationController: {fileID: 211032090568462501}
 --- !u!4 &9085982932207617154 stripped
 Transform:
