@@ -11,13 +11,9 @@ public class MovingUpDownie : MonoBehaviour
     public bool randomizeTarget = false; 
 
     private int currentPointIndex = 0;  
-    private bool isPaused = false;
+    public bool isPaused = false;
     private float pauseTimer = 15f;
 
-    private void Start()
-    {
-        points[0].position = transform.position;
-    }
     void Update()
     {
         if (points.Count < 2)  
