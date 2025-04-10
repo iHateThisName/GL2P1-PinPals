@@ -7,11 +7,12 @@ public class PlayerPowerController : MonoBehaviour {
     [field: SerializeField] public EnumPowerUp currentPower { get; private set; } = EnumPowerUp.None;
     [SerializeField] private Transform powerupPlayerTransform;
     [SerializeField] private Transform _cameraTarget;
-    private Vector3 defaultScale;
     [SerializeField] private GameObject _playerModel;
+    private Vector3 defaultScale;
     private float _powerUpCooldown = 5f;
     private float _originalMass = 0.02f;
     private int _point = 1;
+    private bool _isPlayerDead;
     [SerializeField] private float shrinkMass = 0.01f;
     [SerializeField] private float growMass = 0.05f;
     [SerializeField] private float shrinkScale = 2f;
@@ -54,6 +55,7 @@ public class PlayerPowerController : MonoBehaviour {
         if (currentPower == EnumPowerUp.None) {
             currentPower = power;
             playerText.DisplayPower(currentPower);
+            _isPlayerDead = false;
         }
 
     }
@@ -122,30 +124,48 @@ public class PlayerPowerController : MonoBehaviour {
         await Task.Delay(3000);
         this.powerupPlayerTransform.localScale = defaultScale;
         this._playerModel.GetComponent<ModelController>().PlayerStats.PowerUpUsed(_point);
-        //gameObject.GetComponent<ModelController>().PlayerStats.PowerUpUsed(_point);
+        //this.gameObject.GetComponent<ModelController>().PlayerStats.PowerUpUsed(_point);
     }
 
-    public IEnumerator ShrinkPlayerCoroutine() { // Use Fixed Update to slowly shrink the ball, use Lerp.
+    public IEnumerator ShrinkPlayerCoroutine()
+    {
         this._isPowerActivated = true;
+
+        // Set the shrink properties
         this.powerupPlayerTransform.GetComponent<Rigidbody>().mass = shrinkMass;
         this.powerupPlayerTransform.localScale = new Vector3(shrinkScale, shrinkScale, shrinkScale);
-        //if (_isRespawned == true)
-        //{
-        //    this.playerTransform.GetComponent<Rigidbody>().mass = _originalMass;
-        //    this.playerTransform.localScale = defaultScale;
-        //    _isRespawned = false;
-        //    yield break;
-        //}
-        //else
-        //{
-        yield return new WaitForSeconds(_powerUpCooldown);
+
+        // Start the cooldown timer
+        float elapsedTime = 0f;
+
+        while (elapsedTime < _powerUpCooldown)
+        {
+            // Check if the player has died
+            if (_isPlayerDead)
+            {
+                // Reset the player's size and mass
+                ResetPlayerSizeAndMass();
+                yield break; // Exit the coroutine early
+            }
+
+            elapsedTime += Time.deltaTime; // Increment elapsed time for fixed duration
+            yield return null; // Wait until the next frame
+        }
+
+        // Reset the size and mass after the cooldown finishes if the player is alive
+        ResetPlayerSizeAndMass();
+        this._playerModel.GetComponent<ModelController>().PlayerStats.PowerUpUsed(_point);
+    }
+
+
+    // Resets the player's size and mass
+    private void ResetPlayerSizeAndMass()
+    {
         this.powerupPlayerTransform.GetComponent<Rigidbody>().mass = _originalMass;
         this.powerupPlayerTransform.localScale = defaultScale;
         this._isPowerActivated = false;
-        this._playerModel.GetComponent<ModelController>().PlayerStats.PowerUpUsed(_point);
-        //gameObject.GetComponentInChildren<ModelController>().PlayerStats.PowerUpUsed(_point);
+        // Optionally reset current power state
         this.currentPower = EnumPowerUp.None;
-
     }
 
     private void ResetPlayerState() {
@@ -163,28 +183,57 @@ public class PlayerPowerController : MonoBehaviour {
 
     }
 
-    public IEnumerator GrowPlayerCoroutine() {
+    //public IEnumerator GrowPlayerCoroutine() {
+    //    this._isPowerActivated = true;
+    //    this.powerupPlayerTransform.GetComponent<Rigidbody>().mass = growMass;
+    //    this.powerupPlayerTransform.localScale = new Vector3(growScale, growScale, growScale);
+
+    //    //if (_isRespawned == true)
+    //    //{
+    //    //    this.playerTransform.GetComponent<Rigidbody>().mass = _originalMass;
+    //    //    this.playerTransform.localScale = defaultScale;
+    //    //    _isRespawned = false;
+    //    //    yield break;
+    //    //}
+    //    //else
+    //    //{
+    //    yield return new WaitForSeconds(_powerUpCooldown); // This will last for 3 seconds until you return back to normal
+    //    this.powerupPlayerTransform.GetComponent<Rigidbody>().mass = _originalMass;
+    //    this.powerupPlayerTransform.localScale = defaultScale;
+    //    this._isPowerActivated = false;
+    //    this._playerModel.GetComponent<ModelController>().PlayerStats.PowerUpUsed(_point);
+    //    //gameObject.GetComponentInChildren<ModelController>().PlayerStats.PowerUpUsed(_point);
+    //    this.currentPower = EnumPowerUp.None;
+    //    //}
+    //}
+    public IEnumerator GrowPlayerCoroutine()
+    {
         this._isPowerActivated = true;
+
+        // Set the shrink properties
         this.powerupPlayerTransform.GetComponent<Rigidbody>().mass = growMass;
         this.powerupPlayerTransform.localScale = new Vector3(growScale, growScale, growScale);
 
-        //if (_isRespawned == true)
-        //{
-        //    this.playerTransform.GetComponent<Rigidbody>().mass = _originalMass;
-        //    this.playerTransform.localScale = defaultScale;
-        //    _isRespawned = false;
-        //    yield break;
-        //}
-        //else
-        //{
-        yield return new WaitForSeconds(_powerUpCooldown); // This will last for 3 seconds until you return back to normal
-        this.powerupPlayerTransform.GetComponent<Rigidbody>().mass = _originalMass;
-        this.powerupPlayerTransform.localScale = defaultScale;
-        this._isPowerActivated = false;
+        // Start the cooldown timer
+        float elapsedTime = 0f;
+
+        while (elapsedTime < _powerUpCooldown)
+        {
+            // Check if the player has died
+            if (_isPlayerDead)
+            {
+                // Reset the player's size and mass
+                ResetPlayerSizeAndMass();
+                yield break; // Exit the coroutine early
+            }
+
+            elapsedTime += Time.deltaTime; // Increment elapsed time for fixed duration
+            yield return null; // Wait until the next frame
+        }
+
+        // Reset the size and mass after the cooldown finishes if the player is alive
+        ResetPlayerSizeAndMass();
         this._playerModel.GetComponent<ModelController>().PlayerStats.PowerUpUsed(_point);
-        //gameObject.GetComponentInChildren<ModelController>().PlayerStats.PowerUpUsed(_point);
-        this.currentPower = EnumPowerUp.None;
-        //}
     }
 
     public IEnumerator BombPlayersCoroutine() {
@@ -388,10 +437,17 @@ public class PlayerPowerController : MonoBehaviour {
             }
         }
     }
+    // Call this method when the player dies
+    public void OnPlayerDeath()
+    {
+        _isPlayerDead = true; // Set the flag to indicate player has died
+    }
 
     public void PlayerRespawns() {
+        OnPlayerDeath();
         this.currentPower = EnumPowerUp.None;
         this._isPowerActivated = false;
+        //this._isPlayerDead = false;
     }
 
     //private IEnumerator EnablePowerUps()
