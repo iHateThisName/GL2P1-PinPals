@@ -4004,6 +4004,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bounceForce: 50
   points: 10
+  point: 1
   bumperAnimationController: {fileID: 0}
 --- !u!23 &712841924
 MeshRenderer:
@@ -4133,6 +4134,10 @@ PrefabInstance:
       propertyPath: counter
       value: 120
       objectReference: {fileID: 0}
+    - target: {fileID: 2617768332318677169, guid: 87043eb6ddb0ee9479c40c5d6374b8eb, type: 3}
+      propertyPath: gameOverSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 9402a4b992f206f458391e04728cd7e7, type: 3}
     - target: {fileID: 2617768332318677169, guid: 87043eb6ddb0ee9479c40c5d6374b8eb, type: 3}
       propertyPath: restartMenu
       value: 
@@ -4682,6 +4687,10 @@ PrefabInstance:
     - target: {fileID: 4913135436852004352, guid: c55dc1c494d46a049868b29d5e79638a, type: 3}
       propertyPath: m_Name
       value: ballScaleReference
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913135436852004352, guid: c55dc1c494d46a049868b29d5e79638a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5801,6 +5810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bounceForce: 50
   points: 10
+  point: 1
   bumperAnimationController: {fileID: 0}
 --- !u!23 &990322827
 MeshRenderer:
@@ -6608,7 +6618,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1224372061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10698,6 +10708,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bounceForce: 50
   points: 10
+  point: 1
   bumperAnimationController: {fileID: 0}
 --- !u!1 &4822992331684751389
 GameObject:
