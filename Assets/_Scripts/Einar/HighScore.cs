@@ -35,30 +35,29 @@ public class HighScore : Singleton<HighScore>
         }
         else
         {
-
             if (highScoreTextLVL1 != null && PlayerPrefs.HasKey(Helper.level1))
             {
-                highScoreTextLVL1.text = PlayerPrefs.GetInt(Helper.level1).ToString();
+                highScoreTextLVL1.text = "High Score: " + PlayerPrefs.GetInt(Helper.level1).ToString();
             }
             if (highScoreTextLVL2 != null && PlayerPrefs.HasKey(Helper.level2))
             {
-                highScoreTextLVL2.text = PlayerPrefs.GetInt(Helper.level2).ToString();
+                highScoreTextLVL2.text = "High Score: " + PlayerPrefs.GetInt(Helper.level2).ToString();
             }
             if (highScoreTextLVL3 != null && PlayerPrefs.HasKey(Helper.level3))
             {
-                highScoreTextLVL3.text = PlayerPrefs.GetInt(Helper.level3).ToString();
+                highScoreTextLVL3.text = "High Score: " + PlayerPrefs.GetInt(Helper.level3).ToString();
             }
             if (highScoreTextLVL4 != null && PlayerPrefs.HasKey(Helper.level4))
             {
-                highScoreTextLVL4.text = PlayerPrefs.GetInt(Helper.level4).ToString();
+                highScoreTextLVL4.text = "High Score: " + PlayerPrefs.GetInt(Helper.level4).ToString();
             }
             if (highScoreTextLVL5 != null && PlayerPrefs.HasKey(Helper.level5))
             {
-                highScoreTextLVL5.text = PlayerPrefs.GetInt(Helper.level5).ToString();
+                highScoreTextLVL5.text = "High Score: " + PlayerPrefs.GetInt(Helper.level5).ToString();
             }
             if (highScoreTextLVL6 != null && PlayerPrefs.HasKey(Helper.level6))
             {
-                highScoreTextLVL6.text = PlayerPrefs.GetInt(Helper.level6).ToString();
+                highScoreTextLVL6.text = "High Score: " + PlayerPrefs.GetInt(Helper.level6).ToString();
             }
         }
     }
@@ -75,27 +74,27 @@ public class HighScore : Singleton<HighScore>
         {
             if (highScoreTextLVL1 != null && PlayerPrefs.HasKey(Helper.level1))
             {
-                highScoreTextLVL1.text = PlayerPrefs.GetInt(Helper.level1).ToString();
+                highScoreTextLVL1.text = "High Score: " + PlayerPrefs.GetInt(Helper.level1).ToString();
             }
             if (highScoreTextLVL2 != null && PlayerPrefs.HasKey(Helper.level2))
             {
-                highScoreTextLVL2.text = PlayerPrefs.GetInt(Helper.level2).ToString();
+                highScoreTextLVL2.text = "High Score: " + PlayerPrefs.GetInt(Helper.level2).ToString();
             }
             if (highScoreTextLVL3 != null && PlayerPrefs.HasKey(Helper.level3))
             {
-                highScoreTextLVL3.text = PlayerPrefs.GetInt(Helper.level3).ToString();
+                highScoreTextLVL3.text = "High Score: " + PlayerPrefs.GetInt(Helper.level3).ToString();
             }
             if (highScoreTextLVL4 != null && PlayerPrefs.HasKey(Helper.level4))
             {
-                highScoreTextLVL4.text = PlayerPrefs.GetInt(Helper.level4).ToString();
+                highScoreTextLVL4.text = "High Score: " + PlayerPrefs.GetInt(Helper.level4).ToString();
             }
             if (highScoreTextLVL5 != null && PlayerPrefs.HasKey(Helper.level5))
             {
-                highScoreTextLVL5.text = PlayerPrefs.GetInt(Helper.level5).ToString();
+                highScoreTextLVL5.text = "High Score: " + PlayerPrefs.GetInt(Helper.level5).ToString();
             }
             if (highScoreTextLVL6 != null && PlayerPrefs.HasKey(Helper.level6))
             {
-                highScoreTextLVL6.text = PlayerPrefs.GetInt(Helper.level6).ToString();
+                highScoreTextLVL6.text = "High Score: " + PlayerPrefs.GetInt(Helper.level6).ToString();
             }
         }
     }
