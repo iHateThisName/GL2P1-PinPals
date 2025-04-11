@@ -338,6 +338,7 @@ MonoBehaviour:
   pauseOnPoints: 1
   pauseDuration: 15
   randomizeTarget: 0
+  isPaused: 0
 --- !u!1 &68338835
 GameObject:
   m_ObjectHideFlags: 0
@@ -2583,6 +2584,7 @@ MonoBehaviour:
   pauseOnPoints: 1
   pauseDuration: 15
   randomizeTarget: 0
+  isPaused: 0
 --- !u!1 &478353400
 GameObject:
   m_ObjectHideFlags: 0
@@ -2937,6 +2939,7 @@ MonoBehaviour:
   pauseOnPoints: 1
   pauseDuration: 15
   randomizeTarget: 0
+  isPaused: 0
 --- !u!1 &562524586
 GameObject:
   m_ObjectHideFlags: 0
@@ -3742,6 +3745,7 @@ MonoBehaviour:
   pauseOnPoints: 1
   pauseDuration: 15
   randomizeTarget: 0
+  isPaused: 0
 --- !u!1 &711830528
 GameObject:
   m_ObjectHideFlags: 0
@@ -4310,6 +4314,7 @@ Transform:
   - {fileID: 1340750741}
   - {fileID: 193428785}
   - {fileID: 723192101}
+  - {fileID: 1921897933}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &782458731
@@ -5337,6 +5342,7 @@ MonoBehaviour:
   pauseOnPoints: 1
   pauseDuration: 15
   randomizeTarget: 0
+  isPaused: 0
 --- !u!1001 &961124732
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5448,6 +5454,7 @@ MonoBehaviour:
   pauseOnPoints: 1
   pauseDuration: 15
   randomizeTarget: 0
+  isPaused: 0
 --- !u!1 &980463433
 GameObject:
   m_ObjectHideFlags: 0
@@ -6088,6 +6095,7 @@ MonoBehaviour:
   pauseOnPoints: 1
   pauseDuration: 15
   randomizeTarget: 0
+  isPaused: 0
 --- !u!1 &1021675001
 GameObject:
   m_ObjectHideFlags: 0
@@ -6409,6 +6417,7 @@ MonoBehaviour:
   pauseOnPoints: 1
   pauseDuration: 15
   randomizeTarget: 0
+  isPaused: 0
 --- !u!4 &1171152362 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6947198020904510623, guid: 6835195b816f53a4dbd0456e6820a094, type: 3}
@@ -6539,6 +6548,7 @@ MonoBehaviour:
   pauseOnPoints: 1
   pauseDuration: 15
   randomizeTarget: 0
+  isPaused: 0
 --- !u!1001 &1205542349
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6868,6 +6878,7 @@ MonoBehaviour:
   pauseOnPoints: 1
   pauseDuration: 15
   randomizeTarget: 0
+  isPaused: 0
 --- !u!1 &1251767882
 GameObject:
   m_ObjectHideFlags: 0
@@ -7243,6 +7254,7 @@ MonoBehaviour:
   pauseOnPoints: 1
   pauseDuration: 15
   randomizeTarget: 0
+  isPaused: 0
 --- !u!1 &1415607030
 GameObject:
   m_ObjectHideFlags: 0
@@ -9257,6 +9269,7 @@ MonoBehaviour:
   pauseOnPoints: 1
   pauseDuration: 15
   randomizeTarget: 0
+  isPaused: 0
 --- !u!1 &1845068636
 GameObject:
   m_ObjectHideFlags: 0
@@ -9601,6 +9614,77 @@ MonoBehaviour:
   pauseOnPoints: 1
   pauseDuration: 15
   randomizeTarget: 0
+  isPaused: 0
+--- !u!1001 &1921897932
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 735707082}
+    m_Modifications:
+    - target: {fileID: 444221171532064229, guid: 33bc96b630b2e5547a8252784181ec05, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 20.720041
+      objectReference: {fileID: 0}
+    - target: {fileID: 444221171532064229, guid: 33bc96b630b2e5547a8252784181ec05, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -9.106037
+      objectReference: {fileID: 0}
+    - target: {fileID: 444221171532064229, guid: 33bc96b630b2e5547a8252784181ec05, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -14.199194
+      objectReference: {fileID: 0}
+    - target: {fileID: 444221171532064229, guid: 33bc96b630b2e5547a8252784181ec05, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 444221171532064229, guid: 33bc96b630b2e5547a8252784181ec05, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 444221171532064229, guid: 33bc96b630b2e5547a8252784181ec05, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 444221171532064229, guid: 33bc96b630b2e5547a8252784181ec05, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 444221171532064229, guid: 33bc96b630b2e5547a8252784181ec05, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 444221171532064229, guid: 33bc96b630b2e5547a8252784181ec05, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 444221171532064229, guid: 33bc96b630b2e5547a8252784181ec05, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8859641491799723407, guid: 33bc96b630b2e5547a8252784181ec05, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 4e109598c1d3a0942874a520b3432895, type: 3}
+    - target: {fileID: 8859641491799723407, guid: 33bc96b630b2e5547a8252784181ec05, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4e109598c1d3a0942874a520b3432895, type: 3}
+    - target: {fileID: 8915266122090834733, guid: 33bc96b630b2e5547a8252784181ec05, type: 3}
+      propertyPath: m_Name
+      value: MusicPlayer
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 33bc96b630b2e5547a8252784181ec05, type: 3}
+--- !u!4 &1921897933 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 444221171532064229, guid: 33bc96b630b2e5547a8252784181ec05, type: 3}
+  m_PrefabInstance: {fileID: 1921897932}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1923351476
 GameObject:
   m_ObjectHideFlags: 0
@@ -9655,6 +9739,7 @@ MonoBehaviour:
   pauseOnPoints: 1
   pauseDuration: 15
   randomizeTarget: 0
+  isPaused: 0
 --- !u!1 &1941464790
 GameObject:
   m_ObjectHideFlags: 0
@@ -10432,6 +10517,7 @@ MonoBehaviour:
   pauseOnPoints: 1
   pauseDuration: 15
   randomizeTarget: 0
+  isPaused: 0
 --- !u!1001 &2100970318
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10560,6 +10646,7 @@ MonoBehaviour:
   pauseOnPoints: 1
   pauseDuration: 15
   randomizeTarget: 0
+  isPaused: 0
 --- !u!82 &1282161356500633017
 AudioSource:
   m_ObjectHideFlags: 0
