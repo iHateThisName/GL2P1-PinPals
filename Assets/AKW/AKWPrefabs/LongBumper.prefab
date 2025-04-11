@@ -9,6 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1900361559840297932}
+  - component: {fileID: 5901244021179930724}
+  - component: {fileID: 5930524315936725949}
+  - component: {fileID: 741871593538847267}
+  - component: {fileID: 4172106527217805174}
+  - component: {fileID: 8337810664875656170}
   m_Layer: 0
   m_Name: LongBumper
   m_TagString: Untagged
@@ -37,6 +42,104 @@ Transform:
   - {fileID: 3101066594260486841}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5901244021179930724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2366208607750809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be739fa812561de4c9639d3c2bd03401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceForce: 15
+  points: 100
+  point: 1
+  bumperAnimationController: {fileID: 0}
+--- !u!114 &5930524315936725949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2366208607750809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a01dc6f64d47cf4a86cf9f839b459e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animationRipplePrefab: {fileID: 6094001894214437719, guid: 3a5a04ad044604f40b39c62783af51c5, type: 3}
+  _animationScorePrefab: {fileID: 3054173174162612129, guid: 5ea0ec42b0951164bbc7935d51c3221d, type: 3}
+  ScoreText: 
+--- !u!65 &741871593538847267
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2366208607750809}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.03, y: 3.9468255, z: 20.38}
+  m_Center: {x: 0, y: 0.2165873, z: 0}
+--- !u!136 &4172106527217805174
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2366208607750809}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3.5
+  m_Height: 2.15
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 10}
+--- !u!136 &8337810664875656170
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2366208607750809}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3.5
+  m_Height: 2.15
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: -10}
 --- !u!1 &4365434690511346488
 GameObject:
   m_ObjectHideFlags: 0
@@ -48,7 +151,6 @@ GameObject:
   - component: {fileID: 9087121885235908355}
   - component: {fileID: 1528818541361425560}
   - component: {fileID: 2509392884362475206}
-  - component: {fileID: 6659259578186383988}
   m_Layer: 0
   m_Name: LBumpEdge
   m_TagString: Untagged
@@ -124,29 +226,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &6659259578186383988
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4365434690511346488}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &4866881717542130431
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,7 +237,6 @@ GameObject:
   - component: {fileID: 3101066594260486841}
   - component: {fileID: 3548606568183407853}
   - component: {fileID: 4199061721255389776}
-  - component: {fileID: 423264639042025320}
   m_Layer: 0
   m_Name: pinHold
   m_TagString: Untagged
@@ -234,29 +312,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &423264639042025320
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4866881717542130431}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &5934250078727966128
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,7 +323,6 @@ GameObject:
   - component: {fileID: 1633140577765134137}
   - component: {fileID: 7071487318092934726}
   - component: {fileID: 1932737940761717966}
-  - component: {fileID: 3896554383793022667}
   m_Layer: 0
   m_Name: LBumpEdge
   m_TagString: Untagged
@@ -344,29 +398,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &3896554383793022667
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5934250078727966128}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &7151242894716759137
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,9 +409,6 @@ GameObject:
   - component: {fileID: 1535470673000439758}
   - component: {fileID: 764291758594320792}
   - component: {fileID: 8850850415597436916}
-  - component: {fileID: 924902920418774081}
-  - component: {fileID: 3689144112291796226}
-  - component: {fileID: 7376596722985380010}
   - component: {fileID: 4125422930949023565}
   m_Layer: 0
   m_Name: LBumpMid
@@ -457,58 +485,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &924902920418774081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7151242894716759137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be739fa812561de4c9639d3c2bd03401, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bounceForce: 15
-  points: 100
-  bumperAnimationController: {fileID: 7376596722985380010}
---- !u!64 &3689144112291796226
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7151242894716759137}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &7376596722985380010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7151242894716759137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a01dc6f64d47cf4a86cf9f839b459e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animationRipplePrefab: {fileID: 6094001894214437719, guid: 3a5a04ad044604f40b39c62783af51c5, type: 3}
-  _animationScorePrefab: {fileID: 3054173174162612129, guid: 5ea0ec42b0951164bbc7935d51c3221d, type: 3}
-  ScoreText: 
 --- !u!82 &4125422930949023565
 AudioSource:
   m_ObjectHideFlags: 0
@@ -617,7 +593,6 @@ GameObject:
   - component: {fileID: 7392046375209186542}
   - component: {fileID: 9214393128863343142}
   - component: {fileID: 6554679987157270732}
-  - component: {fileID: 2706073959142806376}
   m_Layer: 0
   m_Name: pinHold
   m_TagString: Untagged
@@ -693,29 +668,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2706073959142806376
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7250196316682015339}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &8258989851484430470
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,7 +679,6 @@ GameObject:
   - component: {fileID: 3623551142899564790}
   - component: {fileID: 8493955480512222379}
   - component: {fileID: 5214605379008523515}
-  - component: {fileID: 4181933728705737207}
   m_Layer: 0
   m_Name: LBumpMid (1)
   m_TagString: Untagged
@@ -803,24 +754,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4181933728705737207
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8258989851484430470}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
