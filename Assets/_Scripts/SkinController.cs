@@ -16,14 +16,12 @@ public class SkinController : MonoBehaviour {
     public void StartButton() {
         Ready = true;
         skinSelectCanvas.SetActive(false);
-        //SceneManager.LoadScene("Prototype");
         CheckPlayerReady();
     }
 
     private void CheckPlayerReady() {
         int playersReady = 0;
 
-        //GameManager.Instance.Players.Keys = List of EnumPlayerTag
         foreach (EnumPlayerTag tag in GameManager.Instance.Players.Keys) {
             PlayerReferences modelController = GameManager.Instance.GetModelController(tag);
             if (modelController.SkinController.Ready) {

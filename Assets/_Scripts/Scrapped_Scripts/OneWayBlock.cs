@@ -1,11 +1,9 @@
 using UnityEngine;
 
-public class OneWayBlock : MonoBehaviour
-{
+public class OneWayBlock : MonoBehaviour {
     private Collider playerCollider;
     [SerializeField] private Collider doorCollider;
-    private void OnTriggerEnter(Collider player)
-    {
+    private void OnTriggerEnter(Collider player) {
         //if (player.gameObject.name.Contains("Player"))
         {
             // Prevent the player from entering the door

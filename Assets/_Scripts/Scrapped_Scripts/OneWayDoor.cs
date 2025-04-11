@@ -1,12 +1,10 @@
 using UnityEngine;
 
-public class OneWayDoor : MonoBehaviour
-{
+public class OneWayDoor : MonoBehaviour {
     private Collider playerCollider;
     [SerializeField] private Collider doorCollider;
 
-    private void OnTriggerEnter(Collider player)
-    {
+    private void OnTriggerEnter(Collider player) {
         // Check if the object that entered the trigger is the player
         //if (player.gameObject.name.Contains("Player"))
         {

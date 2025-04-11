@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ButtonActions : MonoBehaviour {
+
     [Header("Setup")]
     [SerializeField] private EventSystem _eventSystem;
     [SerializeField] private Selectable _elementToSelect;

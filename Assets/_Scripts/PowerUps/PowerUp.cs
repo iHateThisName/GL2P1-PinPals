@@ -37,5 +37,4 @@ public class PowerUp : MonoBehaviour {
         boxCollider.enabled = true;
         modelController.PlayerStats.PowerUpsCollected(1);
     }
-
 }

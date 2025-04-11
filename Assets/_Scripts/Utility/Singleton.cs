@@ -1,9 +1,8 @@
 using UnityEngine;
-// Ivar
 
+// Ivar
 public class Singleton<T> : MonoBehaviour where T : Component {
     protected static T instance;
-
     public static bool HasInstance => instance != null;
     public static T TryGetInstance() => HasInstance ? instance : null;
 
@@ -16,7 +15,6 @@ public class Singleton<T> : MonoBehaviour where T : Component {
                     instance = go.AddComponent<T>();
                 }
             }
-
             return instance;
         }
     }

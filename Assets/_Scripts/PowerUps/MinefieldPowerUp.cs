@@ -1,8 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class MinefieldPowerUp : MonoBehaviour
-{
+public class MinefieldPowerUp : MonoBehaviour {
     [SerializeField] private GameObject _mineModel;
     [SerializeField] private GameObject _mineAddon;
     [SerializeField] private GameObject _mineDetector;
@@ -11,17 +10,13 @@ public class MinefieldPowerUp : MonoBehaviour
     private int _point = 1;
     [SerializeField] private AudioClip _mineIdleSFX;
     [SerializeField] private AudioClip _mineExplosionSFX;
-    void Start()
-    {
+    void Start() {
         SoundEffectManager.Instance.PlaySoundFXClip(this._mineIdleSFX, this.gameObject.transform, 1f);
         GetComponent<Rigidbody>();
         StartCoroutine(PrimeMine());
     }
-
-    public void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.tag.StartsWith("Player"))
-        {
+    public void OnCollisionEnter(Collision other) {
+        if (other.gameObject.tag.StartsWith("Player")) {
             if (!this._isDangerous) return;
 
             StartCoroutine(MineExplosion());
@@ -29,20 +24,15 @@ public class MinefieldPowerUp : MonoBehaviour
             PlayerJoinManager.Instance.Respawn(tag);
             other.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerKills(_point);
             Debug.Log("player has respawned");
-        }
-        else if (other.gameObject.tag.StartsWith("Ground"))
-        {
+        } else if (other.gameObject.tag.StartsWith("Ground")) {
             this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
             print("mine is frozen");
-        } else
-        {
+        } else {
             this.gameObject.GetComponent<Rigidbody>().isKinematic = false;
         }
     }
-
-    private IEnumerator MineExplosion()
-    {
-        this._mineExplosionEffect.SetActive(true); 
+    private IEnumerator MineExplosion() {
+        this._mineExplosionEffect.SetActive(true);
         yield return new WaitForSeconds(0.2f); // Time until the Mine Game Object gets despawned
         this._mineModel.SetActive(false);
         this._mineAddon.SetActive(false);
@@ -52,11 +42,9 @@ public class MinefieldPowerUp : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private IEnumerator PrimeMine()
-    {
+    private IEnumerator PrimeMine() {
         yield return new WaitForSeconds(2f);
         this._isDangerous = true;
     }
-
 
 }

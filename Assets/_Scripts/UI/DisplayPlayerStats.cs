@@ -1,16 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DisplayPlayerStats : MonoBehaviour
-{
+public class DisplayPlayerStats : MonoBehaviour {
     [SerializeField] private GameObject _playerStatsUI;
-
     private void Start() {
         List<(EnumPlayerTag tag, int score)> playerScores = GameManager.Instance.GetPlayersOrderByScoreWithScore();
         if (playerScores.Count <= 0) return;
-        for (int i = 0; i < playerScores.Count; i++)
-        {
-        PlayerReferences playerModelController = GameManager.Instance.GetModelController(playerScores[i].tag);
+        for (int i = 0; i < playerScores.Count; i++) {
+            PlayerReferences playerModelController = GameManager.Instance.GetModelController(playerScores[i].tag);
             GameObject currentUI = Instantiate(_playerStatsUI, this.transform);
             DisplayStats displayStats = currentUI.GetComponent<DisplayStats>();
             PlayerStats currentPlayerStats = playerModelController.PlayerStats;

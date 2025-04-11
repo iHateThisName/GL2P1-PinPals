@@ -12,7 +12,6 @@ public class EndGameController : MonoBehaviour {
     [Header("ScoreBoard")]
     [SerializeField] private GameObject _scoreUIPrefab, _scoreBoard;
 
-
     private List<(EnumPlayerTag tag, int score)> playerScores;
     private List<(EnumPlayerTag tag, Color color)> playerColors = new List<(EnumPlayerTag tag, Color color)>();
 

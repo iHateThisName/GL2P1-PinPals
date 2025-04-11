@@ -34,7 +34,6 @@ public class NavigationManager : MonoBehaviour {
             this._selectInput = InputSystem.actions.FindAction("Interact");
 
             StartListening();
-
         } else {
             // Player Specific Navigation
             if (_AssaigneSpecificPlayer != EnumPlayerTag.None) {

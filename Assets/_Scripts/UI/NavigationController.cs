@@ -24,7 +24,6 @@ public class NavigationController : MonoBehaviour {
 
     private void Start() {
         SetUp();
-
         // Log Listeners
         if (this._isLogEnabled) {
             this.NavigatedEvent.AddListener(() => Debug.Log("Navigated: " + this.gameObject.name));

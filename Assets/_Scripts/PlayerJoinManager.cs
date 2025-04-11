@@ -2,12 +2,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// Einar and Ivar
 public class PlayerJoinManager : Singleton<PlayerJoinManager> {
     [SerializeField] private List<Transform> _spawnPoints = new List<Transform>();
     [SerializeField] private List<Transform> _levelSpawnPoints = new List<Transform>();
 
-    private void Awake() {
-        //_spawnPoints.Clear();
+    protected override void Awake() {
+        base.Awake();
         SceneManager.sceneLoaded -= OnNewLevelLoaded; // to prevent duplicate subscriptions when Awake() is called multiple times.
         SceneManager.sceneLoaded += OnNewLevelLoaded; // gets called every time a scene is loaded
 

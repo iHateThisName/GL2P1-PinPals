@@ -7,6 +7,7 @@ public class PlayerFollowCanvasManager : MonoBehaviour {
     [SerializeField] private Sprite _multi, _shrink, _grow, _freeze, _bomb, _mine, _glue;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private RandomMaterial randomMaterial;
+
     private void Start() {
         EnumPlayerTag tag = _modelController.GetPlayerTag();
         playerText.text = "P" + (int)tag;

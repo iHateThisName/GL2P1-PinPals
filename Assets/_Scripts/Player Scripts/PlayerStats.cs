@@ -1,8 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using TMPro;
-public class PlayerStats : MonoBehaviour
-{
+public class PlayerStats : MonoBehaviour {
     public int currentPoint { get; private set; } = 0;
     public int bumperPoint { get; private set; } = 0;
     public int bumperHits { get; private set; } = 0;
@@ -22,9 +19,9 @@ public class PlayerStats : MonoBehaviour
 
     public void BumperHits(int hitBumper) {
         this.bumperHits += hitBumper;
-    } 
+    }
 
-    public void PlayerKills (int kills) {
+    public void PlayerKills(int kills) {
         this.playersKilled += kills;
     }
 

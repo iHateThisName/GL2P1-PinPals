@@ -1,10 +1,7 @@
-using System;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class DisplayStats : MonoBehaviour
-{
+public class DisplayStats : MonoBehaviour {
     // Hilmir
     public int currentPoint { get; private set; } = 0;
     [HideInInspector]
@@ -22,23 +19,6 @@ public class DisplayStats : MonoBehaviour
     [SerializeField] private TMP_Text _powerUpUsedPoints;
     [SerializeField] private TMP_Text _powerUpCollectedPoints;
 
-    private void Start() {
-
-
-
-        //// For Player 01
-        //ModelController playerModelController = GameManager.Instance.GetModelController(playerScores[0].tag);
-
-        //PlayerStats currentPlayerStats = playerModelController.PlayerStats;
-        //// Passes the points to BumperPoint
-        //BumperPoint(currentPlayerStats.bumperPoint);
-        //BumperHits(currentPlayerStats.bumperHits);
-        //PlayerKills(currentPlayerStats.playersKilled);
-        //PlayerDeaths(currentPlayerStats.playerDeaths);
-        //PowerUpsCollected(currentPlayerStats.powersCollected);
-        //PowerUpUsed(currentPlayerStats.powersUsed);
-
-    }
     // Verifies it and displays it.
     public void SetPlayerName(string name) {
         _playerName.text = name.ToString();
