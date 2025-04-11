@@ -21,20 +21,28 @@ public class ArcadeMachineController : MonoBehaviour {
 
     private bool _isSelected = false;
     private InputAction _cancel;
+    private System.Action<InputAction.CallbackContext> _cancelCallback;
     private CinemachineBrain _cinemachineBrain;
 
     [SerializeField] private bool _isLogEnabled = false;
     [SerializeField] private bool _isMouseHoverEnabled = false;
 
     private void Start() {
-        this._cancel = InputSystem.actions.FindAction("Cancel");
-        this._cancel.performed += ctx => OnCancel();
+        _cancel = InputSystem.actions.FindAction("Cancel");
+        _cancelCallback = ctx => OnCancel();
+        _cancel.performed += _cancelCallback;
 
         _cinemachineBrain = Camera.main.GetComponent<CinemachineBrain>();
 
         if (IsDefault) {
             HoveringArcadeMachine();
             SelectingArcadeMachine();
+        }
+    }
+
+    private void OnDisable() {
+        if (_cancel != null && _cancelCallback != null) {
+            _cancel.performed -= _cancelCallback;
         }
     }
 

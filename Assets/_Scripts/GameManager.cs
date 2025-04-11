@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 // Ivar
 public class GameManager : Singleton<GameManager> {
@@ -35,6 +36,13 @@ public class GameManager : Singleton<GameManager> {
 
     private IEnumerator Start() {
         if (this._dollyCart != null) {
+            //Input Action
+            InputAction cancel = InputSystem.actions.FindAction("Cancel");
+            cancel.performed += cancelCallback;
+            void cancelCallback(InputAction.CallbackContext ctx) {
+                this._dollyCart.CameraPosition = 1f; // Skip to the end
+            }
+
             TimeManager.instance.StopStopWatch(); // Stops the timer
             PlayerSettings.IsLandscape = false; // Set the camera to use a single camera
             CheckCamera(); // Updates the camera settings
@@ -46,10 +54,12 @@ public class GameManager : Singleton<GameManager> {
             // When the dolly cart has reached the end
             PlayerSettings.IsLandscape = true;
             CheckCamera();
+            cancel.performed -= cancelCallback; // Stop listening to the cancel action
             StartGame();
             Debug.Log("Dolly cart has reach end");
-        }
 
+
+        }
     }
 
     public void HidePlayers() {

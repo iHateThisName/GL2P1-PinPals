@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 // Hilmir, Ivar and Einar
@@ -32,9 +31,8 @@ public class PlayerPowerController : MonoBehaviour {
     [SerializeField] private PlayerFollowCanvasManager playerText;
 
     private EnumPlayerTag _assignedPlayerTag;
- 
-
     private bool _isPowerActivated = false;
+    private PlayerReferences playerReferences;
 
 
     public void Start() {
@@ -44,6 +42,8 @@ public class PlayerPowerController : MonoBehaviour {
         string playerNumberString = powerupPlayerTransform.gameObject.tag.Substring(gameObject.tag.Length - 1);
         int playerNumber = int.Parse(playerNumberString);
         _assignedPlayerTag = (EnumPlayerTag)playerNumber;
+
+        this.playerReferences = this.GetComponentInChildren<PlayerReferences>();
     }
 
     public void GivePlayerPower(EnumPowerUp power) {
@@ -98,29 +98,26 @@ public class PlayerPowerController : MonoBehaviour {
                     StartCoroutine(MineExplosionCoroutine());
                     break;
                 case EnumPowerUp.Honey:
-                    StartCoroutine(StartHoneyEffectCoroutine());
+                    StartHoneyEffectCoroutine();
                     break;
 
             }
         }
     }
 
-    public IEnumerator ShrinkPlayerCoroutine()
-    {
+    public IEnumerator ShrinkPlayerCoroutine() {
         this._isPowerActivated = true;
 
         // Set the shrink properties
-        this.powerupPlayerTransform.GetComponent<Rigidbody>().mass = shrinkMass;
+        this.playerReferences.rb.mass = shrinkMass;
         this.powerupPlayerTransform.localScale = new Vector3(shrinkScale, shrinkScale, shrinkScale);
 
         // Start the cooldown timer
         float elapsedTime = 0f;
 
-        while (elapsedTime < _powerUpCooldown)
-        {
+        while (elapsedTime < _powerUpCooldown) {
             // Check if the player has died
-            if (_isPlayerDead)
-            {
+            if (_isPlayerDead) {
                 // Reset the player's size and mass
                 ResetPlayerSizeAndMass();
                 yield break; // Exit the coroutine early
@@ -132,22 +129,20 @@ public class PlayerPowerController : MonoBehaviour {
 
         // Reset the size and mass after the cooldown finishes if the player is alive
         ResetPlayerSizeAndMass();
-        this._playerModel.GetComponent<PlayerReferences>().PlayerStats.PowerUpUsed(_point);
+        this.playerReferences.PlayerStats.PowerUpUsed(_point);
     }
 
 
     // Resets the player's size and mass
-    private void ResetPlayerSizeAndMass()
-    {
-        this.powerupPlayerTransform.GetComponent<Rigidbody>().mass = _originalMass;
+    private void ResetPlayerSizeAndMass() {
+        this.playerReferences.rb.mass = _originalMass;
         this.powerupPlayerTransform.localScale = defaultScale;
         this._isPowerActivated = false;
         // Optionally reset current power state
         this.currentPower = EnumPowerUp.None;
     }
 
-    public IEnumerator GrowPlayerCoroutine()
-    {
+    public IEnumerator GrowPlayerCoroutine() {
         this._isPowerActivated = true;
 
         // Set the shrink properties
@@ -157,11 +152,9 @@ public class PlayerPowerController : MonoBehaviour {
         // Start the cooldown timer
         float elapsedTime = 0f;
 
-        while (elapsedTime < _powerUpCooldown)
-        {
+        while (elapsedTime < _powerUpCooldown) {
             // Check if the player has died
-            if (_isPlayerDead)
-            {
+            if (_isPlayerDead) {
                 // Reset the player's size and mass
                 ResetPlayerSizeAndMass();
                 yield break; // Exit the coroutine early
@@ -173,7 +166,7 @@ public class PlayerPowerController : MonoBehaviour {
 
         // Reset the size and mass after the cooldown finishes if the player is alive
         ResetPlayerSizeAndMass();
-        this._playerModel.GetComponent<PlayerReferences>().PlayerStats.PowerUpUsed(_point);
+        this.playerReferences.PlayerStats.PowerUpUsed(_point);
     }
 
     public IEnumerator BombPlayersCoroutine() {
@@ -182,7 +175,7 @@ public class PlayerPowerController : MonoBehaviour {
         GameObject explosionGameObject = Instantiate(this.explosionEffect, _cameraTarget.transform.position, Quaternion.identity);
         explosionGameObject.GetComponent<ExplosionPowerUp>().AssignBombOwner(powerupPlayerTransform.gameObject);
         yield return new WaitForSeconds(_powerUpCooldown);
-        this._playerModel.GetComponent<PlayerReferences>().PlayerStats.PowerUpUsed(_point);
+        this.playerReferences.PlayerStats.PowerUpUsed(_point);
         //gameObject.GetComponentInChildren<ModelController>().PlayerStats.PowerUpUsed(_point);
         this._isPowerActivated = false;
         this.currentPower = EnumPowerUp.None;
@@ -190,7 +183,7 @@ public class PlayerPowerController : MonoBehaviour {
 
     public IEnumerator MineExplosionCoroutine() {
         this._isPowerActivated = true;
-        this._playerModel.GetComponent<PlayerReferences>().PlayerStats.PowerUpUsed(_point);
+        this.playerReferences.PlayerStats.PowerUpUsed(_point);
         //gameObject.GetComponentInChildren<ModelController>().PlayerStats.PowerUpUsed(_point);
         GameObject landMineGameObject = Instantiate(this.minePrefab, _cameraTarget.transform.position, Quaternion.identity);
         yield return new WaitForSeconds(_powerUpCooldown);
@@ -211,7 +204,7 @@ public class PlayerPowerController : MonoBehaviour {
     }
     private void FreezePlayers() {
         this._isPowerActivated = true;
-        this._playerModel.GetComponent<PlayerReferences>().PlayerStats.PowerUpUsed(_point);
+        this.playerReferences.PlayerStats.PowerUpUsed(_point);
         //gameObject.GetComponentInChildren<ModelController>().PlayerStats.PowerUpUsed(_point);
         // Loop through all players in the GameManager
         foreach (var player in GameManager.Instance.Players) {
@@ -223,6 +216,12 @@ public class PlayerPowerController : MonoBehaviour {
                 StartCoroutine(Unfreeze(player.Value));
             }
         }
+        StartCoroutine(PowerCooldown());
+    }
+    public IEnumerator PowerCooldown() {
+        yield return new WaitForSeconds(_powerUpCooldown);
+        this._isPowerActivated = false;
+        this.currentPower = EnumPowerUp.None;
     }
 
     // Coroutine to unfreeze the player after 5 seconds
@@ -230,29 +229,22 @@ public class PlayerPowerController : MonoBehaviour {
         yield return new WaitForSeconds(5f);
         // Set the player's rigidbody to non-kinematic to unfreeze them
         player.GetComponentInChildren<PlayerReferences>().rb.isKinematic = false;
-        this._isPowerActivated = false;
-        this.currentPower = EnumPowerUp.None;
-
     }
 
-    private IEnumerator StartHoneyEffectCoroutine() {
+    private void StartHoneyEffectCoroutine() {
         // Start
         this._isPowerActivated = true;
         GameObject honeyGameObject = Instantiate(this.honeyPrefab, _cameraTarget.transform.position, Quaternion.identity);
         honeyGameObject.GetComponent<HoneyBlock>().AssignOwner(powerupPlayerTransform.gameObject);
-        this._playerModel.GetComponent<PlayerReferences>().PlayerStats.PowerUpUsed(_point);
-        //gameObject.GetComponentInChildren<ModelController>().PlayerStats.PowerUpUsed(_point);
-        yield return new WaitForSecondsRealtime(_powerUpCooldown);
-        this._isPowerActivated = false;
-        this.currentPower = EnumPowerUp.None;
-
+        this.playerReferences.PlayerStats.PowerUpUsed(_point);
+        StartCoroutine(PowerCooldown());
     }
     public void MultiBall() {
         this._isPowerActivated = true;
-        this._playerModel.GetComponent<PlayerReferences>().PlayerStats.PowerUpUsed(_point);
-        //gameObject.GetComponentInChildren<ModelController>().PlayerStats.PowerUpUsed(_point);
+        this.playerReferences.PlayerStats.PowerUpUsed(_point);
         CreateDuplicate(powerupPlayerTransform.gameObject);
         CreateDuplicate(powerupPlayerTransform.gameObject);
+        StartCoroutine(PowerCooldown());
     }
 
     private void CreateDuplicate(GameObject playerModel) {
@@ -265,8 +257,6 @@ public class PlayerPowerController : MonoBehaviour {
         yield return new WaitForSecondsRealtime(_powerUpCooldown);
         // Destroy the GameObject
         Destroy(dub);
-        this._isPowerActivated = false;
-        this.currentPower = EnumPowerUp.None;
     }
 
     private IEnumerator BalloonCoroutine() {
@@ -297,7 +287,7 @@ public class PlayerPowerController : MonoBehaviour {
                     EnumPlayerTag tag = player.gameObject.GetComponent<PlayerReferences>().GetPlayerTag();
                     PlayerJoinManager.Instance.Respawn(tag);
                     player.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerDeaths(_point);
-                    this._playerModel.GetComponent<PlayerReferences>().PlayerStats.PowerUpUsed(_point);
+                    this.playerReferences.PlayerStats.PowerUpUsed(_point);
                 }
             }
 
@@ -307,8 +297,7 @@ public class PlayerPowerController : MonoBehaviour {
         }
     }
     // Call this method when the player dies
-    public void OnPlayerDeath()
-    {
+    public void OnPlayerDeath() {
         _isPlayerDead = true; // Set the flag to indicate player has died
     }
 
@@ -316,6 +305,5 @@ public class PlayerPowerController : MonoBehaviour {
         OnPlayerDeath();
         this.currentPower = EnumPowerUp.None;
         this._isPowerActivated = false;
-        //this._isPlayerDead = false;
     }
 }
