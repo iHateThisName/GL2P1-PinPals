@@ -21,7 +21,7 @@ public class HighScore : Singleton<HighScore>
         // Get the current level's name
         currentLevel = SceneManager.GetActiveScene().name;
 
-        if (currentLevel != "levelSelector")
+        if (currentLevel != "LevelSelector")
         {
             // Load the high score for the current level
             if (PlayerPrefs.HasKey(currentLevel))
@@ -33,7 +33,8 @@ public class HighScore : Singleton<HighScore>
                 highScore = 0;
             }
         }
-        if (currentLevel == "levelSelector")
+        else
+        {
 
             if (highScoreTextLVL1 != null && PlayerPrefs.HasKey(Helper.level1))
             {
@@ -59,8 +60,9 @@ public class HighScore : Singleton<HighScore>
             {
                 highScoreTextLVL6.text = PlayerPrefs.GetInt(Helper.level6).ToString();
             }
+        }
     }
-    
+
 
     public void CheckHighScore(int currentScore)
     {
@@ -69,7 +71,7 @@ public class HighScore : Singleton<HighScore>
             highScore = currentScore;
             PlayerPrefs.SetInt(currentLevel, highScore);
         }
-        if (currentLevel != "levelSelector")
+        if (currentLevel != "LevelSelector")
         {
             if (highScoreTextLVL1 != null && PlayerPrefs.HasKey(Helper.level1))
             {
@@ -103,31 +105,4 @@ public class HighScore : Singleton<HighScore>
         // Optionally save the current score when exiting the level or when the game ends
         PlayerPrefs.SetInt("CurrentScore", points);
     }
-}    
-// Start is called once before the first execution of Update after the MonoBehaviour is created
-
-
-    //void Start()
-    //{
-    //    SceneManager.GetActiveScene().name;
-    //    if (PlayerPrefs.HasKey(Helper.level1))
-    //    {
-    //        highScore = PlayerPrefs.GetInt(Helper.level1);
-    //    }
-    //}
-
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    //Need to referance the score script
-    //    //Need to referance the lvls
-    //    if (scoreGained > highScore)
-    //    {
-    //        highScore = scoreGained;
-    //        PlayerPrefs.SetInt(Helper.level1, highScore);
-    //    }
-
-    //    scoreText.text = "Score: " + scoreGained;
-    //    PlayerPrefs.SetInt("Score", scoreGained);
-    //    highScoreText.text = "High Score: " + highScore;
-    //}
+}
