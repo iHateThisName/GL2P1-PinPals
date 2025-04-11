@@ -57,8 +57,9 @@ public class GameManager : Singleton<GameManager> {
             cancel.performed -= cancelCallback; // Stop listening to the cancel action
             StartGame();
             Debug.Log("Dolly cart has reach end");
-
-
+        } else {
+            CheckCamera();
+            StartGame();
         }
     }
 
