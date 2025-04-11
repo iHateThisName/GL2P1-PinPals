@@ -8,7 +8,7 @@ public class PowerUp : MonoBehaviour {
     [SerializeField] private bool isSpinie = true;
 
     void Start() {
-        power = (EnumPowerUp)Random.Range(1, 8);
+        power = (EnumPowerUp)Random.Range(5, 5);
     }
 
     void Update() {
@@ -32,7 +32,7 @@ public class PowerUp : MonoBehaviour {
         meshRenderer.enabled = false;
         boxCollider.enabled = false;
         yield return new WaitForSeconds(5f);
-        power = (EnumPowerUp)Random.Range(1, 8);
+        power = (EnumPowerUp)Random.Range(5, 5);
         meshRenderer.enabled = true;
         boxCollider.enabled = true;
         modelController.PlayerStats.PowerUpsCollected(1);

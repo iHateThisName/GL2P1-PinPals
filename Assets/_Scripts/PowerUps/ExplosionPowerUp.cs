@@ -11,8 +11,6 @@ public class ExplosionPowerUp : MonoBehaviour {
     [SerializeField] private AudioClip _bombExplodeSFX;
 
     public void Start() {
-        //PlayerPowerController bombSFX = GetComponent<PlayerPowerController>().bombSFX();
-        SoundEffectManager.Instance.PlaySoundFXClip(this._bombTickSFX, this.gameObject.transform, 1f);
         StartCoroutine(DestroyExplosion());
     }
 
@@ -49,6 +47,7 @@ public class ExplosionPowerUp : MonoBehaviour {
     }
 
     private IEnumerator DestroyExplosion() {
+        SoundEffectManager.Instance.PlaySoundFXClip(this._bombTickSFX, this.gameObject.transform, 1f);
         yield return new WaitForSeconds(3f); // Audio cue
         this._isDangerous = true;
         this._explosionEffect.SetActive(true);
@@ -57,6 +56,6 @@ public class ExplosionPowerUp : MonoBehaviour {
         Debug.Log("All Players except you are dead");
         SoundEffectManager.Instance.PlaySoundFXClip(this._bombExplodeSFX, this.gameObject.transform, 1f);
         yield return new WaitForSeconds(2f); // Bomb animation
-        Destroy(gameObject);
+        Destroy(this.gameObject);
     }
 }
