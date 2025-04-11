@@ -26,9 +26,9 @@ public class HighScore : Singleton<HighScore>
             highScore = 0; // Initialize high score to 0 if not set
         }
 
-        if (highScoreText != null && PlayerPrefs.HasKey(Helper.level1))
+        if (highScoreText != null && PlayerPrefs.HasKey(Helper.level3))
         {
-            highScoreText.text = PlayerPrefs.GetInt(Helper.level1).ToString();
+            highScoreText.text = PlayerPrefs.GetInt(Helper.level3).ToString();
         }
 
         // Initialize scoreGained (Usually to 0 at the start of a level)
@@ -41,6 +41,10 @@ public class HighScore : Singleton<HighScore>
         {
             highScore = currentScore;
             PlayerPrefs.SetInt(currentLevel, highScore);
+        }
+        if (highScoreText != null && PlayerPrefs.HasKey(Helper.level3))
+        {
+            highScoreText.text = PlayerPrefs.GetInt(Helper.level3).ToString();
         }
     }
 
