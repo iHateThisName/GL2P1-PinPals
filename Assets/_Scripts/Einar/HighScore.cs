@@ -6,8 +6,13 @@ public class HighScore : Singleton<HighScore>
 {
     public int points;
     public int highScore;
-    //public TMP_Text scoreText;
-    public TMP_Text highScoreText;
+
+    public TMP_Text highScoreTextLVL1;
+    public TMP_Text highScoreTextLVL2;
+    public TMP_Text highScoreTextLVL3;
+    public TMP_Text highScoreTextLVL4;
+    public TMP_Text highScoreTextLVL5;
+    public TMP_Text highScoreTextLVL6;
 
     private string currentLevel;
 
@@ -16,24 +21,46 @@ public class HighScore : Singleton<HighScore>
         // Get the current level's name
         currentLevel = SceneManager.GetActiveScene().name;
 
-        // Load the high score for the current level
-        if (PlayerPrefs.HasKey(currentLevel))
+        if (currentLevel != "levelSelector")
         {
-            highScore = PlayerPrefs.GetInt(currentLevel);
+            // Load the high score for the current level
+            if (PlayerPrefs.HasKey(currentLevel))
+            {
+                highScore = PlayerPrefs.GetInt(currentLevel);
+            }
+            else
+            {
+                highScore = 0;
+            }
         }
-        else
-        {
-            highScore = 0; // Initialize high score to 0 if not set
-        }
+        if (currentLevel == "levelSelector")
 
-        if (highScoreText != null && PlayerPrefs.HasKey(Helper.level3))
-        {
-            highScoreText.text = PlayerPrefs.GetInt(Helper.level3).ToString();
-        }
-
-        // Initialize scoreGained (Usually to 0 at the start of a level)
-        //points = 0; // Set this based on your game logic
+            if (highScoreTextLVL1 != null && PlayerPrefs.HasKey(Helper.level1))
+            {
+                highScoreTextLVL1.text = PlayerPrefs.GetInt(Helper.level1).ToString();
+            }
+            if (highScoreTextLVL2 != null && PlayerPrefs.HasKey(Helper.level2))
+            {
+                highScoreTextLVL2.text = PlayerPrefs.GetInt(Helper.level2).ToString();
+            }
+            if (highScoreTextLVL3 != null && PlayerPrefs.HasKey(Helper.level3))
+            {
+                highScoreTextLVL3.text = PlayerPrefs.GetInt(Helper.level3).ToString();
+            }
+            if (highScoreTextLVL4 != null && PlayerPrefs.HasKey(Helper.level4))
+            {
+                highScoreTextLVL4.text = PlayerPrefs.GetInt(Helper.level4).ToString();
+            }
+            if (highScoreTextLVL5 != null && PlayerPrefs.HasKey(Helper.level5))
+            {
+                highScoreTextLVL5.text = PlayerPrefs.GetInt(Helper.level5).ToString();
+            }
+            if (highScoreTextLVL6 != null && PlayerPrefs.HasKey(Helper.level6))
+            {
+                highScoreTextLVL6.text = PlayerPrefs.GetInt(Helper.level6).ToString();
+            }
     }
+    
 
     public void CheckHighScore(int currentScore)
     {
@@ -42,30 +69,34 @@ public class HighScore : Singleton<HighScore>
             highScore = currentScore;
             PlayerPrefs.SetInt(currentLevel, highScore);
         }
-        if (highScoreText != null && PlayerPrefs.HasKey(Helper.level3))
+        if (currentLevel != "levelSelector")
         {
-            highScoreText.text = PlayerPrefs.GetInt(Helper.level3).ToString();
+            if (highScoreTextLVL1 != null && PlayerPrefs.HasKey(Helper.level1))
+            {
+                highScoreTextLVL1.text = PlayerPrefs.GetInt(Helper.level1).ToString();
+            }
+            if (highScoreTextLVL2 != null && PlayerPrefs.HasKey(Helper.level2))
+            {
+                highScoreTextLVL2.text = PlayerPrefs.GetInt(Helper.level2).ToString();
+            }
+            if (highScoreTextLVL3 != null && PlayerPrefs.HasKey(Helper.level3))
+            {
+                highScoreTextLVL3.text = PlayerPrefs.GetInt(Helper.level3).ToString();
+            }
+            if (highScoreTextLVL4 != null && PlayerPrefs.HasKey(Helper.level4))
+            {
+                highScoreTextLVL4.text = PlayerPrefs.GetInt(Helper.level4).ToString();
+            }
+            if (highScoreTextLVL5 != null && PlayerPrefs.HasKey(Helper.level5))
+            {
+                highScoreTextLVL5.text = PlayerPrefs.GetInt(Helper.level5).ToString();
+            }
+            if (highScoreTextLVL6 != null && PlayerPrefs.HasKey(Helper.level6))
+            {
+                highScoreTextLVL6.text = PlayerPrefs.GetInt(Helper.level6).ToString();
+            }
         }
     }
-
-    //void Update()
-    //{
-    //    ModelController modelController = GetComponent<ModelController>();
-    //    GetComponent<ModelController>().PlayerScoreTracker.AddPoints(points);
-
-    //    //scoreText.text = "Score: " + points;
-    //    highScoreText.text = "High Score: " + highScore;
-
-    //    // Check if the current score is greater than the highScore and update
-    //    if (points > highScore)
-    //    {
-    //        highScore = points;
-    //        PlayerPrefs.SetInt(currentLevel, highScore); // Save the new high score
-    //    }
-
-    //    // Optionally save scoreGained for use elsewhere (Ensure you manage where you want to save it)
-    //    PlayerPrefs.SetInt("CurrentScore", points);
-    //}
 
     private void OnDestroy()
     {

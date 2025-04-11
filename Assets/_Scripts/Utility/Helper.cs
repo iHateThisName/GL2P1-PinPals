@@ -7,7 +7,8 @@ public static class Helper {
     public static List<Material> UsedPinballMaterials = new List<Material>();
     public static Dictionary<EnumPlayerTag, GameObject> Players = new Dictionary<EnumPlayerTag, GameObject>();
 
-    public const string level1 = "Level 01, LasVegas", level2 = "Level 02, PipelineMayham", level3 = "Level 03, Skeleton", level4 = "Level 04, Wide-West";
+    public const string level1 = "Level 01, LasVegas", level2 = "Level 02, PipelineMayham", level3 = "Level 03, Skeleton", level4 = "Level 04, Wide-West", 
+        level5 = "Level 05, HauntedPinMachine", level6 = "Level 06, The Ring", levelSelector = "LevelSelector";
 
     public static class LobbyButtonCoords {
         public static readonly Vector2Int Previous = new(0, 0);
