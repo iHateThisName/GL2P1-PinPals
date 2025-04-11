@@ -8,7 +8,7 @@ public class AdvancedChuteTeleporter : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag.StartsWith("Player")) {
-            SoundEffectManager.Instance.PlaySoundFXClip(rouletteWheel, transform, 1f);
+            SoundEffectManager.Instance.PlaySoundFXClip(rouletteWheel, spawnPoint, 1f);
             other.transform.position = spawnPoint.position;
             other.GetComponent<Rigidbody>().Sleep();
 

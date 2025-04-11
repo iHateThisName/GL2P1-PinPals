@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 // Hilmir, Ivar and Einar
 public class PlayerPowerController : MonoBehaviour {
     [field: SerializeField] public EnumPowerUp currentPower { get; private set; } = EnumPowerUp.None;
+    [SerializeField] private PlayerReferences playerReferences;
     [SerializeField] private Transform powerupPlayerTransform;
     [SerializeField] private Transform _cameraTarget;
     [SerializeField] private GameObject _playerModel;
@@ -32,8 +33,6 @@ public class PlayerPowerController : MonoBehaviour {
 
     private EnumPlayerTag _assignedPlayerTag;
     private bool _isPowerActivated = false;
-    private PlayerReferences playerReferences;
-
 
     public void Start() {
         defaultScale = powerupPlayerTransform.localScale;
@@ -44,6 +43,8 @@ public class PlayerPowerController : MonoBehaviour {
         _assignedPlayerTag = (EnumPlayerTag)playerNumber;
 
         this.playerReferences = this.GetComponentInChildren<PlayerReferences>();
+        if (this.playerReferences == null)
+            this.playerReferences = this.powerupPlayerTransform.gameObject.GetComponent<PlayerReferences>();
     }
 
     public void GivePlayerPower(EnumPowerUp power) {

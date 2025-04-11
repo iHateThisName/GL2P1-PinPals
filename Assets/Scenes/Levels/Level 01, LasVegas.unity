@@ -2631,6 +2631,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 850933726761711178, guid: c1d2305b52b88f04f9981cf29a849a63, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2364029091065009758}
+    - targetCorrespondingSourceObject: {fileID: 850933726761711178, guid: c1d2305b52b88f04f9981cf29a849a63, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1943771597}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1d2305b52b88f04f9981cf29a849a63, type: 3}
 --- !u!43 &168606182
@@ -5540,9 +5543,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38a0753972b80514c970243087cc1c6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 0}
-  objectToDisable: {fileID: 0}
-  rouletteWheel: {fileID: 0}
+  spawnPoint: {fileID: 1943771597}
+  objectToDisable: {fileID: 4849139941704834960}
+  rouletteWheel: {fileID: 8300000, guid: f8dc8a9cefcf41d4e91fa51893597713, type: 3}
 --- !u!1 &468368017
 GameObject:
   m_ObjectHideFlags: 0
@@ -9198,7 +9201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2617768332318677169, guid: 87043eb6ddb0ee9479c40c5d6374b8eb, type: 3}
       propertyPath: counter
-      value: 20
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 2617768332318677169, guid: 87043eb6ddb0ee9479c40c5d6374b8eb, type: 3}
       propertyPath: gameOverSFX
@@ -16447,8 +16450,8 @@ MonoBehaviour:
         z: 0
       Rotation:
         value:
-          x: 0.43406814
-          y: 0
+          x: 0.43406823
+          y: -0.000000021747555
           z: -0.5848952
           w: 0.6851879
     m_MetaData:
@@ -20651,6 +20654,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1936151619}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1943771596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1943771597}
+  m_Layer: 0
+  m_Name: RoulleteEnterPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1943771597
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943771596}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.8000001, z: 8.266668}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 835801977}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1954181493
 Mesh:
   m_ObjectHideFlags: 0
