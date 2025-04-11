@@ -43,10 +43,10 @@ public class ExplosionPowerUp : MonoBehaviour
                 return;
             }
             else if (player.gameObject.tag.StartsWith("Player")) {
-                EnumPlayerTag tag = player.gameObject.GetComponent<ModelController>().GetPlayerTag();
+                EnumPlayerTag tag = player.gameObject.GetComponent<PlayerReferences>().GetPlayerTag();
                 PlayerJoinManager.Instance.Respawn(tag);
-                player.gameObject.GetComponent<ModelController>().PlayerStats.PlayerDeaths(_point);
-                _bombOwner.gameObject.GetComponent<ModelController>().PlayerStats.PlayerKills(_point);
+                player.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerDeaths(_point);
+                _bombOwner.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerKills(_point);
 
             }
             if (player.gameObject.tag == ("Bumper"))

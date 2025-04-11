@@ -22,7 +22,7 @@ public class activatorKeyCode : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (IsIdle) {
             AKRender.material = activeTexture;
-            ModelController modelController = other.gameObject.GetComponent<ModelController>();
+            PlayerReferences modelController = other.gameObject.GetComponent<PlayerReferences>();
 
             IsIdle = false;
             Collideble.isTrigger = false;

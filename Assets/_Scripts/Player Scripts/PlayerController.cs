@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float _playerSpeed = 2.0f;
     [SerializeField] private Rigidbody _ballRigidbody;
     [SerializeField] private RandomMaterial randomMaterial;
-    [SerializeField] private ModelController _modelController;
+    [SerializeField] private PlayerReferences _modelController;
     [SerializeField] private GameObject _playerCanvas;
     private List<FlipperController> _leftFlipperController;
     private List<FlipperController> _rightFlipperController;

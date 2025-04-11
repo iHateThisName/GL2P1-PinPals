@@ -24,7 +24,7 @@ public class HoneyBlock : MonoBehaviour
         {
             if (player.gameObject.tag.StartsWith("Player"))
             {
-                EnumPlayerTag tag = player.gameObject.GetComponent<ModelController>().GetPlayerTag();
+                EnumPlayerTag tag = player.gameObject.GetComponent<PlayerReferences>().GetPlayerTag();
                 player.GetComponent<Rigidbody>().linearDamping = 5.0f;
             }
         }

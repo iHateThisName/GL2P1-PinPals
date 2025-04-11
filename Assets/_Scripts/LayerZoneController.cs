@@ -7,7 +7,7 @@ public class LayerZoneController : MonoBehaviour
 
     private void OnTriggerEnter(Collider player)
     {
-        EnumPlayerTag tag = player.gameObject.GetComponent<ModelController>().GetPlayerTag();
+        EnumPlayerTag tag = player.gameObject.GetComponent<PlayerReferences>().GetPlayerTag();
         switch (tag)
         {
             case EnumPlayerTag.Player01:
@@ -51,7 +51,7 @@ public class LayerZoneController : MonoBehaviour
 
     private void OnTriggerExit(Collider player)
     {
-        EnumPlayerTag tag = player.gameObject.GetComponent<ModelController>().GetPlayerTag();
+        EnumPlayerTag tag = player.gameObject.GetComponent<PlayerReferences>().GetPlayerTag();
         switch (tag)
         {
             case EnumPlayerTag.Player01:

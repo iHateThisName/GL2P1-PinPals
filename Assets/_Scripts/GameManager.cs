@@ -54,7 +54,7 @@ public class GameManager : Singleton<GameManager> {
 
     public void HidePlayers() {
         foreach (var player in Players) {
-            ModelController modelController = GetModelController(player.Key);
+            PlayerReferences modelController = GetModelController(player.Key);
             modelController.GetPlayerMeshRenderer().enabled = false;
             modelController.PlayerFollowCanvasManager.gameObject.SetActive(false);
             modelController.PinballCamera.gameObject.SetActive(false);
@@ -64,7 +64,7 @@ public class GameManager : Singleton<GameManager> {
 
     private void ShowPlayers() {
         foreach (var player in Players) {
-            ModelController modelController = GetModelController(player.Key);
+            PlayerReferences modelController = GetModelController(player.Key);
             modelController.GetPlayerMeshRenderer().enabled = true;
             modelController.PlayerFollowCanvasManager.gameObject.SetActive(true);
             modelController.PinballCamera.gameObject.SetActive(true);
@@ -106,7 +106,7 @@ public class GameManager : Singleton<GameManager> {
 
     public void CheckCamera() {
         foreach (var player in Players) {
-            Camera playerCamera = player.Value.GetComponentInChildren<ModelController>().PinballCamera;
+            Camera playerCamera = player.Value.GetComponentInChildren<PlayerReferences>().PinballCamera;
             if (PlayerSettings.IsLandscape) {
                 playerCamera.gameObject.SetActive(true);
                 //playerCamera.rect = new Rect((int)player.Key / Players.Count, 0, 1 / Players.Count, 1); // Not Tested
@@ -154,8 +154,8 @@ public class GameManager : Singleton<GameManager> {
         return Players[tag].GetComponent<PlayerController>();
     }
 
-    public ModelController GetModelController(EnumPlayerTag tag) {
-        return Players[tag].transform.GetChild(0).GetComponent<ModelController>();
+    public PlayerReferences GetModelController(EnumPlayerTag tag) {
+        return Players[tag].transform.GetChild(0).GetComponent<PlayerReferences>();
     }
 
     public void MovePlayer(EnumPlayerTag tag, Vector3 newPosition, bool reEnableGravity = true) {
@@ -170,7 +170,7 @@ public class GameManager : Singleton<GameManager> {
 
         foreach (GameObject player in Players.Values) {
             // Gets the player score
-            int playerScore = player.transform.GetChild(0).GetComponent<ModelController>().PlayerScoreTracker.currentScore;
+            int playerScore = player.transform.GetChild(0).GetComponent<PlayerReferences>().PlayerScoreTracker.currentScore;
             // Gets the player tag that is assaigned to the player gameobject
             EnumPlayerTag playerTag = Helper.GetPlayerTagKey(Players, player);
             // Adds the player tag and score to the list

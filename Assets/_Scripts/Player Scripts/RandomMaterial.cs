@@ -3,7 +3,7 @@ using UnityEngine;
 
 // Ivar
 public class RandomMaterial : MonoBehaviour {
-    [SerializeField] private ModelController _modelController;
+    [SerializeField] private PlayerReferences _modelController;
     [SerializeField] private Renderer _renderer;
     [SerializeField] private List<Material> _materials = new List<Material>();
     [field: SerializeField] public Color AssignedMaterialColor { get; private set; } = Color.white;
@@ -18,7 +18,7 @@ public class RandomMaterial : MonoBehaviour {
         AssaigneMaterial();
     }
 
-    public ModelController GetModelController() => this._modelController;
+    public PlayerReferences GetModelController() => this._modelController;
 
     /// <summary>
     /// Assaigne the selected material to the renderer and make the old material avaiable in the material pool.

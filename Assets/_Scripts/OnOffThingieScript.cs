@@ -30,7 +30,7 @@ public class OnOffThingieScript : MonoBehaviour
         {
             SoundEffectManager.Instance.PlaySoundFXClip(hitTargetSFX, transform, 1f);
             ThingRender.material = OffTexture;
-            ModelController modelController = collision.gameObject.GetComponent<ModelController>();
+            PlayerReferences modelController = collision.gameObject.GetComponent<PlayerReferences>();
             //modelController.AddPlayerPoints(points);
             modelController.PlayerScoreTracker.AddPoints(points);
 

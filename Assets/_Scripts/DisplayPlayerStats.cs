@@ -10,7 +10,7 @@ public class DisplayPlayerStats : MonoBehaviour
         if (playerScores.Count <= 0) return;
         for (int i = 0; i < playerScores.Count; i++)
         {
-        ModelController playerModelController = GameManager.Instance.GetModelController(playerScores[i].tag);
+        PlayerReferences playerModelController = GameManager.Instance.GetModelController(playerScores[i].tag);
             GameObject currentUI = Instantiate(_playerStatsUI, this.transform);
             DisplayStats displayStats = currentUI.GetComponent<DisplayStats>();
             PlayerStats currentPlayerStats = playerModelController.PlayerStats;

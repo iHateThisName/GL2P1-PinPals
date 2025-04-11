@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 public class PlayerFollowCanvasManager : MonoBehaviour {
-    [SerializeField] private ModelController _modelController;
+    [SerializeField] private PlayerReferences _modelController;
     [SerializeField] TMP_Text playerText;
     [SerializeField] public GameObject powerUpDisplayer;
     [SerializeField] private Sprite _multi, _shrink, _grow, _freeze, _bomb, _mine, _glue;

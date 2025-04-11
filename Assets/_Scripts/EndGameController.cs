@@ -36,7 +36,7 @@ public class EndGameController : MonoBehaviour {
         // Remove all players except the top 3
         for (int i = 0; i < this.playerScores.Count; i++) {
             EnumPlayerTag tag = this.playerScores[i].tag;
-            ModelController modelController = GameManager.Instance.GetModelController(tag);
+            PlayerReferences modelController = GameManager.Instance.GetModelController(tag);
             Color color = modelController.SkinController.GetColor();
             this.playerColors.Add((tag: tag, color: color));
             if (i < 3) {

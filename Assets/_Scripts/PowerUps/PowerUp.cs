@@ -21,13 +21,13 @@ public class PowerUp : MonoBehaviour {
         if (player.gameObject.name.Contains("Clone"))
             yield break;
 
-        PlayerPowerController playerPowerController = player.gameObject.GetComponent<ModelController>().PlayerPowerController;
+        PlayerPowerController playerPowerController = player.gameObject.GetComponent<PlayerReferences>().PlayerPowerController;
         MeshRenderer meshRenderer = transform.GetChild(0).GetComponent<MeshRenderer>();
         BoxCollider boxCollider = gameObject.GetComponent<BoxCollider>();
         SoundEffectManager.Instance.PlaySoundFXClip(powerUpPickUp, transform, 1f);
-        ModelController modelController = player.gameObject.GetComponent<ModelController>();
+        PlayerReferences modelController = player.gameObject.GetComponent<PlayerReferences>();
 
-        player.gameObject.GetComponent<ModelController>().PlayerStats.PowerUpsCollected(_point);
+        player.gameObject.GetComponent<PlayerReferences>().PlayerStats.PowerUpsCollected(_point);
         playerPowerController.GivePlayerPower(power);
         meshRenderer.enabled = false;
         boxCollider.enabled = false;

@@ -26,6 +26,7 @@ public class PlayerScoreTracker : MonoBehaviour {
         if (!_isScoreAnimating) {
             StartCoroutine(AnimateScore());
         }
+        HighScore.Instance.CheckHighScore(currentScore);
     }
 
     private IEnumerator AnimateScore() {

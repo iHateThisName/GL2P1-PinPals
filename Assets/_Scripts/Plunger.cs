@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//Rares and Einar
 public class Plunger : MonoBehaviour
 {
     private Rigidbody targetBall;
@@ -22,20 +22,6 @@ public class Plunger : MonoBehaviour
     void Update()
     {
         if (!allowUsePlunger) return;
-        //if (Input.GetKey(KeyCode.S))
-        //{
-        //    isPulling = true;
-        //    pullAmount = Mathf.Min(pullAmount + Time.deltaTime * 3, maxPull);
-        //    transform.position = Vector3.Lerp(startPos, startPos + new Vector3(0, 0, -maxPull), pullAmount / maxPull);
-        //}
-
-        //if (Input.GetKeyUp(KeyCode.S))
-        //{
-        //    LaunchBall();
-        //    isPulling = false;
-        //    transform.position = startPos;
-        //    pullAmount = 0;
-        //}
 
         if (GameManager.Instance.IsPlayerHoldingInteraction(this.AssignedPlayer))
         {

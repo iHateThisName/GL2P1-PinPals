@@ -21,7 +21,7 @@ public class BumperController : MonoBehaviour {
         if (bumperAudioSource != null) bumperAudioSource.Play();
 
         // Add points to the player
-        ModelController modelController = collision.gameObject.GetComponent<ModelController>();
+        PlayerReferences modelController = collision.gameObject.GetComponent<PlayerReferences>();
         modelController.PlayerScoreTracker.AddPoints(points);
 
         // Indicate that the player has hit a bumper once.

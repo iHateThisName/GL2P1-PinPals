@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ModelController : MonoBehaviour {
+public class PlayerReferences : MonoBehaviour {
     public PlayerScoreTracker PlayerScoreTracker;
     public PlayerPowerController PlayerPowerController;
     public Camera PinballCamera;

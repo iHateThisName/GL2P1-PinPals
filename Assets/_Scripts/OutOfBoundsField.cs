@@ -12,10 +12,10 @@ public class OutOfBoundsField : MonoBehaviour {
             return;
         }
 
-        ModelController controller = player.gameObject.GetComponent<ModelController>();
+        PlayerReferences controller = player.gameObject.GetComponent<PlayerReferences>();
             EnumPlayerTag tag = controller.GetPlayerTag();
             PlayerPowerController power = controller.PlayerPowerController;
-            player.gameObject.GetComponent<ModelController>().PlayerStats.PlayerDeaths(_point);
+            player.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerDeaths(_point);
             //Remove powerups before respawning
             power.RemoveCurrentPower();
 

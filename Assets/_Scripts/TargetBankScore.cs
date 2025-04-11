@@ -27,7 +27,7 @@ public class TargetBankScore : MonoBehaviour
         }
     }
 
-    public void OnScore(ModelController modelController)
+    public void OnScore(PlayerReferences modelController)
     {
         _currentHits++;
 

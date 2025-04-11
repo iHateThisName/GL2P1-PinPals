@@ -25,7 +25,7 @@ public class SkinController : MonoBehaviour {
 
         //GameManager.Instance.Players.Keys = List of EnumPlayerTag
         foreach (EnumPlayerTag tag in GameManager.Instance.Players.Keys) {
-            ModelController modelController = GameManager.Instance.GetModelController(tag);
+            PlayerReferences modelController = GameManager.Instance.GetModelController(tag);
             if (modelController.SkinController.Ready) {
                 playersReady++;
             } else {
