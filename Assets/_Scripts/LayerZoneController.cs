@@ -32,7 +32,7 @@ public class LayerZoneController : MonoBehaviour {
             if (otherTag == playerTag) continue;
 
             // Find the other player's collider in the scene
-            Collider otherCollider = GameManager.Instance.GetModelController(otherTag).GetPlayerCollider();
+            Collider otherCollider = GameManager.Instance.GetPlayerReferences(otherTag).GetPlayerCollider();
 
             if (otherCollider != null) {
                 // Ignore collision between the current player and the other player

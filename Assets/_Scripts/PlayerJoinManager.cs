@@ -34,7 +34,7 @@ public class PlayerJoinManager : Singleton<PlayerJoinManager> {
 
     public void Respawn(EnumPlayerTag tag) {
         int playerNumber = (int)tag;
-        PlayerPowerController power = GameManager.Instance.GetModelController(tag).PlayerPowerController;
+        PlayerPowerController power = GameManager.Instance.GetPlayerReferences(tag).PlayerPowerController;
         power.PlayerRespawns();
         GameManager.Instance.MovePlayer(tag, _spawnPoints[playerNumber - 1].position);
     }

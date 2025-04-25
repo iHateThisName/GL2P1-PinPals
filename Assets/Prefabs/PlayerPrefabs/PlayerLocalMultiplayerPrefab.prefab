@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5947122031867381807}
   - component: {fileID: 1186393043549364597}
+  - component: {fileID: 4721561124831499722}
   m_Layer: 0
   m_Name: CameraTarget
   m_TagString: Untagged
@@ -54,6 +55,22 @@ MonoBehaviour:
   _cameraBoundingZMinOffset: 15.5
   _xLerpSpeed: 3
   _zLerpSpeed: 6
+--- !u!114 &4721561124831499722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54093458641906382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b6e61184c5319a4fbe7e14d665ac73d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uiTipPrefab: {fileID: 262691517473164595}
+  _playerReferences: {fileID: 2572901427273484420}
+  _timeToFadeIn: 50
+  IsFirstTime: 1
 --- !u!1 &54135105115536068
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +231,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262691517473164595}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -3281,9 +3298,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5740905846890174975, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2572901427273484420}
-    - targetCorrespondingSourceObject: {fileID: 5740905846890174975, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3116318262049552445}
   m_SourcePrefab: {fileID: 100100000, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
 --- !u!4 &1976326164064474452 stripped
 Transform:
@@ -3325,6 +3339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerController: {fileID: 7959744348756883238}
   playerReference: {fileID: 2572901427273484420}
+  playerTipUI: {fileID: 4721561124831499722}
 --- !u!114 &2572901427273484420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3344,21 +3359,7 @@ MonoBehaviour:
   SkinController: {fileID: 406204430842103593}
   PlayerFollowCanvasManager: {fileID: 3793734590544800575}
   PlayerStats: {fileID: 2162729834525336382}
---- !u!114 &3116318262049552445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4961145634058551747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b6e61184c5319a4fbe7e14d665ac73d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _uiTipPrefab: {fileID: 9024805724561747043}
-  _playerReferences: {fileID: 2572901427273484420}
-  _timeToFadeIn: 100
+  playerTipUI: {fileID: 4721561124831499722}
 --- !u!23 &5054593778753860329 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5573145829542570709, guid: 2235eda53ed1846459cdf2880e817167, type: 3}

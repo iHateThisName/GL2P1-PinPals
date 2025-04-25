@@ -57,15 +57,25 @@ public class GameManager : Singleton<GameManager> {
             cancel.performed -= cancelCallback; // Stop listening to the cancel action
             StartGame();
             Debug.Log("Dolly cart has reach end");
+            PlungerToolTipFirstTimer();
         } else {
             CheckCamera();
             StartGame();
         }
     }
 
+    private void PlungerToolTipFirstTimer() {
+        foreach (var player in Players)
+        {
+            PlayerTipUI playerTipUI = GetPlayerReferences(player.Key).playerTipUI;
+            playerTipUI.IsFirstTime = true;
+            playerTipUI.PlungerCollider();
+        }
+    }
+
     public void HidePlayers() {
         foreach (var player in Players) {
-            PlayerReferences modelController = GetModelController(player.Key);
+            PlayerReferences modelController = GetPlayerReferences(player.Key);
             modelController.GetPlayerMeshRenderer().enabled = false;
             modelController.PlayerFollowCanvasManager.gameObject.SetActive(false);
             modelController.PinballCamera.gameObject.SetActive(false);
@@ -75,7 +85,7 @@ public class GameManager : Singleton<GameManager> {
 
     private void ShowPlayers() {
         foreach (var player in Players) {
-            PlayerReferences modelController = GetModelController(player.Key);
+            PlayerReferences modelController = GetPlayerReferences(player.Key);
             modelController.GetPlayerMeshRenderer().enabled = true;
             modelController.PlayerFollowCanvasManager.gameObject.SetActive(true);
             modelController.PinballCamera.gameObject.SetActive(true);
@@ -170,7 +180,7 @@ public class GameManager : Singleton<GameManager> {
         return Players[tag].GetComponent<PlayerController>();
     }
 
-    public PlayerReferences GetModelController(EnumPlayerTag tag) {
+    public PlayerReferences GetPlayerReferences(EnumPlayerTag tag) {
         return Players[tag].transform.GetChild(0).GetComponent<PlayerReferences>();
     }
 

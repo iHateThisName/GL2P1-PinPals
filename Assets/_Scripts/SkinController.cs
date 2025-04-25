@@ -23,7 +23,7 @@ public class SkinController : MonoBehaviour {
         int playersReady = 0;
 
         foreach (EnumPlayerTag tag in GameManager.Instance.Players.Keys) {
-            PlayerReferences modelController = GameManager.Instance.GetModelController(tag);
+            PlayerReferences modelController = GameManager.Instance.GetPlayerReferences(tag);
             if (modelController.SkinController.Ready) {
                 playersReady++;
             } else {

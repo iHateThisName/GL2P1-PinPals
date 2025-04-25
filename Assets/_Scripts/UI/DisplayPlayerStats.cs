@@ -7,7 +7,7 @@ public class DisplayPlayerStats : MonoBehaviour {
         List<(EnumPlayerTag tag, int score)> playerScores = GameManager.Instance.GetPlayersOrderByScoreWithScore();
         if (playerScores.Count <= 0) return;
         for (int i = 0; i < playerScores.Count; i++) {
-            PlayerReferences playerModelController = GameManager.Instance.GetModelController(playerScores[i].tag);
+            PlayerReferences playerModelController = GameManager.Instance.GetPlayerReferences(playerScores[i].tag);
             GameObject currentUI = Instantiate(_playerStatsUI, this.transform);
             DisplayStats displayStats = currentUI.GetComponent<DisplayStats>();
             PlayerStats currentPlayerStats = playerModelController.PlayerStats;
