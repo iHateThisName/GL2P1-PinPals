@@ -156,7 +156,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262691517473164595}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -34.6}
   m_LocalScale: {x: 0.6, y: 0.2, z: 0.6}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -214,7 +214,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262691517473164595}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -2265,7 +2265,7 @@ GameObject:
   - component: {fileID: 3078117303281279207}
   - component: {fileID: 8181342934355440002}
   m_Layer: 5
-  m_Name: Press E to Plunge the Pluh
+  m_Name: Press E to launch yourself!
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3358,6 +3358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiTipPrefab: {fileID: 9024805724561747043}
   _playerReferences: {fileID: 2572901427273484420}
+  _timeToFadeIn: 100
 --- !u!23 &5054593778753860329 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5573145829542570709, guid: 2235eda53ed1846459cdf2880e817167, type: 3}
