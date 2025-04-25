@@ -15,6 +15,13 @@ public class PartiolRotateScript : MonoBehaviour
     private float currentAngle = 0f;
     private bool rotatingForward = true;
 
+    private Quaternion initialRotation;
+
+    void Start()
+    {
+        initialRotation = transform.localRotation;
+    }
+
     void Update()
     {
         float step = rotationSpeed * Time.deltaTime;
@@ -71,22 +78,22 @@ public class PartiolRotateScript : MonoBehaviour
 
     void ApplyRotation()
     {
-        Vector3 rotation = Vector3.zero;
+        Vector3 axis = Vector3.zero;
 
         switch (rotationAxis)
         {
             case RotationAxis.X:
-                rotation = new Vector3(currentAngle, 0, 0);
+                axis = Vector3.right;
                 break;
             case RotationAxis.Y:
-                rotation = new Vector3(0, currentAngle, 0);
+                axis = Vector3.up;
                 break;
             case RotationAxis.Z:
-                rotation = new Vector3(0, 0, currentAngle);
+                axis = Vector3.forward;
                 break;
         }
 
-        transform.localRotation = Quaternion.Euler(rotation);
+        transform.localRotation = initialRotation * Quaternion.AngleAxis(currentAngle, axis);
     }
 
     IEnumerator PauseRotation()
