@@ -35,6 +35,7 @@ public class GameManager : Singleton<GameManager> {
     }
 
     private IEnumerator Start() {
+        string activeSceneName = SceneManager.GetActiveScene().name;
         if (this._dollyCart != null) {
             //Input Action
             InputAction cancel = InputSystem.actions.FindAction("Cancel");
@@ -58,11 +59,11 @@ public class GameManager : Singleton<GameManager> {
             StartGame();
             Debug.Log("Dolly cart has reach end");
             PlungerToolTipFirstTimer();
-        } else if (SceneManager.GetActiveScene().name != Helper.endGame) {
+        } else if (activeSceneName == Helper.endGame || activeSceneName == Helper.mainMenu) {
             CheckCamera();
-            StartGame();
         } else {
             CheckCamera();
+            StartGame();
         }
     }
 
@@ -221,6 +222,7 @@ public class GameManager : Singleton<GameManager> {
 
     public void OnApplicationQuit() {
         {
+            PlayerPrefs.Save(); // Save PlayerPrefs before quitting
 #if UNITY_EDITOR
             // If you're using the Unity Editor
             UnityEditor.EditorApplication.isPlaying = false; // Stop play mode in the editor

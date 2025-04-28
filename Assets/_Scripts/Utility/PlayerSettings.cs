@@ -1,24 +1,54 @@
+using UnityEngine;
+
 public static class PlayerSettings {
 
     public static bool IsLandscape = true;
     public static string SelectedLevel = "Level 01, LasVegas";
 
-    // Sounds
-    public static float MasterVolume = 1f;
-    private static float _worldVolume = 0.3f;
-    private static float _sfxVolume = 0.5f;
-    public static float WorldVolume {
-        get => ApplyMasterVolume(_worldVolume);
-        set => _worldVolume = value;
-    }
-    public static float SFXVolume {
-        get => ApplyMasterVolume(_sfxVolume);
-        set => _sfxVolume = value;
-    }
+    #region Volume Settigns
+    // PlayerPres Keys
+    private const string MasterVolumeKey = "MasterVolume", MusicVolumeKey = "MusicVolume", SFXVolumeKey = "SFXVolume"; // PlayerPrefs Keys
 
-    private static float ApplyMasterVolume(float rawVolume) {
-        return MasterVolume * rawVolume;
+    // Cached values (lazy-loaded)
+    private static float? _rawMasterVolume = null;
+    private static float? _rawMusicVolume = null;
+    private static float? _rawSFXVolume = null;
+    public static float RawMasterVolume {
+        get {
+            if (_rawMasterVolume == null) {
+                _rawMasterVolume = PlayerPrefs.GetFloat(MasterVolumeKey, 1f);
+            }
+            return _rawMasterVolume.Value;
+        }
+        set {
+            _rawMasterVolume = Mathf.Clamp(value, 0f, 1f);
+            PlayerPrefs.SetFloat(MasterVolumeKey, _rawMasterVolume.Value);
+            PlayerPrefs.Save();
+        }
     }
-
-
+    public static float RawMusicVolume {
+        get {
+            if (_rawMusicVolume == null) {
+                _rawMusicVolume = PlayerPrefs.GetFloat(MusicVolumeKey, 1f);
+            }
+            return _rawMusicVolume.Value;
+        }
+        set {
+            _rawMusicVolume = Mathf.Clamp(value, 0f, 1f);
+            PlayerPrefs.SetFloat(MusicVolumeKey, _rawMusicVolume.Value);
+        }
+    }
+    public static float RawSFXVolume {
+        get {
+            if (_rawSFXVolume == null) {
+                _rawSFXVolume = PlayerPrefs.GetFloat(SFXVolumeKey, 1f);
+            }
+            return _rawSFXVolume.Value;
+        }
+        set {
+            _rawSFXVolume = Mathf.Clamp(value, 0f, 1f);
+            PlayerPrefs.SetFloat(SFXVolumeKey, _rawSFXVolume.Value);
+        }
+    }
+    #endregion
 }
