@@ -58,9 +58,11 @@ public class GameManager : Singleton<GameManager> {
             StartGame();
             Debug.Log("Dolly cart has reach end");
             PlungerToolTipFirstTimer();
-        } else {
+        } else if (SceneManager.GetActiveScene().name != Helper.endGame) {
             CheckCamera();
             StartGame();
+        } else {
+            CheckCamera();
         }
     }
 
