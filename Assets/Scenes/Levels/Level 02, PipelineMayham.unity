@@ -908,6 +908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f567270ea949f44591436a0e8468959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fallDeathSFX: {fileID: 0}
 --- !u!65 &68177775
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2912,6 +2913,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -119
       objectReference: {fileID: 0}
+    - target: {fileID: 3088457857968383504, guid: 47f2c984413b1ae4f89926a59153d2f6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7c1a9c3609ecbc8418b9b2be6090baad, type: 2}
+    - target: {fileID: 3152183092102242341, guid: 47f2c984413b1ae4f89926a59153d2f6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7c1a9c3609ecbc8418b9b2be6090baad, type: 2}
     - target: {fileID: 5171983230454435692, guid: 47f2c984413b1ae4f89926a59153d2f6, type: 3}
       propertyPath: m_Name
       value: PipeConectie (4)
@@ -3396,6 +3405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f567270ea949f44591436a0e8468959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fallDeathSFX: {fileID: 0}
 --- !u!65 &228876636
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6737,6 +6747,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pipeT
       objectReference: {fileID: 0}
+    - target: {fileID: 2445046200121390166, guid: 16c650a4ec4c2144abf21ed04314f02a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7c1a9c3609ecbc8418b9b2be6090baad, type: 2}
     - target: {fileID: 5552587229535513054, guid: 16c650a4ec4c2144abf21ed04314f02a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.06666667
@@ -6789,6 +6803,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6066348919278205789, guid: 16c650a4ec4c2144abf21ed04314f02a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7c1a9c3609ecbc8418b9b2be6090baad, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7407,6 +7425,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1697126631}
     m_Modifications:
+    - target: {fileID: 1009751297766866730, guid: 8e65c568e1843ae4485d844b8aeca5ad, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7c1a9c3609ecbc8418b9b2be6090baad, type: 2}
+    - target: {fileID: 1310276907884763454, guid: 8e65c568e1843ae4485d844b8aeca5ad, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7c1a9c3609ecbc8418b9b2be6090baad, type: 2}
     - target: {fileID: 4213906335699111042, guid: 8e65c568e1843ae4485d844b8aeca5ad, type: 3}
       propertyPath: m_LocalScale.x
       value: 10
@@ -7459,6 +7485,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4445256699004122938, guid: 8e65c568e1843ae4485d844b8aeca5ad, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7c1a9c3609ecbc8418b9b2be6090baad, type: 2}
     - target: {fileID: 6882443913588696082, guid: 8e65c568e1843ae4485d844b8aeca5ad, type: 3}
       propertyPath: m_Name
       value: PipeEnter_exit (1)
@@ -10799,6 +10829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f567270ea949f44591436a0e8468959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fallDeathSFX: {fileID: 0}
 --- !u!65 &782397152
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11450,6 +11481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f567270ea949f44591436a0e8468959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fallDeathSFX: {fileID: 0}
 --- !u!65 &849063708
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16736,6 +16768,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 398424414}
     m_Modifications:
+    - target: {fileID: 1310276907884763454, guid: 8e65c568e1843ae4485d844b8aeca5ad, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7c1a9c3609ecbc8418b9b2be6090baad, type: 2}
     - target: {fileID: 4213906335699111042, guid: 8e65c568e1843ae4485d844b8aeca5ad, type: 3}
       propertyPath: m_LocalPosition.x
       value: 34.9
