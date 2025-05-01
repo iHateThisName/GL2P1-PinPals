@@ -1260,6 +1260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6661376203246146619}
   - component: {fileID: 4211050409046238922}
+  - component: {fileID: 1542124235934470710}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -1302,10 +1303,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 7727919373787070298}
+    m_SelectOnDown: {fileID: 1780913847666508472}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -1352,6 +1353,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1542124235934470710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4773720274601510746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54cef39acb866f04bb2d4ce594a15284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 4211050409046238922}
+  sliderType: 1
 --- !u!1 &4884217079574696995
 GameObject:
   m_ObjectHideFlags: 0
@@ -1940,10 +1955,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 7722441909883842611}
+    m_SelectOnDown: {fileID: 2654597206594036873}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -2681,6 +2696,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5857652511043780818}
   - component: {fileID: 477639678710239630}
+  - component: {fileID: 5980783787176175090}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -2723,10 +2739,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 2654597206594036873}
+    m_SelectOnDown: {fileID: 7727919373787070298}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -2773,6 +2789,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5980783787176175090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8493833555290539765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54cef39acb866f04bb2d4ce594a15284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 477639678710239630}
+  sliderType: 0
 --- !u!1 &8764215515582412890
 GameObject:
   m_ObjectHideFlags: 0
@@ -2819,6 +2849,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8961516804608130645}
   - component: {fileID: 7722441909883842611}
+  - component: {fileID: 993804419579805675}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -2861,10 +2892,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 1780913847666508472}
+    m_SelectOnDown: {fileID: 1407336642097156277}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -2911,6 +2942,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &993804419579805675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9211530644394137545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54cef39acb866f04bb2d4ce594a15284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 7722441909883842611}
+  sliderType: 2
 --- !u!1001 &2293612831472122503
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3003,6 +3048,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Toggle
       objectReference: {fileID: 0}
+    - target: {fileID: 8424995814396626397, guid: 87792199f8f346248a7d49b61bd8d773, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424995814396626397, guid: 87792199f8f346248a7d49b61bd8d773, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 477639678710239630}
+    - target: {fileID: 8424995814396626397, guid: 87792199f8f346248a7d49b61bd8d773, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 4211050409046238922}
     - target: {fileID: 8493222640023244022, guid: 87792199f8f346248a7d49b61bd8d773, type: 3}
       propertyPath: UnityToggleOn.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: SetMusicMute
@@ -3021,6 +3078,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3273662640232248687, guid: 87792199f8f346248a7d49b61bd8d773, type: 3}
   m_PrefabInstance: {fileID: 2293612831472122503}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7727919373787070298 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8424995814396626397, guid: 87792199f8f346248a7d49b61bd8d773, type: 3}
+  m_PrefabInstance: {fileID: 2293612831472122503}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5781670940614828372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3113,11 +3181,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Toggle
       objectReference: {fileID: 0}
+    - target: {fileID: 8424995814396626397, guid: 87792199f8f346248a7d49b61bd8d773, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424995814396626397, guid: 87792199f8f346248a7d49b61bd8d773, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 1407336642097156277}
+    - target: {fileID: 8424995814396626397, guid: 87792199f8f346248a7d49b61bd8d773, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 477639678710239630}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87792199f8f346248a7d49b61bd8d773, type: 3}
+--- !u!114 &2654597206594036873 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8424995814396626397, guid: 87792199f8f346248a7d49b61bd8d773, type: 3}
+  m_PrefabInstance: {fileID: 5781670940614828372}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &9030559229106787387 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3273662640232248687, guid: 87792199f8f346248a7d49b61bd8d773, type: 3}
@@ -3215,6 +3306,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Toggle
       objectReference: {fileID: 0}
+    - target: {fileID: 8424995814396626397, guid: 87792199f8f346248a7d49b61bd8d773, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424995814396626397, guid: 87792199f8f346248a7d49b61bd8d773, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 4211050409046238922}
+    - target: {fileID: 8424995814396626397, guid: 87792199f8f346248a7d49b61bd8d773, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 7722441909883842611}
     - target: {fileID: 8493222640023244022, guid: 87792199f8f346248a7d49b61bd8d773, type: 3}
       propertyPath: UnityToggleOn.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: SetMusicMute
@@ -3228,6 +3331,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87792199f8f346248a7d49b61bd8d773, type: 3}
+--- !u!114 &1780913847666508472 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8424995814396626397, guid: 87792199f8f346248a7d49b61bd8d773, type: 3}
+  m_PrefabInstance: {fileID: 7808268391042451301}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &4698072898693083658 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3273662640232248687, guid: 87792199f8f346248a7d49b61bd8d773, type: 3}

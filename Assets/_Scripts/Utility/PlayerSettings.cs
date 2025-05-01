@@ -13,6 +13,7 @@ public static class PlayerSettings {
     private static float? _rawMasterVolume = null;
     private static float? _rawMusicVolume = null;
     private static float? _rawSFXVolume = null;
+
     public static float RawMasterVolume {
         get {
             if (_rawMasterVolume == null) {
@@ -26,6 +27,19 @@ public static class PlayerSettings {
             PlayerPrefs.Save();
         }
     }
+    //public static float GetRawMasterVolume() {
+    //    if (_rawMasterVolume == null) {
+    //        _rawMasterVolume = PlayerPrefs.GetFloat(MasterVolumeKey, 1f);
+    //    }
+    //    return _rawMasterVolume.Value;
+    //}
+
+    //public static void SetRawMasterVolume(float value) {
+    //    _rawMasterVolume = Mathf.Clamp(value, 0f, 1f);
+    //    PlayerPrefs.SetFloat(MasterVolumeKey, _rawMasterVolume.Value);
+    //    PlayerPrefs.Save();
+    //}
+
     public static float RawMusicVolume {
         get {
             if (_rawMusicVolume == null) {

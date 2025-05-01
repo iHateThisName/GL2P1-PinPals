@@ -10,8 +10,10 @@ public class BumperController : MonoBehaviour {
 
     void Start() {
         bumperAudioSource = GetComponent<AudioSource>();
-        if (bumperAnimationController == null) Debug.LogWarning("Bumper Animation Controller is not set! for " + gameObject.name);
-        if (bumperAudioSource == null) Debug.LogWarning("Bumper Audio Source is not set! for " + gameObject.name);
+
+        if (bumperAudioSource != null) {
+            bumperAudioSource.volume = SoundManager.Instance.SFXVolumeWithMasterVolumeApplied();
+        }
     }
     private void OnCollisionEnter(Collision collision) {
         if (!collision.gameObject.tag.StartsWith("Player")) return;

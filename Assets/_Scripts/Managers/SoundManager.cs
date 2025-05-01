@@ -2,43 +2,45 @@ using UnityEngine;
 
 public class SoundManager : Singleton<SoundManager> {
 
-    private bool _masterMute = false, _musicMute = false, _sFXMute = false;
-
-    public void SetMasterMute(bool value) => _masterMute = value;
-    public void SetMusicMute(bool value) => _musicMute = value;
-    public void SetSFXMute(bool value) => _sFXMute = value;
+    public bool masterMute { get; private set; } = false;
+    public bool musicMute { get; private set; } = false;
+    public bool sfxMute { get; private set; } = false;
+    public void SetMasterMute(bool value) => masterMute = value;
+    public void SetMusicMute(bool value) => musicMute = value;
+    public void SetSFXMute(bool value) => sfxMute = value;
     public float MasterVolume {
         get {
-            if (_masterMute) {
+            if (masterMute) {
                 return 0f;
             }
-            Debug.Log("GET : " + PlayerSettings.RawMasterVolume);
             return PlayerSettings.RawMasterVolume;
         }
         set {
-            Debug.Log("SET : " + value);
-            PlayerSettings.RawMasterVolume = value;
+            PlayerSettings.RawMasterVolume = Mathf.Clamp(value, 0f, 1f);
         }
     }
     public float MusicVolume {
         get {
-            if (_musicMute) {
+            if (musicMute) {
                 return 0f;
             }
-            return ApplyMasterVolume(PlayerSettings.RawMusicVolume);
+            return PlayerSettings.RawMusicVolume;
         }
         set => PlayerSettings.RawMusicVolume = Mathf.Clamp(value, 0f, 1f);
     }
+
     public float SFXVolume {
         get {
-            if (_sFXMute) {
+            if (sfxMute) {
                 return 0f;
             }
-            return ApplyMasterVolume(PlayerSettings.RawSFXVolume);
+            return PlayerSettings.RawSFXVolume;
         }
         set => PlayerSettings.RawSFXVolume = Mathf.Clamp(value, 0f, 1f);
     }
 
+    public float MusicVolumeWithMasterVolumeApplied() => ApplyMasterVolume(MusicVolume);
+    public float SFXVolumeWithMasterVolumeApplied() => ApplyMasterVolume(SFXVolume);
     private float ApplyMasterVolume(float rawVolume) {
         return MasterVolume * rawVolume;
     }
