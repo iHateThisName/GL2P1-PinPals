@@ -14,9 +14,6 @@ public class ExplosionPowerUp : MonoBehaviour {
         StartCoroutine(DestroyExplosion());
     }
 
-    public void FixedUpdate() {
-        Debug.Log("_bombOwner = " + this._bombOwner.name);
-    }
 
     public void AssignBombOwner(GameObject bo) {
         this._bombOwner = bo;
@@ -33,6 +30,8 @@ public class ExplosionPowerUp : MonoBehaviour {
                 Destroy(player.gameObject);
                 return;
             } else if (player.gameObject.tag.StartsWith("Player")) {
+                // To spawn an explosion VFX
+                //VFXManager.Instance.SpawnVFX(VFXType.PlayerExplosion, player.transform.position);
                 EnumPlayerTag tag = player.gameObject.GetComponent<PlayerReferences>().GetPlayerTag();
                 PlayerJoinManager.Instance.Respawn(tag);
                 player.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerDeaths(_point);

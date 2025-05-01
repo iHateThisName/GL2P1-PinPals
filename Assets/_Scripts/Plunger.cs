@@ -29,6 +29,7 @@ public class Plunger : MonoBehaviour
             isPulling = true;
             pullAmount = Mathf.Min(pullAmount + Time.deltaTime * 12, maxPull);
             transform.position = Vector3.Lerp(startPos, startPos + new Vector3(0, 0, -maxPull), pullAmount / maxPull);
+
         }
         else
         {
@@ -37,6 +38,7 @@ public class Plunger : MonoBehaviour
             isPulling = false;
             transform.position = startPos;
             pullAmount = 0;
+
         }
     }
 
@@ -45,6 +47,7 @@ public class Plunger : MonoBehaviour
         if (targetBall != null)
         {
             targetBall.AddForce(Vector3.forward * launchForce * (pullAmount / maxPull), ForceMode.Impulse);
+
         }
     }
     void OnTriggerEnter(Collider other)

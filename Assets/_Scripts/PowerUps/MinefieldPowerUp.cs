@@ -20,6 +20,7 @@ public class MinefieldPowerUp : MonoBehaviour {
             if (!this._isDangerous) return;
 
             StartCoroutine(MineExplosion());
+            //VFXManager.Instance.SpawnVFX(VFXType.PlayerExplosion, other.transform.position);
             EnumPlayerTag tag = other.gameObject.GetComponent<PlayerReferences>().GetPlayerTag();
             PlayerJoinManager.Instance.Respawn(tag);
             other.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerDeaths(_point);
