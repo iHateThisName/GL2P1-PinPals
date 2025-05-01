@@ -1,8 +1,7 @@
 using System.Collections;
 using UnityEngine;
 // Hilmir
-public class PlayerTipUI : MonoBehaviour
-{
+public class PlayerTipUI : MonoBehaviour {
     [SerializeField] private GameObject _uiTipPrefab;
     [SerializeField] private PlayerReferences _playerReferences;
 
@@ -26,7 +25,7 @@ public class PlayerTipUI : MonoBehaviour
     }
     public void PlungerColliderExit() {
         DisableToolTip();
-        StopCoroutine(_toolTip);
+        if (_toolTip != null) StopCoroutine(_toolTip);
     }
 
     private void DisableToolTip() {

@@ -14,6 +14,8 @@ public class BumperController : MonoBehaviour {
         if (bumperAudioSource == null) Debug.LogWarning("Bumper Audio Source is not set! for " + gameObject.name);
     }
     private void OnCollisionEnter(Collision collision) {
+        if (!collision.gameObject.tag.StartsWith("Player")) return;
+
         point++;
         Rigidbody otherRB = collision.rigidbody;
         otherRB.AddExplosionForce(bounceForce, collision.contacts[0].point, 5);

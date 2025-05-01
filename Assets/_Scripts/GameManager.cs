@@ -59,7 +59,7 @@ public class GameManager : Singleton<GameManager> {
             StartGame();
             Debug.Log("Dolly cart has reach end");
             PlungerToolTipFirstTimer();
-        } else if (activeSceneName == Helper.endGame || activeSceneName == Helper.mainMenu) {
+        } else if (activeSceneName == Helper.endGame || activeSceneName == Helper.mainMenu || activeSceneName == Helper.lobby) {
             CheckCamera();
         } else {
             CheckCamera();
@@ -68,8 +68,7 @@ public class GameManager : Singleton<GameManager> {
     }
 
     private void PlungerToolTipFirstTimer() {
-        foreach (var player in Players)
-        {
+        foreach (var player in Players) {
             PlayerTipUI playerTipUI = GetPlayerReferences(player.Key).playerTipUI;
             playerTipUI.IsFirstTime = true;
             playerTipUI.PlungerCollider();
@@ -160,8 +159,7 @@ public class GameManager : Singleton<GameManager> {
 
     }
 
-    public void HowToPlay()
-    {
+    public void HowToPlay() {
         SceneManager.LoadScene("HowToPlay");
     }
 
