@@ -1,10 +1,12 @@
 using UnityEngine;
-
+//Andreas, Einar
 public class OutOfBoundsField : MonoBehaviour {
     private int _point = 1;
     //[SerializeField] private Transform spawnPoint;
     //[SerializeField] private List<Transform> _spawnPoints = new List<Transform>();
     //public List<Transform> _spawnPoints;
+    [SerializeField] private AudioClip fallDeathSFX;
+
     private void OnTriggerEnter(Collider player) {
         if (player.gameObject.name.Contains("Clone"))
         {
@@ -16,8 +18,9 @@ public class OutOfBoundsField : MonoBehaviour {
             EnumPlayerTag tag = controller.GetPlayerTag();
             PlayerPowerController power = controller.PlayerPowerController;
             player.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerDeaths(_point);
-            //Remove powerups before respawning
-            power.RemoveCurrentPower();
+        SoundEffectManager.Instance.PlaySoundFXClip(fallDeathSFX, transform, 1f);
+        //Remove powerups before respawning
+        power.RemoveCurrentPower();
 
 
             PlayerJoinManager.Instance.Respawn(tag);
