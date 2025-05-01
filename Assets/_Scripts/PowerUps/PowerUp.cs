@@ -27,7 +27,6 @@ public class PowerUp : MonoBehaviour {
         SoundEffectManager.Instance.PlaySoundFXClip(powerUpPickUp, transform, 1f);
         PlayerReferences modelController = player.gameObject.GetComponent<PlayerReferences>();
 
-        player.gameObject.GetComponent<PlayerReferences>().PlayerStats.PowerUpsCollected(_point);
         playerPowerController.GivePlayerPower(power);
         meshRenderer.enabled = false;
         boxCollider.enabled = false;
@@ -35,6 +34,5 @@ public class PowerUp : MonoBehaviour {
         power = (EnumPowerUp)Random.Range(1, 8);
         meshRenderer.enabled = true;
         boxCollider.enabled = true;
-        modelController.PlayerStats.PowerUpsCollected(1);
     }
 }

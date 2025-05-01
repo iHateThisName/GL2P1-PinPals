@@ -51,6 +51,7 @@ public class PlayerPowerController : MonoBehaviour {
         if (currentPower == EnumPowerUp.None) {
             currentPower = power;
             playerText.DisplayPower(currentPower);
+            playerReferences.PlayerStats.PowerUpsCollected(_point);
             _isPlayerDead = false;
         }
 
