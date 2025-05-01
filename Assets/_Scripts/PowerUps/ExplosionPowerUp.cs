@@ -22,7 +22,7 @@ public class ExplosionPowerUp : MonoBehaviour {
         this._bombOwner = bo;
     }
 
-    private void OnTriggerStay(Collider player) {
+    private void OnTriggerEnter(Collider player) {
 
         if (!this._isDangerous) return;
 

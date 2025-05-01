@@ -22,7 +22,7 @@ public class MinefieldPowerUp : MonoBehaviour {
             StartCoroutine(MineExplosion());
             EnumPlayerTag tag = other.gameObject.GetComponent<PlayerReferences>().GetPlayerTag();
             PlayerJoinManager.Instance.Respawn(tag);
-            other.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerKills(_point);
+            other.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerDeaths(_point);
             Debug.Log("player has respawned");
         } else if (other.gameObject.tag.StartsWith("Ground")) {
             this.gameObject.GetComponent<Rigidbody>().isKinematic = true;

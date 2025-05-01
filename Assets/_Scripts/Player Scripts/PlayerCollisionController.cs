@@ -12,7 +12,7 @@ public class PlayerCollisionController : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision) {
         powerController.PlayerCollision(collision);
-        playerReference.PlayerStats.PlayerKills(1);
+        //playerReference.PlayerStats.PlayerKills(1);
         if (collision.gameObject.CompareTag("Plunger")) {
             playerTipUI.PlungerCollider();
         }

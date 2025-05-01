@@ -109,6 +109,9 @@ public class PlayerPowerController : MonoBehaviour {
     public IEnumerator ShrinkPlayerCoroutine() {
         this._isPowerActivated = true;
 
+        // Add a statistic to the player
+        this.playerReferences.PlayerStats.PowerUpUsed(_point);
+
         // Set the shrink properties
         this.playerReferences.rb.mass = shrinkMass;
         this.powerupPlayerTransform.localScale = new Vector3(shrinkScale, shrinkScale, shrinkScale);
@@ -130,7 +133,6 @@ public class PlayerPowerController : MonoBehaviour {
 
         // Reset the size and mass after the cooldown finishes if the player is alive
         ResetPlayerSizeAndMass();
-        this.playerReferences.PlayerStats.PowerUpUsed(_point);
     }
 
 
@@ -145,6 +147,9 @@ public class PlayerPowerController : MonoBehaviour {
 
     public IEnumerator GrowPlayerCoroutine() {
         this._isPowerActivated = true;
+
+        // Add a statistic to the player
+        this.playerReferences.PlayerStats.PowerUpUsed(_point);
 
         // Set the shrink properties
         this.powerupPlayerTransform.GetComponent<Rigidbody>().mass = growMass;
@@ -167,26 +172,32 @@ public class PlayerPowerController : MonoBehaviour {
 
         // Reset the size and mass after the cooldown finishes if the player is alive
         ResetPlayerSizeAndMass();
-        this.playerReferences.PlayerStats.PowerUpUsed(_point);
     }
 
     public IEnumerator BombPlayersCoroutine() {
         this._isPowerActivated = true;
-        //yield return new WaitForSeconds(3f);
+
+        // Add a statistic to the player
+        this.playerReferences.PlayerStats.PowerUpUsed(_point);
+
+        // Instantiates the Explosion Game Object
         GameObject explosionGameObject = Instantiate(this.explosionEffect, _cameraTarget.transform.position, Quaternion.identity);
         explosionGameObject.GetComponent<ExplosionPowerUp>().AssignBombOwner(powerupPlayerTransform.gameObject);
+
         yield return new WaitForSeconds(_powerUpCooldown);
-        this.playerReferences.PlayerStats.PowerUpUsed(_point);
-        //gameObject.GetComponentInChildren<ModelController>().PlayerStats.PowerUpUsed(_point);
         this._isPowerActivated = false;
         this.currentPower = EnumPowerUp.None;
     }
 
     public IEnumerator MineExplosionCoroutine() {
         this._isPowerActivated = true;
+
+        // Add a statistic to the player
         this.playerReferences.PlayerStats.PowerUpUsed(_point);
-        //gameObject.GetComponentInChildren<ModelController>().PlayerStats.PowerUpUsed(_point);
+
+        // Instantiates the Mine Game Object
         GameObject landMineGameObject = Instantiate(this.minePrefab, _cameraTarget.transform.position, Quaternion.identity);
+
         yield return new WaitForSeconds(_powerUpCooldown);
         this._isPowerActivated = false;
         this.currentPower = EnumPowerUp.None;
@@ -205,8 +216,10 @@ public class PlayerPowerController : MonoBehaviour {
     }
     private void FreezePlayers() {
         this._isPowerActivated = true;
+
+        // Add a statistic to the player
         this.playerReferences.PlayerStats.PowerUpUsed(_point);
-        //gameObject.GetComponentInChildren<ModelController>().PlayerStats.PowerUpUsed(_point);
+
         // Loop through all players in the GameManager
         foreach (var player in GameManager.Instance.Players) {
             // Check if the player is not Player01
@@ -235,14 +248,23 @@ public class PlayerPowerController : MonoBehaviour {
     private void StartHoneyEffectCoroutine() {
         // Start
         this._isPowerActivated = true;
+
+        // Add a statistic to the player
+        this.playerReferences.PlayerStats.PowerUpUsed(_point);
+
+        // Instantiates the Glue Game Object
         GameObject honeyGameObject = Instantiate(this.honeyPrefab, _cameraTarget.transform.position, Quaternion.identity);
         honeyGameObject.GetComponent<HoneyBlock>().AssignOwner(powerupPlayerTransform.gameObject);
-        this.playerReferences.PlayerStats.PowerUpUsed(_point);
+
         StartCoroutine(PowerCooldown());
     }
     public void MultiBall() {
         this._isPowerActivated = true;
+
+        // Add a statistic to the player
         this.playerReferences.PlayerStats.PowerUpUsed(_point);
+
+        // Creates 2 clones of the player.
         CreateDuplicate(powerupPlayerTransform.gameObject);
         CreateDuplicate(powerupPlayerTransform.gameObject);
         StartCoroutine(PowerCooldown());
@@ -288,6 +310,7 @@ public class PlayerPowerController : MonoBehaviour {
                     EnumPlayerTag tag = player.gameObject.GetComponent<PlayerReferences>().GetPlayerTag();
                     PlayerJoinManager.Instance.Respawn(tag);
                     player.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerDeaths(_point);
+                    this.playerReferences.PlayerStats.PlayerKills(_point);
                     this.playerReferences.PlayerStats.PowerUpUsed(_point);
                 }
             }
