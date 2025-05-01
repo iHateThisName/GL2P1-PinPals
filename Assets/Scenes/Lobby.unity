@@ -5361,93 +5361,13 @@ PrefabInstance:
       value: PlayerManager
       objectReference: {fileID: 0}
     - target: {fileID: 4196448483404538233, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4196448483404538233, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4196448483404538233, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4196448483404538233, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4196448483404538233, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1813784663}
-    - target: {fileID: 4196448483404538233, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
       propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1197715816}
-    - target: {fileID: 4196448483404538233, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Target
-      value: 
-      objectReference: {fileID: 673463170}
-    - target: {fileID: 4196448483404538233, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4196448483404538233, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4196448483404538233, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnPlayerJoined
-      objectReference: {fileID: 0}
-    - target: {fileID: 4196448483404538233, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 4196448483404538233, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: OnPlayerJoin
-      objectReference: {fileID: 0}
-    - target: {fileID: 4196448483404538233, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayerManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4196448483404538233, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 4196448483404538233, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: PlayerJoinManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4196448483404538233, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 4196448483404538233, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 4196448483404538233, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.InputSystem.PlayerInput, Unity.InputSystem
-      objectReference: {fileID: 0}
     - target: {fileID: 5658832189909603517, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
       propertyPath: joinManager
       value: 
       objectReference: {fileID: 673463170}
-    - target: {fileID: 5658832189909603517, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: _spawnPosition.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5658832189909603517, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: '_spawnPosition.Array.data[0]'
-      value: 
-      objectReference: {fileID: 340084231}
-    - target: {fileID: 5658832189909603517, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: '_spawnPosition.Array.data[1]'
-      value: 
-      objectReference: {fileID: 507499830}
     - target: {fileID: 8784440466150086375, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -100.1
@@ -5498,17 +5418,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8784440466150086375, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
   m_PrefabInstance: {fileID: 1813784661}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1813784663 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5658832189909603517, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-  m_PrefabInstance: {fileID: 1813784661}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc5fdc52cc3fcef4b91722e88cba99eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1844826852
 GameObject:
   m_ObjectHideFlags: 0
