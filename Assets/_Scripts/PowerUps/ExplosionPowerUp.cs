@@ -19,7 +19,7 @@ public class ExplosionPowerUp : MonoBehaviour {
         this._bombOwner = bo;
     }
 
-    private void OnTriggerEnter(Collider player) {
+    private void OnTriggerStay(Collider player) {
 
         if (!this._isDangerous) return;
 
@@ -34,8 +34,8 @@ public class ExplosionPowerUp : MonoBehaviour {
                 //VFXManager.Instance.SpawnVFX(VFXType.PlayerExplosion, player.transform.position);
                 EnumPlayerTag tag = player.gameObject.GetComponent<PlayerReferences>().GetPlayerTag();
                 PlayerJoinManager.Instance.Respawn(tag);
-                player.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerDeaths(_point);
                 _bombOwner.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerKills(_point);
+                player.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerDeaths(_point);
 
             }
             if (player.gameObject.tag == ("Bumper")) {
