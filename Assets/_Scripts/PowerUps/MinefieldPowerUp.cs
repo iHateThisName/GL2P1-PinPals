@@ -15,7 +15,7 @@ public class MinefieldPowerUp : MonoBehaviour {
         GetComponent<Rigidbody>();
         StartCoroutine(PrimeMine());
     }
-    public void OnCollisionEnter(Collision other) {
+    public void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag.StartsWith("Player")) {
             if (!this._isDangerous) return;
 
