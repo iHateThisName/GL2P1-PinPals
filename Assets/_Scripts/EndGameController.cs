@@ -55,19 +55,12 @@ public class EndGameController : MonoBehaviour {
             }
             CreateScoreboardElement(i);
         }
-        StartCoroutine(DeleteAllPlayers());
-        //GameManager.Instance.DeleteAllPlayers()/*;*/
-        // GameManager.Instance.HidePlayers();
+         GameManager.Instance.HidePlayers();
 
         if (this.playerScores.Count == 0) return;
         this.FirstPlaceScore.text = this.playerScores[0].score.ToString();
         if (this.playerScores.Count > 1) this.SecondPlaceScore.text = this.playerScores[1].score.ToString();
         if (this.playerScores.Count > 2) this.ThirdPlaceScore.text = this.playerScores[2].score.ToString();
-    }
-
-    private IEnumerator DeleteAllPlayers() {
-        yield return new WaitForSeconds(0.5f);
-        GameManager.Instance.DeleteAllPlayers();
     }
 
     private void CreateScoreboardElement(int index) {
