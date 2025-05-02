@@ -1,8 +1,8 @@
 using TMPro;
 using UnityEngine;
+// Hilmir
 
 public class DisplayStats : MonoBehaviour {
-    // Hilmir
     public int currentPoint { get; private set; } = 0;
     [HideInInspector]
     [SerializeField] private PlayerStats storedPlayerStats;

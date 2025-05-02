@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-
+// Hilmir & Ivar
 public class ExplosionPowerUp : MonoBehaviour {
     [SerializeField] private GameObject _bombModel;
     [SerializeField] private GameObject _explosionEffect;
@@ -23,24 +23,21 @@ public class ExplosionPowerUp : MonoBehaviour {
 
         if (!this._isDangerous) return;
 
-
         // Detect every player in the collider then respawn them
-        if (player.gameObject != _bombOwner) {
-            if (player.gameObject.name.Contains("Clone")) {
-                Destroy(player.gameObject);
-                return;
-            } else if (player.gameObject.tag.StartsWith("Player")) {
-                // To spawn an explosion VFX
-                //VFXManager.Instance.SpawnVFX(VFXType.PlayerExplosion, player.transform.position);
-                EnumPlayerTag tag = player.gameObject.GetComponent<PlayerReferences>().GetPlayerTag();
-                PlayerJoinManager.Instance.Respawn(tag);
-                _bombOwner.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerKills(_point);
-                player.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerDeaths(_point);
-
-            }
-            if (player.gameObject.tag == ("Bumper")) {
-                Destroy(player.gameObject);
-            }
+        if (player.gameObject.name.Contains("Clone")) {
+            Destroy(player.gameObject);
+            _bombOwner.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerKills(_point);
+            return;
+        } else if (player.gameObject.tag.StartsWith("Player")) {
+            // To spawn an explosion VFX
+            //VFXManager.Instance.SpawnVFX(VFXType.PlayerExplosion, player.transform.position);
+            EnumPlayerTag tag = player.gameObject.GetComponent<PlayerReferences>().GetPlayerTag();
+            PlayerJoinManager.Instance.Respawn(tag);
+            _bombOwner.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerKills(_point);
+            player.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerDeaths(_point);
+        }
+        if (player.gameObject.tag == ("Bumper")) {
+            Destroy(player.gameObject);
         }
 
     }

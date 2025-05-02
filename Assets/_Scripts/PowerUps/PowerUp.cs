@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-
+// Hilmir & Ivar
 public class PowerUp : MonoBehaviour {
     private EnumPowerUp power;
     private int _point = 1;
@@ -8,7 +8,7 @@ public class PowerUp : MonoBehaviour {
     [SerializeField] private bool isSpinie = true;
 
     void Start() {
-        power = (EnumPowerUp)Random.Range(1, 7);
+        power = (EnumPowerUp)Random.Range(5, 5);
     }
 
     void Update() {
@@ -31,7 +31,7 @@ public class PowerUp : MonoBehaviour {
         meshRenderer.enabled = false;
         boxCollider.enabled = false;
         yield return new WaitForSeconds(5f);
-        power = (EnumPowerUp)Random.Range(1, 7);
+        power = (EnumPowerUp)Random.Range(5, 5);
         meshRenderer.enabled = true;
         boxCollider.enabled = true;
     }

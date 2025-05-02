@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
-
+// Ivar & Hilmir
 public class ScoreAnimationController : MonoBehaviour {
     [SerializeField] private Camera _camera;
     [SerializeField] private Canvas _canvas;

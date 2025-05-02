@@ -1,4 +1,5 @@
 using UnityEngine;
+// Hilmir
 public class PlayerStats : MonoBehaviour {
     public int currentPoint { get; private set; } = 0;
     public int bumperPoint { get; private set; } = 0;

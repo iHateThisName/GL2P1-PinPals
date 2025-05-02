@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-
+// Hilmir
 public class MinefieldPowerUp : MonoBehaviour {
     [SerializeField] private GameObject _mineModel;
     [SerializeField] private GameObject _mineAddon;
@@ -15,7 +15,7 @@ public class MinefieldPowerUp : MonoBehaviour {
         GetComponent<Rigidbody>();
         StartCoroutine(PrimeMine());
     }
-    public void OnTriggerEnter(Collider other) {
+    public void OnTriggerStay(Collider other) {
         if (other.gameObject.tag.StartsWith("Player")) {
             if (!this._isDangerous) return;
 
@@ -38,6 +38,7 @@ public class MinefieldPowerUp : MonoBehaviour {
         this._mineModel.SetActive(false);
         this._mineAddon.SetActive(false);
         this._mineDetector.SetActive(false);
+        GetComponent<Collider>().enabled = false;
         SoundEffectManager.Instance.PlaySoundFXClip(this._mineExplosionSFX, this.gameObject.transform, 1f);
         yield return new WaitForSeconds(2f); // Bomb animation
         Destroy(gameObject);

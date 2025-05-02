@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+// Hilmir
 public class DisplayPlayerStats : MonoBehaviour {
     [SerializeField] private GameObject _playerStatsUI;
     private void Start() {
