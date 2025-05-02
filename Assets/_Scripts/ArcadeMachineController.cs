@@ -85,7 +85,7 @@ public class ArcadeMachineController : MonoBehaviour {
         OnHoverExit?.Invoke();
 
         _spotLight.SetActive(false);
-        _canvas.SetActive(false);
+        //_canvas.SetActive(false);
     }
 
     private void OnMouseDown() {
