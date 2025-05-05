@@ -22,7 +22,7 @@ public class FlipperController : MonoBehaviour {
         hinge.useSpring = true;
 
         // Set the render queue
-        this._meshRenderer.material.renderQueue = _renderQueue * 3000;
+        //this._meshRenderer.material.renderQueue = _renderQueue * 3000;
     }
 
     public void SetFlipperColor(Color color) {
