@@ -255,7 +255,7 @@ public class PlayerPowerController : MonoBehaviour {
 
         // Instantiates the Glue Game Object
         GameObject honeyGameObject = Instantiate(this.honeyPrefab, _cameraTarget.transform.position, Quaternion.identity);
-        honeyGameObject.GetComponent<HoneyBlock>().AssignOwner(powerupPlayerTransform.gameObject);
+        //honeyGameObject.GetComponent<HoneyBlock>().AssignOwner(powerupPlayerTransform.gameObject);
 
         StartCoroutine(PowerCooldown());
     }
