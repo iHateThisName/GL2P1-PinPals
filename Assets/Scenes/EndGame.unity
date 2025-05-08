@@ -1995,7 +1995,7 @@ PrefabInstance:
     - target: {fileID: 777431111741847406, guid: f724b7739ddfd474388b0051ee65b184, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 319761d4e8461ca47b436c388587a1d4, type: 2}
+      objectReference: {fileID: 2100000, guid: b0cda012ba1eed34db85b4047102d22b, type: 2}
     - target: {fileID: 1463808327771814465, guid: f724b7739ddfd474388b0051ee65b184, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3723,7 +3723,7 @@ PrefabInstance:
     - target: {fileID: 777431111741847406, guid: f724b7739ddfd474388b0051ee65b184, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 319761d4e8461ca47b436c388587a1d4, type: 2}
+      objectReference: {fileID: 2100000, guid: 1e16ad820de174944a9160b2fad15f97, type: 2}
     - target: {fileID: 1463808327771814465, guid: f724b7739ddfd474388b0051ee65b184, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4688,14 +4688,24 @@ Mesh:
   m_SubMeshes:
   - serializedVersion: 2
     firstByte: 0
-    indexCount: 36
+    indexCount: 30
     topology: 0
     baseVertex: 0
     firstVertex: 0
-    vertexCount: 24
+    vertexCount: 20
     localAABB:
       m_Center: {x: 0, y: -0.41666675, z: 0}
       m_Extent: {x: 0.5, y: 0.91666675, z: 0.5}
+  - serializedVersion: 2
+    firstByte: 60
+    indexCount: 6
+    topology: 0
+    baseVertex: 0
+    firstVertex: 20
+    vertexCount: 4
+    localAABB:
+      m_Center: {x: 0, y: -1.3333335, z: 0}
+      m_Extent: {x: 0.5, y: 0, z: 0.5}
   m_Shapes:
     vertices: []
     shapes: []
@@ -7368,7 +7378,7 @@ PrefabInstance:
     - target: {fileID: 777431111741847406, guid: f724b7739ddfd474388b0051ee65b184, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 319761d4e8461ca47b436c388587a1d4, type: 2}
+      objectReference: {fileID: 2100000, guid: f783e4e82fdfa994c9b8e1a168b944e9, type: 2}
     - target: {fileID: 1463808327771814465, guid: f724b7739ddfd474388b0051ee65b184, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -8032,7 +8042,7 @@ VisualEffect:
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: 5abc8aae3d652ed4c905e7b86811df86, type: 3}
   m_InitialEventName: OnPlay
-  m_InitialEventNameOverriden: 0
+  m_InitialEventNameOverriden: 1
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
   m_AllowInstancing: 1
