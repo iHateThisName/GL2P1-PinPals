@@ -31,6 +31,7 @@ public class ExplosionPowerUp : MonoBehaviour {
         } else if (player.gameObject.tag.StartsWith("Player")) {
             // To spawn an explosion VFX
             //VFXManager.Instance.SpawnVFX(VFXType.PlayerExplosion, player.transform.position);
+            VFXManager.Instance.SpawnVFX(VFXType.PlayerExplosion, player.transform.position, duration: 2f);
             EnumPlayerTag tag = player.gameObject.GetComponent<PlayerReferences>().GetPlayerTag();
             PlayerJoinManager.Instance.Respawn(tag);
             _bombOwner.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerKills(_point);

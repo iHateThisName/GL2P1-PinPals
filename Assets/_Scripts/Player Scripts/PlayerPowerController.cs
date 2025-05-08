@@ -226,9 +226,10 @@ public class PlayerPowerController : MonoBehaviour {
             // Check if the player is not Player01
             if (player.Key != _assignedPlayerTag) {
                 // Set the player's rigidbody to kinematic to freeze them
+
                 player.Value.GetComponentInChildren<PlayerReferences>().rb.isKinematic = true;
                 // Start a coroutine to unfreeze the player after 5 seconds
-                StartCoroutine(Unfreeze(player.Value));
+                StartCoroutine(Unfreeze(GameManager.Instance.GetPlayerReferences(player.Key)));
             }
         }
         StartCoroutine(PowerCooldown());
@@ -239,11 +240,12 @@ public class PlayerPowerController : MonoBehaviour {
         this.currentPower = EnumPowerUp.None;
     }
 
-    // Coroutine to unfreeze the player after 5 seconds
-    public IEnumerator Unfreeze(GameObject player) {
-        yield return new WaitForSeconds(5f);
+    // Coroutine to unfreeze the players after 5 seconds
+    public IEnumerator Unfreeze(PlayerReferences references) {
+        VFXManager.Instance.SpawnVFX(VFXType.FrostSmoke, references.transform.position, duration: 2f);
+        yield return new WaitForSeconds(3f);
         // Set the player's rigidbody to non-kinematic to unfreeze them
-        player.GetComponentInChildren<PlayerReferences>().rb.isKinematic = false;
+        references.rb.isKinematic = false;
     }
 
     private void StartHoneyEffectCoroutine() {
