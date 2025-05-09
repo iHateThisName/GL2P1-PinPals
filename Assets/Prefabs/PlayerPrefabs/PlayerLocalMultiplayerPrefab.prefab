@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf7bfb5a3834bb4188157fa913fbf41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _growAnimDeath: {fileID: 2185242025044691006, guid: 1370e761e22220448a349d0e0e9ffa00, type: 3}
+  EnumPlayerAnimation: 0
 --- !u!1 &54093458641906382
 GameObject:
   m_ObjectHideFlags: 0
@@ -2041,6 +2043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <currentPower>k__BackingField: 0
+  EnumPlayerAnimation: 0
   playerReferences: {fileID: 2572901427273484420}
   powerupPlayerTransform: {fileID: 1976326164064474452}
   _cameraTarget: {fileID: 5947122031867381807}

@@ -38,8 +38,9 @@ public class PlayerJoinManager : Singleton<PlayerJoinManager> {
         //Play animation
 
         PlayerAnimationController animationController = GameManager.Instance.GetPlayerReferences(tag).PlayerAnimationController;
-
-        yield return StartCoroutine(animationController.PlayAnimation(playerAnimation));
+        GameManager.Instance.HidePlayer(tag, false);
+        yield return StartCoroutine(animationController.PlayAnimation(playerAnimation, tag));
+        GameManager.Instance.ShowPlayer(tag, true);
         Respawn(tag);
     }
 

@@ -2,8 +2,10 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 // Hilmir, Ivar and Einar
-public class PlayerPowerController : MonoBehaviour {
+public class PlayerPowerController : MonoBehaviour
+{
     [field: SerializeField] public EnumPowerUp currentPower { get; private set; } = EnumPowerUp.None;
+    [SerializeField] public EnumPlayerAnimation EnumPlayerAnimation;
     [SerializeField] private PlayerReferences playerReferences;
     [SerializeField] private Transform powerupPlayerTransform;
     [SerializeField] private Transform _cameraTarget;
@@ -12,6 +14,7 @@ public class PlayerPowerController : MonoBehaviour {
     private float _powerUpCooldown = 5f;
     private float _originalMass = 0.02f;
     private int _point = 1;
+    private int _points = 500;
     private bool _isPlayerDead;
     [SerializeField] private float shrinkMass = 0.01f;
     [SerializeField] private float growMass = 0.05f;
@@ -48,7 +51,8 @@ public class PlayerPowerController : MonoBehaviour {
     }
 
     public void GivePlayerPower(EnumPowerUp power) {
-        if (currentPower == EnumPowerUp.None) {
+        if (currentPower == EnumPowerUp.None)
+        {
             currentPower = power;
             playerText.DisplayPower(currentPower);
             playerReferences.PlayerStats.PowerUpsCollected(_point);
@@ -59,9 +63,11 @@ public class PlayerPowerController : MonoBehaviour {
 
     public void OnUsePower(InputAction.CallbackContext context) {
         if (this._isPowerActivated) return; // Power is active
-        if (context.phase == InputActionPhase.Performed) {
+        if (context.phase == InputActionPhase.Performed)
+        {
             playerText.DisableSprite();
-            switch (currentPower) {
+            switch (currentPower)
+            {
                 case EnumPowerUp.None:
                     break;
 
@@ -222,14 +228,16 @@ public class PlayerPowerController : MonoBehaviour {
         this.playerReferences.PlayerStats.PowerUpUsed(_point);
 
         // Loop through all players in the GameManager
-        foreach (var player in GameManager.Instance.Players) {
+        foreach (var player in GameManager.Instance.Players)
+        {
             // Check if the player is not Player01
-            if (player.Key != _assignedPlayerTag) {
+            if (player.Key != _assignedPlayerTag)
+            {
+                PlayerReferences references = GameManager.Instance.GetPlayerReferences(player.Key);
                 // Set the player's rigidbody to kinematic to freeze them
-
-                player.Value.GetComponentInChildren<PlayerReferences>().rb.isKinematic = true;
+                references.rb.isKinematic = true;
                 // Start a coroutine to unfreeze the player after 5 seconds
-                StartCoroutine(Unfreeze(GameManager.Instance.GetPlayerReferences(player.Key)));
+                StartCoroutine(Unfreeze(references));
             }
         }
         StartCoroutine(PowerCooldown());
@@ -302,24 +310,32 @@ public class PlayerPowerController : MonoBehaviour {
     }
 
     public void PlayerCollision(Collision player) {
-
-        if (this.currentPower == EnumPowerUp.Grow) {
-            if (player.gameObject.name.Contains("Clone")) {
-                Destroy(player.gameObject);
-                return;
-            }
-            if (player.gameObject.tag.StartsWith("Player")) {
-                if (this.powerupPlayerTransform.localScale.x > player.gameObject.transform.localScale.x) {
-                    EnumPlayerTag tag = player.gameObject.GetComponent<PlayerReferences>().GetPlayerTag();
-                    PlayerJoinManager.Instance.Respawn(tag);
-                    player.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerDeaths(_point);
-                    this.playerReferences.PlayerStats.PlayerKills(_point);
-                    this.playerReferences.PlayerStats.PowerUpUsed(_point);
+        if (this.currentPower == EnumPowerUp.Grow)
+        {
+            if (_isPowerActivated)
+            {
+                if (player.gameObject.name.Contains("Clone"))
+                {
+                    Destroy(player.gameObject);
+                    return;
                 }
-            }
+                if (player.gameObject.tag.StartsWith("Player"))
+                {
+                    if (this.powerupPlayerTransform.localScale.x > player.gameObject.transform.localScale.x)
+                    {
+                        EnumPlayerTag tag = player.gameObject.GetComponent<PlayerReferences>().GetPlayerTag();
+                        
+                        OnPlayerDeath();
+                        StartCoroutine(PlayerJoinManager.Instance.RespawnDelay(tag, EnumPlayerAnimation.GrowDeath));
+                        player.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerDeaths(_point);
+                        player.gameObject.GetComponent<PlayerReferences>().PlayerScoreTracker.DockPoints(_points);
 
-            if (player.gameObject.tag == ("Bumper")) {
-                Destroy(player.gameObject);
+                        this.playerReferences.PlayerStats.PlayerKills(_point);
+                        this.playerReferences.PlayerStats.PowerUpUsed(_point);
+
+                    }
+                }
+
             }
         }
     }
