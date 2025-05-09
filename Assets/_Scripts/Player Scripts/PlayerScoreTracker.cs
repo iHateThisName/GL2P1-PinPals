@@ -29,9 +29,29 @@ public class PlayerScoreTracker : MonoBehaviour {
         HighScore.Instance.CheckHighScore(currentScore);
     }
 
+    public void DockPoints(int points) {
+        currentScore -= points;
+        if (!_isScoreAnimating)
+        {
+            StartCoroutine(AnimateDockedScore());
+        }
+        HighScore.Instance.CheckHighScore(currentScore);
+    }
+
+
     private IEnumerator AnimateScore() {
         _isScoreAnimating = true;
         while (_animatedScore < currentScore) {
+            _animatedScore = (int)Mathf.MoveTowards(_animatedScore, currentScore, _animationSpeed * Time.deltaTime * 100);
+            _scoreText.text = $"Score: {_animatedScore}";
+            yield return null;
+        }
+        _isScoreAnimating = false;
+    }
+
+    private IEnumerator AnimateDockedScore() {
+        _isScoreAnimating = true;
+        while (_animatedScore > currentScore) {
             _animatedScore = (int)Mathf.MoveTowards(_animatedScore, currentScore, _animationSpeed * Time.deltaTime * 100);
             _scoreText.text = $"Score: {_animatedScore}";
             yield return null;

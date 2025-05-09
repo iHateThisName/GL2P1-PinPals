@@ -1,6 +1,8 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static PlayerAnimationController;
 
 // Einar and Ivar
 public class PlayerJoinManager : Singleton<PlayerJoinManager> {
@@ -30,6 +32,15 @@ public class PlayerJoinManager : Singleton<PlayerJoinManager> {
                 break;
         }
 
+    }
+
+    public IEnumerator RespawnDelay(EnumPlayerTag tag, EnumPlayerAnimation playerAnimation) {
+        //Play animation
+
+        PlayerAnimationController animationController = GameManager.Instance.GetPlayerReferences(tag).PlayerAnimationController;
+
+        yield return StartCoroutine(animationController.PlayAnimation(playerAnimation));
+        Respawn(tag);
     }
 
     public void Respawn(EnumPlayerTag tag) {

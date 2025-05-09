@@ -8,6 +8,7 @@ public class MinefieldPowerUp : MonoBehaviour {
     [SerializeField] private GameObject _mineExplosionEffect;
     private bool _isDangerous = false;
     private int _point = 1;
+    private int _points = 500;
     [SerializeField] private AudioClip _mineIdleSFX;
     [SerializeField] private AudioClip _mineExplosionSFX;
     void Start() {
@@ -19,11 +20,13 @@ public class MinefieldPowerUp : MonoBehaviour {
         if (other.gameObject.tag.StartsWith("Player")) {
             if (!this._isDangerous) return;
 
+            PlayerReferences playerRef = other.gameObject.GetComponent<PlayerReferences>();
             StartCoroutine(MineExplosion());
             VFXManager.Instance.SpawnVFX(VFXType.PlayerExplosion, other.transform.position, duration: 2f);
             EnumPlayerTag tag = other.gameObject.GetComponent<PlayerReferences>().GetPlayerTag();
             PlayerJoinManager.Instance.Respawn(tag);
-            other.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerDeaths(_point);
+            playerRef.PlayerStats.PlayerDeaths(_point);
+            playerRef.PlayerScoreTracker.DockPoints(_points);
             Debug.Log("player has respawned");
         } else if (other.gameObject.tag.StartsWith("Ground")) {
             this.gameObject.GetComponent<Rigidbody>().isKinematic = true;

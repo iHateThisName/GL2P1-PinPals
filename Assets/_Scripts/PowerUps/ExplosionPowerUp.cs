@@ -6,6 +6,7 @@ public class ExplosionPowerUp : MonoBehaviour {
     [SerializeField] private GameObject _explosionEffect;
     private GameObject _bombOwner;
     private int _point = 1;
+    private int _points = 500;
     private bool _isDangerous = false;
     [SerializeField] private AudioClip _bombTickSFX;
     [SerializeField] private AudioClip _bombExplodeSFX;
@@ -23,6 +24,8 @@ public class ExplosionPowerUp : MonoBehaviour {
 
         if (!this._isDangerous) return;
 
+        PlayerReferences playerRefs = player.gameObject.GetComponent<PlayerReferences>();
+
         // Detect every player in the collider then respawn them
         if (player.gameObject.name.Contains("Clone")) {
             Destroy(player.gameObject);
@@ -35,7 +38,8 @@ public class ExplosionPowerUp : MonoBehaviour {
             EnumPlayerTag tag = player.gameObject.GetComponent<PlayerReferences>().GetPlayerTag();
             PlayerJoinManager.Instance.Respawn(tag);
             _bombOwner.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerKills(_point);
-            player.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerDeaths(_point);
+            playerRefs.PlayerStats.PlayerDeaths(_point);
+            playerRefs.PlayerScoreTracker.DockPoints(_points);
         }
         if (player.gameObject.tag == ("Bumper")) {
             Destroy(player.gameObject);
