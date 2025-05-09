@@ -21,6 +21,7 @@ public class EndGameController : MonoBehaviour {
     }
 
     private void Start() {
+        VFXManager.Instance.SpawnVFX(VFXType.FireWork, transform.position/*, duration: 10f*/);
         if (FirstPlacePiller == null || SecondPlacePiller == null || ThirdPlacePiller == null) {
             Debug.LogError("One or more of the place pillers are not assigned in the inspector.");
             return;

@@ -4,4 +4,5 @@ public enum VFXType
     Sparkle,
     Smoke,
     FrostSmoke,
+    FireWork,
 }
