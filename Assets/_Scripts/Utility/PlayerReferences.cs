@@ -9,6 +9,7 @@ public class PlayerReferences : MonoBehaviour {
     public PlayerFollowCanvasManager PlayerFollowCanvasManager;
     public PlayerStats PlayerStats;
     public PlayerTipUI playerTipUI;
+    public PlayerAnimationController PlayerAnimationController;
 
     public EnumPlayerTag GetPlayerTag() {
         if (System.Enum.TryParse(this.gameObject.tag, out EnumPlayerTag parsedTag)) {
