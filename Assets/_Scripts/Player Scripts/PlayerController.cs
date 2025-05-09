@@ -13,9 +13,6 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private GameObject _playerCanvas;
     private List<FlipperController> _leftFlipperController;
     private List<FlipperController> _rightFlipperController;
-
-    private Vector3 _respawnPosition;
-
     public bool IsHoldingInteraction = false;
 
     // Input Actions Varibals
@@ -57,15 +54,11 @@ public class PlayerController : MonoBehaviour {
         _ballRigidbody.AddTorque(new Vector3(this._movementInput.y, 0, -this._movementInput.x) * _playerSpeed, ForceMode.Force);
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        if (scene.name.StartsWith("Pro") || scene.name.StartsWith("Level"))
-        {
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+        if (scene.name.StartsWith("Pro") || scene.name.StartsWith("Level")) {
             AssigneFlippers();
             _playerCanvas.SetActive(true);
-        }
-        else
-        {
+        } else {
             SceneManager.sceneLoaded -= OnSceneLoaded;
         }
     }
@@ -104,13 +97,6 @@ public class PlayerController : MonoBehaviour {
         return processedFlippers;
     }
 
-    public void Respawn() {
-        DisableGravity();
-        _ballRigidbody.gameObject.transform.position = this._respawnPosition;
-        StartCoroutine(ReEnableGravityCoroutine(0.5f));
-
-    }
-
     // Input Actions Methods
     public void OnMove(InputAction.CallbackContext context) => this._movementInput = context.ReadValue<Vector2>();
     public void OnPauseAction(InputAction.CallbackContext context) {
@@ -139,6 +125,12 @@ public class PlayerController : MonoBehaviour {
             this.IsHoldingInteraction = true;
         } else if (context.phase == InputActionPhase.Canceled) {
             this.IsHoldingInteraction = false;
+        }
+    }
+
+    public void OnRespawn(InputAction.CallbackContext context) {
+        if (context.phase == InputActionPhase.Performed) {
+            PlayerJoinManager.Instance.Respawn(this._tag);
         }
     }
 
