@@ -57,7 +57,7 @@ public class HighScore : Singleton<HighScore>
             }
             if (highScoreTextLVL6 != null && PlayerPrefs.HasKey(Helper.level6))
             {
-                highScoreTextLVL6.text = "High Score: " + PlayerPrefs.GetInt(Helper.level6).ToString();
+                highScoreTextLVL6.text = "HIGH SCORE: " + PlayerPrefs.GetInt(Helper.level6).ToString();
             }
         }
     }
@@ -94,7 +94,7 @@ public class HighScore : Singleton<HighScore>
             }
             if (highScoreTextLVL6 != null && PlayerPrefs.HasKey(Helper.level6))
             {
-                highScoreTextLVL6.text = "High Score: " + PlayerPrefs.GetInt(Helper.level6).ToString();
+                highScoreTextLVL6.text = "HIGH SCORE: " + PlayerPrefs.GetInt(Helper.level6).ToString();
             }
         }
     }
