@@ -147,7 +147,7 @@ public class NavigationManager : MonoBehaviour {
                 } else if (this._currentPosition == Helper.LobbyButtonCoords.Previous) {
                     this._skinController.PreviosOption();
                     navigationController.UpdateOutlineMaterialColor();
-                } else if (this._currentPosition == Helper.LobbyButtonCoords.Start) {
+                } else if (this._currentPosition == Helper.LobbyButtonCoords.Start || this._currentPosition == new Vector2Int(1, -1)) {
                     this._skinController.StartButton();
                 } else if (this._currentPosition == Helper.LobbyButtonCoords.Exit) {
                     if (GameManager.Instance.Players.Count > 1) {
