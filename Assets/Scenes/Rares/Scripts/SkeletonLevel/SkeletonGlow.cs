@@ -1,5 +1,5 @@
 using UnityEngine;
-
+// AI GENERATED
 public class SkeletonGlow : MonoBehaviour
 {
     [Tooltip("Optional. If not set, the script will use the object's original material.")]
@@ -12,10 +12,15 @@ public class SkeletonGlow : MonoBehaviour
     [Tooltip("At what second in the cycle the glow should activate.")]
     public float glowTriggerTime = 15f;
 
+    [Tooltip("How long the glow should last (in seconds). Set to 0 to keep it glowing until the end of the cycle.")]
+    public float glowDuration = 0f;
+
     private Renderer objectRenderer;
     private Material originalMaterial;
     private float timer = 0f;
+    private float glowStartTime = 0f;
     private bool hasSwitchedToGlow = false;
+    private bool glowEnded = false;
 
     void Start()
     {
@@ -36,22 +41,35 @@ public class SkeletonGlow : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        // Switch to glow material at the trigger time
+        // Trigger the glow
         if (!hasSwitchedToGlow && timer >= glowTriggerTime)
         {
             if (glowMaterial != null)
             {
                 objectRenderer.material = glowMaterial;
+                glowStartTime = timer;
                 hasSwitchedToGlow = true;
+                glowEnded = false;
             }
         }
 
-        // Reset the cycle
+        // If glowDuration > 0, end the glow early
+        if (hasSwitchedToGlow && glowDuration > 0f && !glowEnded)
+        {
+            if (timer >= glowStartTime + glowDuration)
+            {
+                objectRenderer.material = originalMaterial;
+                glowEnded = true;
+            }
+        }
+
+        // End of full cycle
         if (timer >= cycleDuration)
         {
             objectRenderer.material = originalMaterial;
             timer = 0f;
             hasSwitchedToGlow = false;
+            glowEnded = false;
         }
     }
 }
