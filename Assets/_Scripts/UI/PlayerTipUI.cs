@@ -5,8 +5,7 @@ public class PlayerTipUI : MonoBehaviour {
     [SerializeField] private GameObject _uiTipPrefab;
     [SerializeField] private PlayerReferences _playerReferences;
 
-    private bool _fadeIn = false;
-    [SerializeField] private float _timeToFadeIn;
+    [SerializeField] private float _timeToFadeIn = 1.5f;
     public bool IsFirstTime = true;
     private Coroutine _toolTip;
 

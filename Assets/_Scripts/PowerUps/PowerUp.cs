@@ -3,7 +3,6 @@ using UnityEngine;
 // Hilmir & Ivar
 public class PowerUp : MonoBehaviour {
     private EnumPowerUp power;
-    private int _point = 1;
     [SerializeField] private AudioClip powerUpPickUp;
     [SerializeField] private bool isSpinie = true;
 

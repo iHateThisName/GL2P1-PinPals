@@ -6,7 +6,7 @@ public class PlungerController2 : MonoBehaviour {
     public float launchForce = 500f; // Force applied to ball
     private Vector3 startPos;
     private float pullAmount = 0f;
-    private bool isPulling = false;
+    //private bool isPulling = false;
     [SerializeField] private Collider _triggerZone;
 
     void Start() {
@@ -15,14 +15,14 @@ public class PlungerController2 : MonoBehaviour {
 
     void Update() {
         if (Input.GetKey(KeyCode.S)) {
-            isPulling = true;
+            //isPulling = true;
             pullAmount = Mathf.Min(pullAmount + Time.deltaTime * 3, maxPull);
             transform.position = Vector3.Lerp(startPos, startPos + new Vector3(0, 0, -maxPull), pullAmount / maxPull);
         }
 
         if (Input.GetKeyUp(KeyCode.S)) {
             LaunchBall();
-            isPulling = false;
+            //isPulling = false;
             transform.position = startPos;
             pullAmount = 0;
         }

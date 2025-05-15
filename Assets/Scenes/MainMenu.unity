@@ -2294,6 +2294,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7457514576239322452, guid: 33bc96b630b2e5547a8252784181ec05, type: 3}
+      propertyPath: liveUpdate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8859641491799723407, guid: 33bc96b630b2e5547a8252784181ec05, type: 3}
       propertyPath: m_Resource
       value: 
@@ -2316,6 +2320,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 444221171532064229, guid: 33bc96b630b2e5547a8252784181ec05, type: 3}
   m_PrefabInstance: {fileID: 1568422649}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1568422651 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7457514576239322452, guid: 33bc96b630b2e5547a8252784181ec05, type: 3}
+  m_PrefabInstance: {fileID: 1568422649}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f63c656ea5e8f9341b726f007f86a7b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1625438752
 GameObject:
   m_ObjectHideFlags: 0
@@ -3538,6 +3553,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -153.55582
       objectReference: {fileID: 0}
+    - target: {fileID: 5980783787176175090, guid: 005ac7fad01757540ac73d5c06904617, type: 3}
+      propertyPath: musicVolumeApplier
+      value: 
+      objectReference: {fileID: 1568422651}
     - target: {fileID: 6661376203246146619, guid: 005ac7fad01757540ac73d5c06904617, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -3573,6 +3592,30 @@ PrefabInstance:
     - target: {fileID: 7397273114555311027, guid: 005ac7fad01757540ac73d5c06904617, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -79.33342
+      objectReference: {fileID: 0}
+    - target: {fileID: 7640761706490656369, guid: 005ac7fad01757540ac73d5c06904617, type: 3}
+      propertyPath: UnityToggleOn.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7640761706490656369, guid: 005ac7fad01757540ac73d5c06904617, type: 3}
+      propertyPath: UnityToggleOff.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7640761706490656369, guid: 005ac7fad01757540ac73d5c06904617, type: 3}
+      propertyPath: UnityToggleOn.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: MusicMute
+      objectReference: {fileID: 0}
+    - target: {fileID: 7640761706490656369, guid: 005ac7fad01757540ac73d5c06904617, type: 3}
+      propertyPath: UnityToggleOff.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: MusicUnMute
+      objectReference: {fileID: 0}
+    - target: {fileID: 7640761706490656369, guid: 005ac7fad01757540ac73d5c06904617, type: 3}
+      propertyPath: UnityToggleOn.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: SoundManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7640761706490656369, guid: 005ac7fad01757540ac73d5c06904617, type: 3}
+      propertyPath: UnityToggleOff.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: SoundManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7984818990216558800, guid: 005ac7fad01757540ac73d5c06904617, type: 3}
       propertyPath: m_AnchorMax.y

@@ -4,7 +4,7 @@ public class FlipperController : MonoBehaviour {
     public float restPosition = 0f; // Default angle
     public float activePosition = 45f; // Angle when activated
     public float flipSpeed = 10f; // Speed of flipping
-    [SerializeField] private int _renderQueue = 1;
+    //[SerializeField] private int _renderQueue = 1;
     private HingeJoint hinge;
 
     public bool IsFlipping = false;
