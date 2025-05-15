@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 17601589}
   - component: {fileID: 17601591}
   - component: {fileID: 17601590}
+  - component: {fileID: 17601592}
   m_Layer: 0
   m_Name: Cylinder (5)
   m_TagString: Untagged
@@ -205,6 +206,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 17601588}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &17601592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17601588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc2df94e340fce4e86588340c2e38d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalMaterial: {fileID: 0}
+  glowMaterial: {fileID: 2100000, guid: 078b0310bdec09c429a8068bf4cead66, type: 2}
+  cycleDuration: 7
+  glowTriggerTime: 2.5
 --- !u!1001 &30977578
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1254,6 +1271,7 @@ GameObject:
   - component: {fileID: 143519934}
   - component: {fileID: 143519936}
   - component: {fileID: 143519935}
+  - component: {fileID: 143519937}
   m_Layer: 0
   m_Name: Cylinder (4)
   m_TagString: Untagged
@@ -1329,6 +1347,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 143519933}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &143519937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143519933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc2df94e340fce4e86588340c2e38d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalMaterial: {fileID: 0}
+  glowMaterial: {fileID: 2100000, guid: 078b0310bdec09c429a8068bf4cead66, type: 2}
+  cycleDuration: 7
+  glowTriggerTime: 3
 --- !u!1 &151135704
 GameObject:
   m_ObjectHideFlags: 0
@@ -2086,6 +2120,7 @@ GameObject:
   - component: {fileID: 197730224}
   - component: {fileID: 197730226}
   - component: {fileID: 197730225}
+  - component: {fileID: 197730227}
   m_Layer: 0
   m_Name: Cylinder (6)
   m_TagString: Untagged
@@ -2161,6 +2196,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 197730223}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &197730227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197730223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc2df94e340fce4e86588340c2e38d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalMaterial: {fileID: 0}
+  glowMaterial: {fileID: 2100000, guid: 078b0310bdec09c429a8068bf4cead66, type: 2}
+  cycleDuration: 7
+  glowTriggerTime: 2
 --- !u!1 &203629626
 GameObject:
   m_ObjectHideFlags: 0
@@ -3633,10 +3684,10 @@ MonoBehaviour:
         z: 10.421974
       Rotation:
         value:
-          x: 0.26253647
-          y: -0.56441164
-          z: 0.6403659
-          w: -0.44993943
+          x: 0.26253638
+          y: -0.5644116
+          z: 0.64036596
+          w: -0.44993955
     - Position:
         x: 88
         y: 70
@@ -9600,6 +9651,7 @@ GameObject:
   - component: {fileID: 896199703}
   - component: {fileID: 896199705}
   - component: {fileID: 896199704}
+  - component: {fileID: 896199706}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -9675,6 +9727,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 896199702}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &896199706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896199702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc2df94e340fce4e86588340c2e38d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalMaterial: {fileID: 0}
+  glowMaterial: {fileID: 2100000, guid: 078b0310bdec09c429a8068bf4cead66, type: 2}
+  cycleDuration: 7
+  glowTriggerTime: 5
 --- !u!4 &897743544 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1900361559840297932, guid: 87796fbd7bbee5345928c68875380bff, type: 3}
@@ -9691,6 +9759,7 @@ GameObject:
   - component: {fileID: 927824155}
   - component: {fileID: 927824157}
   - component: {fileID: 927824156}
+  - component: {fileID: 927824158}
   m_Layer: 0
   m_Name: Cylinder (2)
   m_TagString: Untagged
@@ -9766,6 +9835,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 927824154}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &927824158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927824154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc2df94e340fce4e86588340c2e38d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalMaterial: {fileID: 0}
+  glowMaterial: {fileID: 2100000, guid: 078b0310bdec09c429a8068bf4cead66, type: 2}
+  cycleDuration: 7
+  glowTriggerTime: 4
 --- !u!1001 &956159055
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11157,6 +11242,7 @@ GameObject:
   - component: {fileID: 1034353960}
   - component: {fileID: 1034353962}
   - component: {fileID: 1034353961}
+  - component: {fileID: 1034353963}
   m_Layer: 0
   m_Name: Cylinder (9)
   m_TagString: Untagged
@@ -11232,6 +11318,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1034353959}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1034353963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034353959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc2df94e340fce4e86588340c2e38d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalMaterial: {fileID: 0}
+  glowMaterial: {fileID: 2100000, guid: 078b0310bdec09c429a8068bf4cead66, type: 2}
+  cycleDuration: 7
+  glowTriggerTime: 0.5
 --- !u!1 &1039677047
 GameObject:
   m_ObjectHideFlags: 0
@@ -11243,6 +11345,7 @@ GameObject:
   - component: {fileID: 1039677048}
   - component: {fileID: 1039677050}
   - component: {fileID: 1039677049}
+  - component: {fileID: 1039677051}
   m_Layer: 0
   m_Name: Cylinder (7)
   m_TagString: Untagged
@@ -11318,6 +11421,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1039677047}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1039677051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039677047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc2df94e340fce4e86588340c2e38d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalMaterial: {fileID: 0}
+  glowMaterial: {fileID: 2100000, guid: 078b0310bdec09c429a8068bf4cead66, type: 2}
+  cycleDuration: 7
+  glowTriggerTime: 1.5
 --- !u!1 &1047653067
 GameObject:
   m_ObjectHideFlags: 0
@@ -14850,6 +14969,7 @@ GameObject:
   - component: {fileID: 1376122612}
   - component: {fileID: 1376122614}
   - component: {fileID: 1376122613}
+  - component: {fileID: 1376122615}
   m_Layer: 0
   m_Name: Cylinder (1)
   m_TagString: Untagged
@@ -14925,6 +15045,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1376122611}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1376122615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376122611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc2df94e340fce4e86588340c2e38d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalMaterial: {fileID: 0}
+  glowMaterial: {fileID: 2100000, guid: 078b0310bdec09c429a8068bf4cead66, type: 2}
+  cycleDuration: 7
+  glowTriggerTime: 4.5
 --- !u!1 &1378510712 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 60237188643756533, guid: 593ad785ca6fda24ea5778366882a93b, type: 3}
@@ -19822,6 +19958,7 @@ GameObject:
   - component: {fileID: 1949971542}
   - component: {fileID: 1949971544}
   - component: {fileID: 1949971543}
+  - component: {fileID: 1949971545}
   m_Layer: 0
   m_Name: Cylinder (3)
   m_TagString: Untagged
@@ -19897,6 +20034,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1949971541}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1949971545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949971541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc2df94e340fce4e86588340c2e38d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalMaterial: {fileID: 0}
+  glowMaterial: {fileID: 2100000, guid: 078b0310bdec09c429a8068bf4cead66, type: 2}
+  cycleDuration: 7
+  glowTriggerTime: 3.5
 --- !u!1001 &1955988975
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22686,6 +22839,7 @@ GameObject:
   - component: {fileID: 2146360533}
   - component: {fileID: 2146360535}
   - component: {fileID: 2146360534}
+  - component: {fileID: 2146360536}
   m_Layer: 0
   m_Name: Cylinder (8)
   m_TagString: Untagged
@@ -22761,6 +22915,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2146360532}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2146360536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146360532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc2df94e340fce4e86588340c2e38d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalMaterial: {fileID: 0}
+  glowMaterial: {fileID: 2100000, guid: 078b0310bdec09c429a8068bf4cead66, type: 2}
+  cycleDuration: 7
+  glowTriggerTime: 1
 --- !u!1001 &470167231236879050
 PrefabInstance:
   m_ObjectHideFlags: 0
