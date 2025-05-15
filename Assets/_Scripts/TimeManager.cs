@@ -60,7 +60,9 @@ public class TimeManager : Singleton<TimeManager> {
 
     private IEnumerator DelayLoad() {
         yield return new WaitForSecondsRealtime(1);
+        Time.timeScale = 1;
         GameManager.Instance.ScoreScene();
+
     }
 
     public void StartStopWatch() {
