@@ -14,6 +14,7 @@ public class ButtonActions : MonoBehaviour {
     [SerializeField] private List<GameObject> _controllerInstructions;
     [SerializeField] private List<GameObject> _powerUpInstructions;
     private int _currentControllerInstructionIndex = 0, _currentPowerUpInstructionIndex = 0;
+    [SerializeField] private GameObject _backPressed, _backUnPressed;
 
     void Start() {
         _eventSystem = GameObject.FindAnyObjectByType<EventSystem>();
@@ -108,10 +109,15 @@ public class ButtonActions : MonoBehaviour {
     }
 
     public void OnBack() {
+        this._backUnPressed.SetActive(false);
+        this._backPressed.SetActive(true);
         StartCoroutine(ReturnToMainMenu());
     }
     private IEnumerator ReturnToMainMenu() {
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(0.25f);
+        this._backUnPressed.SetActive(true);
+        this._backPressed.SetActive(false);
+        yield return new WaitForSecondsRealtime(0.25f);
         GameManager.Instance.MainMenu();
     }
     #endregion

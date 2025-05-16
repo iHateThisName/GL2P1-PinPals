@@ -6,8 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 // Ivar
-public class GameManager : Singleton<GameManager>
-{
+public class GameManager : Singleton<GameManager> {
 
     public Transform SpawnPoint;
     public bool IsPaused { get; private set; }
@@ -30,16 +29,14 @@ public class GameManager : Singleton<GameManager>
         Application.targetFrameRate = 60;
 
         // Hiding the players when the game starts
-        if (this._dollyCart != null)
-        {
+        if (this._dollyCart != null) {
             HidePlayers();
         }
     }
 
     private IEnumerator Start() {
         string activeSceneName = SceneManager.GetActiveScene().name;
-        if (this._dollyCart != null)
-        {
+        if (this._dollyCart != null) {
             //Input Action
             InputAction cancel = InputSystem.actions.FindAction("Cancel");
             cancel.performed += cancelCallback;
@@ -51,8 +48,7 @@ public class GameManager : Singleton<GameManager>
             PlayerSettings.IsLandscape = false; // Set the camera to use a single camera
             CheckCamera(); // Updates the camera settings
 
-            while (this._dollyCart.CameraPosition < 1f)
-            { // Checks if the dolly cart has reached the end
+            while (this._dollyCart.CameraPosition < 1f) { // Checks if the dolly cart has reached the end
                 yield return new WaitForSeconds(0.1f);
             }
 
@@ -63,19 +59,16 @@ public class GameManager : Singleton<GameManager>
             StartGame();
             Debug.Log("Dolly cart has reach end");
             PlungerToolTipFirstTimer();
-        } else if (activeSceneName == Helper.endGame || activeSceneName == Helper.mainMenu || activeSceneName == Helper.lobby)
-        {
+        } else if (activeSceneName == Helper.endGame || activeSceneName == Helper.mainMenu || activeSceneName == Helper.lobby || activeSceneName == Helper.howToPlay) {
             CheckCamera();
-        } else
-        {
+        } else {
             CheckCamera();
             StartGame();
         }
     }
 
     private void PlungerToolTipFirstTimer() {
-        foreach (var player in Players)
-        {
+        foreach (var player in Players) {
             PlayerTipUI playerTipUI = GetPlayerReferences(player.Key).playerTipUI;
             playerTipUI.IsFirstTime = true;
             playerTipUI.PlungerCollider();
@@ -83,8 +76,7 @@ public class GameManager : Singleton<GameManager>
     }
 
     public void HidePlayers() {
-        foreach (var player in Players)
-        {
+        foreach (var player in Players) {
             HidePlayer(player.Key, true);
         }
         this._isPlayersHidden = true;
@@ -94,19 +86,16 @@ public class GameManager : Singleton<GameManager>
         PlayerReferences reference = GetPlayerReferences(tag);
         reference.GetPlayerMeshRenderer().enabled = false;
         reference.PlayerFollowCanvasManager.gameObject.SetActive(false);
-        if (disableCamera)
-        {
+        if (disableCamera) {
             reference.PinballCamera.gameObject.SetActive(false);
         }
-        if (freezePlayer)
-        {
+        if (freezePlayer) {
             reference.rb.isKinematic = true;
         }
     }
 
     private void ShowPlayers() {
-        foreach (var player in Players)
-        {
+        foreach (var player in Players) {
             ShowPlayer(player.Key, true);
         }
         this._isPlayersHidden = false;
@@ -116,12 +105,10 @@ public class GameManager : Singleton<GameManager>
         PlayerReferences reference = GetPlayerReferences(tag);
         reference.GetPlayerMeshRenderer().enabled = true;
         reference.PlayerFollowCanvasManager.gameObject.SetActive(true);
-        if (enableCamera)
-        {
+        if (enableCamera) {
             reference.PinballCamera.gameObject.SetActive(true);
         }
-        if (unfreezePlayer)
-        {
+        if (unfreezePlayer) {
             reference.rb.isKinematic = false;
         }
     }
@@ -149,27 +136,22 @@ public class GameManager : Singleton<GameManager>
     }
 
     public void OnPauseAction() {
-        if (this.IsPaused)
-        {
+        if (this.IsPaused) {
             ResumeGame();
             Destroy(_currentPauseMenu);
-        } else
-        {
+        } else {
             PauseGame();
             _currentPauseMenu = Instantiate(PauseMenuPrefab);
         }
     }
 
     public void CheckCamera() {
-        foreach (var player in Players)
-        {
+        foreach (var player in Players) {
             Camera playerCamera = player.Value.GetComponentInChildren<PlayerReferences>().PinballCamera;
-            if (PlayerSettings.IsLandscape)
-            {
+            if (PlayerSettings.IsLandscape) {
                 playerCamera.gameObject.SetActive(true);
                 //playerCamera.rect = new Rect((int)player.Key / Players.Count, 0, 1 / Players.Count, 1); // Not Tested
-            } else
-            {
+            } else {
                 playerCamera.gameObject.SetActive(false);
             }
         }
@@ -202,8 +184,7 @@ public class GameManager : Singleton<GameManager>
     public void DeleteAllPlayers() {
         GameObject[] players = Helper.Players.Values.ToArray();
         // loop through the array and destroy all the gameobjects
-        foreach (GameObject player in players)
-        {
+        foreach (GameObject player in players) {
             Destroy(player.transform.parent.gameObject);
         }
         Helper.Players.Clear();
@@ -232,8 +213,7 @@ public class GameManager : Singleton<GameManager>
     public List<(EnumPlayerTag tag, int score)> GetPlayersOrderByScoreWithScore() {
         List<(EnumPlayerTag tag, int score)> playersOrderByScore = new List<(EnumPlayerTag tag, int score)>();
 
-        foreach (GameObject player in Players.Values)
-        {
+        foreach (GameObject player in Players.Values) {
             // Gets the player score
             int playerScore = player.transform.GetChild(0).GetComponent<PlayerReferences>().PlayerScoreTracker.currentScore;
             // Gets the player tag that is assaigned to the player gameobject
