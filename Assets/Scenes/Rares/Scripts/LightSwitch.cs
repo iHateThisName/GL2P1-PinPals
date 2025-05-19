@@ -21,13 +21,13 @@ public class LightSwitch : MonoBehaviour
             {
                 state = 2;
                 meshRenderer.enabled = true;
-                //Debug.Log("State = 2 ENABLED");
+                
             }
             else
             {
                 state = 1;
                 meshRenderer.enabled = false;
-                //Debug.Log("State = 1 DISABLED");
+                
             }
 
             timer = 1f;

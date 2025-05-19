@@ -1,19 +1,11 @@
 using UnityEngine;
-// AI GENERATED
 public class SkeletonGlow : MonoBehaviour
 {
-    [Tooltip("Optional. If not set, the script will use the object's original material.")]
-    public Material normalMaterial;  // Optional: assign or leave empty to use original
-    public Material glowMaterial;    // The glowing material
-
-    [Tooltip("Duration of the full cycle in seconds.")]
-    public float cycleDuration = 20f;
-
-    [Tooltip("At what second in the cycle the glow should activate.")]
-    public float glowTriggerTime = 15f;
-
-    [Tooltip("How long the glow should last (in seconds). Set to 0 to keep it glowing until the end of the cycle.")]
-    public float glowDuration = 0f;
+    public Material normalMaterial;  //Original or new
+    public Material glowMaterial;    //The glow material
+    public float cycleDuration = 20f; //Full cycle
+    public float glowTriggerTime = 15f;// When it will trigger the glow
+    public float glowDuration = 0f;//Glow should go away in * seconds. Leave 0 to not make effect.
 
     private Renderer objectRenderer;
     private Material originalMaterial;
@@ -27,12 +19,11 @@ public class SkeletonGlow : MonoBehaviour
         objectRenderer = GetComponent<Renderer>();
         if (objectRenderer == null)
         {
-            Debug.LogError("SkeletonGlow: No Renderer found on this GameObject.");
             enabled = false;
             return;
         }
 
-        // Save the original material if not assigned manually
+        //Save the original material if not assigned
         originalMaterial = normalMaterial != null ? normalMaterial : objectRenderer.material;
         objectRenderer.material = originalMaterial;
     }
@@ -41,7 +32,7 @@ public class SkeletonGlow : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        // Trigger the glow
+        //Trigger the glow
         if (!hasSwitchedToGlow && timer >= glowTriggerTime)
         {
             if (glowMaterial != null)
@@ -53,7 +44,7 @@ public class SkeletonGlow : MonoBehaviour
             }
         }
 
-        // If glowDuration > 0, end the glow early
+        //If glowDuration > 0, disable it
         if (hasSwitchedToGlow && glowDuration > 0f && !glowEnded)
         {
             if (timer >= glowStartTime + glowDuration)
@@ -63,7 +54,7 @@ public class SkeletonGlow : MonoBehaviour
             }
         }
 
-        // End of full cycle
+        //End of cyckle
         if (timer >= cycleDuration)
         {
             objectRenderer.material = originalMaterial;

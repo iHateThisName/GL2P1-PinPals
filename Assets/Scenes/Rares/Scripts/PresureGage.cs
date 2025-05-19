@@ -6,13 +6,10 @@ public class PresureGage : MonoBehaviour
     public float targetAngle = 0f;
     public float currentAngle = -70f;
     private bool goingUp = true;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         SetNewTargetAngle();
     }
-
-    // Update is called once per frame
     void Update()
     {
         float step = rotationSpeed * Time.deltaTime;

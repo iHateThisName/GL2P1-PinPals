@@ -2,13 +2,9 @@ using UnityEngine;
 
 public class RandomObjectSpawner : MonoBehaviour
 {
-    //AI GENERATED
-    [Header("Spawning Settings")]
     public GameObject[] objectsToSpawn;
     public int numberOfObjects = 10;
     public float spawnRadius = 10f;
-
-    [Header("Spacing Settings")]
     public float minSpacing = 1f;
     public float maxSpacing = 3f;
 
@@ -48,11 +44,6 @@ public class RandomObjectSpawner : MonoBehaviour
                 Instantiate(prefab, spawnPosition, Quaternion.identity);
                 spawnedCount++;
             }
-        }
-
-        if (spawnedCount < numberOfObjects)
-        {
-            Debug.LogWarning("Could not place all objects due to spacing constraints.");
         }
     }
 }

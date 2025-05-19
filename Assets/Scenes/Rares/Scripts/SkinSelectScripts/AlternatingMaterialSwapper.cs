@@ -2,10 +2,7 @@ using UnityEngine;
 
 public class AlternatingMaterialSwapper : MonoBehaviour
 {
-    [Header("Material Settings")]
-    public Material[] materials; // Expecting 2 materials
-
-    [Header("Timing")]
+    public Material[] materials; // Put at least 2
     public float changeInterval = 1f;
 
     private Renderer objectRenderer;
@@ -16,7 +13,6 @@ public class AlternatingMaterialSwapper : MonoBehaviour
     {
         if (materials.Length != 2)
         {
-            Debug.LogWarning("AlternatingMaterialSwapper requires exactly 2 materials on " + gameObject.name);
             enabled = false;
             return;
         }

@@ -2,11 +2,8 @@ using UnityEngine;
 
 public class RandomMaterialSwapper : MonoBehaviour
 {
-    [Header("Material Options")]
     public Material[] materials;
-
-    [Header("Timing")]
-    public float changeInterval = 1f; // Seconds between material swaps
+    public float changeInterval = 1f; // Seconds between material swap
 
     private Renderer objectRenderer;
     private float timer;
@@ -15,7 +12,6 @@ public class RandomMaterialSwapper : MonoBehaviour
     {
         if (materials.Length == 0)
         {
-            Debug.LogWarning("No materials assigned to RandomMaterialSwapper on " + gameObject.name);
             enabled = false;
             return;
         }
@@ -23,7 +19,6 @@ public class RandomMaterialSwapper : MonoBehaviour
         objectRenderer = GetComponent<Renderer>();
         if (objectRenderer == null)
         {
-            Debug.LogWarning("No Renderer found on " + gameObject.name);
             enabled = false;
         }
     }
