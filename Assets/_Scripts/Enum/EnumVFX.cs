@@ -6,4 +6,5 @@ public enum VFXType
     FrostSmoke,
     FireWork,
     Splat,
+    ThanosSnapGray,
 }

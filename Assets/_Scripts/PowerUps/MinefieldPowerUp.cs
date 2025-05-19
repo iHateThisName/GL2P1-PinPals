@@ -22,7 +22,8 @@ public class MinefieldPowerUp : MonoBehaviour {
 
             PlayerReferences playerRef = other.gameObject.GetComponent<PlayerReferences>();
             StartCoroutine(MineExplosion());
-            VFXManager.Instance.SpawnVFX(VFXType.PlayerExplosion, other.transform.position, duration: 2f);
+            //VFXManager.Instance.SpawnVFX(VFXType.PlayerExplosion, other.transform.position, duration: 2f);
+            VFXManager.Instance.SpawnVFX(VFXType.ThanosSnapGray, other.transform.position, duration: 10f);
             EnumPlayerTag tag = other.gameObject.GetComponent<PlayerReferences>().GetPlayerTag();
             PlayerJoinManager.Instance.Respawn(tag);
             playerRef.PlayerStats.PlayerDeaths(_point);
