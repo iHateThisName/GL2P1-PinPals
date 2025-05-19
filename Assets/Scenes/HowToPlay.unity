@@ -1061,8 +1061,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: How To Play
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cda5e808456780645bb35fa01908c5d7, type: 2}
-  m_sharedMaterial: {fileID: -5273890575838596754, guid: cda5e808456780645bb35fa01908c5d7, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1586,7 +1586,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: '
 
-    When activated freezes all other players.'
+    TODO'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cda5e808456780645bb35fa01908c5d7, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2581,7 +2581,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: '
 
-    When activated freezes all other players.'
+    TODO'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cda5e808456780645bb35fa01908c5d7, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3560,9 +3560,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-    When activated freezes all other players.'
+  m_text: "\nAllows you to instantly freeze every player in the area that you\u2019re
+    in, preventing everyone but you from moving."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cda5e808456780645bb35fa01908c5d7, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6634,7 +6633,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: '
 
-    When activated freezes all other players.'
+    Place down a minefield and keep on playing, and if another player
+    steps on the minefield, then they will respawn, but be careful as the mine applies
+    to everyone.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cda5e808456780645bb35fa01908c5d7, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6856,7 +6857,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '
 
-    When activated freezes all other players.'
+    Spawns a block of honey that slows down any player that enters it,
+    you included.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cda5e808456780645bb35fa01908c5d7, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7802,8 +7804,8 @@ MonoBehaviour:
     Interact
     with the Right flipper using D/R1/Right Arrow.'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cda5e808456780645bb35fa01908c5d7, type: 2}
-  m_sharedMaterial: {fileID: -5273890575838596754, guid: cda5e808456780645bb35fa01908c5d7, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8023,7 +8025,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: '
 
-    When activated freezes all other players.'
+    TODO'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cda5e808456780645bb35fa01908c5d7, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8842,8 +8844,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 108709066}
   - {fileID: 873033777}
+  - {fileID: 810148904}
   - {fileID: 1632607580}
   - {fileID: 2120557514}
   - {fileID: 1159390576}
   - {fileID: 1530624352}
-  - {fileID: 810148904}
