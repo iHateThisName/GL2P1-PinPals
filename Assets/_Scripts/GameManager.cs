@@ -181,6 +181,11 @@ public class GameManager : Singleton<GameManager> {
         SceneManager.LoadScene("HowToPlay");
     }
 
+    public void Credits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
     public void DeleteAllPlayers() {
         GameObject[] players = Helper.Players.Values.ToArray();
         // loop through the array and destroy all the gameobjects
