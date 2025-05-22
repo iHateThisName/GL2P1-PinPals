@@ -4429,7 +4429,7 @@ PrefabInstance:
     - target: {fileID: 5474120117770830546, guid: d5f94b70dfafdea43918479a4104a378, type: 3}
       propertyPath: spawnPoint
       value: 
-      objectReference: {fileID: 1340750741}
+      objectReference: {fileID: 0}
     - target: {fileID: 5474120117770830546, guid: d5f94b70dfafdea43918479a4104a378, type: 3}
       propertyPath: joinManager
       value: 
@@ -4511,7 +4511,7 @@ PrefabInstance:
     - target: {fileID: 5474120117770830546, guid: d5f94b70dfafdea43918479a4104a378, type: 3}
       propertyPath: spawnPoint
       value: 
-      objectReference: {fileID: 1340750741}
+      objectReference: {fileID: 0}
     - target: {fileID: 5474120117770830546, guid: d5f94b70dfafdea43918479a4104a378, type: 3}
       propertyPath: joinManager
       value: 
@@ -4694,8 +4694,8 @@ MonoBehaviour:
         z: 10.421974
       Rotation:
         value:
-          x: 0.26253647
-          y: -0.56441164
+          x: 0.26253644
+          y: -0.5644117
           z: 0.6403659
           w: -0.44993943
     - Position:
@@ -9560,7 +9560,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1340750741}
   - {fileID: 193428785}
   - {fileID: 723192101}
   - {fileID: 1587207877}
@@ -10743,7 +10742,7 @@ PrefabInstance:
     - target: {fileID: 5474120117770830546, guid: d5f94b70dfafdea43918479a4104a378, type: 3}
       propertyPath: spawnPoint
       value: 
-      objectReference: {fileID: 1340750741}
+      objectReference: {fileID: 0}
     - target: {fileID: 5474120117770830546, guid: d5f94b70dfafdea43918479a4104a378, type: 3}
       propertyPath: joinManager
       value: 
@@ -11415,7 +11414,7 @@ PrefabInstance:
     - target: {fileID: 5474120117770830546, guid: d5f94b70dfafdea43918479a4104a378, type: 3}
       propertyPath: spawnPoint
       value: 
-      objectReference: {fileID: 1340750741}
+      objectReference: {fileID: 0}
     - target: {fileID: 5474120117770830546, guid: d5f94b70dfafdea43918479a4104a378, type: 3}
       propertyPath: joinManager
       value: 
@@ -14154,7 +14153,7 @@ PrefabInstance:
     - target: {fileID: 5474120117770830546, guid: d5f94b70dfafdea43918479a4104a378, type: 3}
       propertyPath: spawnPoint
       value: 
-      objectReference: {fileID: 1340750741}
+      objectReference: {fileID: 0}
     - target: {fileID: 5474120117770830546, guid: d5f94b70dfafdea43918479a4104a378, type: 3}
       propertyPath: joinManager
       value: 
@@ -14323,7 +14322,7 @@ PrefabInstance:
     - target: {fileID: 5474120117770830546, guid: d5f94b70dfafdea43918479a4104a378, type: 3}
       propertyPath: spawnPoint
       value: 
-      objectReference: {fileID: 1340750741}
+      objectReference: {fileID: 0}
     - target: {fileID: 5474120117770830546, guid: d5f94b70dfafdea43918479a4104a378, type: 3}
       propertyPath: joinManager
       value: 
@@ -16673,116 +16672,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1333326373}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &1340750740
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 735707082}
-    m_Modifications:
-    - target: {fileID: 305174412384184654, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_Name
-      value: PlayerManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 4196448483404538233, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4196448483404538233, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4196448483404538233, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[2].m_Id
-      value: 23a4d82a-a0e6-4628-b3a7-eff0fc03b567
-      objectReference: {fileID: 0}
-    - target: {fileID: 4196448483404538233, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4196448483404538233, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[2].m_Path
-      value: '<HID:: THEC64 Joystick     THEC64 Joystick   >/button4'
-      objectReference: {fileID: 0}
-    - target: {fileID: 4196448483404538233, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 501193335}
-    - target: {fileID: 4196448483404538233, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[2].m_Action
-      value: Join
-      objectReference: {fileID: 0}
-    - target: {fileID: 4196448483404538233, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnPlayerJoin
-      objectReference: {fileID: 0}
-    - target: {fileID: 4196448483404538233, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayerJoinManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4196448483404538233, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 5658832189909603517, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: joinManager
-      value: 
-      objectReference: {fileID: 501193335}
-    - target: {fileID: 5658832189909603517, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: _spawnPosition
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8784440466150086375, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8784440466150086375, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8784440466150086375, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8784440466150086375, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8784440466150086375, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8784440466150086375, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8784440466150086375, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8784440466150086375, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8784440466150086375, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8784440466150086375, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
---- !u!4 &1340750741 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8784440466150086375, guid: 5b84e77e986153547aab616c08f5d7d1, type: 3}
-  m_PrefabInstance: {fileID: 1340750740}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1349998064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20829,7 +20718,7 @@ PrefabInstance:
     - target: {fileID: 5474120117770830546, guid: d5f94b70dfafdea43918479a4104a378, type: 3}
       propertyPath: spawnPoint
       value: 
-      objectReference: {fileID: 1340750741}
+      objectReference: {fileID: 0}
     - target: {fileID: 5474120117770830546, guid: d5f94b70dfafdea43918479a4104a378, type: 3}
       propertyPath: joinManager
       value: 
@@ -23416,7 +23305,7 @@ PrefabInstance:
     - target: {fileID: 5474120117770830546, guid: d5f94b70dfafdea43918479a4104a378, type: 3}
       propertyPath: spawnPoint
       value: 
-      objectReference: {fileID: 1340750741}
+      objectReference: {fileID: 0}
     - target: {fileID: 5474120117770830546, guid: d5f94b70dfafdea43918479a4104a378, type: 3}
       propertyPath: joinManager
       value: 
