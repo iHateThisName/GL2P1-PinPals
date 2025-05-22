@@ -13,7 +13,10 @@ public class PlayerCollisionController : MonoBehaviour {
     private void OnCollisionEnter(Collision collision) {
         powerController.PlayerCollision(collision);
         //playerReference.PlayerStats.PlayerKills(1);
-        if (collision.gameObject.CompareTag("Plunger")) {
+        //if (collision.gameObject.CompareTag("Plunger")) {
+        //    playerTipUI.PlungerCollider();
+        //}
+        if (!collision.gameObject.CompareTag("Untagged") && collision.gameObject.CompareTag("Plunger")) {
             playerTipUI.PlungerCollider();
         }
     }
