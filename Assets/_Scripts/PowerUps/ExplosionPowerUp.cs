@@ -54,7 +54,7 @@ public class ExplosionPowerUp : MonoBehaviour {
         this._explosionEffect.SetActive(true);
         yield return new WaitForSeconds(0.2f);
         this._bombModel.SetActive(false);
-        Debug.Log("All Players except you are dead");
+        //Debug.Log("All Players except you are dead");
         SoundEffectManager.Instance.PlaySoundFXClip(this._bombExplodeSFX, this.gameObject.transform, 1f);
         yield return new WaitForSeconds(2f); // Bomb animation
         Destroy(this.gameObject);

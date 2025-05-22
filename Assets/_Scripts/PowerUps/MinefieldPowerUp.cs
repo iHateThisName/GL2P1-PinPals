@@ -28,10 +28,10 @@ public class MinefieldPowerUp : MonoBehaviour {
             PlayerJoinManager.Instance.Respawn(tag);
             playerRef.PlayerStats.PlayerDeaths(_point);
             playerRef.PlayerScoreTracker.DockPoints(_points);
-            Debug.Log("player has respawned");
+            //Debug.Log("player has respawned");
         } else if (other.gameObject.tag.StartsWith("Ground")) {
             this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-            print("mine is frozen");
+            //print("mine is frozen");
         } else {
             this.gameObject.GetComponent<Rigidbody>().isKinematic = false;
         }

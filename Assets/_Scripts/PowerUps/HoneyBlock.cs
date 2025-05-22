@@ -27,7 +27,7 @@ public class HoneyBlock : MonoBehaviour
         _tags.Add(playerReferences.GetPlayerTag());
         _velocity.Add(player.GetComponent<Rigidbody>().linearVelocity);
         _players.Add(playerReferences);
-        Debug.Log("Honey On" + player.gameObject.name);
+        //Debug.Log("Honey On" + player.gameObject.name);
         if (player.gameObject.name.Contains("Clone"))
         {
             //player.gameObject.GetComponent<Rigidbody>().linearDamping = 100.0f;
@@ -38,7 +38,7 @@ public class HoneyBlock : MonoBehaviour
 
         if (player.gameObject.tag.StartsWith("Player"))
         {
-            Debug.Log("Honey On" + player.gameObject.name);
+            //Debug.Log("Honey On" + player.gameObject.name);
             EnumPlayerTag tag = playerReferences.GetPlayerTag();
             //player.gameObject.GetComponent<Collider>().material.dynamicFriction = 100f;
             playerReferences.rb.linearDamping = 25f;
@@ -48,7 +48,7 @@ public class HoneyBlock : MonoBehaviour
         }
     }
     public void OnTriggerExit(Collider player) {
-        Debug.Log("Honey Off" + player.gameObject.name);
+        //Debug.Log("Honey Off" + player.gameObject.name);
         PlayerReferences playerRef = player.gameObject.GetComponent<PlayerReferences>();
         playerRef.rb.linearDamping = 0;
     }
