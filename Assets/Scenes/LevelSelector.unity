@@ -362,7 +362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5316824602528844650, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: m_Name
-      value: ArcadeMachinePrefab, MiddleLeft
+      value: ArcadeMachinePrefab_PipelineMayhem
       objectReference: {fileID: 0}
     - target: {fileID: 6073333040507923115, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: m_Mesh
@@ -7587,7 +7587,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5316824602528844650, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: m_Name
-      value: ArcadeMachinePrefab, MiddleRight
+      value: ArcadeMachinePrefab_6FeetUnder
       objectReference: {fileID: 0}
     - target: {fileID: 6073333040507923115, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: m_Mesh
@@ -9578,7 +9578,7 @@ PrefabInstance:
     - target: {fileID: 4850066091196733899, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: edec50fc2312b7a4c997c2d92393e147, type: 3}
+      objectReference: {fileID: 21300000, guid: c1063910f0e91294e9adee803e5bf18d, type: 3}
     - target: {fileID: 4850066091196733899, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: m_Color.a
       value: 1
@@ -9617,7 +9617,7 @@ PrefabInstance:
       objectReference: {fileID: 1280164902}
     - target: {fileID: 5316824602528844650, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: m_Name
-      value: ArcadeMachinePrefab, RightRight
+      value: ArcadeMachinePrefab_PinBrawl
       objectReference: {fileID: 0}
     - target: {fileID: 6073333040507923115, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: m_Mesh
@@ -12391,6 +12391,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 582160540610029409, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 810423209018843771, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -12407,6 +12411,10 @@ PrefabInstance:
       propertyPath: _navigationManager
       value: 
       objectReference: {fileID: 1037283873}
+    - target: {fileID: 3068612513740489943, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8a8baf932f5d020488676e32398c22fe, type: 3}
     - target: {fileID: 3500751579166363810, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2
@@ -12489,7 +12497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5316824602528844650, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: m_Name
-      value: ArcadeMachinePrefab, Right
+      value: ArcadeMachinePrefab_WideWest
       objectReference: {fileID: 0}
     - target: {fileID: 6073333040507923115, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: m_Mesh
@@ -13200,7 +13208,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5316824602528844650, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: m_Name
-      value: ArcadeMachinePrefab, Middle
+      value: ArcadeMachinePrefab_LasVegas
       objectReference: {fileID: 0}
     - target: {fileID: 6073333040507923115, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: m_Mesh
@@ -14341,6 +14349,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 582160540610029409, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 810423209018843771, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -14357,6 +14369,10 @@ PrefabInstance:
       propertyPath: _navigationManager
       value: 
       objectReference: {fileID: 1037283873}
+    - target: {fileID: 3068612513740489943, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 03cbb98ed9e705042a133ce0b731b93c, type: 3}
     - target: {fileID: 3500751579166363810, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2
@@ -14397,6 +14413,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3976633636271238550, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4850066091196733899, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 732666330c627e44d99306c8d1afcfc3, type: 3}
+    - target: {fileID: 4850066091196733899, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5168637997117011558, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -14415,7 +14443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5316824602528844650, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: m_Name
-      value: ArcadeMachinePrefab, Left
+      value: ArcadeMachinePrefab_HauntedPinMachine
       objectReference: {fileID: 0}
     - target: {fileID: 6073333040507923115, guid: dab2fdd09dc5c464381caace48f70278, type: 3}
       propertyPath: m_Mesh
