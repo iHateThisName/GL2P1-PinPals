@@ -3219,8 +3219,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Haunted Pin Machine
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a6d59483f2705af4db4ba27de240a175, type: 2}
-  m_sharedMaterial: {fileID: 9121712829620683722, guid: a6d59483f2705af4db4ba27de240a175, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3714,13 +3714,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7948757171570329222}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.61497915, y: -0, z: -0, w: 0.78854334}
-  m_LocalPosition: {x: 0, y: 4.21, z: -1.04}
+  m_LocalRotation: {x: 0.60876137, y: 0, z: 0, w: 0.7933534}
+  m_LocalPosition: {x: 0, y: 3, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3500751579166363810}
-  m_LocalEulerAnglesHint: {x: 75.901, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 75, y: 0, z: 0}
 --- !u!108 &7267446692648697768
 Light:
   m_ObjectHideFlags: 0
@@ -3732,10 +3732,10 @@ Light:
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 3
-  m_Range: 5
+  m_Intensity: 5
+  m_Range: 4
   m_SpotAngle: 44.96239
-  m_InnerSpotAngle: 3
+  m_InnerSpotAngle: 20
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -3995,6 +3995,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7272911518199237601, guid: 30133084d12442d41add844fe3320d69, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: -7075615299160564074, guid: 30133084d12442d41add844fe3320d69, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: -5545429240754616033, guid: 30133084d12442d41add844fe3320d69, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: -3247134635388675929, guid: 30133084d12442d41add844fe3320d69, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: -3181452503744645242, guid: 30133084d12442d41add844fe3320d69, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: -2234355543012829198, guid: 30133084d12442d41add844fe3320d69, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: -1593867862144354504, guid: 30133084d12442d41add844fe3320d69, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: -661253698560713389, guid: 30133084d12442d41add844fe3320d69, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -4002,6 +4030,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 30133084d12442d41add844fe3320d69, type: 3}
       propertyPath: m_Name
       value: LevelSelectPinballMachineColored2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 30133084d12442d41add844fe3320d69, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669760066980906408, guid: 30133084d12442d41add844fe3320d69, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
