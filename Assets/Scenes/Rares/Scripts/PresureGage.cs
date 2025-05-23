@@ -39,6 +39,6 @@ public class PresureGage : MonoBehaviour
     {
         float randomAmmount = Random.Range(0, 140f);
         targetAngle = -70f + randomAmmount;
-        Debug.Log($"New target angle: {targetAngle}");
+        //Debug.Log($"New target angle: {targetAngle}");
     }
 }

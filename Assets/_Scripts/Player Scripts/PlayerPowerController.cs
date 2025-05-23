@@ -204,6 +204,7 @@ public class PlayerPowerController : MonoBehaviour
 
         // Instantiates the Mine Game Object
         GameObject landMineGameObject = Instantiate(this.minePrefab, _cameraTarget.transform.position, Quaternion.identity);
+        landMineGameObject.GetComponent<MinefieldPowerUp>().AssignMineOwner(powerupPlayerTransform.gameObject);
 
         yield return new WaitForSeconds(_powerUpCooldown);
         this._isPowerActivated = false;
@@ -327,6 +328,7 @@ public class PlayerPowerController : MonoBehaviour
                         
                         OnPlayerDeath();
                         StartCoroutine(PlayerJoinManager.Instance.RespawnDelay(tag, EnumPlayerAnimation.GrowDeath));
+                        if (tag != playerReferences.GetPlayerTag())
                         player.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerDeaths(_point);
                         player.gameObject.GetComponent<PlayerReferences>().PlayerScoreTracker.DockPoints(_points);
 

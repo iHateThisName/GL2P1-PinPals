@@ -4,7 +4,7 @@ using UnityEngine;
 public class ExplosionPowerUp : MonoBehaviour {
     [SerializeField] private GameObject _bombModel;
     [SerializeField] private GameObject _explosionEffect;
-    private GameObject _bombOwner;
+    private PlayerReferences _bombOwner;
     private int _point = 1;
     private int _points = 500;
     private bool _isDangerous = false;
@@ -17,7 +17,7 @@ public class ExplosionPowerUp : MonoBehaviour {
 
 
     public void AssignBombOwner(GameObject bo) {
-        this._bombOwner = bo;
+        this._bombOwner = bo.GetComponent<PlayerReferences>();
     }
 
     private void OnTriggerStay(Collider player) {
@@ -29,15 +29,23 @@ public class ExplosionPowerUp : MonoBehaviour {
         // Detect every player in the collider then respawn them
         if (player.gameObject.name.Contains("Clone")) {
             Destroy(player.gameObject);
-            _bombOwner.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerKills(_point);
+            _bombOwner.PlayerStats.PlayerKills(_point);
             return;
         } else if (player.gameObject.tag.StartsWith("Player")) {
             // To spawn an explosion VFX
             //VFXManager.Instance.SpawnVFX(VFXType.PlayerExplosion, player.transform.position);
             VFXManager.Instance.SpawnVFX(VFXType.ThanosSnapGray, player.transform.position, duration: 6f);
-            EnumPlayerTag tag = player.gameObject.GetComponent<PlayerReferences>().GetPlayerTag();
+            EnumPlayerTag tag = playerRefs.GetPlayerTag();
             PlayerJoinManager.Instance.Respawn(tag);
-            _bombOwner.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerKills(_point);
+            Debug.Log(tag.ToString());
+            //playerReferences.PlayerStats.PlayerKills(1);
+            //_bombOwner.gameObject.SendMessage("PlayerKills", player, );
+
+            if (tag != _bombOwner.GetPlayerTag())
+            {
+                _bombOwner.PlayerStats.PlayerKills(1);
+            }
+
             playerRefs.PlayerStats.PlayerDeaths(_point);
             playerRefs.PlayerScoreTracker.DockPoints(_points);
         }

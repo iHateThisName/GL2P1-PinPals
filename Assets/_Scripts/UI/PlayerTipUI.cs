@@ -33,6 +33,7 @@ public class PlayerTipUI : MonoBehaviour {
         _uiTipPrefab.SetActive(false);
     }
     private IEnumerator PlungerToolTipTimer() {
+        yield return new WaitForSecondsRealtime(5.0f);
         _uiTipPrefab.SetActive(true);
         _uiTipPrefab.GetComponent<CanvasGroup>().alpha = 1.0f;
         yield return new WaitForSecondsRealtime(_timeToFadeIn);

@@ -23,7 +23,7 @@ public class ValveWheelRotation : MonoBehaviour {
 
         timer = timer - Time.deltaTime;
         transform.Rotate(dirVector * rotationSpeed * Time.deltaTime);
-        Debug.Log($"time: {timer}");
+        //Debug.Log($"time: {timer}");
         if (timer <= 0) 
         {
             PickNewDirection();
