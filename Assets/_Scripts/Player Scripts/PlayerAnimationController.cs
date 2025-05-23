@@ -6,6 +6,7 @@ public class PlayerAnimationController : MonoBehaviour
 {
     [SerializeField] private GameObject _growAnimDeath;
     [SerializeField] private GameObject _freezeEffect;
+    [SerializeField] private GameObject _ashDeath;
     [SerializeField] public EnumPlayerAnimation EnumPlayerAnimation;
 
     private float AnimationDelay(EnumPlayerAnimation playerAnimation)
@@ -18,6 +19,9 @@ public class PlayerAnimationController : MonoBehaviour
                 return 1.5f;
             case EnumPlayerAnimation.FreezeEffect:
                 return 3f;
+            case EnumPlayerAnimation.AshDeath:
+                return 3f;
+                
             default:
                 return 0f;
         }
@@ -33,6 +37,10 @@ public class PlayerAnimationController : MonoBehaviour
                 break;
             case EnumPlayerAnimation.GrowDeath:
                 PlayGrowDeath(tag);
+                yield return new WaitForSeconds(AnimationDelay(playerAnimation)); // Plays for the returned value in AnimationDelay before breaking and respawning the player.
+                break;
+            case EnumPlayerAnimation.AshDeath:
+                PlayAshDeath(tag);
                 yield return new WaitForSeconds(AnimationDelay(playerAnimation)); // Plays for the returned value in AnimationDelay before breaking and respawning the player.
                 break;
             case EnumPlayerAnimation.FreezeEffect:
@@ -51,6 +59,11 @@ public class PlayerAnimationController : MonoBehaviour
         growPowerUp.GetComponent<AnimationColorController>().ApplyColor(GameManager.Instance.GetPlayerReferences(tag).SkinController.GetMaterial());
     }
     //play animation
+    private void PlayAshDeath(EnumPlayerTag tag)
+    {
+        Transform transform = GameManager.Instance.GetPlayerReferences(tag).transform;
+        GameObject growPowerUp = Instantiate(_ashDeath, transform.position, Quaternion.identity);
+    }
 
     public GameObject PlayFreezeEffect(EnumPlayerTag tag)
     {
