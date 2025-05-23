@@ -236,7 +236,9 @@ public class PlayerPowerController : MonoBehaviour
             {
                 PlayerReferences references = GameManager.Instance.GetPlayerReferences(player.Key);
                 // Set the player's rigidbody to kinematic to freeze them
-                references.rb.isKinematic = true;
+                //references.rb.isKinematic = true;
+                //references.PlayerAnimationController.PlayAnimation(EnumPlayerAnimation.FreezeEffect, references.GetPlayerTag());
+
                 // Start a coroutine to unfreeze the player after 5 seconds
                 StartCoroutine(Unfreeze(references));
             }
@@ -251,10 +253,16 @@ public class PlayerPowerController : MonoBehaviour
 
     // Coroutine to unfreeze the players after 5 seconds
     public IEnumerator Unfreeze(PlayerReferences references) {
-        VFXManager.Instance.SpawnVFX(VFXType.FrostSmoke, references.transform.position, duration: 2f);
-        yield return new WaitForSeconds(3f);
+        yield return StartCoroutine(references.PlayerAnimationController.PlayAnimation(EnumPlayerAnimation.FreezeEffect, references.GetPlayerTag()));
+        
+        //VFXManager.Instance.SpawnVFX(VFXType.FrostSmoke, references.transform.position, duration: 1.5f);
+        //PlayerAnimationController animationController = GameManager.Instance.GetPlayerReferences(tag).PlayerAnimationController;
+        //GameManager.Instance.HidePlayer(tag, false);
+        //yield return StartCoroutine(animationController.PlayAnimation(playerAnimation, tag));
+        //GameManager.Instance.ShowPlayer(tag, true);
+        //yield return new WaitForSeconds(3f);
         // Set the player's rigidbody to non-kinematic to unfreeze them
-        references.rb.isKinematic = false;
+        //references.rb.isKinematic = false;
     }
 
     private void StartHoneyEffectCoroutine() {

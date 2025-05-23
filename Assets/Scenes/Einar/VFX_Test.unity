@@ -685,11 +685,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 722147182849310265, guid: cbd4449d0dfb67e46b69d87418240160, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4751203846301174248, guid: cbd4449d0dfb67e46b69d87418240160, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5982415769621411779, guid: cbd4449d0dfb67e46b69d87418240160, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1445,11 +1445,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!2083052967 &2116761162 stripped
-VisualEffect:
-  m_CorrespondingSourceObject: {fileID: 1761400895526702089, guid: cbd4449d0dfb67e46b69d87418240160, type: 3}
-  m_PrefabInstance: {fileID: 1184156944}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3431194343179164699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1515,10 +1510,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 14801138852948832, guid: 60a9060a9e077f34d9a32f884c8dc377, type: 3}
-      propertyPath: frostSmoke
-      value: 
-      objectReference: {fileID: 2116761162}
     - target: {fileID: 1011539312164490522, guid: 60a9060a9e077f34d9a32f884c8dc377, type: 3}
       propertyPath: m_Name
       value: FrozenAnimationPrefab
