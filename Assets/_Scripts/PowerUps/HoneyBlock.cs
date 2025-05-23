@@ -5,7 +5,8 @@ using UnityEngine;
 public class HoneyBlock : MonoBehaviour
 {
     [SerializeField] private Vector3 _initialVelocity;
-    private float _waitTime = 1f;
+    [SerializeField] private GameObject _parentGameObject;
+    private float _waitTime = 5f;
     private int _index = 0;
     private List<PlayerReferences> _players = new (); // Have the plater remember the initialvelocity in player references or have a reference to the player. or I can address the lists adjasently // if an object has alrady been detected, don't add a player to the lisyt already.
     private List<Vector3> _velocity = new();
@@ -55,7 +56,7 @@ public class HoneyBlock : MonoBehaviour
     public IEnumerator DestroyGameObject(float waitTime) {
         yield return new WaitForSecondsRealtime(waitTime);
         ResetPlayerSpeed();
-        this.gameObject.SetActive(false);
+        Destroy(_parentGameObject);
     }
 
     public void ResetPlayerSpeed() {

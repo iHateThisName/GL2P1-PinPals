@@ -10,6 +10,7 @@ public class PlayerPowerController : MonoBehaviour
     [SerializeField] private Transform powerupPlayerTransform;
     [SerializeField] private Transform _cameraTarget;
     [SerializeField] private GameObject _playerModel;
+    [SerializeField] private GameObject _powerUpTooltip;
     private Vector3 defaultScale;
     private float _powerUpCooldown = 5f;
     private float _originalMass = 0.02f;
@@ -41,6 +42,8 @@ public class PlayerPowerController : MonoBehaviour
         defaultScale = powerupPlayerTransform.localScale;
         _originalMass = powerupPlayerTransform.GetComponent<Rigidbody>().mass;
 
+        _powerUpTooltip.SetActive(false);
+    
         string playerNumberString = powerupPlayerTransform.gameObject.tag.Substring(gameObject.tag.Length - 1);
         int playerNumber = int.Parse(playerNumberString);
         _assignedPlayerTag = (EnumPlayerTag)playerNumber;
@@ -56,15 +59,27 @@ public class PlayerPowerController : MonoBehaviour
             currentPower = power;
             playerText.DisplayPower(currentPower);
             playerReferences.PlayerStats.PowerUpsCollected(_point);
+            StartCoroutine(PowerUpToolTip());
             _isPlayerDead = false;
         }
 
+    }
+
+    private IEnumerator PowerUpToolTip() {
+        if (_isPowerActivated)
+        {
+            yield return new WaitForSecondsRealtime(3.0f);
+            _powerUpTooltip.SetActive(true);
+        }
+        else if (!_isPowerActivated)
+        _powerUpTooltip.SetActive(false);
     }
 
     public void OnUsePower(InputAction.CallbackContext context) {
         if (this._isPowerActivated) return; // Power is active
         if (context.phase == InputActionPhase.Performed)
         {
+            _powerUpTooltip.SetActive(false);
             playerText.DisableSprite();
             switch (currentPower)
             {
@@ -74,15 +89,18 @@ public class PlayerPowerController : MonoBehaviour
                 case EnumPowerUp.Shrink:
                     SoundEffectManager.Instance.PlaySoundFXClip(shrinkSFX, transform, 1f);
                     StartCoroutine(ShrinkPlayerCoroutine());
+                    _powerUpTooltip.SetActive(false);
                     break;
 
                 case EnumPowerUp.Grow:
                     SoundEffectManager.Instance.PlaySoundFXClip(growSFX, transform, 1f);
                     StartCoroutine(GrowPlayerCoroutine());
+                    _powerUpTooltip.SetActive(false);
                     break;
 
                 case EnumPowerUp.Bomb:
                     StartCoroutine(BombPlayersCoroutine());
+                    _powerUpTooltip.SetActive(false);
                     break;
 
                 case EnumPowerUp.SlowTime:
@@ -96,17 +114,21 @@ public class PlayerPowerController : MonoBehaviour
                 case EnumPowerUp.Freeze:
                     SoundEffectManager.Instance.PlaySoundFXClip(freezeSFX, transform, 1f);
                     FreezePlayers();
+                    _powerUpTooltip.SetActive(false);
                     break;
 
                 case EnumPowerUp.MultiBall:
                     SoundEffectManager.Instance.PlaySoundFXClip(multiBallSFX, transform, 1f);
                     MultiBall();
+                    _powerUpTooltip.SetActive(false);
                     break;
                 case EnumPowerUp.Mine:
                     StartCoroutine(MineExplosionCoroutine());
+                    _powerUpTooltip.SetActive(false);
                     break;
                 case EnumPowerUp.Honey:
-                    StartHoneyEffectCoroutine();
+                    StartCoroutine(StartHoneyEffectCoroutine());
+                    _powerUpTooltip.SetActive(false);
                     break;
 
             }
@@ -265,7 +287,7 @@ public class PlayerPowerController : MonoBehaviour
         //references.rb.isKinematic = false;
     }
 
-    private void StartHoneyEffectCoroutine() {
+    private IEnumerator StartHoneyEffectCoroutine() {
         // Start
         this._isPowerActivated = true;
 
@@ -273,6 +295,7 @@ public class PlayerPowerController : MonoBehaviour
         this.playerReferences.PlayerStats.PowerUpUsed(_point);
 
         // Instantiates the Glue Game Object
+        yield return new WaitForSecondsRealtime(1.5f);
         GameObject honeyGameObject = Instantiate(this.honeyPrefab, _cameraTarget.transform.position, Quaternion.identity);
         //honeyGameObject.GetComponent<HoneyBlock>().AssignOwner(powerupPlayerTransform.gameObject);
 
@@ -337,11 +360,13 @@ public class PlayerPowerController : MonoBehaviour
                         OnPlayerDeath();
                         StartCoroutine(PlayerJoinManager.Instance.RespawnDelay(tag, EnumPlayerAnimation.GrowDeath));
                         if (tag != playerReferences.GetPlayerTag())
+                        {
+                        this.playerReferences.PlayerStats.PlayerKills(1);
+                        }
                         player.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerDeaths(_point);
                         player.gameObject.GetComponent<PlayerReferences>().PlayerScoreTracker.DockPoints(_points);
 
-                        this.playerReferences.PlayerStats.PlayerKills(_point);
-                        this.playerReferences.PlayerStats.PowerUpUsed(_point);
+                        this.playerReferences.PlayerStats.PowerUpUsed(_point); // Have the respawned player tell the killer that it has been respawned. or use SendMessage Method to tell the player that it has died.
 
                     }
                 }
@@ -349,6 +374,7 @@ public class PlayerPowerController : MonoBehaviour
             }
         }
     }
+
     // Call this method when the player dies
     public void OnPlayerDeath() {
         _isPlayerDead = true; // Set the flag to indicate player has died
