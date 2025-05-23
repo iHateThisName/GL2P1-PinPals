@@ -12,9 +12,15 @@ public class Plunger : MonoBehaviour {
     private bool allowUsePlunger = false;
 
     [SerializeField] private AudioClip plungerSFX;
+    [Header("Pipeline Inverted Move")]
+    [SerializeField] private GameObject InvertMove;
+    private Vector3 pipStartPosition;
+
 
     void Start() {
         startPos = transform.position - new Vector3(0, 0, 0); // Keeping this for flexibility
+        if (InvertMove != null)
+            this.pipStartPosition = this.InvertMove.transform.position;
     }
 
     void Update() {
@@ -26,11 +32,15 @@ public class Plunger : MonoBehaviour {
             pullAmount = Mathf.Min(pullAmount + Time.deltaTime * 12, maxPull);
             transform.position = Vector3.Lerp(startPos, startPos + new Vector3(0, 0, -maxPull), pullAmount / maxPull);
 
+            if (this.InvertMove != null)
+                this.InvertMove.transform.position = Vector3.Lerp(this.pipStartPosition, this.pipStartPosition + new Vector3(0, 0, maxPull), pullAmount / maxPull);
+
         } else {
             // The player stopped holding the interaction button
             LaunchBall();
             //isPulling = false;
             transform.position = startPos;
+            this.InvertMove.transform.position = this.pipStartPosition;
             pullAmount = 0;
 
         }
