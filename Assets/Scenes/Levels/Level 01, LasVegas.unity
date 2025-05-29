@@ -27997,6 +27997,81 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8183721504121060140, guid: 62a091d498ce52b4b848d95de0721654, type: 3}
   m_PrefabInstance: {fileID: 1220197223}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1220259946
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1761368291}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 4fd4a11be52409d428fa766ae211f643, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4fd4a11be52409d428fa766ae211f643, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4fd4a11be52409d428fa766ae211f643, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4fd4a11be52409d428fa766ae211f643, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4fd4a11be52409d428fa766ae211f643, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4fd4a11be52409d428fa766ae211f643, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4fd4a11be52409d428fa766ae211f643, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4fd4a11be52409d428fa766ae211f643, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4fd4a11be52409d428fa766ae211f643, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4fd4a11be52409d428fa766ae211f643, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7023974396876390944, guid: 4fd4a11be52409d428fa766ae211f643, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 17665d4603709614aaa374d220e35135, type: 2}
+    - target: {fileID: 919132149155446097, guid: 4fd4a11be52409d428fa766ae211f643, type: 3}
+      propertyPath: m_Name
+      value: VegasPlungerPokerTable
+      objectReference: {fileID: 0}
+    - target: {fileID: 2786534777698132407, guid: 4fd4a11be52409d428fa766ae211f643, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: be0a54acda35b8c4081177b026d4986d, type: 2}
+    - target: {fileID: 7339356831882890532, guid: 4fd4a11be52409d428fa766ae211f643, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ada9ec017ced6184bb2dcd106fc1bd03, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 5148817236446094103, guid: 4fd4a11be52409d428fa766ae211f643, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4fd4a11be52409d428fa766ae211f643, type: 3}
+--- !u!4 &1220259947 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4fd4a11be52409d428fa766ae211f643, type: 3}
+  m_PrefabInstance: {fileID: 1220259946}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1220478769
 GameObject:
   m_ObjectHideFlags: 0
@@ -37946,6 +38021,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1680788774}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!1 &1761368290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1761368291}
+  m_Layer: 0
+  m_Name: VegasPokerTable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1761368291
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761368290}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 68.5, y: -5.4, z: -95.7}
+  m_LocalScale: {x: 53.31186, y: 53.31186, z: 53.31186}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1220259947}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1001 &1762308807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49062,3 +49169,4 @@ SceneRoots:
   - {fileID: 239619319}
   - {fileID: 1220729744}
   - {fileID: 107619327}
+  - {fileID: 1761368291}
