@@ -34,8 +34,8 @@ public class MinefieldPowerUp : MonoBehaviour {
                 return;
             this._killedPlayers.Add(tag);
 
-            StartCoroutine(MineExplosion(tag));
-            VFXManager.Instance.SpawnVFX(VFXType.PlayerExplosion, other.transform.position, duration: 2f);
+            StartCoroutine(MineExplosion(tag, playerRef.transform.position));
+            //VFXManager.Instance.SpawnVFX(VFXType.PlayerExplosion, other.transform.position, duration: 2f);
             //VFXManager.Instance.SpawnVFX(VFXType.ThanosSnapGray, other.transform.position, duration: 10f);
             //PlayerJoinManager.Instance.Respawn(tag);
             //OnPlayerDeath();
@@ -54,13 +54,14 @@ public class MinefieldPowerUp : MonoBehaviour {
             this.gameObject.GetComponent<Rigidbody>().isKinematic = false;
         }
     }
-    private IEnumerator MineExplosion(EnumPlayerTag tag) {
+    private IEnumerator MineExplosion(EnumPlayerTag tag, Vector3 position) {
         this._mineExplosionEffect.SetActive(true);
         GameManager.Instance.GetPlayerReferences(tag).rb.isKinematic = true;
         yield return new WaitForSeconds(0.2f); // Time until the Mine Game Object gets despawned
         this._mineModel.SetActive(false);
         GetComponent<Collider>().enabled = false;
         SoundEffectManager.Instance.PlaySoundFXClip(this._mineExplosionSFX, this.gameObject.transform, 1f);
+        VFXManager.Instance.SpawnVFX(VFXType.PlayerExplosion, position, duration: 2f);
         yield return StartCoroutine(PlayerJoinManager.Instance.RespawnDelay(tag, EnumPlayerAnimation.AshDeath));
         Destroy(gameObject);
     }

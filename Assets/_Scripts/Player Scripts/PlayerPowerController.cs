@@ -218,6 +218,13 @@ public class PlayerPowerController : MonoBehaviour
         this.currentPower = EnumPowerUp.None;
     }
 
+    public IEnumerator BombPlayerDeath(EnumPlayerTag tag, Vector3 position)
+    {
+        VFXManager.Instance.SpawnVFX(VFXType.PlayerExplosion, position, duration: 2f);
+        yield return StartCoroutine(PlayerJoinManager.Instance.RespawnDelay(tag, EnumPlayerAnimation.AshDeath));
+        //Destroy(gameObject);
+    }
+
     public IEnumerator MineExplosionCoroutine() {
         this._isPowerActivated = true;
 

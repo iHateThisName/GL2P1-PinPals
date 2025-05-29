@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 // Hilmir & Ivar
 public class ExplosionPowerUp : MonoBehaviour {
     [SerializeField] private GameObject _bombModel;
@@ -10,6 +12,8 @@ public class ExplosionPowerUp : MonoBehaviour {
     private bool _isDangerous = false;
     [SerializeField] private AudioClip _bombTickSFX;
     [SerializeField] private AudioClip _bombExplodeSFX;
+
+    private List<EnumPlayerTag> _killedPlayers = new List<EnumPlayerTag>();
 
     public void Start() {
         StartCoroutine(DestroyExplosion());
@@ -33,11 +37,19 @@ public class ExplosionPowerUp : MonoBehaviour {
             return;
         } else if (player.gameObject.tag.StartsWith("Player")) {
             // To spawn an explosion VFX
-            //VFXManager.Instance.SpawnVFX(VFXType.PlayerExplosion, player.transform.position);
-            VFXManager.Instance.SpawnVFX(VFXType.ThanosSnapGray, player.transform.position, duration: 6f);
+
+
+            //VFXManager.Instance.SpawnVFX(VFXType.ThanosSnapGray, player.transform.position, duration: 6f);
             EnumPlayerTag tag = playerRefs.GetPlayerTag();
-            PlayerJoinManager.Instance.Respawn(tag);
-            Debug.Log(tag.ToString());
+            if (this._killedPlayers.Contains(tag))
+                return;
+            this._killedPlayers.Add(tag);
+            //VFXManager.Instance.SpawnVFX(VFXType.PlayerExplosion, transform.position, duration: 3f);
+
+            StartCoroutine(playerRefs.PlayerPowerController.BombPlayerDeath(tag, playerRefs.transform.position));
+            //yield return StartCoroutine(PlayerJoinManager.Instance.RespawnDelay(tag, EnumPlayerAnimation.AshDeath));
+            //PlayerJoinManager.Instance.Respawn(tag);
+            //Debug.Log(tag.ToString());
             //playerReferences.PlayerStats.PlayerKills(1);
             //_bombOwner.gameObject.SendMessage("PlayerKills", player, );
 
@@ -52,8 +64,8 @@ public class ExplosionPowerUp : MonoBehaviour {
         if (player.gameObject.tag == ("Bumper")) {
             Destroy(player.gameObject);
         }
-
     }
+
 
     private IEnumerator DestroyExplosion() {
         SoundEffectManager.Instance.PlaySoundFXClip(this._bombTickSFX, this.gameObject.transform, 1f);

@@ -62,7 +62,7 @@ public class PlayerAnimationController : MonoBehaviour
     private void PlayAshDeath(EnumPlayerTag tag)
     {
         Transform transform = GameManager.Instance.GetPlayerReferences(tag).transform;
-        GameObject growPowerUp = Instantiate(_ashDeath, transform.position, Quaternion.identity);
+        GameObject ashEffect = Instantiate(_ashDeath, transform.position, Quaternion.identity);
     }
 
     public GameObject PlayFreezeEffect(EnumPlayerTag tag)
