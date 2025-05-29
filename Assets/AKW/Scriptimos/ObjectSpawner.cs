@@ -1,8 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
 {
-    public GameObject ObjectToSpawn;
+    public List<GameObject> ObjectsToSpawn;
     public float minSpawnTime = 5f;
     public float maxSpawnTime = 10f;
     public float objectLifetime = 10f;
@@ -18,7 +19,8 @@ public class ObjectSpawner : MonoBehaviour
     {
         if (Time.time >= nextSpawnTime)
         {
-            GameObject spawnedObject = Instantiate(ObjectToSpawn, transform.position, Quaternion.identity);
+            int randomNumber = Random.Range(0, ObjectsToSpawn.Count);
+            GameObject spawnedObject = Instantiate(ObjectsToSpawn[randomNumber], transform.position, Quaternion.identity);
             Destroy(spawnedObject, objectLifetime);
             SetNextSpawnTime();
         }
