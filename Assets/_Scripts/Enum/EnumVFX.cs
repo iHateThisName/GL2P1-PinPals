@@ -7,4 +7,5 @@ public enum VFXType
     FireWork,
     Splat,
     ThanosSnapGray,
+    DangerZone,
 }

@@ -68,6 +68,7 @@ public class ExplosionPowerUp : MonoBehaviour {
 
 
     private IEnumerator DestroyExplosion() {
+        VFXManager.Instance.SpawnVFX(VFXType.DangerZone, transform.position, duration: 3f);
         SoundEffectManager.Instance.PlaySoundFXClip(this._bombTickSFX, this.gameObject.transform, 1f);
         yield return new WaitForSeconds(3f); // Audio cue
         this._isDangerous = true;
