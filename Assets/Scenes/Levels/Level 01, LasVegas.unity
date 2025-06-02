@@ -28005,6 +28005,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1761368291}
     m_Modifications:
+    - target: {fileID: -8961359253771211100, guid: 4fd4a11be52409d428fa766ae211f643, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4fd4a11be52409d428fa766ae211f643, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -28045,10 +28049,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7029948723529949830, guid: 4fd4a11be52409d428fa766ae211f643, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -7023974396876390944, guid: 4fd4a11be52409d428fa766ae211f643, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 17665d4603709614aaa374d220e35135, type: 2}
+    - target: {fileID: -1063203228461421988, guid: 4fd4a11be52409d428fa766ae211f643, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4fd4a11be52409d428fa766ae211f643, type: 3}
       propertyPath: m_Name
       value: VegasPlungerPokerTable
@@ -28057,6 +28069,14 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: be0a54acda35b8c4081177b026d4986d, type: 2}
+    - target: {fileID: 4767400413853537203, guid: 4fd4a11be52409d428fa766ae211f643, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6507901977716847365, guid: 4fd4a11be52409d428fa766ae211f643, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7339356831882890532, guid: 4fd4a11be52409d428fa766ae211f643, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -34576,8 +34596,8 @@ MonoBehaviour:
         z: 0
       Rotation:
         value:
-          x: 0.43406823
-          y: -0.000000021747555
+          x: 0.43406814
+          y: 0
           z: -0.5848952
           w: 0.6851879
     m_MetaData:
