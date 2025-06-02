@@ -302,7 +302,7 @@ public class PlayerPowerController : MonoBehaviour
         this.playerReferences.PlayerStats.PowerUpUsed(_point);
 
         // Instantiates the Glue Game Object
-        yield return new WaitForSecondsRealtime(1.5f);
+        yield return new WaitForSecondsRealtime(.5f);
         GameObject honeyGameObject = Instantiate(this.honeyPrefab, _cameraTarget.transform.position, Quaternion.identity);
         //honeyGameObject.GetComponent<HoneyBlock>().AssignOwner(powerupPlayerTransform.gameObject);
 

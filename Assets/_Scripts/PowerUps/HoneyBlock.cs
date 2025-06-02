@@ -7,7 +7,6 @@ public class HoneyBlock : MonoBehaviour {
     [SerializeField] private GameObject _parentGameObject;
     [SerializeField] private GameObject _honeycomb;
     [SerializeField] private GameObject _honeyModel;
-    [SerializeField] private HoneyPhase _phase;
     private bool _isDangerous = false;
     private float _waitTime = 5f;
     private int _index = 0;
@@ -21,10 +20,9 @@ public class HoneyBlock : MonoBehaviour {
     }
     public void OnTriggerEnter(Collider player) {
         if (player.gameObject.tag.StartsWith("Player")) {
-            //if (this._isDangerous) return;
-            this._honeycomb.SetActive(false);
-            this._honeyModel.SetActive(true);
-            SlowPlayer(player);
+            if (!this._isDangerous) return;
+            _honeyModel.SetActive(true);
+            _honeyModel.transform.position = player.transform.position;
         } else if (player.gameObject.CompareTag("Ground"))
             this._honeycomb.GetComponent<Rigidbody>().isKinematic = true;
     }
@@ -32,11 +30,10 @@ public class HoneyBlock : MonoBehaviour {
         if (other.gameObject.tag.StartsWith("Player")) {
             this._honeycomb.SetActive(false);
             this._honeyModel.SetActive(true);
-            SlowPlayer(other);
         }
     }
     public IEnumerator PrimeHoneyComb() {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         this._isDangerous = true;
     }
 
