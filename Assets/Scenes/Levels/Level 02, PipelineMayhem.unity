@@ -1352,9 +1352,9 @@ MonoBehaviour:
       Rotation:
         value:
           x: 0.7415103
-          y: -0.036520366
+          y: -0.03652036
           z: 0.6698863
-          w: 0.008998684
+          w: 0.008998683
     - Position:
         x: 139
         y: 70
@@ -1756,6 +1756,10 @@ PrefabInstance:
     - target: {fileID: 3037505369871307278, guid: eca3e6770868d504c9a3570e174cfa10, type: 3}
       propertyPath: m_Name
       value: HighScoreBox (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037505369871307278, guid: eca3e6770868d504c9a3570e174cfa10, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5459,6 +5463,10 @@ PrefabInstance:
     - target: {fileID: 3037505369871307278, guid: eca3e6770868d504c9a3570e174cfa10, type: 3}
       propertyPath: m_Name
       value: HighScoreBox (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037505369871307278, guid: eca3e6770868d504c9a3570e174cfa10, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
