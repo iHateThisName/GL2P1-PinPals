@@ -61,6 +61,7 @@ public class GameManager : Singleton<GameManager> {
             PlungerToolTipFirstTimer();
         } else if (activeSceneName == Helper.endGame || activeSceneName == Helper.mainMenu || activeSceneName == Helper.lobby || activeSceneName == Helper.howToPlay) {
             CheckCamera();
+        } else if (activeSceneName == Helper.skinShowCase) {
         } else {
             CheckCamera();
             StartGame();
@@ -181,8 +182,7 @@ public class GameManager : Singleton<GameManager> {
         SceneManager.LoadScene("HowToPlay");
     }
 
-    public void Credits()
-    {
+    public void Credits() {
         SceneManager.LoadScene("Credits");
     }
 
