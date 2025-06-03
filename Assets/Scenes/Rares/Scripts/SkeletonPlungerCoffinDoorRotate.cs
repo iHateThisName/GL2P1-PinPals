@@ -10,6 +10,8 @@ public class SkeletonPlungerCoffinDoorRotate : MonoBehaviour
     private Quaternion targetRotation;
     private bool isHolding = false;
 
+    [SerializeField] private EnumPlayerTag playerTag = EnumPlayerTag.Player01;
+
     void Start()
     {
         initialRotation = transform.rotation;
@@ -18,7 +20,8 @@ public class SkeletonPlungerCoffinDoorRotate : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        isHolding = GameManager.Instance.IsPlayerHoldingInteraction(this.playerTag);
+        if (isHolding)
         {
             isHolding = true;
         }
