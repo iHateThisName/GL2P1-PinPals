@@ -22,17 +22,20 @@ public class HoneyBlock : MonoBehaviour {
         if (player.gameObject.tag.StartsWith("Player")) {
             if (!this._isDangerous) return;
             _honeyModel.SetActive(true);
+            this._honeycomb.GetComponent<MeshRenderer>().enabled = false;
             _honeyModel.transform.position = player.transform.position;
         } else if (player.gameObject.CompareTag("Ground"))
             this._honeycomb.GetComponent<Rigidbody>().isKinematic = true;
     }
-    public void OnTriggerStay(Collider other) {
-        if (other.gameObject.tag.StartsWith("Player")) {
-            this._honeycomb.SetActive(false);
-            this._honeyModel.SetActive(true);
-        }
-    }
-    public IEnumerator PrimeHoneyComb() {
+    //public void OnTriggerStay(Collider other) {
+    //    if (other.gameObject.tag.StartsWith("Player")) {
+    //        //if (!this._isDangerous) return;
+    //        this._honeyModel.SetActive(true);
+    //        this._honeycomb.GetComponent<MeshRenderer>().enabled = false;
+    //    } else if (other.gameObject.CompareTag("Ground"))
+    //        this._honeycomb.GetComponent<Rigidbody>().isKinematic = true;
+    //}
+    private IEnumerator PrimeHoneyComb() {
         yield return new WaitForSeconds(5f);
         this._isDangerous = true;
     }
@@ -62,11 +65,11 @@ public class HoneyBlock : MonoBehaviour {
             StartCoroutine(DestroyGameObject(_waitTime));
         }
     }
-    public void OnTriggerExit(Collider player) {
-        //Debug.Log("Honey Off" + player.gameObject.name);
-        PlayerReferences playerRef = player.gameObject.GetComponent<PlayerReferences>();
-        playerRef.rb.linearDamping = 0;
-    }
+    //public void OnTriggerExit(Collider player) {
+    //    //Debug.Log("Honey Off" + player.gameObject.name);
+    //    PlayerReferences playerRef = player.gameObject.GetComponent<PlayerReferences>();
+    //    playerRef.rb.linearDamping = 0;
+    //}
     public IEnumerator DestroyGameObject(float waitTime) {
         yield return new WaitForSecondsRealtime(waitTime);
         ResetPlayerSpeed();
