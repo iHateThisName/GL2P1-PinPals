@@ -2,8 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 // Hilmir, Ivar and Einar
-public class PlayerPowerController : MonoBehaviour
-{
+public class PlayerPowerController : MonoBehaviour {
     [field: SerializeField] public EnumPowerUp currentPower { get; private set; } = EnumPowerUp.None;
     [SerializeField] public EnumPlayerAnimation EnumPlayerAnimation;
     [SerializeField] private PlayerReferences playerReferences;
@@ -12,7 +11,7 @@ public class PlayerPowerController : MonoBehaviour
     [SerializeField] private GameObject _playerModel;
     [SerializeField] private GameObject _powerUpTooltip;
     private Vector3 defaultScale;
-    private float _powerUpCooldown = 5f;
+    private float _powerUpCooldown = 0f;
     private float _originalMass = 0.02f;
     private int _point = 1;
     private int _points = 500;
@@ -43,7 +42,7 @@ public class PlayerPowerController : MonoBehaviour
         _originalMass = powerupPlayerTransform.GetComponent<Rigidbody>().mass;
 
         _powerUpTooltip.SetActive(false);
-    
+
         string playerNumberString = powerupPlayerTransform.gameObject.tag.Substring(gameObject.tag.Length - 1);
         int playerNumber = int.Parse(playerNumberString);
         _assignedPlayerTag = (EnumPlayerTag)playerNumber;
@@ -54,8 +53,7 @@ public class PlayerPowerController : MonoBehaviour
     }
 
     public void GivePlayerPower(EnumPowerUp power) {
-        if (currentPower == EnumPowerUp.None)
-        {
+        if (currentPower == EnumPowerUp.None) {
             currentPower = power;
             playerText.DisplayPower(currentPower);
             playerReferences.PlayerStats.PowerUpsCollected(_point);
@@ -66,23 +64,19 @@ public class PlayerPowerController : MonoBehaviour
     }
 
     private IEnumerator PowerUpToolTip() {
-        if (_isPowerActivated)
-        {
+        if (_isPowerActivated) {
             yield return new WaitForSecondsRealtime(3.0f);
             _powerUpTooltip.SetActive(true);
-        }
-        else if (!_isPowerActivated)
-        _powerUpTooltip.SetActive(false);
+        } else if (!_isPowerActivated)
+            _powerUpTooltip.SetActive(false);
     }
 
     public void OnUsePower(InputAction.CallbackContext context) {
         if (this._isPowerActivated) return; // Power is active
-        if (context.phase == InputActionPhase.Performed)
-        {
+        if (context.phase == InputActionPhase.Performed) {
             _powerUpTooltip.SetActive(false);
             playerText.DisableSprite();
-            switch (currentPower)
-            {
+            switch (currentPower) {
                 case EnumPowerUp.None:
                     break;
 
@@ -218,8 +212,7 @@ public class PlayerPowerController : MonoBehaviour
         this.currentPower = EnumPowerUp.None;
     }
 
-    public IEnumerator BombPlayerDeath(EnumPlayerTag tag, Vector3 position)
-    {
+    public IEnumerator BombPlayerDeath(EnumPlayerTag tag, Vector3 position) {
         VFXManager.Instance.SpawnVFX(VFXType.PlayerExplosion, position, duration: 2f);
         yield return StartCoroutine(PlayerJoinManager.Instance.RespawnDelay(tag, EnumPlayerAnimation.AshDeath));
         //Destroy(gameObject);
@@ -258,11 +251,9 @@ public class PlayerPowerController : MonoBehaviour
         this.playerReferences.PlayerStats.PowerUpUsed(_point);
 
         // Loop through all players in the GameManager
-        foreach (var player in GameManager.Instance.Players)
-        {
+        foreach (var player in GameManager.Instance.Players) {
             // Check if the player is not Player01
-            if (player.Key != _assignedPlayerTag)
-            {
+            if (player.Key != _assignedPlayerTag) {
                 PlayerReferences references = GameManager.Instance.GetPlayerReferences(player.Key);
                 // Set the player's rigidbody to kinematic to freeze them
                 //references.rb.isKinematic = true;
@@ -283,7 +274,7 @@ public class PlayerPowerController : MonoBehaviour
     // Coroutine to unfreeze the players after 5 seconds
     public IEnumerator Unfreeze(PlayerReferences references) {
         yield return StartCoroutine(references.PlayerAnimationController.PlayAnimation(EnumPlayerAnimation.FreezeEffect, references.GetPlayerTag()));
-        
+
         //VFXManager.Instance.SpawnVFX(VFXType.FrostSmoke, references.transform.position, duration: 1.5f);
         //PlayerAnimationController animationController = GameManager.Instance.GetPlayerReferences(tag).PlayerAnimationController;
         //GameManager.Instance.HidePlayer(tag, false);
@@ -348,26 +339,20 @@ public class PlayerPowerController : MonoBehaviour
     }
 
     public void PlayerCollision(Collision player) {
-        if (this.currentPower == EnumPowerUp.Grow)
-        {
-            if (_isPowerActivated)
-            {
-                if (player.gameObject.name.Contains("Clone"))
-                {
+        if (this.currentPower == EnumPowerUp.Grow) {
+            if (_isPowerActivated) {
+                if (player.gameObject.name.Contains("Clone")) {
                     Destroy(player.gameObject);
                     return;
                 }
-                if (player.gameObject.tag.StartsWith("Player"))
-                {
-                    if (this.powerupPlayerTransform.localScale.x > player.gameObject.transform.localScale.x)
-                    {
+                if (player.gameObject.tag.StartsWith("Player")) {
+                    if (this.powerupPlayerTransform.localScale.x > player.gameObject.transform.localScale.x) {
                         EnumPlayerTag tag = player.gameObject.GetComponent<PlayerReferences>().GetPlayerTag();
-                        
+
                         OnPlayerDeath();
                         StartCoroutine(PlayerJoinManager.Instance.RespawnDelay(tag, EnumPlayerAnimation.GrowDeath));
-                        if (tag != playerReferences.GetPlayerTag())
-                        {
-                        this.playerReferences.PlayerStats.PlayerKills(1);
+                        if (tag != playerReferences.GetPlayerTag()) {
+                            this.playerReferences.PlayerStats.PlayerKills(1);
                         }
                         player.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerDeaths(_point);
                         player.gameObject.GetComponent<PlayerReferences>().PlayerScoreTracker.DockPoints(_points);

@@ -1867,7 +1867,7 @@ PrefabInstance:
     - target: {fileID: 1702459091473568821, guid: 7e24ba1fee682094794c0314165c60f0, type: 3}
       propertyPath: ButtonAnimationDone.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1897106172}
+      objectReference: {fileID: 1965647517}
     - target: {fileID: 1702459091473568821, guid: 7e24ba1fee682094794c0314165c60f0, type: 3}
       propertyPath: ButtonAnimationDone.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -3072,12 +3072,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4211050409046238922, guid: 005ac7fad01757540ac73d5c06904617, type: 3}
       propertyPath: m_Navigation.m_Mode
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4211050409046238922, guid: 005ac7fad01757540ac73d5c06904617, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
       objectReference: {fileID: 1897106172}
+    - target: {fileID: 4211050409046238922, guid: 005ac7fad01757540ac73d5c06904617, type: 3}
+      propertyPath: m_Navigation.m_WrapAround
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4211050409046238922, guid: 005ac7fad01757540ac73d5c06904617, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
@@ -3154,6 +3158,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5348714003280119314, guid: 005ac7fad01757540ac73d5c06904617, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5363778634450334260, guid: 005ac7fad01757540ac73d5c06904617, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -3190,6 +3198,18 @@ PrefabInstance:
       propertyPath: musicVolumeApplier
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6589655430014868501, guid: 005ac7fad01757540ac73d5c06904617, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6589655430014868501, guid: 005ac7fad01757540ac73d5c06904617, type: 3}
+      propertyPath: m_Navigation.m_WrapAround
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6589655430014868501, guid: 005ac7fad01757540ac73d5c06904617, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 1965647517}
     - target: {fileID: 6661376203246146619, guid: 005ac7fad01757540ac73d5c06904617, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -3252,7 +3272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7722441909883842611, guid: 005ac7fad01757540ac73d5c06904617, type: 3}
       propertyPath: m_Navigation.m_Mode
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7722441909883842611, guid: 005ac7fad01757540ac73d5c06904617, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
