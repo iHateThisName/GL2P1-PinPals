@@ -1393,10 +1393,12 @@ MonoBehaviour:
       m_Calls: []
   m_text: '
 
-    Interact with the UI By using the D-pad on the controller
+    UI navigation
 
-    For
-    keyboard, use A/D or left / right arrow keys'
+    Interact with the UI by using the D-pad on the
+    controller
+
+    For keyboard, use A / D or left / right arrow keys'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3306,10 +3308,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '
 
-    Shrink in size, and gain speed like never before, allowing you to
-    go to hard to reach places.
-
-'
+    Shrink in size, making it more difficult for other players to target
+    you.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cda5e808456780645bb35fa01908c5d7, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4363,8 +4363,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nAllows you to instantly freeze every player in the area that you\u2019re
-    in, preventing everyone but you from moving."
+  m_text: '
+
+    Instantly freezes all other players for a short period of time.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cda5e808456780645bb35fa01908c5d7, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5715,10 +5716,10 @@ MonoBehaviour:
       m_Calls: []
   m_text: '
 
-    Respawn by pressing north button on the controller
+    Respawn
 
-    or R on
-    the keyboard'
+    Use R / north controller button to respawn if you get
+    stuck.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8002,9 +8003,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '
 
-    Place down a minefield and keep on playing, and if another player
-    steps on the minefield, then they will respawn, but be careful as the mine applies
-    to everyone.'
+    Place down a minefield and keep on playing. If another player steps
+    on the minefield, they will explode, but be careful as the mine applies to everyone.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cda5e808456780645bb35fa01908c5d7, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8227,7 +8227,7 @@ MonoBehaviour:
   m_text: '
 
     Spawns a block of honey that slows down any player that enters it,
-    you included.'
+    including yourself.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cda5e808456780645bb35fa01908c5d7, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8391,10 +8391,10 @@ MonoBehaviour:
       m_Calls: []
   m_text: '
 
-    Action button.
+    Actions
 
-    The action button allows you to perform actions
-    like using an power up/Joing the lobby/Hold to use the plunger.'
+    Use Space / south controller button to perform actions
+    like using a power up / Joining the lobby / Hold to use the plunger.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8553,8 +8553,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '
 
-    Counts down 3 seconds and then explode detroys all pinball in the
-    blast sone.'
+    Counts down 3 seconds before exploding. Destroys every player within
+    the radius.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cda5e808456780645bb35fa01908c5d7, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9099,9 +9099,10 @@ MonoBehaviour:
       m_Calls: []
   m_text: '
 
-    Skip button.
+    Skipping
 
-    The skip button allows you to skip the level intro.'
+    Use Space / east controller button to skip the level
+    intro.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9260,10 +9261,13 @@ MonoBehaviour:
       m_Calls: []
   m_text: '
 
-    Interact with the Left flipper using A/L1/Left Arrow.
+    Flipper interactions
 
-    Interact
-    with the Right flipper using D/R1/Right Arrow.'
+    Interact with the Left flipper using A
+    / L1 / Left Arrow.
+
+    Interact with the Right flipper using D / R1 / Right
+    Arrow.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
