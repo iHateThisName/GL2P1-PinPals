@@ -13,12 +13,10 @@ public class DisplayPlayerStats : MonoBehaviour {
             PlayerStats currentPlayerStats = playerModelController.PlayerStats;
 
             displayStats.SetPlayerName("Player " + playerScores[i].tag.ToString().Substring(playerScores[i].tag.ToString().Length - 2));
-            displayStats.BumperPoint(currentPlayerStats.bumperPoint);
             displayStats.BumperHits(currentPlayerStats.bumperHits);
             displayStats.PlayerKills(currentPlayerStats.playersKilled);
             displayStats.PlayerDeaths(currentPlayerStats.playerDeaths);
             displayStats.PowerUpsCollected(currentPlayerStats.powersCollected);
-            displayStats.PowerUpUsed(currentPlayerStats.powersUsed);
         }
 
     }
