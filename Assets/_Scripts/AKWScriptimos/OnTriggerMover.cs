@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//an AKW Script
 public class OnTriggerMover : MonoBehaviour
 {
     public Transform pointA;

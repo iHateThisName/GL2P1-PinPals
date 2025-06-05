@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//an AKW Script
 public class activationDeviceScripto : MonoBehaviour
 {
     public bool isActivated = false;

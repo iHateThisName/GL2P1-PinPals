@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+//an AKW Script
 public class ObjectSpawner : MonoBehaviour
 {
     public List<GameObject> ObjectsToSpawn;

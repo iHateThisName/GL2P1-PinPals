@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
-
+//an AKW Script
 public class TempOnOffScript : MonoBehaviour
 {
     public Material OnTexture;

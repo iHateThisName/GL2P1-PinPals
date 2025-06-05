@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+//an AKW Script
 public class OnOffThingieScript : MonoBehaviour
 {
     public Material OnTexture;

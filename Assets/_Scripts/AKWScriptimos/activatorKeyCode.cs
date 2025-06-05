@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//an AKW Script
 public class activatorKeyCode : MonoBehaviour {
     public Material idleTexture;
     public Material activeTexture;

@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+//an AKW Script
 public class MenuStartish : MonoBehaviour
 {
     public void startish()

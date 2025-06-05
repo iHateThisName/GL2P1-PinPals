@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+//an AKW Script
 public class PartiolRotateScript : MonoBehaviour
 {
     public enum RotationAxis { X, Y, Z }

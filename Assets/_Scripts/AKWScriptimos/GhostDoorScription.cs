@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+//an AKW Script
 public class GhostDoorScription : MonoBehaviour
 {
     public enum RotationAxis { X, Y, Z }

@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//an AKW Script
 public class GifSimulatorScript : MonoBehaviour
 {
     [Header("Animation Frames")]
