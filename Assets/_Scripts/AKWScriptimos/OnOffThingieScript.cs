@@ -1,8 +1,6 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 //an AKW Script
-public class OnOffThingieScript : MonoBehaviour
-{
+public class OnOffThingieScript : MonoBehaviour {
     public Material OnTexture;
     public Material OffTexture;
 
@@ -16,31 +14,25 @@ public class OnOffThingieScript : MonoBehaviour
     [SerializeField] private AudioClip hitTargetSFX;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
+    void Start() {
         ThingRender = GetComponent<Renderer>();
         ThingRender.material = OnTexture;
         Collideble = GetComponent<Collider>();
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
+    private void OnCollisionEnter(Collision collision) {
         Collideble.enabled = false;
-        if (IsActive)
-        {
+        if (IsActive) {
             SoundEffectManager.Instance.PlaySoundFXClip(hitTargetSFX, transform, 1f);
             ThingRender.material = OffTexture;
             PlayerReferences modelController = collision.gameObject.GetComponent<PlayerReferences>();
             //modelController.AddPlayerPoints(points);
             modelController.PlayerScoreTracker.AddPoints(points);
 
-            if (_targetScore != null)
-            {
+            if (_targetScore != null) {
                 _targetScore.OnScore(modelController);
             }
-        }
-        else
-        {
+        } else {
             ThingRender.material = OnTexture;
         }
     }
