@@ -5,8 +5,7 @@
 /// To get the power up as string use Enum.GetName(typeof(EnumPowerUp), EnumPowerUp.None) or EnumPowerUp.None.ToString()
 /// </summary>
 
-public enum EnumPowerUp
-{
+public enum EnumPowerUp {
     None = 0,
     Shrink = 1,
     Grow = 2,

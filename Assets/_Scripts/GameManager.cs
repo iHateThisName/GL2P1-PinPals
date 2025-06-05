@@ -232,7 +232,7 @@ public class GameManager : Singleton<GameManager> {
 
     public void ScoreScene() => SceneManager.LoadScene("EndGame");
     public bool IsPlayerHoldingInteraction(EnumPlayerTag tag) {
-        if (this._isPlayersHidden) return false;
+        if (this._isPlayersHidden || !this.Players.ContainsKey(tag)) return false;
         return this.Players[tag].GetComponent<PlayerController>().IsHoldingInteraction;
     }
 

@@ -11,7 +11,8 @@ public class PlayerPowerController : MonoBehaviour {
     [SerializeField] private GameObject _playerModel;
     [SerializeField] private GameObject _powerUpTooltip;
     private Vector3 defaultScale;
-    private float _powerUpCooldown = 0f;
+    private float _powerUpCooldown = 0.1f;
+    private float _powerAlive = 5f;
     private float _originalMass = 0.02f;
     private int _point = 1;
     private int _points = 500;
@@ -142,7 +143,8 @@ public class PlayerPowerController : MonoBehaviour {
         // Start the cooldown timer
         float elapsedTime = 0f;
 
-        while (elapsedTime < _powerUpCooldown) {
+        StartCoroutine(PowerCooldown());
+        while (elapsedTime < _powerAlive) {
             // Check if the player has died
             if (_isPlayerDead) {
                 // Reset the player's size and mass
@@ -163,9 +165,9 @@ public class PlayerPowerController : MonoBehaviour {
     private void ResetPlayerSizeAndMass() {
         this.playerReferences.rb.mass = _originalMass;
         this.powerupPlayerTransform.localScale = defaultScale;
-        this._isPowerActivated = false;
+        //this._isPowerActivated = false;
         // Optionally reset current power state
-        this.currentPower = EnumPowerUp.None;
+        //this.currentPower = EnumPowerUp.None;
     }
 
     public IEnumerator GrowPlayerCoroutine() {
@@ -181,7 +183,8 @@ public class PlayerPowerController : MonoBehaviour {
         // Start the cooldown timer
         float elapsedTime = 0f;
 
-        while (elapsedTime < _powerUpCooldown) {
+        StartCoroutine(PowerCooldown());
+        while (elapsedTime < _powerAlive) {
             // Check if the player has died
             if (_isPlayerDead) {
                 // Reset the player's size and mass
@@ -207,9 +210,7 @@ public class PlayerPowerController : MonoBehaviour {
         GameObject explosionGameObject = Instantiate(this.explosionEffect, _cameraTarget.transform.position, Quaternion.identity);
         explosionGameObject.GetComponent<ExplosionPowerUp>().AssignBombOwner(powerupPlayerTransform.gameObject);
 
-        yield return new WaitForSeconds(_powerUpCooldown);
-        this._isPowerActivated = false;
-        this.currentPower = EnumPowerUp.None;
+        yield return StartCoroutine(PowerCooldown());
     }
 
     public IEnumerator BombPlayerDeath(EnumPlayerTag tag, Vector3 position) {
@@ -228,10 +229,7 @@ public class PlayerPowerController : MonoBehaviour {
         GameObject landMineGameObject = Instantiate(this.minePrefab, _cameraTarget.transform.position, Quaternion.identity);
         landMineGameObject.GetComponent<MinefieldPowerUp>().AssignMineOwner(powerupPlayerTransform.gameObject);
 
-        yield return new WaitForSeconds(_powerUpCooldown);
-        this._isPowerActivated = false;
-        this.currentPower = EnumPowerUp.None;
-
+        yield return StartCoroutine(PowerCooldown());
     }
 
     public void SlowTime() {
@@ -317,7 +315,7 @@ public class PlayerPowerController : MonoBehaviour {
     }
 
     private IEnumerator DestroyAfterDelay(GameObject dub) {
-        yield return new WaitForSecondsRealtime(_powerUpCooldown);
+        yield return new WaitForSecondsRealtime(_powerAlive);
         // Destroy the GameObject
         Destroy(dub);
     }
@@ -334,8 +332,9 @@ public class PlayerPowerController : MonoBehaviour {
         playerText.DisableSprite();
 
         this.currentPower = EnumPowerUp.None; // Remove Holding Power Up
-        _powerUpCooldown = 0f;
-        _powerUpCooldown = 5f;
+        this._isPowerActivated = false;
+        //_powerUpCooldown = 0f;
+        //_powerUpCooldown = 5f;
     }
 
     public void PlayerCollision(Collision player) {
