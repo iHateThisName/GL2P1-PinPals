@@ -333,36 +333,31 @@ public class PlayerPowerController : MonoBehaviour {
 
         this.currentPower = EnumPowerUp.None; // Remove Holding Power Up
         this._isPowerActivated = false;
-        //_powerUpCooldown = 0f;
-        //_powerUpCooldown = 5f;
     }
 
     public void PlayerCollision(Collision player) {
-        if (this.currentPower == EnumPowerUp.Grow) {
-            if (_isPowerActivated) {
-                if (player.gameObject.name.Contains("Clone")) {
+        if (player.gameObject.tag.StartsWith("Player") || player.gameObject.name.Contains("Clone")) {
+            if (this.powerupPlayerTransform.localScale.x - player.gameObject.transform.localScale.x > 0.04f) {
+                if (player.gameObject.tag.StartsWith("Player")) {
+                    PlayerReferences hitPlayerReferences = player.gameObject.GetComponent<PlayerReferences>();
+                    EnumPlayerTag hitPlayerTag = hitPlayerReferences.GetPlayerTag();
+                    hitPlayerReferences.PlayerPowerController.OnPlayerDeath();
+                    StartCoroutine(PlayerJoinManager.Instance.RespawnDelay(hitPlayerTag, EnumPlayerAnimation.GrowDeath));
+
+                    if (hitPlayerTag != this.playerReferences.GetPlayerTag()) {
+                        this.playerReferences.PlayerStats.PlayerKills(1);
+                    }
+
+                    hitPlayerReferences.PlayerStats.PlayerDeaths(_point);
+                    hitPlayerReferences.PlayerScoreTracker.DockPoints(_points);
+                    this.playerReferences.PlayerStats.PowerUpUsed(_point); // Have the respawned player tell the killer that it has been respawned. or use SendMessage Method to tell the player that it has died.
+                } else if (player.gameObject.name.Contains("Clone")) {
                     Destroy(player.gameObject);
                     return;
                 }
-                if (player.gameObject.tag.StartsWith("Player")) {
-                    if (this.powerupPlayerTransform.localScale.x > player.gameObject.transform.localScale.x) {
-                        EnumPlayerTag tag = player.gameObject.GetComponent<PlayerReferences>().GetPlayerTag();
-
-                        OnPlayerDeath();
-                        StartCoroutine(PlayerJoinManager.Instance.RespawnDelay(tag, EnumPlayerAnimation.GrowDeath));
-                        if (tag != playerReferences.GetPlayerTag()) {
-                            this.playerReferences.PlayerStats.PlayerKills(1);
-                        }
-                        player.gameObject.GetComponent<PlayerReferences>().PlayerStats.PlayerDeaths(_point);
-                        player.gameObject.GetComponent<PlayerReferences>().PlayerScoreTracker.DockPoints(_points);
-
-                        this.playerReferences.PlayerStats.PowerUpUsed(_point); // Have the respawned player tell the killer that it has been respawned. or use SendMessage Method to tell the player that it has died.
-
-                    }
-                }
-
             }
         }
+
     }
 
     // Call this method when the player dies
